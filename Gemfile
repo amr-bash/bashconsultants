@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+
 # gemspec
 
 # This is where you define which Jekyll version to use for your site.
@@ -28,6 +29,7 @@ end
 # Docker support (Modify the Dockerfile to include the installation of the ffi gem and its dependencies. Additionally, ensure that all gems are installed for the correct platform.)
 gem "ffi", "~> 1.17.0"
 gem 'webrick', '~> 1.7'
+gem 'commonmarker', '0.23.10'  # Added to avoid build errors with version 0.23.11
 
 # TODO: build a bootstrap plugin for jekyll
 
