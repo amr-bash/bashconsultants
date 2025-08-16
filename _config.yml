@@ -52,7 +52,7 @@ domain                   : &domain "github"
 domain_ext               : &domain_ext "io"
 baseurl                  : &baseurl "" # the subpath of your site, e.g. /blog - Use this if you want this whole repo to be a domain branch
 url_test                 : &url_test [ 'https', '://', *github_user, '.', *domain, '.', *domain_ext ] # the base hostname & protocol for your site, e.g. http://example.com
-url                      : &url https://bash-365.com
+url                      : &url https://bashconsultants.com
 public_folder            : "/assets"
 port                     : 4002 # Jekyll Serve Dev port
 dg_port                  : 4001 # TODO: Doppelganger site. Use this if you want to switch between parallel deployments
@@ -61,8 +61,8 @@ og_image                 : [*baseurl, '/assets/images/office-594119.png']
 ### Owner Information -------------------------------------------------------------
 
 name                     : &name "Amr"
-email                    : "amr@bash-365.com"
-contact-email            : "info@bash-365.com"
+email                    : "amr@bashconsultants.com"
+contact-email            : "info@consultants.com"
 description              : >- # this `->` means to ignore newlines until the next variable
   "Modern day IT Solutions"
 level                    : 'Jedi'
