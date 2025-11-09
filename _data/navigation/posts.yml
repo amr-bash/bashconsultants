@@ -1,15 +1,15 @@
-- title: Muse
+- title: Muses
   url: /posts/muses/
   icon: globe
 - title: Tech News
-  url: /posts/tech
+  url: /posts/tech/
   icon: tech
 - title: Corporate News
-  url: /posts/corp
+  url: /posts/corp/
   icon: cash
 - title: ERParody 
-  url: /posts/erp
+  url: /posts/erp/
   icon: heart
-- title: index
-  url: /pages
+- title: Home
+  url: /posts/
   icon: home
