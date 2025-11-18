@@ -1,0 +1,12 @@
+# Azure-specific overrides: use the locally-installed gem theme instead of remote theme
+remote_theme: ""  # clear remote_theme so Jekyll doesn't try to fetch it
+theme: "jekyll-theme-zer0"
+
+# Remove the remote-theme plugin for Azure builds (it expects a remote_theme value)
+plugins:
+  - github-pages
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-relative-links
