@@ -1,0 +1,10 @@
+{
+  "name": "bashconsultants",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Helper package.json so Oryx detects a build script for Azure Static Web Apps",
+  "scripts": {
+    "build": "bundle install && bundle exec jekyll build -d _site",
+    "build:azure": "bundle install && bundle exec jekyll build -d _site"
+  }
+}
