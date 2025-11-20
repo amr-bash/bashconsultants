@@ -15,18 +15,16 @@
       url: /services/strat/
 
 - title: Blog
-  url: /posts
+  url: /posts/
   sublinks:
     - title: Muses
-      url: /posts/muses
+      url: /posts/muses/
     - title: Corporate News
-      url: /posts/corp
+      url: /posts/corp/
     - title: Tech News
-      url: /posts/tech
+      url: /posts/tech/
     - title: ERParody 
-      url: /posts/erp
-    - title: index
-      url: /pages
+      url: /posts/erp/
 
 # - title: Docs
 #   url: /docs/
