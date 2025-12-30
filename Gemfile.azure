@@ -1,0 +1,20 @@
+source "https://rubygems.org"
+
+# Gemfile for Azure builds: omit jekyll-remote-theme so builds use the local gem theme
+
+gem 'github-pages'
+
+gem 'jekyll-theme-zer0'
+
+group :jekyll_plugins do
+  # Keep other plugins, but omit jekyll-remote-theme for Azure
+  gem 'jekyll-feed', "~> 0.17"
+  gem 'jekyll-sitemap' , "~> 1.4.0"
+  gem 'jekyll-seo-tag', "~> 2.8.0"
+  gem 'jekyll-paginate', '~> 1.1'
+end
+
+# Docker support
+gem "ffi", "~> 1.17.0"
+gem 'webrick', "~> 1.7"
+gem 'commonmarker', '0.23.10'
