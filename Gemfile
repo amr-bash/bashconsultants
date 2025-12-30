@@ -12,8 +12,8 @@ source "https://rubygems.org"
 # Github Pages Gems:
 gem 'github-pages'
 
-# Jekyll Theme
-gem 'jekyll-theme-zer0'
+# Jekyll Theme - pinned to latest version
+gem 'jekyll-theme-zer0', '~> 0.17.0'
 
 # If you have plugins enabled in the _config.yml, add them here too:
 group :jekyll_plugins do
