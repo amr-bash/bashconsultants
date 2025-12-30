@@ -5,18 +5,14 @@
 
 @charset "utf-8";
 
-// Styling Variables
-@import "it-journey/variables";
-@import "it-journey/docs";
-@import "it-journey/theme";
+// Theme Core Styles (from jekyll-theme-zer0)
+@import "core/variables";
+@import "core/docs";
+@import "core/theme";
 
-// Bootstrap Styles
-// @import "bootstrap.scss";
-
-// Custom Styles
+// Custom Site Styles
 @import "custom.scss";
 
-// Custom Features
-@import "it-journey/code-copy";
-@import "it-journey/syntax";
-
+// Code Features (from theme)
+@import "core/code-copy";
+@import "core/syntax";
