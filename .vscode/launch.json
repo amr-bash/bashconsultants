@@ -1,49 +1,186 @@
-// BASH Consultants Jekyll site launch configurations
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Jekyll: Serve (Docker)",
-			"type": "node-terminal",
-			"request": "launch",
-			"command": "docker-compose up",
-			"cwd": "${workspaceFolder}",
-			"presentation": {
-				"reveal": "always",
-				"panel": "new"
-			},
-			"serverReadyAction": {
-				"pattern": "Server address: (https?://[\\S]+)",
-				"uriFormat": "http://localhost:4002",
-				"action": "openExternally"
-			}
-		},
-		{
-			"name": "Jekyll: Serve (Local)",
-			"type": "node-terminal",
-			"request": "launch",
-			"command": "bundle exec jekyll serve --config '_config.yml,_config_dev.yml' --livereload --port 4002",
-			"cwd": "${workspaceFolder}",
-			"presentation": {
-				"reveal": "always",
-				"panel": "new"
-			},
-			"serverReadyAction": {
-				"pattern": "Server address: (https?://[\\S]+)",
-				"uriFormat": "http://localhost:4002",
-				"action": "openExternally"
-			}
-		},
-		{
-			"name": "Jekyll: Build",
-			"type": "node-terminal",
-			"request": "launch",
-			"command": "bundle exec jekyll build --config '_config.yml,_config_dev.yml'",
-			"cwd": "${workspaceFolder}",
-			"presentation": {
-				"reveal": "always",
-				"panel": "new"
-			}
-		}
-	]
+  // ==================================================
+  // UNIFIED VS CODE LAUNCH CONFIGURATION - Docker-First
+  // ==================================================
+  // Optimized for BASH Consultants Jekyll development
+  // Last Updated: 2026-01-24
+  
+  "version": "0.2.0",
+  "configurations": [
+    
+    // ==========================================
+    // DOCKER DEVELOPMENT CONFIGURATIONS
+    // ==========================================
+    {
+      "name": "🐳 Debug BASH Consultants (Docker)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4042",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Jekyll: Serve (Docker)",
+      "postDebugTask": "Docker: Down",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-web-security",
+        "--disable-features=VizDisplayCompositor"
+      ],
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": ["<node_internals>/**"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "trace": {
+        "stdio": true,
+        "logFile": "${workspaceFolder}/logs/debug-trace.log"
+      },
+      "pathMapping": {
+        "/": "${workspaceFolder}/_site/",
+        "/assets/": "${workspaceFolder}/assets/",
+        "/js/": "${workspaceFolder}/assets/js/",
+        "/css/": "${workspaceFolder}/assets/css/"
+      }
+    },
+
+    {
+      "name": "🔗 Attach to Running Jekyll (Docker)",
+      "type": "msedge", 
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": ["<node_internals>/**"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "urlFilter": "localhost:4042*",
+      "trace": {
+        "stdio": true,
+        "logFile": "${workspaceFolder}/logs/debug-attach-trace.log"
+      },
+      "pathMapping": {
+        "/": "${workspaceFolder}/_site/",
+        "/assets/": "${workspaceFolder}/assets/",
+        "/js/": "${workspaceFolder}/assets/js/",
+        "/css/": "${workspaceFolder}/assets/css/"
+      }
+    },
+
+    {
+      "name": "🔄 Docker Rebuild & Debug",
+      "type": "msedge",
+      "request": "launch", 
+      "url": "http://localhost:4042",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Docker: Rebuild (Force)",
+      "postDebugTask": "Docker: Down",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-web-security",
+        "--auto-open-devtools-for-tabs"
+      ],
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": ["<node_internals>/**"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "trace": {
+        "stdio": true,
+        "logFile": "${workspaceFolder}/logs/debug-rebuild-trace.log"
+      },
+      "pathMapping": {
+        "/": "${workspaceFolder}/_site/",
+        "/assets/": "${workspaceFolder}/assets/",
+        "/js/": "${workspaceFolder}/assets/js/",
+        "/css/": "${workspaceFolder}/assets/css/"
+      }
+    },
+
+    // ==========================================
+    // LOCAL DEVELOPMENT CONFIGURATIONS
+    // ==========================================
+    {
+      "name": "🖥️ Debug BASH Consultants (Local)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4042",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Jekyll: Serve (Local)",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-web-security",
+        "--disable-features=VizDisplayCompositor"
+      ],
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": ["<node_internals>/**"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "trace": {
+        "stdio": true,
+        "logFile": "${workspaceFolder}/logs/debug-local-trace.log"
+      },
+      "pathMapping": {
+        "/": "${workspaceFolder}/_site/",
+        "/assets/": "${workspaceFolder}/assets/",
+        "/js/": "${workspaceFolder}/assets/js/",
+        "/css/": "${workspaceFolder}/assets/css/"
+      }
+    },
+
+    // ==========================================
+    // MOBILE & RESPONSIVE TESTING
+    // ==========================================
+    {
+      "name": "📱 Mobile Debug (Docker)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4042",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Jekyll: Serve (Docker)",
+      "postDebugTask": "Docker: Down",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--device-scale-factor=2",
+        "--force-device-scale-factor=2",
+        "--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+      ],
+      "sourceMaps": true,
+      "smartStep": true,
+      "internalConsoleOptions": "openOnSessionStart",
+      "pathMapping": {
+        "/": "${workspaceFolder}/_site/",
+        "/assets/": "${workspaceFolder}/assets/",
+        "/js/": "${workspaceFolder}/assets/js/",
+        "/css/": "${workspaceFolder}/assets/css/"
+      }
+    },
+
+    // ==========================================
+    // PERFORMANCE DEBUGGING
+    // ==========================================
+    {
+      "name": "🎯 Performance Debug (Docker)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4042",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Jekyll: Serve (Docker)",
+      "postDebugTask": "Docker: Down",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--enable-logging=stderr",
+        "--log-level=0",
+        "--enable-features=NetworkService,NetworkServiceLogging"
+      ],
+      "sourceMaps": true,
+      "smartStep": true,
+      "internalConsoleOptions": "openOnSessionStart",
+      "trace": {
+        "stdio": true,
+        "logFile": "${workspaceFolder}/logs/performance-debug.log"
+      },
+      "pathMapping": {
+        "/": "${workspaceFolder}/_site/",
+        "/assets/": "${workspaceFolder}/assets/",
+        "/js/": "${workspaceFolder}/assets/js/",
+        "/css/": "${workspaceFolder}/assets/css/"
+      }
+    }
+  ]
 }

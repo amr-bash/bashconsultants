@@ -1,58 +1,236 @@
-// Jekyll site build tasks
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Jekyll: Serve (Docker)",
-			"type": "shell",
-			"command": "docker-compose",
-			"args": ["up"],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"isBackground": true,
-			"problemMatcher": [],
-			"detail": "Start Jekyll site via Docker Compose"
-		},
-		{
-			"label": "Jekyll: Serve (Local)",
-			"type": "shell",
-			"command": "bundle",
-			"args": ["exec", "jekyll", "serve", "--config", "_config.yml,_config_dev.yml", "--livereload", "--port", "4002"],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"group": "build",
-			"isBackground": true,
-			"problemMatcher": [],
-			"detail": "Start Jekyll site locally with live reload"
-		},
-		{
-			"label": "Jekyll: Build",
-			"type": "shell",
-			"command": "bundle",
-			"args": ["exec", "jekyll", "build", "--config", "_config.yml,_config_dev.yml"],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"group": "build",
-			"problemMatcher": [],
-			"detail": "Build Jekyll site"
-		},
-		{
-			"label": "Docker: Down",
-			"type": "shell",
-			"command": "docker-compose",
-			"args": ["down"],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"group": "build",
-			"detail": "Stop Docker containers"
-		}
-	]
+  // ==================================================
+  // UNIFIED VS CODE TASKS - Docker-First Development
+  // ==================================================
+  // Optimized for BASH Consultants Jekyll development
+  // Last Updated: 2026-01-24
+  
+  "version": "2.0.0",
+  "tasks": [
+    
+    // ==========================================
+    // CORE DOCKER OPERATIONS
+    // ==========================================
+    {
+      "label": "Docker: Compose Up (Detached)",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["up", "-d"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Start Docker containers in detached mode"
+    },
+
+    {
+      "label": "Jekyll: Serve (Docker)",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["up"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "problemMatcher": [],
+      "detail": "Start Jekyll site via Docker Compose (foreground)"
+    },
+
+    {
+      "label": "Docker: Compose Stop",
+      "type": "shell", 
+      "command": "docker-compose",
+      "args": ["stop"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Stop running Docker containers"
+    },
+
+    {
+      "label": "Docker: Down",
+      "type": "shell",
+      "command": "docker-compose", 
+      "args": ["down"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Stop and remove Docker containers, networks"
+    },
+
+    {
+      "label": "Docker: Rebuild (Force)",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["up", "--build", "--force-recreate", "-d"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "problemMatcher": [],
+      "detail": "Force rebuild and recreate all Docker containers"
+    },
+
+    {
+      "label": "Docker: Logs (Follow)",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["logs", "-f", "jekyll"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "detail": "Follow Jekyll container logs in real-time"
+    },
+
+    // ==========================================
+    // LOCAL DEVELOPMENT (NON-DOCKER)
+    // ==========================================
+    {
+      "label": "Jekyll: Serve (Local)",
+      "type": "shell",
+      "command": "bundle",
+      "args": ["exec", "jekyll", "serve", "--config", "_config.yml,_config_dev.yml", "--livereload", "--port", "4042"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "problemMatcher": [],
+      "detail": "Start Jekyll site locally with live reload on port 4042"
+    },
+
+    // ==========================================
+    // JEKYLL SPECIFIC TASKS
+    // ==========================================
+    {
+      "label": "Jekyll: Build Site",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["exec", "jekyll", "bundle", "exec", "jekyll", "build"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "dependsOn": "Docker: Compose Up (Detached)",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Build Jekyll site inside Docker container"
+    },
+
+    {
+      "label": "Jekyll: Build (Local)",
+      "type": "shell",
+      "command": "bundle",
+      "args": ["exec", "jekyll", "build", "--config", "_config.yml,_config_dev.yml"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Build Jekyll site locally"
+    },
+
+    // ==========================================
+    // MAINTENANCE TASKS
+    // ==========================================
+    {
+      "label": "Docker: Clean Up",
+      "type": "shell",
+      "command": "docker",
+      "args": ["system", "prune", "-f"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Clean up Docker system (containers, networks, images)"
+    },
+
+    {
+      "label": "Dependencies: Update Jekyll",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["exec", "jekyll", "bundle", "update"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "dependsOn": "Docker: Compose Up (Detached)",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "detail": "Update Jekyll dependencies in Docker container"
+    }
+  ]
 }

@@ -23,3 +23,4 @@ extension/*.vsix
 
 # Lock files (generated)
 package-lock.json
+logs/

@@ -2,13 +2,13 @@ services:
 
   jekyll:
     image: jekyll/jekyll:latest
-    command: bash -c "bundle install && jekyll serve --watch --force_polling --config '_config.yml,_config_dev.yml'"
+    command: bash -c "bundle install && jekyll serve --watch --force_polling --port 4042 --config '_config.yml,_config_dev.yml'"
 
     volumes:
       - ./:/app
       - bundle_cache:/usr/local/bundle
     ports:
-      - "4002:4002"
+      - "4042:4042"
     working_dir: /app
     environment:
       JEKYLL_ENV: development

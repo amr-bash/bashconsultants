@@ -4,6 +4,43 @@ All notable changes to the BASH Consultants repository will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.2.0] - 2026-01-24
+
+### Changed
+- **Development Port Standardization**: Updated all development ports from 4002 to 4042 for consistency
+  - `Dockerfile`: Changed EXPOSE and CMD to use port 4042
+  - `docker-compose.yml`: Updated port mapping to 4042:4042
+  - `.vscode/tasks.json`: Updated Jekyll local serve port to 4042
+  - `.vscode/launch.json`: Updated all debug configuration URLs to localhost:4042
+
+- **VS Code Development Environment**: Complete overhaul of development configurations
+  - `.vscode/launch.json`: Added 6 new debug configurations:
+    - 🐳 Debug BASH Consultants (Docker) - Primary Docker debugging
+    - 🔗 Attach to Running Jekyll (Docker) - Attach to running container
+    - 🔄 Docker Rebuild & Debug - Force rebuild with debugging
+    - 🖥️ Debug BASH Consultants (Local) - Local development debugging
+    - 📱 Mobile Debug (Docker) - Mobile responsive testing
+    - 🎯 Performance Debug (Docker) - Performance profiling
+  - `.vscode/tasks.json`: Added 12 comprehensive tasks:
+    - Docker operations (up, stop, down, rebuild, logs)
+    - Jekyll serve/build (Docker and Local)
+    - Maintenance tasks (clean up, update dependencies)
+
+- **Theme Version**: Updated jekyll-theme-zer0 to v0.18.0
+  - `Gemfile`: Updated gem version constraint to `~> 0.18.0`
+  - `_config.yml`: Simplified remote_theme to `bamr87/zer0-mistakes` (uses latest)
+
+- **Gemfile Cleanup**: Simplified dependencies
+  - Removed redundant jekyll_plugins group (already included in github-pages gem)
+  - Removed pinned versions for ffi and webrick (use latest compatible)
+  - Removed commonmarker pin (resolved upstream)
+
+### Added
+- **`.gitignore`**: Added `logs/` directory for debug trace logs
+
+### Fixed
+- **Dockerfile**: Added newline at end of file
+
 ## [1.1.0] - 2026-01-24
 
 ### Changed
