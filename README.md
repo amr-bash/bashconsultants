@@ -232,6 +232,17 @@ Beyond our professional services, BASH Consulting is deeply committed to support
 
 ---
 
+**Tools and Resources**
+
+BASH Consulting maintains a suite of tools and scripts to enhance development workflows and ensure consistent quality across projects. Our prompt engineering toolkit and automation scripts are designed to streamline common development tasks.
+
+- **Prompt Engineering Toolkit**: A collection of specialized prompts for requirements analysis, system design, code implementation, testing, documentation, refactoring, and debugging. Located in `.github/prompts/`.
+- **Routine Maintenance Script**: An automation script that prepares structured prompts for VS Code Chat extensions, enabling AI-assisted code maintenance and improvements. See `scripts/routine-maintenance.sh` for details.
+
+These tools embody our commitment to leveraging AI and automation to deliver high-quality, efficient solutions.
+
+---
+
 **Get in Touch**
 
 If you are a small or medium-sized business looking to leverage enterprise-grade technologies, streamline your operations, and gain a competitive edge, **BASH Consulting** is here to help. Let us partner with you on your journey toward growth and success.

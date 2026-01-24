@@ -1,64 +1,58 @@
-// See https://go.microsoft.com/fwlink/?LinkId=733558
-// for the documentation about the tasks.json format
+// Jekyll site build tasks
 {
 	"version": "2.0.0",
 	"tasks": [
 		{
-            "label": "watch",
-            "dependsOn": [
-                "npm: watch:tsc",
-                "npm: watch:esbuild"
-            ],
-            "presentation": {
-                "reveal": "never"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "type": "npm",
-            "script": "watch:esbuild",
-            "group": "build",
-            "problemMatcher": [],
-            "isBackground": true,
-            "label": "npm: watch:esbuild",
-            "presentation": {
-                "group": "watch",
-                "reveal": "never"
-            }
-        },
-		{
-            "type": "npm",
-            "script": "watch:tsc",
-            "group": "build",
-            "problemMatcher": "$tsc-watch",
-            "isBackground": true,
-            "label": "npm: watch:tsc",
-            "presentation": {
-                "group": "watch",
-                "reveal": "never"
-            }
-        },
-		{
-			"type": "npm",
-			"script": "watch-tests",
-			"problemMatcher": "$tsc-watch",
-			"isBackground": true,
-			"presentation": {
-				"reveal": "never",
-				"group": "watchers"
+			"label": "Jekyll: Serve (Docker)",
+			"type": "shell",
+			"command": "docker-compose",
+			"args": ["up"],
+			"options": {
+				"cwd": "${workspaceFolder}"
 			},
-			"group": "build"
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"isBackground": true,
+			"problemMatcher": [],
+			"detail": "Start Jekyll site via Docker Compose"
 		},
 		{
-			"label": "tasks: watch-tests",
-			"dependsOn": [
-				"npm: watch",
-				"npm: watch-tests"
-			],
-			"problemMatcher": []
+			"label": "Jekyll: Serve (Local)",
+			"type": "shell",
+			"command": "bundle",
+			"args": ["exec", "jekyll", "serve", "--config", "_config.yml,_config_dev.yml", "--livereload", "--port", "4002"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": [],
+			"detail": "Start Jekyll site locally with live reload"
+		},
+		{
+			"label": "Jekyll: Build",
+			"type": "shell",
+			"command": "bundle",
+			"args": ["exec", "jekyll", "build", "--config", "_config.yml,_config_dev.yml"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Build Jekyll site"
+		},
+		{
+			"label": "Docker: Down",
+			"type": "shell",
+			"command": "docker-compose",
+			"args": ["down"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build",
+			"detail": "Stop Docker containers"
 		}
 	]
 }
