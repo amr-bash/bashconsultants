@@ -1,12 +1,20 @@
+- title: Home
+  icon: bi-house
+  url: /home/
 - title: About
-  sublinks:
-    - title: Home
-      url: /about
-    - title: License
-      url: /about/license
-    - title: Terms &amp; Privacy Policy
-      url: /terms
-    - title: Sitemap
-      url: /about/sitemap
   url: /about/
+  icon: bi-info-circle
+  children:
+    - title: Home
+      url: /about/
+    - title: Organization
+      url: /about/org/
+    - title: Portfolio
+      url: /about/portfolio/
+    - title: License
+      url: /about/license/
+    - title: Terms & Privacy Policy
+      url: /about/terms/
+    - title: Sitemap
+      url: /about/sitemap/
 

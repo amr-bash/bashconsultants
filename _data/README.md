@@ -1,32 +1,57 @@
+# Data Directory
 
-## Getting Started
+This directory contains YAML data files used by Jekyll to generate the site.
 
-These instructions will help you understand the data files in this directory.
+## Directory Structure
 
-### Raw Data
+```
+_data/
+├── README.md           # This file
+├── entity/             # Entity data (organization, contact info)
+└── navigation/         # Navigation configuration files
+    ├── README.md       # Navigation schema documentation
+    ├── main.yml        # Primary site navigation (navbar)
+    ├── about.yml       # About section sidebar
+    ├── docs.yml        # Documentation sidebar
+    ├── posts.yml       # Blog category navigation
+    ├── home.yml        # Homepage quick links
+    └── services.yml    # Services sidebar
+```
 
-The `raw` directory contains the raw data files. These files are the original data and have not been processed or manipulated in any way.
+## Navigation Files
 
-### Processed Data
+Navigation files follow the **zer0-mistakes theme v0.17+** schema. See [`navigation/README.md`](navigation/README.md) for the complete schema definition.
 
-The `processed` directory contains the data files that have been processed and are ready for analysis. These files have been cleaned, manipulated, or otherwise processed from the raw data files.
+### Quick Reference
+
+```yaml
+- title: string        # Required - Display text
+  url: string          # Optional - Link URL
+  icon: string         # Optional - Bootstrap Icons class (bi-*)
+  children: array      # Optional - Nested items
+```
+
+## Entity Data
+
+The `entity/` directory contains organization-related data like company info, team members, and contact details.
+
+## Usage in Templates
+
+Access data files in Liquid templates:
+
+```liquid
+{% for item in site.data.navigation.main %}
+  <a href="{{ item.url }}">{{ item.title }}</a>
+{% endfor %}
+```
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](url) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Authors
-
-* **Your Name** - *Initial work* - [YourGithub](url)
-
-See also the list of [contributors](url) who participated in this project.
+When adding or modifying data files:
+1. Validate YAML syntax before committing
+2. Follow existing naming conventions
+3. Update this README if adding new directories
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](url) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.

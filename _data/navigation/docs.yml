@@ -1,27 +1,39 @@
+- title: Home
+  icon: bi-house
+  url: /home/
+- title: Documentation
+  url: /docs/
+  icon: bi-book
+  children:
+    - title: Documentation Index
+      url: /docs/
 - title: Setup
-  sublinks:
+  icon: bi-gear
+  children:
     - title: Configuration
-      url: /docs/configuration
+      url: /docs/configuration/
     - title: Overriding Theme Defaults
-      url: /docs/overriding-theme-defaults
+      url: /docs/overriding-theme-defaults/
 - title: Programming
-  sublinks:
-    - title: Liquid
-      url: /
-      source: null
-- title: Headless CMS
-  sublinks:
+  icon: bi-code-slash
+  children:
+    - title: Liquid Templating
+      url: /docs/liquid/
+- title: Content Management
+  icon: bi-journal-text
+  children:
     - title: Working with Posts
-      url: /docs/posts
+      url: /docs/posts/
     - title: Working with Collections
-      url: /docs/collections
+      url: /docs/collections/
     - title: Helpers
-      url: /docs/helpers
+      url: /docs/helpers/
     - title: Utility Classes
-      url: /docs/utility-classes
+      url: /docs/utility-classes/
 - title: Design
-  sublinks:
+  icon: bi-palette
+  children:
     - title: Stylesheets
-      url: /docs/stylesheets
+      url: /docs/stylesheets/
     - title: JavaScript
-      url: /docs/javascript
+      url: /docs/javascript/

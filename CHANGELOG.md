@@ -4,6 +4,25 @@ All notable changes to the BASH Consultants repository will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.1.0] - 2026-01-24
+
+### Changed
+- **Navigation Data Structure** (`_data/navigation/`): Updated to zer0-mistakes theme v0.17+ format
+  - Migrated from `sublinks` to `children` property for nested navigation items
+  - Added Bootstrap Icons (`bi-*` prefix) to all navigation items
+  - Added consistent Home links to sidebar navigation files
+  - Added trailing slashes to all URLs for consistency
+
+### Added
+- **New Navigation Files** (`_data/navigation/`)
+  - `home.yml` - Homepage quick navigation with icons
+  - `services.yml` - Services sidebar navigation
+  - `README.md` - Navigation schema documentation with migration guide
+
+### Fixed
+- Fixed HTML entity `&amp;` in about.yml to proper `&` character
+- Fixed inconsistent URL trailing slashes across navigation files
+
 ## [1.0.0] - 2026-01-24
 
 ### Added

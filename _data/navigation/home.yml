@@ -1,0 +1,30 @@
+- title: Home
+  icon: bi-house
+  url: /home/
+  children:
+    - title: Welcome
+      url: /home/
+- title: Services
+  icon: bi-briefcase
+  url: /services/
+  children:
+    - title: Cloud Architecture
+      url: /services/cloud/
+    - title: ERP Consulting
+      url: /services/erp/
+    - title: Finance Tech
+      url: /services/fintech/
+- title: Blog
+  icon: bi-journal-text
+  url: /posts/
+  children:
+    - title: Posts
+      url: /posts/
+    - title: Muses
+      url: /posts/muses/
+- title: Contact
+  icon: bi-envelope
+  url: /contact/
+  children:
+    - title: Get in Touch
+      url: /contact/

@@ -1,0 +1,29 @@
+- title: Home
+  icon: bi-house
+  url: /home/
+- title: Services
+  url: /services/
+  icon: bi-briefcase
+  expanded: true
+  children:
+    - title: Services Overview
+      url: /services/
+      icon: bi-grid
+    - title: Cloud Architecture
+      url: /services/cloud/
+      icon: bi-cloud
+    - title: ERP Consulting
+      url: /services/erp/
+      icon: bi-diagram-3
+    - title: Finance Tech
+      url: /services/fintech/
+      icon: bi-currency-dollar
+    - title: Data and BI
+      url: /services/data/
+      icon: bi-bar-chart-line
+    - title: Software Development
+      url: /services/dev/
+      icon: bi-code-slash
+    - title: IT Strategy
+      url: /services/strat/
+      icon: bi-lightbulb
