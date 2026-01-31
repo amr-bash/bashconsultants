@@ -1,20 +1,18 @@
 ---
 title: "Prompts: The New Command Line"
-description: Exploring the paradigm shift where prompts replace command lines, and prompt engineering becomes the essential abstraction for building software based on design.
+description: Exploring the paradigm shift where prompts replace command lines, and prompt engineering becomes the essential abstraction for building software.
 categories:
-  - Technology
-  - Development
-  - Innovation
-  - AI
-date: 2025-11-19 09:00:00
+    - Technology
+    - AI
+date: 2025-11-19T09:00:00.000Z
 layout: journals
 preview: /assets/images/prompt-engineering.png
 tags:
-  - prompt-engineering
-  - ai
-  - development
-  - bash-consulting
-lastmod: 2025-11-20T05:58:29.656Z
+    - prompt-engineering
+    - ai
+    - development
+    - bash-consulting
+lastmod: 2026-01-31T19:41:38.048Z
 ---
 
 **The Command Line is Dead. Long Live the Prompt.**

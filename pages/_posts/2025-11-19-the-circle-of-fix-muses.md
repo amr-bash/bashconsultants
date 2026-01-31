@@ -1,20 +1,20 @@
 ---
-title: "The Circle of Fix: A Musical Satire on Modern Software Development"
+title: "The Circle of Fix: A Broadway-Style Take on Modern Software Development"
 layout: blog
 author: BASH Consulting Team
-description: A bombastic Broadway-style musical satire exploring the chaotic loop of modern software development, outsourcing, and the endless cycle of bug fixes.
+description: A bombastic Broadway-style musical number exploring the chaotic loop of modern software development, outsourcing, and the endless cycle of bug fixes.
 date: 2025-11-19T10:00:00.000Z
 categories:
     - muses
 tags:
-    - satire
-    - software development
-    - humor
+    - software-development
     - outsourcing
     - agile
+    - devops-culture
+    - project-management
 featured: false
-excerpt: Imagine a bombastic Broadway ensemble number with frantic developers and a giant spinning wheel labeled 'Circle of Fix'. A humorous look at the complexities of modern software delivery.
-lastmod: 2025-11-20T05:34:53.991Z
+excerpt: Imagine a bombastic Broadway ensemble number with frantic developers and a giant spinning wheel labeled 'Circle of Fix'—a look at the complexities of modern software delivery.
+lastmod: 2026-01-31T19:41:38.025Z
 ---
 
 ## The Circle of Fix

@@ -1,13 +1,13 @@
 ---
 title: "ERParody: The Lighter Side of Business Systems"
-description: Enterprise Resource Planning systems through humor, satire, and exaggerated scenarios that highlight ERP realities with valuable lessons.
+description: Enterprise Resource Planning systems through exaggerated scenarios that highlight ERP realities with valuable lessons.
 permalink: /posts/erp/
 categories:
     - erp
 author: BASH Consulting Team
 date: 2025-08-12
-lastmod: 2025-08-13T05:27:48.664Z
-excerpt: ERP systems don't have to be boring! Discover valuable lessons through clever satire and humorous takes on business software challenges.
+lastmod: 2026-01-31T19:41:38.060Z
+excerpt: ERP systems don't have to be boring! Discover valuable lessons through clever takes on business software challenges.
 ---
 
 Welcome to **ERParody**, where we prove that Enterprise Resource Planning doesn't have to be a cure for insomnia! Through humor, satire, and cleverly exaggerated scenarios, we explore the real-world challenges and quirks of implementing and managing ERP systems.

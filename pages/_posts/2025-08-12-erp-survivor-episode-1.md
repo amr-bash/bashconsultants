@@ -2,12 +2,18 @@
 title: "ERP Survivor: Office Edition - Episode 1: The Alliance of the Spreadsheet People"
 layout: blog
 author: BASH Consulting Team
-description: "A satirical take on ERP implementation dynamics, featuring the classic struggle between spreadsheet loyalists and system advocates."
+description: Reality show-style exploration of ERP implementation dynamics and the classic struggle between spreadsheet loyalists and system advocates.
 date: 2025-08-12T13:00:00.000Z
-categories: [erp]
-tags: [erp-humor, change-management, office-comedy, business-systems]
+categories:
+    - erp
+tags:
+    - erp-implementation
+    - change-management
+    - business-systems
+    - organizational-dynamics
 featured: true
 excerpt: "Welcome to the ultimate reality show: Can a diverse group of office workers survive an ERP implementation without losing their minds or their jobs?"
+lastmod: 2026-01-31T19:41:38.012Z
 ---
 
 ## Previously on ERP Survivor...

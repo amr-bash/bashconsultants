@@ -1,8 +1,8 @@
 ---
-title: "Frankenstein's ERP: The Hilarious Horror of Legacy Fragmentation in a Vendor-Cloud World"
-description: A satirical exposé of the absurd IT nightmares created by fragmented legacy ERP systems as vendors sprint to the cloud with AI bells and whistles.
+title: "Frankenstein's ERP: The Hidden Horror of Legacy Fragmentation in a Vendor-Cloud World"
+description: An exposé of the absurd IT nightmares created by fragmented legacy ERP systems as vendors sprint to the cloud with AI bells and whistles.
 date: 2026-01-31T05:58:24.740Z
-preview: "Your shiny new cloud roadmap is here! Meanwhile, IT is reverse-engineering 1998 code at 3 AM because the CHUI warehouse addon just ate today's production receipts."
+preview: Your shiny new cloud roadmap is here! Meanwhile, IT is reverse-engineering 1998 code at 3 AM because the CHUI warehouse addon just ate today's production receipts.
 draft: false
 tags:
     - ERP
@@ -17,7 +17,7 @@ tags:
 categories:
     - Technology
     - Business Strategy
-    - Satire
+    - Commentary
 sub-title: Because Nothing Says 'Modern Manufacturing' Like Alt-Tabbing Between Six Different UIs from the Last Four Decades
 excerpt: Vendors promised the cloud would set you free. Instead, many manufacturers are trapped supporting a Frankenstein ERP that makes IT teams long for the simple days of punch cards.
 snippet: Your shiny new cloud roadmap is here! Meanwhile, IT is reverse-engineering 1998 code at 3 AM because the CHUI warehouse addon just ate today's production receipts.
@@ -31,21 +31,21 @@ keywords:
         - manufacturing IT staffing
     secondary:
         - ERP vendor pressure
-        - cloud migration satire
-        - technical debt humor
+        - cloud migration reality
+        - technical debt management
         - Progress OpenEdge
-lastmod: 2026-01-31T06:01:07.067Z
-slug: frankenstein-erp-legacy-fragmentation-satire
-permalink: /posts/frankenstein-erp-legacy-fragmentation-satire/
+lastmod: 2026-01-31T19:22:40.514Z
+slug: frankenstein-erp-legacy-fragmentation
+permalink: /posts/frankenstein-erp-legacy-fragmentation/
 attachments: ""
 fmContentType: posts
 ---
 
 ## Executive Summary
 
-> **Key Takeaway (with a straight face):** While QAD and Infor parade their cloud-native AI agents and "agentic" champions, many legacy customers are stuck managing a hilarious horror show of six incompatible user interfaces, offshore Progress 4GL lifelines, and warehouse systems that look like they were designed by a nostalgic mainframe from the Reagan era.
+> **Key Takeaway (with a straight face):** While QAD and Infor parade their cloud-native AI agents and "agentic" champions, many legacy customers are stuck managing a horror show of six incompatible user interfaces, offshore Progress 4GL lifelines, and warehouse systems that look like they were designed by a nostalgic mainframe from the Reagan era.
 
-**What This Satirical Follow-Up Covers:**
+**What This Follow-Up Covers:**
 - The absurd reality of running not two, not three, but *six* different ERP front-ends simultaneously
 - How scarce Indian 4GL talent has become the manufacturing equivalent of unicorn wranglers
 - Why your $400M global operation needs 35 IT people just to keep the green screens blinking
@@ -95,7 +95,7 @@ These developers aren't just skilled—they're **mythical**. Companies guard the
 
 For a $400M global manufacturer running this Frankenstein portfolio, the "bare minimum" IT organization looks like this:
 
-| Role Category                  | Headcount | Satirical Job Description |
+| Role Category                  | Headcount | Unofficial Job Description |
 |--------------------------------|-----------|---------------------------|
 | Leadership & Governance       | 3–4      | Professional apologizers to the business for why nothing works seamlessly |
 | Functional Support             | 8–10     | Translators who speak six UI dialects and one ancient 4GL incantation |
@@ -152,4 +152,4 @@ Until you decide to write a new joke.
 
 ---
 
-*This satirical piece is based on real patterns observed in legacy QAD/Infor deployments. Any resemblance to your actual ERP system is purely coincidental... probably.*
+*This piece is based on real patterns observed in legacy QAD/Infor deployments. Any resemblance to your actual ERP system is purely coincidental... probably.*

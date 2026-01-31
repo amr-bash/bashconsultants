@@ -1,28 +1,22 @@
 ---
 title: BASHING Balance Sheets
-description: "Bash Consulting LLC’s resident tech wizard—known in the industry as the “FinTech Sorcerer”—has done the impossible: increased shareholder value while *actually* helping the environment and communities."
+description: "How Bash Consulting's FinTech Sorcerer increased shareholder value while actually helping the environment and communities."
 categories:
     - breaking
-    - Development
     - Technology
-    - Business
-    - Innovation
     - Finance
-    - Environment
-    - Community
-    - Social Impact
-date: 2024-06-17 20:03:39
+date: 2024-06-17T20:03:39.000Z
 layout: journals
 lastmod: 2024-06-18T02:05:18.613Z
 preview: /assets/images/wizard-on-journey.png
-draft: draft
+draft: false
 featured: true
 tags:
     - capitalism
     - innovation
     - technology
     - finance
-    - environment
+    - sustainability
 ---
 
 **Breaking News: Bash Consulting LLC’s Tech Guru “Balances the Ledger” of Capitalism with Groundbreaking Innovations**  
