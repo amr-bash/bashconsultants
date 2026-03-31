@@ -8,15 +8,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### Changed
 - **Theme Upgrade**: Updated zer0-mistakes theme from v0.18.0 to v0.21.6
-  - `Gemfile`: Updated `jekyll-theme-zer0` from `~> 0.18.0` to `~> 0.21.6`
-  - `Gemfile.azure`: Added version pin `~> 0.21.6`
+  - `Gemfile`: Updated `jekyll-theme-zer0` from `~> 0.18.0` to `~> 0.21.2` (latest on RubyGems)
+  - `Gemfile.azure`: Added version pin `~> 0.21.2`
   - `_config.yml`: Pinned `remote_theme` to `bamr87/zer0-mistakes@v0.21.6`
 
 - **Layout Standardization**: Aligned post and section layouts with theme v0.20.3+ conventions
   - Changed default post layout from `journals` to `article` in `_config.yml` defaults
-  - Updated 4 posts with explicit `layout: journals` to `layout: article`
-  - Updated 4 category index pages from `layout: blog` to `layout: section`
-  - Added explicit `layout: section` to category pages (corp.md, erp.md) that were missing a layout
+  - Updated 9 posts with explicit `layout: journals` or `layout: blog` to `layout: article`
+  - Updated 6 category/index pages to use `layout: default` (theme's `section` layout uses `/news/` URLs)
+  - Renamed category pages with date prefixes for proper Jekyll `_posts` processing
 
 - **New Features Enabled**:
   - Added `search.json` for GitHub Pages compatible search (theme v0.20.2 feature)
@@ -31,6 +31,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### Fixed
 - **404 Page**: Fixed broken `/blog` navigation link to use correct `/posts` path
+- **Navigation**: Removed broken links to non-existent pages (`/docs/`, `/about/org/`, `/about/portfolio/`)
+- **Navigation**: Fixed `/home/` links to `/` across navigation data files
+- **Blog Index**: Fixed hardcoded post URLs using slug format to use date-based format
+- **Category Pages**: Added missing `permalink` to muses category page
 
 ## [1.2.0] - 2026-01-24
 
