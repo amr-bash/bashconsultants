@@ -1,6 +1,6 @@
 # Navigation Data Schema Documentation
 
-This directory contains YAML navigation data files used by the sidebar and navbar components. All files follow a standardized schema compatible with the **zer0-mistakes theme v0.17+**.
+This directory contains YAML navigation data files used by the sidebar and navbar components. All files follow a standardized schema compatible with the **zer0-mistakes theme v0.21+**.
 
 ## Schema Definition
 

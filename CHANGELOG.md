@@ -4,6 +4,38 @@ All notable changes to the BASH Consultants repository will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.3.0] - 2026-03-31
+
+### Changed
+- **Theme Upgrade**: Updated zer0-mistakes theme from v0.18.0 to v0.21.6
+  - `Gemfile`: Updated `jekyll-theme-zer0` from `~> 0.18.0` to `~> 0.21.2` (latest on RubyGems)
+  - `Gemfile.azure`: Added version pin `~> 0.21.2`
+  - `_config.yml`: Pinned `remote_theme` to `bamr87/zer0-mistakes@v0.21.6`
+
+- **Layout Standardization**: Aligned post and section layouts with theme v0.20.3+ conventions
+  - Changed default post layout from `journals` to `article` in `_config.yml` defaults
+  - Updated 9 posts with explicit `layout: journals` or `layout: blog` to `layout: article`
+  - Updated 6 category/index pages to use `layout: default` (theme's `section` layout uses `/news/` URLs)
+  - Renamed category pages with date prefixes for proper Jekyll `_posts` processing
+
+- **New Features Enabled**:
+  - Added `search.json` for GitHub Pages compatible search (theme v0.20.2 feature)
+  - Added `mermaid` diagram configuration for client-side rendering
+  - Added `jekyll-include-cache` plugin for improved build performance
+  - Updated vendor exclusion paths to support `assets/vendor/` publishing
+
+- **Configuration Updates**:
+  - Updated Bootstrap version reference from 5.2.0 to 5.3.3 in `powered_by`
+  - Updated version references in `_data/README.md` and `_data/navigation/README.md` to v0.21+
+  - Synced `pages/_about/site/_config.yml` remote_theme pin and post layout default
+
+### Fixed
+- **404 Page**: Fixed broken `/blog` navigation link to use correct `/posts` path
+- **Navigation**: Removed broken links to non-existent pages (`/docs/`, `/about/org/`, `/about/portfolio/`)
+- **Navigation**: Fixed `/home/` links to `/` across navigation data files
+- **Blog Index**: Fixed hardcoded post URLs using slug format to use date-based format
+- **Category Pages**: Added missing `permalink` to muses category page
+
 ## [1.2.0] - 2026-01-24
 
 ### Changed

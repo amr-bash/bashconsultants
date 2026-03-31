@@ -1,6 +1,6 @@
 ---
 title: "ERP Survivor: Office Edition - Episode 1: The Alliance of the Spreadsheet People"
-layout: blog
+layout: article
 author: BASH Consulting Team
 description: Reality show-style exploration of ERP implementation dynamics and the classic struggle between spreadsheet loyalists and system advocates.
 date: 2025-08-12T13:00:00.000Z

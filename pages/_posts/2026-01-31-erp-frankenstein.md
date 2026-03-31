@@ -22,7 +22,7 @@ sub-title: Because Nothing Says 'Modern Manufacturing' Like Alt-Tabbing Between 
 excerpt: Vendors promised the cloud would set you free. Instead, many manufacturers are trapped supporting a Frankenstein ERP that makes IT teams long for the simple days of punch cards.
 snippet: Your shiny new cloud roadmap is here! Meanwhile, IT is reverse-engineering 1998 code at 3 AM because the CHUI warehouse addon just ate today's production receipts.
 author: bamr87
-layout: journals
+layout: article
 keywords:
     primary:
         - legacy ERP fragmentation
