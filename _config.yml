@@ -227,6 +227,9 @@ gisgus:
 ## Mermaid Diagram Configuration #################################################
 # Usage: Add 'mermaid: true' to page front matter and use ```mermaid code blocks
 # GitHub Pages Compatible: Yes (client-side rendering)
+# Distribution: The theme ships mermaid.min.js in assets/vendor/mermaid/ via the
+# gem (gemspec includes assets/) and remote_theme (served from theme's GitHub repo).
+# Local dev: npm install && npm run vendor:mermaid (copies from node_modules/)
 
 mermaid:
   src: '/assets/vendor/mermaid/mermaid.min.js'

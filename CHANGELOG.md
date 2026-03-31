@@ -27,7 +27,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - **Configuration Updates**:
   - Updated Bootstrap version reference from 5.2.0 to 5.3.3 in `powered_by`
   - Updated version references in `_data/README.md` and `_data/navigation/README.md` to v0.21+
-  - Synced `pages/_about/site/_config.yml` with main config changes
+  - Synced `pages/_about/site/_config.yml` remote_theme pin and post layout default
 
 ### Fixed
 - **404 Page**: Fixed broken `/blog` navigation link to use correct `/posts` path
