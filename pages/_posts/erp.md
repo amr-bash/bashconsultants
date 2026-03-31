@@ -1,5 +1,6 @@
 ---
 title: "ERParody: The Lighter Side of Business Systems"
+layout: section
 description: Enterprise Resource Planning systems through exaggerated scenarios that highlight ERP realities with valuable lessons.
 permalink: /posts/erp/
 categories:

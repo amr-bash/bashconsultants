@@ -20,7 +20,7 @@ _data/
 
 ## Navigation Files
 
-Navigation files follow the **zer0-mistakes theme v0.17+** schema. See [`navigation/README.md`](navigation/README.md) for the complete schema definition.
+Navigation files follow the **zer0-mistakes theme v0.21+** schema. See [`navigation/README.md`](navigation/README.md) for the complete schema definition.
 
 ### Quick Reference
 

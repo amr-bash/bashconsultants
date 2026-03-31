@@ -1,6 +1,6 @@
 ---
 title: "Tech News: Navigating the Digital Frontier"
-layout: blog
+layout: section
 description: "Stay ahead with deep dives into technology trends, innovations, and digital transformation insights."
 permalink: /posts/tech/
 categories: [tech]

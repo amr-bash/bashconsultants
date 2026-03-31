@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gem 'github-pages'
 
-gem 'jekyll-theme-zer0'
+gem 'jekyll-theme-zer0', '~> 0.21.6'
 
 group :jekyll_plugins do
   # Keep other plugins, but omit jekyll-remote-theme for Azure

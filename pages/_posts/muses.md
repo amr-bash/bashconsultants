@@ -1,6 +1,6 @@
 ---
 title: "Muses: Inspired Thinking for Inspired Action"
-layout: blog
+layout: section
 description: Explore creativity, leadership, and strategy through thoughtful analysis and inspired insights.
 categories:
     - muses

@@ -6,7 +6,7 @@ categories:
     - Technology
     - Finance
 date: 2024-06-17T20:03:39.000Z
-layout: journals
+layout: article
 lastmod: 2024-06-18T02:05:18.613Z
 preview: /assets/images/wizard-on-journey.png
 draft: false
