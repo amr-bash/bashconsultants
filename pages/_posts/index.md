@@ -1,7 +1,7 @@
 ---
 title: BASH Consulting News
 author: Amr
-layout: section
+layout: default
 description: "BASH Consulting's comprehensive business insights platform covering innovation, technology, corporate analysis, and ERP systems with wit and wisdom."
 lastmod: 2025-08-12T13:30:00.000Z
 draft: false

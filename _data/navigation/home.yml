@@ -1,9 +1,9 @@
 - title: Home
   icon: bi-house
-  url: /home/
+  url: /
   children:
     - title: Welcome
-      url: /home/
+      url: /
 - title: Services
   icon: bi-briefcase
   url: /services/

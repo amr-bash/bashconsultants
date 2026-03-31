@@ -9,7 +9,7 @@ source "https://rubygems.org"
 gem 'github-pages'
 
 # Jekyll Theme - Specify latest version to ensure updates
-gem 'jekyll-theme-zer0', '~> 0.21.6'
+gem 'jekyll-theme-zer0', '~> 0.21.2'
 
 # Docker support and system dependencies - updated versions
 gem "ffi"

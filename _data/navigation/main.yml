@@ -41,27 +41,13 @@
       url: /posts/erp/
       icon: bi-emoji-laughing
 
-- title: Docs
-  url: /docs/
-  icon: bi-book
-  children:
-    - title: Documentation Index
-      url: /docs/
-      icon: bi-house
-    - title: Jekyll
-      url: /docs/jekyll/
-      icon: bi-gem
-
 - title: About
   url: /about/
   icon: bi-info-circle
   children:
-    - title: Organization
-      url: /about/org/
+    - title: About Us
+      url: /about/
       icon: bi-people
-    - title: Portfolio
-      url: /about/portfolio/
-      icon: bi-folder
     - title: Sitemap
       url: /about/sitemap/
       icon: bi-diagram-2

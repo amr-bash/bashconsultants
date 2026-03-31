@@ -1,20 +1,12 @@
 - title: Home
   icon: bi-house
-  url: /home/
+  url: /
 - title: About
   url: /about/
   icon: bi-info-circle
   children:
     - title: Home
       url: /about/
-    - title: Organization
-      url: /about/org/
-    - title: Portfolio
-      url: /about/portfolio/
-    - title: License
-      url: /about/license/
-    - title: Terms & Privacy Policy
-      url: /about/terms/
     - title: Sitemap
       url: /about/sitemap/
 

@@ -1,39 +1,13 @@
 - title: Home
   icon: bi-house
-  url: /home/
-- title: Documentation
-  url: /docs/
-  icon: bi-book
+  url: /
+- title: About
+  url: /about/
+  icon: bi-info-circle
   children:
-    - title: Documentation Index
-      url: /docs/
-- title: Setup
-  icon: bi-gear
-  children:
+    - title: About Us
+      url: /about/
     - title: Configuration
-      url: /docs/configuration/
-    - title: Overriding Theme Defaults
-      url: /docs/overriding-theme-defaults/
-- title: Programming
-  icon: bi-code-slash
-  children:
-    - title: Liquid Templating
-      url: /docs/liquid/
-- title: Content Management
-  icon: bi-journal-text
-  children:
-    - title: Working with Posts
-      url: /docs/posts/
-    - title: Working with Collections
-      url: /docs/collections/
-    - title: Helpers
-      url: /docs/helpers/
-    - title: Utility Classes
-      url: /docs/utility-classes/
-- title: Design
-  icon: bi-palette
-  children:
-    - title: Stylesheets
-      url: /docs/stylesheets/
-    - title: JavaScript
-      url: /docs/javascript/
+      url: /about/config/
+    - title: Sitemap
+      url: /about/sitemap/
