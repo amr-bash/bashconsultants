@@ -26,7 +26,7 @@
 # Site Settings ###################################################################
 
 founder                  : "Amr"
-remote_theme             : "bamr87/zer0-mistakes"
+remote_theme             : "bamr87/zer0-mistakes@v0.21.6"
 # theme                    : "jekyll-theme-zer0"
 
 ## Github Information
@@ -322,7 +322,7 @@ defaults:
     scope:
       path: pages/_posts
     values:
-      layout: journals
+      layout: article
       author_profile: true
       read_time: true
       comments: # true

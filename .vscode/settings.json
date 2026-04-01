@@ -1,0 +1,20 @@
+// BASH Consultants Jekyll site settings
+{
+    "files.exclude": {
+        "_site": true,
+        ".sass-cache": true,
+        ".jekyll-cache": true,
+        "extension/node_modules": true,
+        "extension/out": true,
+        "extension/dist": true
+    },
+    "search.exclude": {
+        "_site": true,
+        "extension/node_modules": true,
+        "extension/out": true,
+        "extension/dist": true
+    },
+    "files.associations": {
+        "*.html": "liquid"
+    }
+}

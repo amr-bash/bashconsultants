@@ -14,5 +14,5 @@ RUN gem update --system 3.3.22
 RUN bundle update
 RUN bundle install
 RUN bundle clean --force
-EXPOSE 4000
-CMD ["bundle", "exec", "jekyll", "serve", "--config", "_config.yml,_config_dev.yml", "--host", "0.0.0.0"]
+EXPOSE 4042
+CMD ["bundle", "exec", "jekyll", "serve", "--config", "_config.yml,_config_dev.yml", "--host", "0.0.0.0", "--port", "4042"]

@@ -1,15 +1,15 @@
-- title: Muses
-  url: /posts/muses/
-  icon: globe
-- title: Tech News
-  url: /posts/tech/
-  icon: tech
-- title: Corporate News
-  url: /posts/corp/
-  icon: cash
-- title: ERParody 
-  url: /posts/erp/
-  icon: heart
 - title: Home
   url: /posts/
-  icon: home
+  icon: bi-house
+- title: Muses
+  url: /posts/muses/
+  icon: bi-globe
+- title: Tech News
+  url: /posts/tech/
+  icon: bi-cpu
+- title: Corporate News
+  url: /posts/corp/
+  icon: bi-building
+- title: ERParody
+  url: /posts/erp/
+  icon: bi-emoji-laughing

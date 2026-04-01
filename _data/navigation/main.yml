@@ -1,46 +1,57 @@
 - title: Services
   url: /services/
-  sublinks:
+  icon: bi-briefcase
+  children:
     - title: Cloud Architecture
       url: /services/cloud/
+      icon: bi-cloud
     - title: ERP Consulting
       url: /services/erp/
+      icon: bi-diagram-3
     - title: Finance Tech
       url: /services/fintech/
+      icon: bi-currency-dollar
     - title: Data and BI
       url: /services/data/
+      icon: bi-bar-chart-line
     - title: Software Development
       url: /services/dev/
+      icon: bi-code-slash
     - title: IT Strategy
       url: /services/strat/
+      icon: bi-lightbulb
 
 - title: Blog
   url: /posts/
-  sublinks:
+  icon: bi-journal-text
+  children:
+    - title: Posts Index
+      url: /posts/
+      icon: bi-house
     - title: Muses
       url: /posts/muses/
+      icon: bi-globe
     - title: Corporate News
       url: /posts/corp/
+      icon: bi-building
     - title: Tech News
       url: /posts/tech/
-    - title: ERParody 
+      icon: bi-cpu
+    - title: ERParody
       url: /posts/erp/
-
-# - title: Docs
-#   url: /docs/
-#   sublinks:
-#     - title: Jekyll
-#       url: /docs/jekyll
+      icon: bi-emoji-laughing
 
 - title: About
   url: /about/
-  sublinks:
-    - title: Organization
-      url: /about/org
-    - title: Portfolio
-      url: /about/portfolio
+  icon: bi-info-circle
+  children:
+    - title: About Us
+      url: /about/
+      icon: bi-people
     - title: Sitemap
-      url: /about/sitemap
+      url: /about/sitemap/
+      icon: bi-diagram-2
 
 - title: Contact
   url: /contact/
+  icon: bi-envelope
