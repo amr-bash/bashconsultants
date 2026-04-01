@@ -13,7 +13,7 @@
 source "https://rubygems.org"
 
 # Load gem specification (contains runtime dependencies)
-gemspec
+# gemspec
 
 # ------------------------------------------------------------------------------
 # Core Dependencies - No version constraints → always latest compatible
