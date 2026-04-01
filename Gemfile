@@ -1,16 +1,76 @@
+# ==============================================================================
+# Zer0-Mistakes Jekyll Theme - Gemfile
+# ==============================================================================
+# 
+# Philosophy: ZERO VERSION PINS
+# - Let Bundler resolve the latest compatible versions at build time
+# - Build fails immediately if incompatible → caught in CI, not production
+# - Production always gets exactly what passed TEST (via Gemfile.lock)
+# 
+# See: docs/systems/ZERO_PIN_STRATEGY.md for full documentation
+# ==============================================================================
+
 source "https://rubygems.org"
 
-# This site is using the GitHub Pages gem, which is updated regularly.
+# Load gem specification (contains runtime dependencies)
+gemspec
 
-# Here are the dependencies from github pages https://pages.github.com/versions/
-# For more detailed instructions, look here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll#installing-jekyll
+# ------------------------------------------------------------------------------
+# Core Dependencies - No version constraints → always latest compatible
+# ------------------------------------------------------------------------------
 
-# Github Pages Gems - Use latest compatible version:
-gem 'github-pages'
+# GitHub Pages gem (includes jekyll and most plugins)
+# Note: When using GitHub Pages hosting, this provides:
+#   - jekyll-remote-theme
+#   - jekyll-feed
+#   - jekyll-sitemap
+#   - jekyll-seo-tag
+#   - jekyll-paginate
+# Note: github-pages uses Jekyll 3.x (not 4.x) - this is by design for GitHub Pages stability
+# We use >= 228 to ensure we get a version compatible with Ruby 3.x
+gem "github-pages", ">= 228", group: :jekyll_plugins
 
-# Jekyll Theme - Specify latest version to ensure updates
-gem 'jekyll-theme-zer0', '~> 0.21.2'
+# Web server for Ruby 3.0+ (required since WEBrick removed from stdlib)
+gem "webrick"
 
-# Docker support and system dependencies - updated versions
+# FFI for native extensions
 gem "ffi"
-gem 'webrick'
+
+# CommonMarker for Markdown processing
+gem "commonmarker"
+
+# Mermaid diagram support
+gem "jekyll-mermaid"
+
+# Faraday retry middleware for Faraday v2.0+
+gem "faraday-retry"
+
+# ------------------------------------------------------------------------------
+# Development & Test - Only installed in dev/test environments
+# ------------------------------------------------------------------------------
+group :development, :test do
+  # HTML validation and link checking
+  gem "html-proofer"
+  
+  # Testing framework
+  gem "rspec"
+  
+  # Task automation
+  gem "rake"
+  
+  # Code linting (optional but recommended)
+  gem "rubocop"
+  gem "rubocop-rake"
+end
+
+# ------------------------------------------------------------------------------
+# Platform-specific dependencies
+# ------------------------------------------------------------------------------
+# Ensure native gems work across platforms
+platforms :windows, :jruby do
+  gem "tzinfo"
+  gem "tzinfo-data"
+end
+
+# Performance booster for watching directories on Windows
+gem "wdm", :platforms => [:windows]
