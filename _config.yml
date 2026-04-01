@@ -26,14 +26,14 @@
 # Site Settings ###################################################################
 
 founder                  : "Amr"
-remote_theme             : "bamr87/zer0-mistakes@v0.21.6"
+remote_theme             : "bamr87/zer0-mistakes"
 # theme                    : "jekyll-theme-zer0"  # Commented out - GitHub Pages uses remote_theme instead
 
 ## Github Information
 github_user              : &github_user "bamr87"
 repository_name          : &github_repository "bashconsultants"
 repository               : [*github_user, "/", *github_repository] # GitHub username/repo-name
-local_repo               : *github_repository
+local_repo               : &local_repo "bashconsultants"
 branch                   : &branch "main"
 repo_map                 : "/sitemap/"
 portfolio                : &portfolio [*github_user, '.', 'github.io']
@@ -85,6 +85,26 @@ logo_link                : [ *url, *baseurl ] # URL to link the logo to, e.g. "/
 
 teaser                   : [ *baseurl, '/assets/images/favicon_gpt_computer_retro.png' ] # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 info_banner              : [ *baseurl, '/assets/images/network.jpg' ] # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+
+## Preview Image Generation (AI-powered) #####################################
+# Settings for automatic preview image generation using AI
+# Used by: scripts/generate-preview-images.sh
+
+preview_images:
+  enabled                : true
+  provider               : 'openai'           # openai, stability, local
+  model                  : 'dall-e-3'         # dall-e-3, dall-e-2, stable-diffusion
+  size                   : '1792x1024'        # Landscape for banner: 1792x1024, square: 1024x1024
+  quality                : 'standard'         # standard, hd (hd costs more)
+  style                  : 'retro pixel art, 8-bit video game aesthetic, vibrant colors, nostalgic, clean pixel graphics'
+  output_dir             : 'assets/images/previews'
+  # Path normalization: allows omitting /assets/ prefix in frontmatter
+  # e.g., preview: /images/previews/my-image.png becomes /assets/images/previews/my-image.png
+  assets_prefix          : '/assets'          # Prefix to prepend to relative preview paths
+  auto_prefix            : true               # Auto-add assets_prefix if path doesn't start with it
+  # Additional style modifiers applied to all prompts
+  style_modifiers        : 'pixelated, retro gaming style, CRT screen glow effect, limited color palette'
+
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 _posts_file_structure    : "year-month-day-title.md"
@@ -94,7 +114,7 @@ _posts_file_structure    : "year-month-day-title.md"
 author:
   name                   : *name # *name is a YAML reference pointing to the &anchor earlier
   avatar                 : "/assets/images/gravatar-small.png"
-  email_hash             : '71d7a4fc9712df49e13d606e620f89c7' # https://en.gravatar.com/site/check/{ site.email }
+  email_hash             : &email_hash '71d7a4fc9712df49e13d606e620f89c7' # https://en.gravatar.com/site/check/{ site.email }
   gravatar               : [ 'https://s.gravatar.com/avatar/', *email_hash, '?s=80' ]
   bio                    : "IT nerd trying to be an IT hero"
   location               : "Denver, CO"
@@ -104,6 +124,32 @@ author:
 ## Site Analytics #############################################################
 
 google_analytics         : 'G-ZBDKNMC168'
+
+# PostHog Analytics Configuration
+# https://posthog.com/docs/libraries/js
+posthog:
+  enabled                : true
+  api_key                : 'phc_RRFmtqxRUI4XFDoI4KXUYMbTzPvhiu4A07qdSsAaXgg'
+  api_host               : 'https://us.i.posthog.com'
+  person_profiles        : 'identified_only'  # Options: 'always', 'identified_only', 'never'
+  autocapture            : true   # Automatically capture clicks, form submissions, etc.
+  capture_pageview       : true   # Track page views
+  capture_pageleave      : true   # Track when users leave pages
+  session_recording      : false  # Enable session recordings (privacy consideration)
+  disable_cookie         : false  # Set to true for cookieless tracking
+  respect_dnt            : true    # Respect Do Not Track browser setting
+  cross_subdomain_cookie : false  # Enable if you have multiple subdomains
+  secure_cookie          : true   # Use secure cookies in production
+  persistence            : 'localStorage+cookie'  # Options: 'localStorage+cookie', 'cookie', 'memory'
+  custom_events:
+    track_downloads      : true   # Track PDF, ZIP, etc. downloads
+    track_external_links : true   # Track clicks to external websites
+    track_search         : true   # Track search queries
+    track_scroll_depth   : true   # Track how far users scroll
+  privacy:
+    mask_all_text        : false  # Mask all text in session recordings
+    mask_all_inputs      : true   # Mask form inputs in session recordings
+    ip_anonymization     : false  # Anonymize IP addresses
 
 ## Site verification #############################################################
 
@@ -216,6 +262,9 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-relative-links
+  # Note: jekyll-mermaid is NOT in GitHub Pages whitelist - it only provides {% mermaid %} Liquid tag
+  # Mermaid diagrams work without this plugin via client-side JavaScript (see _includes/components/mermaid.html)
+  - jekyll-mermaid
 
 ## Gisgus Plugin #################################################################
 
@@ -223,6 +272,15 @@ gisgus:
   enabled: true
   data-repo-id: "MDEwOlJlcG9zaXRvcnkyODM4MjI1NzM"
   data-category-id: "DIC_kwDOEOrJ7c4CAn8D"
+
+# Project resource links (used by landing page and includes)
+resources:
+  github_repo: [ 'https://github.com/', *github_user, '/', *github_repository ]
+  github_fork: [ 'https://github.com/', *github_user, '/', *github_repository, '/fork' ]
+  contributing: [ 'https://github.com/', *github_user, '/', *github_repository, '/blob/', *branch, '/CONTRIBUTING.md' ]
+  docker:
+    image: [ *github_user, '/', *github_repository ]
+    hub_url: [ 'https://hub.docker.com/r/', *github_user, '/', *github_repository ]
 
 ## Mermaid Diagram Configuration #################################################
 # Usage: Add 'mermaid: true' to page front matter and use ```mermaid code blocks
@@ -423,6 +481,12 @@ exclude:
   - vendor/ruby/
   # - "*.sh"
   - submodules/
+  - docs/
+  - templates/
+  - MERMAID-*.md
+  - MERMAID-*/
+  - test/
+  - _site/lib/
 
 # Sass/SCSS
 sass:
