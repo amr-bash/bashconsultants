@@ -2,7 +2,7 @@
 title: "Prompts: The New Command Line"
 description: Exploring the paradigm shift where prompts replace command lines, and prompt engineering becomes the essential abstraction for building software.
 categories:
-    - Technology
+    - tech
     - AI
 date: 2025-11-19T09:00:00.000Z
 layout: article

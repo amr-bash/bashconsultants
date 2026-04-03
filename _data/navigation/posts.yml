@@ -1,15 +1,24 @@
-- title: Home
-  url: /posts/
-  icon: bi-house
+# News Section Navigation Configuration
+# Used by: News layout, section pages, and article navigation
+# Purpose: Section-based navigation for news content
+# Note: Sections match folders in pages/_posts/
+
 - title: Muses
-  url: /posts/muses/
   icon: bi-globe
-- title: Tech News
-  url: /posts/tech/
-  icon: bi-cpu
+  url: /news/muses/
+  description: "Editorial musings, cultural commentary, and creative perspectives"
+
 - title: Corporate News
-  url: /posts/corp/
   icon: bi-building
+  url: /news/corp/
+  description: "Business updates, corporate strategy, and enterprise insights"
+
+- title: Tech News
+  icon: bi-cpu
+  url: /news/tech/
+  description: "Technology trends, tools, and software development updates"
+
 - title: ERParody
-  url: /posts/erp/
   icon: bi-emoji-laughing
+  url: /news/erp/
+  description: "Satirical takes on ERP systems, enterprise software, and consulting culture"

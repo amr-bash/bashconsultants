@@ -21,25 +21,20 @@
       url: /services/strat/
       icon: bi-lightbulb
 
-- title: Blog
-  url: /posts/
-  icon: bi-journal-text
+- title: News
+  url: /news/
+  icon: bi-newspaper
   children:
-    - title: Posts Index
-      url: /posts/
-      icon: bi-house
+    - title: All News
+      url: /news/
     - title: Muses
-      url: /posts/muses/
-      icon: bi-globe
+      url: /news/muses/
     - title: Corporate News
-      url: /posts/corp/
-      icon: bi-building
+      url: /news/corp/
     - title: Tech News
-      url: /posts/tech/
-      icon: bi-cpu
+      url: /news/tech/
     - title: ERParody
-      url: /posts/erp/
-      icon: bi-emoji-laughing
+      url: /news/erp/
 
 - title: About
   url: /about/
