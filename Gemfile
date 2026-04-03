@@ -30,6 +30,9 @@ source "https://rubygems.org"
 # We use >= 228 to ensure we get a version compatible with Ruby 3.x
 gem "github-pages", ">= 228", group: :jekyll_plugins
 
+# Zer0-Mistakes theme gem (needed for local/Docker dev with theme: in _config_dev.yml)
+gem "jekyll-theme-zer0"
+
 # Web server for Ruby 3.0+ (required since WEBrick removed from stdlib)
 gem "webrick"
 

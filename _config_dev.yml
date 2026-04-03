@@ -2,7 +2,9 @@
 # This file overrides production settings for local development
 
 # Theme Configuration
-# Disable remote theme for local development - allows site to build with local theme files
+# Disable remote theme for local development
+# The jekyll-theme-zer0 gem must be available locally for theme: to work.
+# For Docker development, we install it from RubyGems.
 remote_theme             : false
 theme                    : "jekyll-theme-zer0"
 
