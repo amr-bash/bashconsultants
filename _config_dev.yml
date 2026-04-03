@@ -1,4 +1,66 @@
-# Dev config override
+# Development Configuration Override
+# This file overrides production settings for local development
 
+# Theme Configuration
+# Disable remote theme for local development
+# The jekyll-theme-zer0 gem must be available locally for theme: to work.
+# For Docker development, we install it from RubyGems.
 remote_theme             : false
 theme                    : "jekyll-theme-zer0"
+
+# Development URL Configuration
+# Override production URLs for local development server
+url                      : "http://localhost:4042"
+baseurl                  : ""  # Keep baseurl for GitHub Pages compatibility testing
+
+# Development Server Settings
+host                     : "0.0.0.0"  # Allow access from other devices on network
+port                     : 4042
+livereload               : true
+livereload_port          : 35729
+
+# Development Environment
+environment              : "development"
+show_drafts              : true
+future                   : true
+unpublished              : true
+
+# Analytics Configuration for Development
+# Disable analytics in development to avoid polluting production data
+google_analytics         : null
+posthog:
+  enabled                : false  # Disable PostHog in development
+  api_key                : null
+  api_host               : null
+
+# Disable production optimizations for faster builds
+incremental              : true
+profile                  : false
+
+# Exclude — MUST include everything from _config.yml plus dev-only paths.
+# When using --config _config.yml,_config_dev.yml, Jekyll applies this file
+# last; a short list here *replaces* the base exclude and would skip
+# node_modules/, causing Liquid to parse README.md samples under npm packages.
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - .obsidian
+  - docs/
+  - Gemfile.lock
+  - gemfiles/
+  - Gemfile
+  - node_modules/
+  - templates/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - submodules/
+  - MERMAID-*.md
+  - MERMAID-*/
+  - test/
+  - _site/lib/
+  - logs/
+  - "*.log"
+  - .vscode/
+  - debug-*.log

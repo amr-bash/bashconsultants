@@ -13,7 +13,7 @@
 source "https://rubygems.org"
 
 # Load gem specification (contains runtime dependencies)
-gemspec
+# gemspec
 
 # ------------------------------------------------------------------------------
 # Core Dependencies - No version constraints → always latest compatible
@@ -29,6 +29,9 @@ gemspec
 # Note: github-pages uses Jekyll 3.x (not 4.x) - this is by design for GitHub Pages stability
 # We use >= 228 to ensure we get a version compatible with Ruby 3.x
 gem "github-pages", ">= 228", group: :jekyll_plugins
+
+# Zer0-Mistakes theme gem (needed for local/Docker dev with theme: in _config_dev.yml)
+gem "jekyll-theme-zer0"
 
 # Web server for Ruby 3.0+ (required since WEBrick removed from stdlib)
 gem "webrick"

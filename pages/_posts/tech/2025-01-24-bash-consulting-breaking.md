@@ -2,8 +2,7 @@
 title: BASHING Balance Sheets
 description: "How Bash Consulting's FinTech Sorcerer increased shareholder value while actually helping the environment and communities."
 categories:
-    - breaking
-    - Technology
+    - tech
     - Finance
 date: 2024-06-17T20:03:39.000Z
 layout: article

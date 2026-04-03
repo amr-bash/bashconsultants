@@ -3,7 +3,7 @@ title: "From Prompts to Pipelines: Agentic Workflows in VS Code"
 description: How a VS Code extension with AI agents turns prompt engineering into an automated command surface for your entire codebase.
 date: 2025-11-19T09:00:00.000Z
 categories:
-    - Technology
+    - tech
     - AI
 layout: article
 preview: /assets/images/agentic-prompt-workflows.png

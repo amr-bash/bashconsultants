@@ -2,8 +2,10 @@
 title: "Frankenstein's ERP: The Hidden Horror of Legacy Fragmentation in a Vendor-Cloud World"
 description: An exposé of the absurd IT nightmares created by fragmented legacy ERP systems as vendors sprint to the cloud with AI bells and whistles.
 date: 2026-01-31T05:58:24.740Z
-preview: Your shiny new cloud roadmap is here! Meanwhile, IT is reverse-engineering 1998 code at 3 AM because the CHUI warehouse addon just ate today's production receipts.
+preview: ""
 draft: false
+breaking: true
+featured: true
 tags:
     - ERP
     - legacy-systems
@@ -15,9 +17,8 @@ tags:
     - Progress-4GL
     - digital-transformation
 categories:
-    - Technology
-    - Business Strategy
-    - Commentary
+    - erp
+    - tech
 sub-title: Because Nothing Says 'Modern Manufacturing' Like Alt-Tabbing Between Six Different UIs from the Last Four Decades
 excerpt: Vendors promised the cloud would set you free. Instead, many manufacturers are trapped supporting a Frankenstein ERP that makes IT teams long for the simple days of punch cards.
 snippet: Your shiny new cloud roadmap is here! Meanwhile, IT is reverse-engineering 1998 code at 3 AM because the CHUI warehouse addon just ate today's production receipts.
@@ -36,7 +37,7 @@ keywords:
         - Progress OpenEdge
 lastmod: 2026-01-31T19:22:40.514Z
 slug: frankenstein-erp-legacy-fragmentation
-permalink: /posts/frankenstein-erp-legacy-fragmentation/
+permalink: /news/erp/frankenstein-erp-legacy-fragmentation/
 attachments: ""
 fmContentType: posts
 ---
