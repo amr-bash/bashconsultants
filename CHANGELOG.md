@@ -4,6 +4,19 @@ All notable changes to the BASH Consultants repository will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.4.0] - 2026-04-06
+
+### Changed
+- **Theme Upgrade**: Updated zer0-mistakes theme from v0.21.6 to v0.22.10
+  - `Gemfile.azure`: Updated `jekyll-theme-zer0` from `~> 0.21.2` to `~> 0.22.10`
+  - `pages/_about/site/_config.yml`: Updated `remote_theme` pin from `v0.21.6` to `v0.22.10`
+  - `_data/README.md` and `_data/navigation/README.md`: Updated version references to v0.22+
+  - Notable theme changes since v0.21.6:
+    - Admin layout and configuration dashboards (v0.22.10)
+    - Cross-platform installation compatibility fixes (v0.22.8)
+    - Hero layout and scroll animation stabilization (v0.22.3)
+    - Various documentation and CI improvements
+
 ## [1.3.0] - 2026-03-31
 
 ### Changed
