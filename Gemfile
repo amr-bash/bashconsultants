@@ -31,7 +31,9 @@ source "https://rubygems.org"
 gem "github-pages", ">= 228", group: :jekyll_plugins
 
 # Zer0-Mistakes theme gem (needed for local/Docker dev with theme: in _config_dev.yml)
-gem "jekyll-theme-zer0"
+# Use local path during development to pick up unreleased features (e.g. admin dashboard).
+# Switch back to `gem "jekyll-theme-zer0"` once a gem version with admin includes is published.
+gem "jekyll-theme-zer0", path: "/zer0-mistakes"
 
 # Web server for Ruby 3.0+ (required since WEBrick removed from stdlib)
 gem "webrick"

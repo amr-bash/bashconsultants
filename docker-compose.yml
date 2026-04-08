@@ -7,6 +7,7 @@ services:
 
     volumes:
       - ./:/app
+      - ../zer0-mistakes:/zer0-mistakes:ro
       - bundle_cache:/usr/local/bundle
     ports:
       - "4042:4042"
