@@ -32,7 +32,7 @@ remote_theme             : "bamr87/zer0-mistakes"
 ## Github Information
 github_user              : &github_user "bamr87"
 repository_name          : &github_repository "bashconsultants"
-repository               : [*github_user, "/", *github_repository] # GitHub username/repo-name
+repository               : "bamr87/bashconsultants" # GitHub username/repo-name
 local_repo               : &local_repo "bashconsultants"
 branch                   : &branch "main"
 repo_map                 : "/sitemap/"
@@ -56,7 +56,7 @@ url                      : &url https://bashconsultants.com
 public_folder            : "/assets"
 port                     : 4002 # Jekyll Serve Dev port
 dg_port                  : 4001 # TODO: Doppelganger site. Use this if you want to switch between parallel deployments
-og_image                 : [*baseurl, '/assets/images/office-594119.png']
+og_image                 : '/assets/images/office-594119.png'
 
 ### Owner Information -------------------------------------------------------------
 
@@ -81,10 +81,10 @@ locale                   : "en-US"
 home_dir                 : &home '/Users/bamr87/'
 local_git                : [ *home, 'github' ]
 logo                     : /assets/brand/favicon.svg  # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-logo_link                : [ *url, *baseurl ] # URL to link the logo to, e.g. "/"
+logo_link                : 'https://bashconsultants.com' # URL to link the logo to, e.g. "/"
 
-teaser                   : [ *baseurl, '/assets/images/favicon_gpt_computer_retro.png' ] # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-info_banner              : [ *baseurl, '/assets/images/network.jpg' ] # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+teaser                   : '/assets/images/favicon_gpt_computer_retro.png' # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+info_banner              : '/assets/images/network.jpg' # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 
 ## Preview Image Generation (AI-powered) #####################################
 # Settings for automatic preview image generation using AI
@@ -115,7 +115,7 @@ author:
   name                   : *name # *name is a YAML reference pointing to the &anchor earlier
   avatar                 : "/assets/images/gravatar-small.png"
   email_hash             : &email_hash '71d7a4fc9712df49e13d606e620f89c7' # https://en.gravatar.com/site/check/{ site.email }
-  gravatar               : [ 'https://s.gravatar.com/avatar/', *email_hash, '?s=80' ]
+  gravatar               : 'https://s.gravatar.com/avatar/71d7a4fc9712df49e13d606e620f89c7?s=80'
   bio                    : "IT nerd trying to be an IT hero"
   location               : "Denver, CO"
   twitter_username       : "bamr87"

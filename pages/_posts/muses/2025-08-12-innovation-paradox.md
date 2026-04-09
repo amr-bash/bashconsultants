@@ -3,6 +3,7 @@ title: "The Innovation Paradox: Why Great Ideas Often Start with 'Bad' Ones"
 layout: article
 author: BASH Consulting Team
 description: "Exploring how breakthrough innovations emerge from seemingly flawed initial concepts and what this means for business strategy."
+preview: /assets/images/previews/the-innovation-paradox-why-great-ideas-often-start.png
 date: 2025-08-12T10:00:00.000Z
 categories: [muses]
 tags: [innovation, creativity, strategy, leadership]

@@ -3,6 +3,7 @@ title: "The Circle of Fix: A Broadway-Style Take on Modern Software Development"
 layout: article
 author: BASH Consulting Team
 description: A bombastic Broadway-style musical number exploring the chaotic loop of modern software development, outsourcing, and the endless cycle of bug fixes.
+preview: /assets/images/previews/the-circle-of-fix-a-broadway-style-take-on-modern-.png
 date: 2025-11-19T10:00:00.000Z
 categories:
     - muses
