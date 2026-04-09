@@ -24,3 +24,8 @@ extension/*.vsix
 # Lock files (generated)
 package-lock.json
 logs/
+.env
+.venv/
+
+# Pre-enhance backup images (originals before AI enhancement)
+*_pre-enhance.png
