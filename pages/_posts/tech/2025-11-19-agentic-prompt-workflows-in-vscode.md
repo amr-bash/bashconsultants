@@ -6,7 +6,7 @@ categories:
     - tech
     - AI
 layout: article
-preview: /assets/images/agentic-prompt-workflows.png
+preview: /assets/images/previews/from-prompts-to-pipelines-agentic-workflows-in-vs-.png
 tags:
     - prompt-engineering
     - ai

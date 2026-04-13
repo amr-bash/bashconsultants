@@ -6,7 +6,7 @@ categories:
     - AI
 date: 2025-11-19T09:00:00.000Z
 layout: article
-preview: /assets/images/prompt-engineering.png
+preview: /assets/images/previews/prompts-the-new-command-line.png
 tags:
     - prompt-engineering
     - ai
