@@ -3,7 +3,7 @@ title: "The Great Remote Work Experiment: Three Years Later, What Actually Worke
 layout: article
 author: BASH Consulting Team
 description: "An honest analysis of corporate remote work initiatives, separating lasting changes from temporary adjustments in the post-pandemic business landscape."
-preview: /assets/images/previews/the-great-remote-work-experiment-three-years-later.png
+preview: /images/previews/the-great-remote-work-experiment-three-years-later.png
 date: 2025-08-12T12:00:00.000Z
 categories: [corp]
 tags: [remote-work, corporate-strategy, organizational-change, workplace-evolution]
