@@ -2,13 +2,19 @@
 title: "AI Integration Reality Check: What the Hype Doesn't Tell You"
 layout: article
 author: BASH Consulting Team
-description: "A practical analysis of AI implementation challenges, realistic timelines, and strategic considerations beyond the marketing promises."
+description: A practical analysis of AI implementation challenges, realistic timelines, and strategic considerations beyond the marketing promises.
 preview: /assets/images/previews/ai-integration-reality-check-what-the-hype-doesn-t.png
 date: 2025-08-12T11:00:00.000Z
-categories: [tech]
-tags: [artificial-intelligence, implementation, strategy, digital-transformation]
+categories:
+    - tech
+tags:
+    - artificial-intelligence
+    - implementation
+    - strategy
+    - digital-transformation
 featured: true
-excerpt: "While AI promises transformational benefits, successful implementation requires navigating practical challenges that often get overlooked in the excitement."
+excerpt: While AI promises transformational benefits, successful implementation requires navigating practical challenges that often get overlooked in the excitement.
+draft: true
 ---
 
 ## Beyond the AI Marketing Machine
