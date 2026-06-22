@@ -1,31 +1,18 @@
 ---
-title: "Three Is the Magic Number: Triangular Loops, Chunked Goals, and the Haiku Now Running the Front of the Trade"
-description: "A field guide to automation built on threes — why the triangle is the only rigid shape, why the most efficient loops have exactly three nodes, and why a small fast AI now fronts the trade while all else follows."
+title: "Three is the magic number for automation that holds"
+sub-title: "Triangular loops, chunked goals, and the haiku now running the front of the trade"
+description: "Build automation that corrects itself — three-node loops, goals chunked to one slice, and a small fast AI routing the work at the front"
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2026-06-20T11:00:00.000Z
-lastmod: 2026-06-20T11:00:00.000Z
+lastmod: 2026-06-21T12:00:00.000Z
 draft: false
-categories:
-    - muses
-tags:
-    - automation
-    - workflow-design
-    - bash
-    - shell
-    - ai-engineering
-    - systems-thinking
-    - productivity
-keywords:
-  - automation design rule of three
-  - triangular routing efficiency
-  - chunking tasks and goals
-  - feedback loop three stages
-  - llm router cascade pattern
-  - small model triage automation
-preview: /images/previews/three-is-the-magic-number-triangular-loops-chunked.png
+categories: [muses]
+tags: [automation, workflow-design, bash, shell, ai-engineering, systems-thinking, productivity]
+keywords: [automation design rule of three, triangular routing efficiency, chunking tasks and goals, feedback loop three stages, llm router cascade pattern, small model triage automation]
+preview: /images/previews/three-is-the-magic-number-for-automation-that-hold.png
 featured: false
-excerpt: "You keep building automation as one long straight pipe, and one stage coughing runs the whole morning to null. Three is the magic number — the triangle is the only rigid shape, the most efficient loops have three nodes, and the front of the modern trade is now a small fast AI that routes the work and steps aside."
+excerpt: "Three is the magic number: the triangle is the only rigid shape, the most efficient loops have three nodes, and a small fast AI now fronts the trade and routes the work."
 ---
 
 > *One long brittle pipe—*
@@ -40,9 +27,9 @@ Here is the automation everyone writes first. It is a straight line. It reads li
 $ fetch | clean | enrich | score | route | notify | log | archive
 ```
 
-Eight stages, seven pipes, one direction. It feels efficient because it *looks* efficient — no branching, no loops, no ceremony, just data falling downhill from left to right. You ship it. It runs beautifully for nine days. On the tenth, `enrich` times out against a third-party API at 6 a.m., and because a Unix pipeline is only as alive as its narrowest dead stage, everything downstream of `enrich` receives an empty stream and dutifully processes nothing. `score` scores nothing. `route` routes nothing. `notify` notifies no one that nothing happened. By the time you look, the whole morning has run cleanly to `null` and reported success, because exit code 0 is the most dangerous lie in computing.
+Eight stages, seven pipes, one direction. It feels efficient because it *looks* efficient — no branching, no loops, no ceremony, just data falling downhill from left to right. You ship it. It runs beautifully for nine days. On the tenth, `enrich` times out against a third-party application programming interface (API) at 6 a.m., and because a Unix pipeline is only as alive as its narrowest dead stage, everything downstream of `enrich` receives an empty stream and dutifully processes nothing. `score` scores nothing. `route` routes nothing. `notify` notifies no one that nothing happened. By the time you look, the whole morning has run cleanly to `null` and reported success, because exit code 0 is the most dangerous lie in computing.
 
-The straight line is brittle for a reason that has nothing to do with this particular API. It's brittle because it has no way to *correct itself*. Data goes in one end and out the other and nowhere in that geometry is there a path for the output to inform the input. A line is not a system. A line is a hope with stages.
+The straight line is brittle for a reason that has nothing to do with this particular API. It's brittle because it has no way to *correct itself*. Data goes in one end and out the other, and nowhere in that geometry is there a path for the output to inform the input. A line is not a system. A line is a hope with stages.
 
 The fix is not more stages. The fix is a shape. And the shape, it turns out, is almost always a triangle — because three is the magic number, and I mean that structurally, not mystically.
 
@@ -58,7 +45,7 @@ Watch a three-legged stool on a stone floor. It never wobbles. It *cannot* wobbl
 
 Now look at the triangle itself. In structural engineering the triangle is the only rigid polygon. Push on the corner of a square frame and it collapses into a rhombus — the angles give, the shape folds flat. Push on the corner of a triangle and nothing moves, because to change a triangle's shape you'd have to change the *length* of a side, and the sides are members under tension and compression, not hinges. This is the entire reason bridges, cranes, roof trusses, transmission towers, and geodesic domes are built from triangles and not squares. The triangle distributes load to its corners and refuses to deform. Squares need diagonal bracing to survive — and a diagonal brace is just a confession that you wanted a triangle all along.
 
-So when I tell you to build automation in threes, I am not invoking the rule of comedy or the Holy Trinity or the three acts of a screenplay, though those rhyme. I am telling you that three is the smallest count of things that produces a structure instead of a pile. Two oscillates. Four wobbles. Three holds load.
+So when I tell you to build automation in threes, I am not invoking the rule of comedy or the three acts of a screenplay, though those rhyme. I am telling you that three is the smallest count of things that produces a structure instead of a pile. Two oscillates. Four wobbles. Three holds load.
 
 ## Triangular routes are the most efficient loops
 
@@ -104,11 +91,11 @@ Two nodes — sense and act, no decide — and you get a relay that slams on and
 
 A loop needs something to loop *over*, and this is where most automation dies a second, quieter death: the chunk is the wrong size.
 
-Human working memory holds about three to four items at once — the number has shrunk in the literature since Miller's famous "seven plus or minus two," and the honest modern figure is closer to four, often three under load. You do not overcome that ceiling by trying harder. You overcome it by *chunking*: grouping the raw material into a handful of units each small enough to hold whole. A phone number is ten digits you can't retain and three chunks you can. A goal is the same. "Migrate the platform" is a mountain you cannot lift and cannot even see the top of. "Stand up the new database, dual-write to both for a week, cut reads over" is three stones, and you can pick up the first one today.
+Human working memory holds about three to four items at once — the number has shrunk in the literature since George Miller's famous ["seven, plus or minus two,"](https://psychclassics.yorku.ca/Miller/) and the honest modern figure is closer to four, often three under load. You do not overcome that ceiling by trying harder. You overcome it by *chunking*: grouping the raw material into a handful of units each small enough to hold whole. A phone number is ten digits you can't retain and three chunks you can. A goal is the same. "Migrate the platform" is a mountain you cannot lift and cannot even see the top of. "Stand up the new database, dual-write to both for a week, cut reads over" is three stones, and you can pick up the first one today.
 
 Machines have the same constraint wearing different clothes. In [the last piece I wrote about job control](/posts/2026/06/20/work-play-dev-job-control/), the lesson was that `dev` — the deep-work process — only makes progress in long uninterrupted blocks because it needs its whole working set resident and the cache hot; starve it of a contiguous slice and it produces nothing but guilt. Chunking is how you size work to the slice you can actually give it. Too big a chunk and the job can't fit in one focused block, so it never completes and never checkpoints — it just thrashes, paging your attention to disk. Too small a chunk and you drown in overhead: the cost isn't the work, it's the context switch between the pieces, and a thousand tiny pieces means a thousand switches, each taxed.
 
-The right chunk is the one you can carry through the loop exactly once — sense it, decide on it, act on it — before you have to set it down. And the elegant part, the part that closes the circle back to the triangle, is that the best chunking is *also* in threes. Break the goal into three. Break each of those into three. You descend a tree where every node has three children, and a tree of depth three already has twenty-seven leaves — enough granularity to schedule real work, shallow enough that you can still see the root from the leaf. Divide and conquer is the oldest algorithm we have, and it does not divide into eleven. It halves, or it thirds, and the thirds tend to map better onto the way a goal actually has a beginning, a middle, and a done.
+The right chunk is the one you can carry through the loop exactly once — sense it, decide on it, act on it — before you have to set it down. And the elegant part, the part that closes the loop back to the triangle, is that the best chunking is *also* in threes. Break the goal into three. Break each of those into three. You descend a tree where every node has three children, and a tree of depth three already has twenty-seven leaves — enough granularity to schedule real work, shallow enough that you can still see the root from the leaf. Divide and conquer is the oldest algorithm we have, and it does not divide into eleven. It halves, or it thirds, and the thirds tend to map better onto the way a goal actually has a beginning, a middle, and a done.
 
 ```bash
 # A goal you can't hold:
@@ -133,9 +120,9 @@ A haiku is three lines: five syllables, seven, five. It is the smallest poem tha
 
 There is a haiku of *trade*, too — the smallest complete transaction, the three-beat loop at the bottom of all commerce. A request comes in. A decision is made. A response goes out. Read the order, decide the fulfillment, ship the thing. Five-seven-five. Sense, decide, act. It is the same triangle wearing an apron, and for the whole history of business it had a human at the front of it: someone who read what came in, judged what it was, and routed it onward — the clerk, the dispatcher, the desk that triaged the morning's mail into piles.
 
-That front seat is now an AI core. And here is the actual news, the thing under your brief: it is not the *biggest* model that takes the front. It's the *smallest fast one*.
+That front seat is now an artificial intelligence (AI) core. And here is the actual news, the thing under your brief: it is not the *biggest* model that takes the front. It's the *smallest fast one*.
 
-The pattern has a name in the trade now — the **router**, or the **cascade** — and the economics are the triangle inequality applied to compute. You do not send every request to the most powerful, most expensive model you own, any more than you'd drive a separate round trip from the depot for every single package. You put a small, fast, cheap model at the front — call it a Haiku, because that is precisely the role and, as it happens, the name of the model class built for it — and its whole job is the first beat of the loop: read the work, decide what it *is*, and route it. Most requests are simple, and the fast front-line core handles them whole and ships the answer in one slice. The genuinely hard ones — the cases where the triangle inequality says the detour through heavier compute actually pays — it escalates: hands them up to the heavyweight, the Opus, the deep reasoner, or out to the human who's the right one of the three to lift this particular stone. The fast core reads the work, routes it, and steps aside.
+The pattern has a name in the trade now — the **router**, or the **cascade** — and the economics are the triangle inequality applied to compute. You do not send every request to the most powerful, most expensive model you own, any more than you'd drive a separate round trip from the depot for every single package. You put a small, fast, cheap model at the front — call it a [Haiku](https://docs.anthropic.com/en/docs/about-claude/models/overview), because that is precisely the role and, as it happens, the name of the model class built for it — and its whole job is the first beat of the loop: read the work, decide what it *is*, and route it. Most requests are simple, and the fast front-line core handles them whole and ships the answer in one slice. The genuinely hard ones — the cases where the triangle inequality says the detour through heavier compute actually pays — it escalates: hands them up to the heavyweight, the deep reasoner, or out to the human who's the right one of the three to lift this particular stone. The fast core reads the work, routes it, and steps aside.
 
 ```bash
 # The haiku of trade, with an AI core at the front.
@@ -166,9 +153,9 @@ Three is the magic number, and the magic is structural. So, three things to take
 
 **Chunk the goal until it fits in one slice.** Three stones, each small enough to carry through the loop once and set down with a checkpoint. The right chunk size is the one that survives an interruption without losing the morning. When in doubt, third it.
 
-**Put the fast core at the front.** The Haiku of trade now has an AI core reading the first line — small, fast, constant — routing most of the work whole and escalating only the chunk that earns the heavyweight or the human. That's the efficient shape. But the front is now the whole game: all else follows what it sends, so audit the read, watch what it waves through, and make sure what comes behind is worth the follow.
+**Put the fast core at the front.** The haiku of trade now has an AI core reading the first line — small, fast, constant — routing most of the work whole and escalating only the chunk that earns the heavyweight or the human. That's the efficient shape. But the front is now the whole game: all else follows what it sends, so audit the read, watch what it waves through, and make sure what comes behind is worth the follow.
 
-The trade has a new clerk at the front desk, and it works in fives and sevens and fives, sorting the morning's mail faster than any human ever could. That's not the end of your job. That's the start of a better one — minding the vertex where the fast core decides, because everything downstream is now following a haiku, and a haiku is only as good as its first line.
+The trade has a new clerk at the front desk, and it works in fives and sevens and fives, sorting the morning's mail faster than any human ever could. For a Denver small or medium business (SMB), that is the difference between two analysts hand-triaging support tickets all morning and a small model routing most of them — often 70–85% — in seconds, freeing your people for the harder fraction that actually needs a human. That's not the end of your job. That's the start of a better one — minding the vertex where the fast core decides, because everything downstream is now following a haiku, and a haiku is only as good as its first line.
 
 ```bash
 $ exit 0   # this time, on purpose.
@@ -176,4 +163,4 @@ $ exit 0   # this time, on purpose.
 
 ---
 
-*At [BASH Consultants](/) we build the automation that holds — loops that correct themselves, goals chunked to a size your team can actually carry, and AI cores placed where they make the system faster instead of where they make the demo flashier. If your pipeline is a straight line quietly running to `null` at 6 a.m., [let's talk](/contact/).*
+*At BASH Consulting we build the automation that holds — loops that correct themselves, goals chunked to a size your team can actually carry, and AI cores placed where they make the system faster instead of where they make the demo flashier. If your pipeline is a straight line quietly running to `null` at 6 a.m., see how our [custom development and automation work](/services/dev/) puts the right shape — and the right model — at the front.*

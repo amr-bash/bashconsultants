@@ -2,7 +2,7 @@
 applyTo: "pages/**/*.md,index.md,about.md,contact.md"
 description: "Editorial voice, audience profile, industry context, and style rules for all customer-facing content on bashconsultants.com"
 date: 2026-05-18T12:00:00.000Z
-lastmod: 2026-05-18T12:00:00.000Z
+lastmod: 2026-06-21T12:00:00.000Z
 ---
 
 # Content Style Guide
@@ -59,6 +59,7 @@ Avoid: crypto, defense, gambling, adult — not our market.
 - **Active voice.** "We design the architecture" not "The architecture is designed by us."
 - **Lead with the business outcome**, follow with the technical mechanism, close with what the reader does next.
 - **One CTA per page**, usually `/contact/` or a scheduling link.
+- **Enact, don't announce.** Never label a piece's own creative device ("satire", "parody", "a Broadway-style musical number", "reality show", "exposé"). Perform the bit and let the reader notice — naming the genre flattens it. The final review/polish pass should confirm no raw descriptors survive in reader-facing text (title, description, excerpt, sub-title, snippet, body).
 
 ## Words to use
 

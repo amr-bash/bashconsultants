@@ -18,6 +18,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - **`pages/_services/index.md`** — Rebuilt as a card-based hub linking to all six real service pages (it previously listed generic categories that did not match the site's actual services).
 - **`_data/entity/info.yml`** — Cleaned banned phrases from the About / Founder / Mission copy that feeds the landing page.
 - **Blog posts** — Added a next-step call-to-action to posts that lacked one; normalized `preview:` paths to the `/assets/images/previews/` convention; bumped `lastmod` on edited posts.
+- **All 11 blog posts (`pages/_posts/{corp,erp,muses,tech}/*.md`)** — Full editorial pass aligning every post to `content-style.instructions.md` and `posts.instructions.md`: heavy rewrite to the business-outcome-first voice, acronyms defined on first use, banned marketing phrases removed, sentence-case headings, and a single next-step CTA plus one outbound primary-source link in every post. Tightened titles to sentence case ≤ 60 chars and `description` to 120–155 chars.
+- **Creative voice — show, don't announce** — Removed raw genre/device labels ("satire", "parody", "reality show", "Broadway-style musical number", "exposé") from reader-facing text so each post *enacts* its device (the press release, the show conceit, the song, the Frankenstein metaphor) instead of narrating it.
+- **`pages/_posts/tech/2025-08-12-ai-integration-reality.md`** — Published the post (was `draft: true` with duplicated `author`/`description` keys); kept the stronger "AI for small business: what the pilots don't tell you" version and rewrote the body as an SMB-first AI-adoption guide.
+- **Post frontmatter normalized site-wide** — `author: "Amr Abdel-Motaleb"` everywhere (replacing "BASH Consulting Team" / "bamr87"); lowercase `categories`; flow-style `tags` / `keywords` lists; duplicate keys removed; `lastmod` set to 2026-06-21.
+- **Preview images** — Regenerated 9 AI preview banners (`gpt-image-2`, retro pixel-art) to match the rewritten titles and content; standardized all post `preview:` paths to the `/images/previews/<slug>.png` short form (auto-normalized by the theme).
 
 ### Removed
 - **`pages/_posts/tech/2025-01-24-bash-consulting-breaking.md`** — Deleted from `tech/`; replaced by the muses rewrite above.
