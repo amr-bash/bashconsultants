@@ -37,6 +37,10 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_POND_06DC10C1E }}
+          # GitHub Pages is the primary deploy target; Azure SWA is secondary.
+          # When its deployment token isn't configured, skip the deploy instead
+          # of failing the PR gate (per the Azure SWA action's own guidance).
+          skip_deploy_on_missing_secrets: true
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
@@ -55,4 +59,6 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_POND_06DC10C1E }}
+          skip_deploy_on_missing_secrets: true
           action: "close"
