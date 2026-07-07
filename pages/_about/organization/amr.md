@@ -66,6 +66,13 @@ hide_intro: true
 .amr-prec-list{margin:0;padding-left:1.05rem;font-size:.86rem}
 .amr-prec-list li{margin-bottom:.4rem}
 .amr-count{display:inline-block;font-size:.72rem;color:#0a58ca;background:rgba(0,123,255,.1);border:1px solid rgba(0,123,255,.2);border-radius:2rem;padding:0 .5rem;margin-left:.15rem;white-space:nowrap}
+.amr-contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.7rem;margin:.6rem 0 1rem}
+.amr-contact-item{display:flex;align-items:center;gap:.7rem;padding:.8rem 1rem;border:1px solid var(--bs-border-color,rgba(0,0,0,.1));border-radius:.75rem;background:var(--bs-body-bg,#fff);text-decoration:none;color:inherit;transition:border-color .12s ease,box-shadow .12s ease,transform .12s ease}
+a.amr-contact-item:hover{border-color:rgba(0,123,255,.45);box-shadow:0 6px 18px rgba(0,0,0,.07);transform:translateY(-2px)}
+.amr-contact-item .ci-icon{flex:0 0 auto;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,123,255,.1);color:#007bff;font-size:1.05rem}
+.amr-contact-item .ci-body{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.amr-contact-item .ci-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--bs-secondary-color,#6c757d)}
+.amr-contact-item .ci-value{font-weight:600;color:var(--bs-emphasis-color,#212529);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
 
 <section class="amr-hero">
@@ -146,12 +153,34 @@ I build in the open — the same standard I hold BASH partners to. A few project
 
 ## Contact
 
-- Denver, CO 80206
-- +1 (720) 352-4641
-- amr@bashconsultants.com
-- [LinkedIn](https://linkedin.com/in/amrabdel)
-- [GitHub](https://github.com/bamr87)
-- [Website](https://bashconsultants.com)
+Based in Denver, working with businesses across the United States. The quickest ways to reach me:
+
+<div class="amr-contact-grid">
+  <a class="amr-contact-item" href="tel:+17203524641">
+    <span class="ci-icon"><i class="bi bi-telephone-fill" aria-hidden="true"></i></span>
+    <span class="ci-body"><span class="ci-label">Phone</span><span class="ci-value">+1 (720) 352-4641</span></span>
+  </a>
+  <a class="amr-contact-item" href="mailto:amr@bashconsultants.com">
+    <span class="ci-icon"><i class="bi bi-envelope-fill" aria-hidden="true"></i></span>
+    <span class="ci-body"><span class="ci-label">Email</span><span class="ci-value">amr@bashconsultants.com</span></span>
+  </a>
+  <div class="amr-contact-item">
+    <span class="ci-icon"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></span>
+    <span class="ci-body"><span class="ci-label">Location</span><span class="ci-value">Denver, CO 80206</span></span>
+  </div>
+  <a class="amr-contact-item" href="https://linkedin.com/in/amrabdel">
+    <span class="ci-icon"><i class="bi bi-linkedin" aria-hidden="true"></i></span>
+    <span class="ci-body"><span class="ci-label">LinkedIn</span><span class="ci-value">in/amrabdel</span></span>
+  </a>
+  <a class="amr-contact-item" href="https://github.com/bamr87">
+    <span class="ci-icon"><i class="bi bi-github" aria-hidden="true"></i></span>
+    <span class="ci-body"><span class="ci-label">GitHub</span><span class="ci-value">@bamr87</span></span>
+  </a>
+  <a class="amr-contact-item" href="https://bashconsultants.com">
+    <span class="ci-icon"><i class="bi bi-globe" aria-hidden="true"></i></span>
+    <span class="ci-body"><span class="ci-label">Website</span><span class="ci-value">bashconsultants.com</span></span>
+  </a>
+</div>
 
 ## Education
 
