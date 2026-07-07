@@ -40,6 +40,32 @@ hide_intro: true
 .amr-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin:.35rem 0 1.1rem}
 .amr-badge{background:rgba(0,123,255,.1);color:#0a58ca;border:1px solid rgba(0,123,255,.22);padding:.32rem .62rem;border-radius:.4rem;font-size:.82rem;font-weight:500;line-height:1.2}
 @media (max-width:575.98px){.amr-avatar{width:120px;height:120px}}
+.amr-card{height:100%;border:1px solid var(--bs-border-color,rgba(0,0,0,.1));border-radius:.75rem;padding:1.1rem 1.15rem;background:var(--bs-body-bg,#fff)}
+.amr-card-title{font-weight:700;color:var(--bs-emphasis-color,#212529)}
+.amr-card-sub{font-weight:600;color:#0a58ca;font-size:.9rem;margin-top:.15rem}
+.amr-card-meta{font-size:.8rem;color:var(--bs-secondary-color,#6c757d);margin:.2rem 0 .5rem}
+.amr-card-list{margin:0;padding-left:1.05rem;font-size:.86rem}
+.amr-card-list li{margin-bottom:.15rem}
+.amr-timeline{position:relative;margin:.5rem 0 1rem;padding-left:1.5rem;border-left:2px solid rgba(0,123,255,.25)}
+.amr-tl-item{position:relative;padding:0 0 1.5rem}
+.amr-tl-item:last-child{padding-bottom:.25rem}
+.amr-tl-item::before{content:"";position:absolute;left:-1.5rem;margin-left:-5px;top:.3rem;width:12px;height:12px;border-radius:50%;background:#007bff;border:2px solid var(--bs-body-bg,#fff);box-shadow:0 0 0 2px rgba(0,123,255,.25)}
+.amr-tl-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.15rem .75rem;align-items:baseline}
+.amr-tl-co{font-weight:700;font-size:1.05rem;color:var(--bs-emphasis-color,#212529)}
+.amr-tl-dates{font-size:.78rem;color:#0a58ca;background:rgba(0,123,255,.08);border:1px solid rgba(0,123,255,.18);padding:.08rem .55rem;border-radius:2rem;white-space:nowrap}
+.amr-tl-role{font-weight:600;color:#0a58ca;font-size:.92rem;margin:.1rem 0 0}
+.amr-tl-meta{font-size:.8rem;color:var(--bs-secondary-color,#6c757d);margin:.1rem 0 .35rem}
+.amr-tl-list{margin:.3rem 0 0;padding-left:1.05rem}
+.amr-tl-list li{margin-bottom:.2rem;font-size:.89rem}
+.amr-tl-list ul{margin:.25rem 0 .45rem}
+.amr-tl-sub{margin-top:.7rem}
+.amr-tl-subrole{font-weight:600;font-size:.9rem;color:var(--bs-emphasis-color,#212529)}
+.amr-tl-subdates{font-size:.78rem;color:var(--bs-secondary-color,#6c757d);font-style:italic}
+.amr-prec-card{height:100%;border:1px solid var(--bs-border-color,rgba(0,0,0,.1));border-radius:.75rem;padding:1rem 1.15rem;background:var(--bs-body-bg,#fff)}
+.amr-prec-co{font-weight:700;color:var(--bs-emphasis-color,#212529);border-bottom:2px solid rgba(0,123,255,.25);padding-bottom:.35rem;margin-bottom:.5rem}
+.amr-prec-list{margin:0;padding-left:1.05rem;font-size:.86rem}
+.amr-prec-list li{margin-bottom:.4rem}
+.amr-count{display:inline-block;font-size:.72rem;color:#0a58ca;background:rgba(0,123,255,.1);border:1px solid rgba(0,123,255,.2);border-radius:2rem;padding:0 .5rem;margin-left:.15rem;white-space:nowrap}
 </style>
 
 <section class="amr-hero">
@@ -129,198 +155,288 @@ I build in the open — the same standard I hold BASH partners to. A few project
 
 ## Education
 
-### University of Colorado Denver
-
-**Master of Science in Information Systems** — Denver, CO — Aug 2015 – July 2017
-
-- GPA: 3.9
-- Emphasis: mobile computing
-
-### Northern Illinois University
-
-**Bachelor of Science in Finance** — DeKalb, IL — Aug 2005 – Dec 2009
-
-- GPA: 3.5, cum laude
-- Emphasis: corporate finance and accounting
-
-### American University in Cairo
-
-**Study abroad** — Cairo, Egypt — Jan 2008 – Jun 2008
-
-- Emphasis: Arabic and cultural studies
+<div class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="col">
+    <div class="amr-card">
+      <div class="amr-card-title">University of Colorado Denver</div>
+      <div class="amr-card-sub">Master of Science in Information Systems</div>
+      <div class="amr-card-meta">Denver, CO &middot; Aug 2015 – July 2017</div>
+      <ul class="amr-card-list">
+        <li>GPA 3.9</li>
+        <li>Emphasis: mobile computing</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-card">
+      <div class="amr-card-title">Northern Illinois University</div>
+      <div class="amr-card-sub">Bachelor of Science in Finance</div>
+      <div class="amr-card-meta">DeKalb, IL &middot; Aug 2005 – Dec 2009</div>
+      <ul class="amr-card-list">
+        <li>GPA 3.5, cum laude</li>
+        <li>Emphasis: corporate finance and accounting</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-card">
+      <div class="amr-card-title">American University in Cairo</div>
+      <div class="amr-card-sub">Study abroad</div>
+      <div class="amr-card-meta">Cairo, Egypt &middot; Jan 2008 – Jun 2008</div>
+      <ul class="amr-card-list">
+        <li>Emphasis: Arabic and cultural studies</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 ## Professional experience
 
-### BASH Consulting LLC
+<div class="amr-timeline">
 
-**Solutions Architect – IT/Finance** — Denver, CO — January 2020 – Present
+  <div class="amr-tl-item">
+    <div class="amr-tl-top">
+      <span class="amr-tl-co">BASH Consulting LLC</span>
+      <span class="amr-tl-dates">January 2020 – Present</span>
+    </div>
+    <div class="amr-tl-role">Solutions Architect – IT/Finance &middot; Denver, CO</div>
+    <div class="amr-tl-meta">Financial technology consulting &middot; North America</div>
+    <ul class="amr-tl-list">
+      <li>Technical and functional consulting in enterprise software (QAD, Infor LN, Infor CloudSuite, Hyperion Financial Management)</li>
+      <li>Small business application development, including inventory management systems</li>
+      <li>Design and development of cloud eCommerce software integrations</li>
+      <li>Technology advisory for cloud applications and data governance</li>
+      <li>Financial business modeling and analysis</li>
+      <li>Business Intelligence (BI) dashboard and operational reporting development</li>
+      <li>Amazon Web Services (AWS), Google Cloud Platform (GCP), and Azure architecture and management</li>
+      <li>Accounting information system design and configuration</li>
+      <li>Customer Relationship Management (CRM) design, configuration, integration, and deployment</li>
+    </ul>
+  </div>
 
-- Industry: financial technology consulting
-- Scope: North America
-- Technical and functional consulting in enterprise software (QAD, Infor LN, Infor CloudSuite, Hyperion Financial Management)
-- Small business application development, including inventory management systems
-- Design and development of cloud eCommerce software integrations
-- Technology advisory for cloud applications and data governance
-- Financial business modeling and analysis
-- Business Intelligence (BI) dashboard and operational reporting development
-- Amazon Web Services (AWS), Google Cloud Platform (GCP), and Azure architecture and management
-- Accounting information system design and configuration
-- Customer Relationship Management (CRM) design, configuration, integration, and deployment
+  <div class="amr-tl-item">
+    <div class="amr-tl-top">
+      <span class="amr-tl-co">Valmont Industries</span>
+      <span class="amr-tl-dates">January 2022 – November 2023</span>
+    </div>
+    <div class="amr-tl-role">Sr. Manager, Accounting Systems &amp; IT Business Partner &middot; Denver, CO</div>
+    <div class="amr-tl-meta">Agriculture and infrastructure manufacturing &middot; Worldwide</div>
+    <ul class="amr-tl-list">
+      <li>Partnered with IT and corporate accounting to analyze and solve complex financial system problems</li>
+      <li>Led IT/finance strategic priorities set by the finance leadership team and communicated roadblocks, deliverables, and risks</li>
+      <li>Collaborated with the finance organization to define data structures, business rules, processes, and functions for operations</li>
+      <li>Managed a team of financial system managers responsible for OneStream and ERP systems</li>
+      <li>Designed and defined the accounting configuration of ERPs and OneStream for corporate and managerial reporting</li>
+      <li>Provided technical expertise in data storage structures, data mining, and data cleansing for a global general ledger (GL) data mart</li>
+      <li>Developed dashboards and advanced data models for over $4B in activity across multiple ERP instances</li>
+      <li>Supported the global rollout of SAP Concur and its integration into QAD</li>
+      <li>Designed integration solutions with IFS to meet Mexico localization requirements</li>
+    </ul>
+  </div>
 
-### Valmont Industries
+  <div class="amr-tl-item">
+    <div class="amr-tl-top">
+      <span class="amr-tl-co">AsteelFlash</span>
+      <span class="amr-tl-dates">March 2018 – January 2020</span>
+    </div>
+    <div class="amr-tl-role">Global Business Analyst &amp; Business Process Owner – Finance &middot; Denver, CO</div>
+    <div class="amr-tl-meta">IT/finance &middot; Electronics manufacturing services &middot; Worldwide</div>
+    <ul class="amr-tl-list">
+      <li>Managed IT-finance projects worldwide and reported progress to executive management</li>
+      <li>Defined system and business rules for finance and accounting operations and reporting</li>
+      <li>Managed and defined finance and accounting reporting foundations and the chart of accounts at local and consolidated levels</li>
+      <li>Ensured coherence and harmonization with Hyperion Financial Management (HFM)</li>
+      <li>Developed functional specifications for customization development</li>
+      <li>Led the finance side of a global QAD ERP implementation</li>
+    </ul>
+  </div>
 
-**Sr. Manager, Accounting Systems & IT Business Partner** — Denver, CO — January 2022 – November 2023
+  <div class="amr-tl-item">
+    <div class="amr-tl-top">
+      <span class="amr-tl-co">Wolters Kluwer</span>
+      <span class="amr-tl-dates">November 2017 – March 2018</span>
+    </div>
+    <div class="amr-tl-role">Senior Business Consultant &middot; New York, NY</div>
+    <div class="amr-tl-meta">CCH Tagetik &middot; Enterprise performance management software &middot; North America</div>
+    <ul class="amr-tl-list">
+      <li>Advised and assisted clients with the implementation of Tagetik Corporate Performance Management (CPM)</li>
+      <li>Designed, developed, and configured Tagetik for corporate performance management solutions</li>
+      <li>Assisted implementation of contract management software for IFRS 16 lease accounting compliance</li>
+      <li>Supported configuration, build, and setup of features to meet business and regulatory requirements</li>
+    </ul>
+  </div>
 
-- Industry: agriculture and infrastructure manufacturing
-- Scope: worldwide
-- Partnered with IT and corporate accounting to analyze and solve complex financial system problems
-- Led IT/finance strategic priorities set by the finance leadership team and communicated roadblocks, deliverables, and risks
-- Collaborated with the finance organization to define data structures, business rules, processes, and functions for operations
-- Managed a team of financial system managers responsible for OneStream and ERP systems
-- Designed and defined the accounting configuration of ERPs and OneStream for corporate and managerial reporting
-- Provided technical expertise in data storage structures, data mining, and data cleansing for a global general ledger (GL) data mart
-- Developed dashboards and advanced data models for over $4B in activity across multiple ERP instances
-- Supported the global rollout of SAP Concur and its integration into QAD
-- Designed integration solutions with IFS to meet Mexico localization requirements
+  <div class="amr-tl-item">
+    <div class="amr-tl-top">
+      <span class="amr-tl-co">QAD Inc.</span>
+      <span class="amr-tl-dates">October 2014 – November 2017</span>
+    </div>
+    <div class="amr-tl-role">Finance IT Business Consultant &middot; Denver, CO</div>
+    <div class="amr-tl-meta">Professional consulting services &middot; Enterprise resource planning software &middot; Worldwide</div>
+    <ul class="amr-tl-list">
+      <li>Facilitated the upgrade process from Mfg/Pro to QAD Enterprise Edition</li>
+      <li>Performed data migrations and system configurations based on industry standards and business requirements</li>
+      <li>Designed and deployed financial report models using QAD's finance report writer</li>
+      <li>Configured and implemented bank driver interfaces</li>
+      <li>Trained users on advanced finance functionality in QAD</li>
+    </ul>
+  </div>
 
-### AsteelFlash
+  <div class="amr-tl-item">
+    <div class="amr-tl-top">
+      <span class="amr-tl-co">Infor Global Solutions</span>
+      <span class="amr-tl-dates">November 2012 – October 2014</span>
+    </div>
+    <div class="amr-tl-role">Applications Consultant &middot; Denver, CO</div>
+    <div class="amr-tl-meta">Professional consulting services &middot; Enterprise resource planning software &middot; North America</div>
+    <ul class="amr-tl-list">
+      <li>Led SyteLine ERP projects, including design solutions, testing, and training</li>
+      <li>Conducted business process workshops to analyze requirements and propose industry best practices</li>
+      <li>Implemented shop-floor tracking and document repository systems integrated with SyteLine</li>
+    </ul>
+  </div>
 
-**Global Business Analyst & Business Process Owner – Finance** — Denver, CO — March 2018 – January 2020
+  <div class="amr-tl-item">
+    <div class="amr-tl-top">
+      <span class="amr-tl-co">Navistar International</span>
+      <span class="amr-tl-dates">May 2009 – November 2012</span>
+    </div>
 
-- Department: IT/finance
-- Industry: electronics manufacturing services
-- Scope: worldwide
-- Managed IT-finance projects worldwide and reported progress to executive management
-- Defined system and business rules for finance and accounting operations and reporting
-- Managed and defined finance and accounting reporting foundations and the chart of accounts at local and consolidated levels
-- Ensured coherence and harmonization with Hyperion Financial Management (HFM)
-- Developed functional specifications for customization development
-- Led the finance side of a global QAD ERP implementation
+    <div class="amr-tl-sub">
+      <div class="amr-tl-subrole">ERP/Baan Specialist</div>
+      <div class="amr-tl-subdates">Chicago, IL &middot; January 2012 – November 2012 &middot; Global manufacturing systems, automotive manufacturing, worldwide</div>
+      <ul class="amr-tl-list">
+        <li>Led the finance implementation of Infor ERP LN for the SST truck modification center</li>
+        <li>Designed, tested, and implemented financial components and configurations of ERP LN</li>
+        <li>Conducted conference room pilots to validate ERP configuration and processes</li>
+        <li>Developed financial reports using HFM Reporting Studio</li>
+        <li>Assisted in the transition to Hyperion Financial Management and the PeopleSoft corporate financial system</li>
+      </ul>
+    </div>
 
-### Wolters Kluwer
+    <div class="amr-tl-sub">
+      <div class="amr-tl-subrole">Financial Analyst (Finance and Accounting Leadership Development Associate)</div>
+      <div class="amr-tl-subdates">Melrose Park, IL / Garland, TX / Schaumburg, IL &middot; June 2010 – December 2011</div>
+      <ul class="amr-tl-list">
+        <li><strong>Melrose Park, IL</strong>
+          <ul>
+            <li>Constructed financial and total cost of ownership (TCO) analyses of diesel engine components to support sourcing decisions</li>
+            <li>Developed and streamlined new reporting processes using Teradata warehousing to report operational and performance metrics</li>
+            <li>Participated in pricing negotiations and developed complex analytics to support negotiations</li>
+          </ul>
+        </li>
+        <li><strong>Garland, TX</strong>
+          <ul>
+            <li>Responsible for monthly accounting close and financial reporting</li>
+            <li>Produced weekly financial and operational analytics for the truck assembly plant</li>
+            <li>Supported annual standard product costing and analyses for the operational plan</li>
+            <li>Provided ad hoc financial analyses to support daily operational decisions</li>
+          </ul>
+        </li>
+        <li><strong>Schaumburg, IL</strong>
+          <ul>
+            <li>Produced monthly updates and analyses of the retail and wholesale product pricing model for operational guidance</li>
+            <li>Organized and reported results of competitive market and economic outlook for the Class 4–8 truck industry</li>
+            <li>Assisted the finance transformation team with data conversion validation and chart of accounts mapping analyses for all of Navistar's sub-entities</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
-**Senior Business Consultant** — New York, NY — November 2017 – March 2018
+    <div class="amr-tl-sub">
+      <div class="amr-tl-subrole">Financial Analyst Intern</div>
+      <div class="amr-tl-subdates">Warrenville, IL &middot; May 2009 – August 2009</div>
+      <ul class="amr-tl-list">
+        <li>Analyzed financial models and supplemental materials for the parts group five-year strategic plan</li>
+        <li>Researched and presented the competitive landscape of the automotive parts industry and pricing structures</li>
+        <li>Designed financial models for various economic scenarios and forecasts</li>
+        <li>Performed company and industry analyses for potential acquisitions</li>
+        <li>Assisted with business development projects and ad hoc financial modeling</li>
+      </ul>
+    </div>
 
-- Division: CCH Tagetik
-- Industry: enterprise performance management software
-- Scope: North America
-- Advised and assisted clients with the implementation of Tagetik Corporate Performance Management (CPM)
-- Designed, developed, and configured Tagetik for corporate performance management solutions
-- Assisted implementation of contract management software for IFRS 16 lease accounting compliance
-- Supported configuration, build, and setup of features to meet business and regulatory requirements
+  </div>
 
-### QAD Inc.
-
-**Finance IT Business Consultant** — Denver, CO — October 2014 – November 2017
-
-- Department: professional consulting services
-- Industry: enterprise resource planning software
-- Scope: worldwide
-- Facilitated the upgrade process from Mfg/Pro to QAD Enterprise Edition
-- Performed data migrations and system configurations based on industry standards and business requirements
-- Designed and deployed financial report models using QAD's finance report writer
-- Configured and implemented bank driver interfaces
-- Trained users on advanced finance functionality in QAD
-
-### Infor Global Solutions
-
-**Applications Consultant** — Denver, CO — November 2012 – October 2014
-
-- Department: professional consulting services
-- Industry: enterprise resource planning software
-- Scope: North America
-- Led SyteLine ERP projects, including design solutions, testing, and training
-- Conducted business process workshops to analyze requirements and propose industry best practices
-- Implemented shop-floor tracking and document repository systems integrated with SyteLine
-
-### Navistar International
-
-#### ERP/Baan Specialist
-
-*Chicago, IL — January 2012 – November 2012*
-
-- Department: global manufacturing systems
-- Industry: automotive manufacturing
-- Scope: worldwide
-- Led the finance implementation of Infor ERP LN for the SST truck modification center
-- Designed, tested, and implemented financial components and configurations of ERP LN
-- Conducted conference room pilots to validate ERP configuration and processes
-- Developed financial reports using HFM Reporting Studio
-- Assisted in the transition to Hyperion Financial Management and the PeopleSoft corporate financial system
-
-#### Financial Analyst (Finance and Accounting Leadership Development Associate)
-
-*Melrose Park, IL / Garland, TX / Schaumburg, IL — June 2010 – December 2011*
-
-- **Melrose Park, IL:**
-  - Constructed financial and total cost of ownership (TCO) analyses of diesel engine components to support sourcing decisions
-  - Developed and streamlined new reporting processes using Teradata warehousing to report operational and performance metrics
-  - Participated in pricing negotiations and developed complex analytics to support negotiations
-- **Garland, TX:**
-  - Responsible for monthly accounting close and financial reporting
-  - Produced weekly financial and operational analytics for the truck assembly plant
-  - Supported annual standard product costing and analyses for the operational plan
-  - Provided ad hoc financial analyses to support daily operational decisions
-- **Schaumburg, IL:**
-  - Produced monthly updates and analyses of the retail and wholesale product pricing model for operational guidance
-  - Organized and reported results of competitive market and economic outlook for the Class 4–8 truck industry
-  - Assisted the finance transformation team with data conversion validation and chart of accounts mapping analyses for all of Navistar's sub-entities
-
-#### Financial Analyst Intern
-
-*Warrenville, IL — May 2009 – August 2009*
-
-- Analyzed financial models and supplemental materials for the parts group five-year strategic plan
-- Researched and presented the competitive landscape of the automotive parts industry and pricing structures
-- Designed financial models for various economic scenarios and forecasts
-- Performed company and industry analyses for potential acquisitions
-- Assisted with business development projects and ad hoc financial modeling
+</div>
 
 ## Project record — enterprise systems
 
-### BASH Consulting LLC
+Selected enterprise-systems work, grouped by employer and delivery type.
 
-- **Enterprise systems consulting** — QAD EE 2014–18, ERP integrations, banking interfaces, OneStream, HFM (4 projects)
-- **Accounting system modeling and configuration** — QAD entity segmentation, QuickBooks (2 projects)
-- **Systems management and data governance design** — RPM Telco, QuickBooks (1 project)
-- **Software design and development** — inventory tracking software, home inspection platform, Ruby, JavaScript (3 projects)
-
-### Valmont Industries
-
-- **Centralization projects** — BlackLine cash application, SAP Concur travel and expense, BlackLine GL (3 projects)
-- **ERP interface design** — supplier portal, supplier invoicing automation, BlackLine account reconciliations, OneStream direct connect (4 projects)
-- **Data and analytics projects** — IFS revenue recognition data mart, GL data mart (QAD and IFS), accounts receivable (AR) data mart (QAD) (4 projects)
-- **BI and reporting** — centralized chart-of-accounts reporting, enterprise entity modeling and system design (2 projects)
-- **Systems management and data governance** — QAD, IFS, Sage, OneStream (5 projects)
-
-### AsteelFlash
-
-- **ERP implementations** — QAD EE 2014, SAP, Canias; North America, Germany, France (5 projects)
-- **Accounting system modeling and configuration** — QAD EE 2014, Hyperion Financial Management (2 projects)
-
-### Wolters Kluwer
-
-- **Enterprise performance management implementation** — Tagetik EPM (1 project)
-- **Lease contract management system implementation** — Tagetik lease management (1 project)
-
-### QAD Inc.
-
-- **ERP implementations** — QAD EE 2014–2018, QAD SE 2009–2012, eB2.1, Mfg/Pro (15 projects)
-- **ERP interface design** — QXtend, bank driver interface (5 projects)
-- **Financial management system implementations** — enterprise asset management, fixed asset management (2 projects)
-
-### Infor Global Solutions
-
-- **ERP implementations** — SyteLine, Infor CloudSuite Industrial, Avalara tax (6 projects)
-- **Production reporting software implementation** — Shop-Trak (1 project)
-- **Inventory barcoding software implementation** — SyteLine, Bartender (1 project)
-- **Documentation repository implementation** — Doc-Trak (2 projects)
-
-### Navistar
-
-- **ERP implementation** — Infor ERP LN (1 project)
-- **Enterprise performance management implementation** — Hyperion Financial Management (1 project)
-- **Business intelligence reporting** — Oracle Business Intelligence Enterprise Edition (OBIEE) dashboards, Hyperion Reporting Studio, Teradata warehousing (3 projects)
+<div class="row row-cols-1 row-cols-lg-2 g-3 amr-prec">
+  <div class="col">
+    <div class="amr-prec-card">
+      <div class="amr-prec-co">BASH Consulting LLC</div>
+      <ul class="amr-prec-list">
+        <li><strong>Enterprise systems consulting</strong> — QAD EE 2014–18, ERP integrations, banking interfaces, OneStream, HFM <span class="amr-count">4 projects</span></li>
+        <li><strong>Accounting system modeling and configuration</strong> — QAD entity segmentation, QuickBooks <span class="amr-count">2 projects</span></li>
+        <li><strong>Systems management and data governance design</strong> — RPM Telco, QuickBooks <span class="amr-count">1 project</span></li>
+        <li><strong>Software design and development</strong> — inventory tracking software, home inspection platform, Ruby, JavaScript <span class="amr-count">3 projects</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-prec-card">
+      <div class="amr-prec-co">Valmont Industries</div>
+      <ul class="amr-prec-list">
+        <li><strong>Centralization projects</strong> — BlackLine cash application, SAP Concur travel and expense, BlackLine GL <span class="amr-count">3 projects</span></li>
+        <li><strong>ERP interface design</strong> — supplier portal, supplier invoicing automation, BlackLine account reconciliations, OneStream direct connect <span class="amr-count">4 projects</span></li>
+        <li><strong>Data and analytics projects</strong> — IFS revenue recognition data mart, GL data mart (QAD and IFS), accounts receivable (AR) data mart (QAD) <span class="amr-count">4 projects</span></li>
+        <li><strong>BI and reporting</strong> — centralized chart-of-accounts reporting, enterprise entity modeling and system design <span class="amr-count">2 projects</span></li>
+        <li><strong>Systems management and data governance</strong> — QAD, IFS, Sage, OneStream <span class="amr-count">5 projects</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-prec-card">
+      <div class="amr-prec-co">AsteelFlash</div>
+      <ul class="amr-prec-list">
+        <li><strong>ERP implementations</strong> — QAD EE 2014, SAP, Canias; North America, Germany, France <span class="amr-count">5 projects</span></li>
+        <li><strong>Accounting system modeling and configuration</strong> — QAD EE 2014, Hyperion Financial Management <span class="amr-count">2 projects</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-prec-card">
+      <div class="amr-prec-co">Wolters Kluwer</div>
+      <ul class="amr-prec-list">
+        <li><strong>Enterprise performance management implementation</strong> — Tagetik EPM <span class="amr-count">1 project</span></li>
+        <li><strong>Lease contract management system implementation</strong> — Tagetik lease management <span class="amr-count">1 project</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-prec-card">
+      <div class="amr-prec-co">QAD Inc.</div>
+      <ul class="amr-prec-list">
+        <li><strong>ERP implementations</strong> — QAD EE 2014–2018, QAD SE 2009–2012, eB2.1, Mfg/Pro <span class="amr-count">15 projects</span></li>
+        <li><strong>ERP interface design</strong> — QXtend, bank driver interface <span class="amr-count">5 projects</span></li>
+        <li><strong>Financial management system implementations</strong> — enterprise asset management, fixed asset management <span class="amr-count">2 projects</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-prec-card">
+      <div class="amr-prec-co">Infor Global Solutions</div>
+      <ul class="amr-prec-list">
+        <li><strong>ERP implementations</strong> — SyteLine, Infor CloudSuite Industrial, Avalara tax <span class="amr-count">6 projects</span></li>
+        <li><strong>Production reporting software implementation</strong> — Shop-Trak <span class="amr-count">1 project</span></li>
+        <li><strong>Inventory barcoding software implementation</strong> — SyteLine, Bartender <span class="amr-count">1 project</span></li>
+        <li><strong>Documentation repository implementation</strong> — Doc-Trak <span class="amr-count">2 projects</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="amr-prec-card">
+      <div class="amr-prec-co">Navistar</div>
+      <ul class="amr-prec-list">
+        <li><strong>ERP implementation</strong> — Infor ERP LN <span class="amr-count">1 project</span></li>
+        <li><strong>Enterprise performance management implementation</strong> — Hyperion Financial Management <span class="amr-count">1 project</span></li>
+        <li><strong>Business intelligence reporting</strong> — Oracle Business Intelligence Enterprise Edition (OBIEE) dashboards, Hyperion Reporting Studio, Teradata warehousing <span class="amr-count">3 projects</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 ## Technical skills
 
