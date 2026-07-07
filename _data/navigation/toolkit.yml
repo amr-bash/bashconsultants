@@ -37,6 +37,8 @@
   children:
     - title: The BASH engagement method
       url: /tools/partners/engagement-method/
+    - title: "Easy but hard: partner qualification"
+      url: /tools/partners/qualification/
     - title: The deterministic-first doctrine
       url: /tools/partners/deterministic-first/
     - title: Running an AI-native practice

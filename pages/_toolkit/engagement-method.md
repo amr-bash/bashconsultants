@@ -204,3 +204,9 @@ That last point is the whole argument. Deterministic-first is not caution for it
 ## Where this fits
 
 The engagement method is how BASH delivers every capability in the toolkit, from cloud landing zones to record-to-report automation. If you are weighing how to sequence a body of technology work, get build-versus-buy right per capability, or structure an engagement so the client ends up self-sufficient rather than dependent, that judgment is exactly what [[IT strategy]] work provides. To talk through applying this method to a specific engagement, [start a conversation](/contact/).
+
+## Build at this level
+
+BASH consultants are held to the standard in this guide — and to a higher one still: the ability to build real digital business tools on GitHub with AI, and to show the work in public. The way in is open to anyone and hard to finish, which is exactly the point. That is the qualification for partnering with BASH.
+
+<a href="/tools/partners/qualification/" class="btn btn-primary btn-lg px-4">Easy but Hard</a>
