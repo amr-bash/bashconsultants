@@ -2,7 +2,7 @@
   "name": "prompt-orchestrator",
   "displayName": "Prompt Orchestrator",
   "description": "Orchestrate AI agent workflows using structured prompts from .github/prompts/",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "bash-consultants",
   "engines": {
     "vscode": "^1.96.0"

@@ -1,46 +1,60 @@
-# Welcome to the Prompt Orchestrator VS Code Extension
+# Prompt Orchestrator quickstart
 
-## What's in the folder
+Get the extension running against this repository's prompt library in about five minutes.
 
-* This folder contains all of the files necessary for your extension.
-* `package.json` - this is the manifest file in which you declare your extension and command.
-  * The sample plugin registers a command and defines its title and command name. With this information VS Code can show the command in the command palette. It doesn't yet need to load the plugin.
-* `src/extension.ts` - this is the main file where you will provide the implementation of your command.
-  * The file exports one function, `activate`, which is called the very first time your extension is activated (in this case by executing the command). Inside the `activate` function we call `registerCommand`.
-  * We pass the function containing the implementation of the command as the second parameter to `registerCommand`.
+## 1. Install and build
 
-## Setup
+```bash
+cd extension
+npm install
+npm run compile
+```
 
-* Install the recommended extensions (amodio.tsl-problem-matcher, ms-vscode.extension-test-runner, and dbaeumer.vscode-eslint)
+## 2. Launch the Extension Development Host
 
-## Get up and running straight away
+1. Open the `extension/` folder (or the repository root) in VS Code.
+2. Press `F5`. A new VS Code window opens with the extension loaded.
+3. In that window, open the repository root as your workspace — the extension reads prompts from `.github/prompts/` relative to the first workspace folder.
 
-* Press `F5` to open a new window with your extension loaded.
-* Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `Prompt Orchestrator`.
-* Set breakpoints in your code inside `src/extension.ts` to debug your extension.
-* Find output from your extension in the debug console.
+## 3. Run a command
 
-## Make changes
+Open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and type `Prompt Orchestrator`. Available commands:
 
-* You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
-* You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
+| Command | Prompt file it runs |
+| --- | --- |
+| Refresh Prompts | (reloads the library) |
+| Execute Prompt on File | any prompt you pick |
+| Review Article | `article-review.prompt.md` |
+| Refactor Code | `code-refactoring.prompt.md` |
+| Generate Tests | `test-generation.prompt.md` |
+| Generate Documentation | `documentation.prompt.md` |
+| Debug Code | `debugging.prompt.md` |
 
-## Explore the API
+Each command uses the active editor's file as context (or asks you to pick a file), then offers three execution methods: send to Copilot Chat, execute with the Language Model API, or copy to the clipboard.
 
-* You can open the full set of our API when you open the file `node_modules/@types/vscode/index.d.ts`.
+You can also run prompts from the **Prompt Orchestrator** view in the Explorer sidebar — click any entry to execute it.
 
-## Run tests
+## 4. See what the extension is doing
 
-* Install the [Extension Test Runner](https://marketplace.visualstudio.com/items?itemName=ms-vscode.extension-test-runner)
-* Run the "watch" task via the **Tasks: Run Task** command. Make sure this is running, or tests might not be discovered.
-* Open the Testing view from the activity bar and click the "Run Test" button, or use the hotkey `Ctrl/Cmd + ; A`
-* See the output of the test result in the Test Results view.
-* Make changes to `src/test/extension.test.ts` or create new test files inside the `test` folder.
-  * The provided test runner will only consider files matching the name pattern `**.test.ts`.
-  * You can create folders inside the `test` folder to structure your tests any way you want.
+Diagnostics go to the **Prompt Orchestrator** output channel (View → Output, then pick "Prompt Orchestrator" from the dropdown). Skipped or malformed prompt files are logged there.
 
-## Go further
+## 5. Run the tests
 
-* Reduce the extension size and improve the startup time by [bundling your extension](https://code.visualstudio.com/api/working-with-extensions/bundling-extension).
-* [Publish your extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) on the VS Code extension marketplace.
-* Automate builds by setting up [Continuous Integration](https://code.visualstudio.com/api/working-with-extensions/continuous-integration).
+```bash
+cd extension
+npm test
+```
+
+The test runner (`@vscode/test-cli`) downloads a VS Code build on first run, compiles the tests to `out/`, and executes `src/test/*.test.ts` against the real prompt library in `.github/prompts/`.
+
+## 6. Make changes
+
+- Edit code in `src/`, then relaunch (`F5`) or reload the development window (`Cmd+R` / `Ctrl+R`).
+- `npm run watch` keeps esbuild and the TypeScript checker running as you edit.
+- Before committing: `npm run lint` and `npm run compile` must pass, and any new command must be declared in both `package.json` (`contributes.commands`) and `src/extension.ts`.
+
+## Troubleshooting
+
+- **"Prompt not found"** — run **Refresh Prompts**, then check the output channel; the prompt file may have malformed frontmatter or a name that doesn't match. Shortcut names resolve via the alias map in `src/promptManager.ts` (`docs` → `documentation`, etc.).
+- **Empty sidebar** — confirm the workspace folder contains `.github/prompts/*.prompt.md`, or point `promptOrchestrator.promptsDirectory` at the right folder in Settings.
+- **No language model available** — the Language Model execution method needs GitHub Copilot; without it, the extension falls back to copying the prompt to your clipboard.

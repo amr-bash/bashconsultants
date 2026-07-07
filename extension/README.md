@@ -4,17 +4,17 @@ A VS Code extension that orchestrates AI agent workflows using structured prompt
 
 ## Features
 
-- **Discover Prompts**: Automatically loads prompt templates from `.github/prompts/` directory
-- **Execute Commands**: Run prompts on files via Command Palette or sidebar
-- **Chat Integration**: Send prompts to GitHub Copilot Chat or Language Model API
-- **Sidebar View**: Browse and execute available prompts from the Explorer
-- **Context-Aware**: Automatically includes file content as context
+- **Discover prompts**: automatically loads prompt templates from the `.github/prompts/` directory
+- **Execute commands**: run prompts on files via the Command Palette or the sidebar
+- **Chat integration**: send prompts to GitHub Copilot Chat or the VS Code Language Model API
+- **Sidebar view**: browse and execute available prompts from the Explorer
+- **Context-aware**: automatically includes file content as context
 
-## Installation & Usage
+## Installation and usage
 
-### Development Setup
+### Development setup
 
-1. **Navigate to extension directory:**
+1. **Navigate to the extension directory:**
    ```bash
    cd extension
    ```
@@ -25,9 +25,9 @@ A VS Code extension that orchestrates AI agent workflows using structured prompt
    ```
 
 3. **Compile and run:**
-   Press `F5` in VS Code to launch Extension Development Host
+   Press `F5` in VS Code to launch the Extension Development Host
 
-### Configure Prompts Directory
+### Configure the prompts directory
 
 The extension looks for prompts in `.github/prompts/` by default. You can change this in Settings:
 ```json
@@ -36,32 +36,39 @@ The extension looks for prompts in `.github/prompts/` by default. You can change
 }
 ```
 
-### Available Commands
+### Available commands
 
-Open Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`):
+Open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`):
 
-- **Prompt Orchestrator: Refresh Prompts** - Reload prompt templates
-- **Prompt Orchestrator: Execute Prompt on File** - Choose prompt and file
-- **Prompt Orchestrator: Review Article** - Run article-review prompt
-- **Prompt Orchestrator: Refactor Code** - Run refactoring prompt
-- **Prompt Orchestrator: Generate Tests** - Run test-generation prompt
-- **Prompt Orchestrator: Generate Documentation** - Run documentation prompt
-- **Prompt Orchestrator: Debug Code** - Run debugging prompt
+| Command | What it runs |
+| --- | --- |
+| **Prompt Orchestrator: Refresh Prompts** | Reloads prompt templates from disk |
+| **Prompt Orchestrator: Execute Prompt on File** | Pick any prompt from the library, then a file |
+| **Prompt Orchestrator: Review Article** | `article-review.prompt.md` |
+| **Prompt Orchestrator: Refactor Code** | `code-refactoring.prompt.md` |
+| **Prompt Orchestrator: Generate Tests** | `test-generation.prompt.md` |
+| **Prompt Orchestrator: Generate Documentation** | `documentation.prompt.md` |
+| **Prompt Orchestrator: Debug Code** | `debugging.prompt.md` |
 
-### Execution Methods
+The shortcut commands use short aliases (`review`, `refactor`, `test`, `docs`, `debug`) that the extension resolves to the canonical prompt filenames above — the same mapping used by `scripts/routine-maintenance.sh` at the repository root.
+
+### Execution methods
 
 When executing a prompt, choose:
-1. **Send to Chat (Copilot)** - Opens in Chat panel with prompt ready to paste
-2. **Execute with Language Model** - Directly calls GPT-4o and shows results
-3. **Copy to Clipboard** - Copies formatted prompt for manual use
+1. **Send to Chat (Copilot)** — copies the formatted prompt to the clipboard and opens the Chat panel for you to paste into
+2. **Execute with Language Model** — sends the prompt through the VS Code Language Model API (currently Copilot's GPT-4o) and opens the response in a new editor; falls back to the clipboard method when no model is available
+3. **Copy to Clipboard** — copies the formatted prompt for manual use
 
-## Prompt Template Format
+## Prompt template format
 
-Create `.prompt.md` files in `.github/prompts/`:
+Create `.prompt.md` files in `.github/prompts/`. Frontmatter follows the canonical schema in `.github/FRONTMATTER.md`:
 
 ```markdown
 ---
-agent: agent
+mode: agent
+description: "One-line summary shown in the prompt picker (<= 160 chars)"
+date: 2026-05-18T12:00:00.000Z
+lastmod: 2026-05-18T12:00:00.000Z
 ---
 Act as an expert [role].
 
@@ -69,6 +76,8 @@ Your task is to [description].
 
 [Instructions...]
 ```
+
+Files with malformed frontmatter are skipped gracefully and logged to the **Prompt Orchestrator** output channel — they never break activation.
 
 ## Development
 
@@ -92,13 +101,13 @@ npm test
 npm run package
 ```
 
-## Project Structure
+## Project structure
 
 ```
 extension/
 ├── src/
 │   ├── extension.ts          # Main extension entry point
-│   ├── promptManager.ts      # Prompt discovery and loading
+│   ├── promptManager.ts      # Prompt discovery, parsing, and alias resolution
 │   ├── promptExplorer.ts     # Sidebar tree view provider
 │   ├── chatIntegration.ts    # VS Code Chat API integration
 │   └── test/
@@ -120,11 +129,20 @@ extension/
 - VS Code 1.96.0 or higher
 - GitHub Copilot (optional, for chat integration)
 
-## Extension Settings
+## Extension settings
 
-- `promptOrchestrator.promptsDirectory`: Directory containing prompt files
-- `promptOrchestrator.autoRefresh`: Auto-refresh prompts on file changes
+- `promptOrchestrator.promptsDirectory`: directory containing prompt files
+- `promptOrchestrator.autoRefresh`: auto-refresh prompts on file changes
+
+## Roadmap
+
+Planned work, in rough priority order:
+
+- **Pipeline chaining** — run multi-step workflows (for example refactor → test → docs) as a single command, mirroring `full-maintenance` in `scripts/routine-maintenance.sh`
+- **`@bash` chat participant** — a native Copilot Chat participant so prompts can be invoked inline (`@bash /review`) without leaving the Chat panel
+- **Model-agnostic execution** — select any model exposed by `vscode.lm` instead of assuming Copilot's GPT-4o
+- **MCP server exposure** — publish the prompt library through a Model Context Protocol (MCP) server so tools beyond VS Code can consume the same prompts
 
 ---
 
-Built for BASH Consultants
+Built for BASH Consulting
