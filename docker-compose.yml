@@ -9,11 +9,25 @@ services:
     # --livereload-port 35730 is set explicitly: Jekyll ignores `livereload_port`
     # from _config_dev.yml and otherwise falls back to 35729 (which both mismatches
     # the published 35730 below and collides with the zer0-mistakes container).
-    command: bash -c "bundle install && bundle exec jekyll serve --watch --force_polling --host 0.0.0.0 --port 4042 --livereload --livereload-port 35730 --config '_config.yml,_config_dev.yml'"
+    #
+    # `mkdir -p .playwright-mcp` runs first because jekyll-watch only registers an
+    # `exclude:` entry as a watch-ignore when the path EXISTS at boot
+    # (listen_ignore_paths: `next unless absolute_path.exist?`). Browser-automation
+    # tools write logs/screenshots there; pre-creating the dir makes the exclude
+    # stick, so those writes never trigger an endless rebuild loop.
+    command: bash -c "mkdir -p .playwright-mcp && bundle install && bundle exec jekyll serve --watch --force_polling --host 0.0.0.0 --port 4042 --livereload --livereload-port 35730 --config '_config.yml,_config_dev.yml'"
 
     volumes:
       - ./:/app
-      - ../zer0-mistakes:/zer0-mistakes:ro
+      # Theme mount: the Gemfile points jekyll-theme-zer0 at /zer0-mistakes inside
+      # the container, so the host checkout must be mounted there. The host path is
+      # configurable via ZER0_MISTAKES_PATH because git worktrees change the relative
+      # location — from a worktree under .claude/worktrees/<name>/, "../zer0-mistakes"
+      # resolves to the wrong place. Point it at the real checkout instead:
+      #   ZER0_MISTAKES_PATH=/Users/you/github/zer0-mistakes docker-compose up
+      # or put ZER0_MISTAKES_PATH=... in a .env file next to this compose file.
+      # Default (../zer0-mistakes) matches a sibling checkout of the theme repo.
+      - "${ZER0_MISTAKES_PATH:-../zer0-mistakes}:/zer0-mistakes:ro"
       - bundle_cache:/usr/local/bundle
     ports:
       - "4042:4042"

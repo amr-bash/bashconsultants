@@ -26,6 +26,7 @@ package-lock.json
 logs/
 .env
 .venv/
+__pycache__/
 
 # Pre-enhance backup images (originals before AI enhancement)
 *_pre-enhance.png
@@ -35,3 +36,6 @@ logs/
 
 # Playwright MCP runtime artifacts (console/page snapshots from agent sessions)
 .playwright-mcp/
+
+# Generated at build time by _plugins/content_statistics_generator.rb
+_data/content_statistics.yml

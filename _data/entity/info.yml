@@ -1,5 +1,10 @@
+# Business entity data — single source of truth for contact details and
+# mission copy rendered across the site (landing page, structured-data JSON-LD).
+# Keys consumed by _includes/structured-data.html: name, description, url,
+# contact-email, contact-phone, contact-name. Do not remove them.
+
 name: "BASH Consulting"
-description: Helping small businesses adopt modern technology to grow.
+description: "Denver-based IT consulting that brings cloud, ERP, financial systems, and governed AI automation within reach of small and medium businesses."
 subtitle: "Bourne Again Solutions Hero"
 url: "https://bashconsultants.com"
 about-company: "BASH Consulting helps small and medium-sized businesses in the Denver area adopt the same enterprise technology — cloud infrastructure, ERP, and accounting systems — that used to be reserved for large corporations. We focus on practical, cost-effective architecture: Infrastructure as a Service (IaaS) and Software as a Service (SaaS) sized for a smaller budget and a smaller team, with no large up-front capital investment."
@@ -8,17 +13,15 @@ about-founder-purpose: "Amr started BASH Consulting to bring the practices he us
 about-founder-location: "Amr resides in Denver, Colorado and holds a BS in Finance from Northern Illinois University and an MS in Information Systems from the University of Colorado Denver."
 about-founder-personal: "Outside the office, Amr spends his time enjoying all the great things Colorado has to offer such as biking, hiking, camping, climbing, and running. He is an advocate of workers' rights and consumer protections, and a strong supporter of small businesses."
 goal: "Helping small businesses navigate through the world of IT disarray"
-mission: "To empower our community and improve organizational effectiveness"
+mission: "To bring enterprise-grade technology within reach of small businesses — and leave their teams able to run it themselves"
 mission-approach: |
-  We empower the people with tools to advance collective objectives
-  We educate the people with knowledge and skills to use their tools
-  We engage our people to educate and empower them
-mission-inspiration: "\"Justice is nothing else than the interest of the stronger\" - Thrasymachus"
-tagline: Bourne Again Solution Hero
-contact-tagline: "Let us help you grow your business."
-catchphrase: Justice is nothing else than the interest of the stronger.
+  Empower — we give your team the tools to run its own systems
+  Educate — we transfer the knowledge and skills to use them
+  Engage — we stay involved until the solution sticks
+tagline: Bourne Again Solutions Hero
+contact-tagline: "Tell us what's slowing your business down"
 contact-note: BASH Consulting LLC currently operates as an independent contractor serving small and medium-sized businesses that need support and expertise in information technology and business management systems. We plan to grow our practice, build our team, and expand our services over time.
 contact-name: "Amr Abdel-Motaleb"
 contact-email: "info@bashconsultants.com"
 contact-phone: "720-352-4641"
-contact-instructions: "If you have a question, or would like to schedule a consultation, email us at:"
+contact-instructions: "We start with a free discovery conversation about your systems and goals — no jargon, no obligation. Reach us at:"

@@ -2,6 +2,9 @@
   url: /services/
   icon: bi-briefcase
   children:
+    - title: "AI & Automation"
+      url: /services/ai/
+      icon: bi-robot
     - title: Cloud Architecture
       url: /services/cloud/
       icon: bi-cloud
@@ -20,6 +23,9 @@
     - title: IT Strategy
       url: /services/strat/
       icon: bi-lightbulb
+    - title: Managed IT
+      url: /services/managed-it/
+      icon: bi-headset
 
 - title: News
   url: /news/
@@ -33,8 +39,22 @@
       url: /news/corp/
     - title: Tech News
       url: /news/tech/
-    - title: ERParody
+    - title: ERP Stories
       url: /news/erp/
+
+- title: Toolkit
+  url: /tools/
+  icon: bi-tools
+  children:
+    - title: Overview
+      url: /tools/
+      icon: bi-grid
+    - title: For your business
+      url: /tools/business/
+      icon: bi-shop
+    - title: For BASH partners
+      url: /tools/partners/
+      icon: bi-mortarboard
 
 - title: About
   url: /about/
@@ -43,6 +63,9 @@
     - title: About Us
       url: /about/
       icon: bi-people
+    - title: Case Studies
+      url: /case-studies/
+      icon: bi-clipboard-check
     - title: Sitemap
       url: /about/sitemap/
       icon: bi-diagram-2

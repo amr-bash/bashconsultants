@@ -1,29 +1,17 @@
 ---
-title: "work & play & dev &: Job Control for the Sleep-Deprived"
-description: "A satirical field guide to running the three processes of adult life — work, play, and dev — as background jobs, and why fork()-ing a toddler changes your whole scheduler."
+title: "work & play & dev &: job control for the sleep-deprived"
+description: "A field guide to running work, play, and dev as background jobs, and why fork()-ing a toddler rewrites your whole scheduler and your priorities"
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2026-06-20T10:00:00.000Z
-lastmod: 2026-06-20T10:00:00.000Z
+lastmod: 2026-06-21T12:00:00.000Z
 draft: false
-categories:
-    - muses
-tags:
-    - work-life-balance
-    - bash
-    - shell
-    - parenting
-    - productivity
-    - developer-life
-keywords:
-  - work life balance for developers
-  - job control bash background jobs
-  - context switching cost
-  - running side projects with a toddler
-  - time management for technologists
+categories: [muses]
+tags: [work-life-balance, bash, shell, parenting, productivity, developer-life]
+keywords: [work life balance for developers, job control bash background jobs, context switching cost, running side projects with a toddler, time management for technologists]
 preview: /images/previews/work-play-dev-job-control-for-the-sleep-deprived.png
 featured: false
-excerpt: "You think your life runs `work && play && dev`. You actually try to run `work & play & dev &`, and then a child process forks into the foreground at nice -20. A satirical look at job control for the sleep-deprived."
+excerpt: "You think your life runs `work && play && dev`. You actually try to run `work & play & dev &`, and then a child process forks into the foreground at nice -20. Job control for the sleep-deprived."
 ---
 
 ## The fantasy
@@ -46,7 +34,7 @@ Then `jobs` reports the truth.
 $ jobs
 [1]   Running                 work &
 [2]-  Stopped                 play
-[3]+  Running (eating all RAM)  dev &
+[3]+  Running (eating all memory)  dev &
 ```
 
 `play` is **Stopped**. It's always Stopped. And somewhere off-screen, a fourth process you did not schedule is about to fork into the foreground and seize the terminal with a priority you are not authorized to override.
@@ -55,9 +43,9 @@ Let's talk about job control.
 
 ## You are not multi-core
 
-Here is the lie at the center of modern adult life: that you are running these things in parallel. You are not. You have one core. One. A single execution unit doing what single cores have always done — *time-slicing* so fast it produces the convincing illusion of simultaneity. The CPU you bought in 2019 fakes multitasking by switching between processes thousands of times a second. You fake it by answering a Slack message at a playground.
+Here is the lie at the center of modern adult life: that you are running these things in parallel. You are not. You have one core. One. A single execution unit doing what single cores have always done — *time-slicing* so fast it produces the convincing illusion of simultaneity. The central processing unit (CPU) you bought in 2019 fakes multitasking by switching between processes thousands of times a second. You fake it by answering a Slack message at a playground.
 
-The catch is the context switch. When a real CPU switches processes it has to dump the registers, flush part of the cache, load the next process's state, and warm everything back up. It's cheap in silicon and ruinous in wetware. When *you* switch from `dev` to `work` to "why is the toddler quiet," you pay a context-switch tax measured not in nanoseconds but in the twenty minutes it takes to remember what the function you were writing was supposed to return. Researchers who study interruptions put the recovery cost north of twenty minutes per switch. Your scheduler is running at maybe forty productive minutes an hour, and that's on a good day with no SIGCHLD storm. (We'll get to SIGCHLD.)
+The catch is the context switch. When a real CPU switches processes it has to dump the registers, flush part of the cache, load the next process's state, and warm everything back up. It's cheap in silicon and ruinous in wetware. When *you* switch from `dev` to `work` to "why is the toddler quiet," you pay a context-switch tax measured not in nanoseconds but in the time it takes to remember what the function you were writing was supposed to return. The often-cited [University of California, Irvine study on workplace interruptions](https://ics.uci.edu/~gmark/chi08-mark.pdf) found it takes people an average of about 23 minutes to return to an interrupted task. Your scheduler is running at maybe forty productive minutes an hour, and that's on a good day with no SIGCHLD storm. (We'll get to SIGCHLD.)
 
 So the goal was never true parallelism. It was a tolerable time-slicing policy. Most of us are running the worst one available: switch on every interrupt, prioritize whatever screamed loudest, and let the lowest-priority job starve.
 
@@ -115,15 +103,15 @@ $ jobs
 
 The naive response is to oversubscribe — keep all four "running," background everything you can, and push harder. This is where you meet the two failure modes every overloaded system shares with every overloaded parent.
 
-The first is **swap**. When a machine runs out of RAM it starts paging memory out to disk, and if it's doing that constantly it enters a state called *thrashing*: it spends so much effort moving pages back and forth that it does almost no actual work. The load average climbs, every process slows, and the box is technically up but accomplishing nothing. The human version is a Tuesday where you were busy for fourteen hours and shipped not one thing. You were thrashing. You were paging your attention to disk.
+The first is **swap**. When a machine runs out of random-access memory (RAM) it starts paging memory out to disk, and if it's doing that constantly it enters a state called *thrashing*: it spends so much effort moving pages back and forth that it does almost no actual work. The load average climbs, every process slows, and the box is technically up but accomplishing nothing. The human version is a Tuesday where you were busy for fourteen hours and shipped not one thing. You were thrashing. You were paging your attention to disk.
 
-The second is the **zombie**. In Unix a zombie is a child process that has finished executing but whose parent never called `wait()` to read its exit status — so it lingers in the process table, done but un-reaped. Your life is full of zombies: the laundry that is technically washed but will never be folded, the PR that's approved but un-merged, the email you've read and mentally answered and not actually sent. Each one holds a slot. Enough un-reaped tasks and you run out of entries in the table, and the strange thing about zombies is you can't `kill` them — they're already dead. You have to reap them. The only fix is to finish the thing you already finished.
+The second is the **zombie**. In Unix a zombie is a child process that has finished executing but whose parent never called `wait()` to read its exit status — so it lingers in the process table, done but un-reaped. Your life is full of zombies: the laundry that is technically washed but will never be folded, the pull request (PR) that's approved but un-merged, the email you've read and mentally answered and not actually sent. Each one holds a slot. Enough un-reaped tasks and you run out of entries in the table, and the strange thing about zombies is you can't `kill` them — they're already dead. You have to reap them. The only fix is to finish the thing you already finished.
 
 Meanwhile the parent, having not slept, has become a different kind of zombie entirely. The metaphor, like the laundry, does not fold cleanly.
 
-## The OOM killer always comes for `play`
+## The out-of-memory (OOM) killer always comes for `play`
 
-When memory pressure gets bad enough that swap can't save it, the Linux kernel deploys its last resort: the **OOM killer**. Out Of Memory. It walks the process list, scores each one on a heuristic of how much it'd reclaim and how expendable it looks, and it *kills* the loser to keep the system alive.
+When memory pressure gets bad enough that swap can't save it, the Linux kernel deploys its last resort: the **OOM killer**. It walks the process list, scores each one on a heuristic of how much it'd reclaim and how expendable it looks, and it *kills* the loser to keep the system alive. (If you want the gory scoring details, the kernel documents the [`oom_score_adj` tunable](https://docs.kernel.org/filesystems/proc.html) in `/proc`.)
 
 You already know which process it picks. It is never `work` — `work` pays for the RAM. It is never `child` — `child` is `nice -20` and untouchable. It is `dev`, and when `dev` is already Stopped, it is `play`. The OOM killer comes for `play` first, every single time, because `play` is the most expendable-looking thing in the table. It made itself maximally nice. It never demanded a slice. And so the system, doing exactly what it was configured to do, reaps the one process whose entire purpose was to make running the others bearable.
 
@@ -153,6 +141,12 @@ The fix is not a productivity system. It's a scheduling policy, and the good one
 
 So: protect `play`. Detach `dev`. `cron` the rest. And when the small process signals, handle it in the foreground, on purpose, without resentment. That's not a failure of your scheduler. On a good day, that *is* the scheduler.
 
+## The same bug runs your business
+
+Strip the parenting jokes and this is the scheduler running most small businesses we walk into. There's a `work` daemon that renice's itself to `-5` and eats every interrupt — the loudest customer, the squeakiest invoice, the integration that broke this morning. There's a `dev` job that never gets a focused block, so the migration off QuickBooks or the reporting cleanup sits Stopped for two years. And there's a `play` process — the strategic project with no screaming deadline and no obvious business case — that the OOM killer reaps first every quarter, because nobody pinned it.
+
+The teams that ship the strategic work are not working more hours. They've just stopped letting the loudest process and the kernel's lazy default decide the schedule. They give the load-bearing project a guaranteed slice, batch the interrupts into windows, and detach the long-running work so a single interruption doesn't cost a full restart. The fix is a policy, not a person grinding harder.
+
 ## exit 0
 
 You will not run `work & play & dev &` in true parallel. No one does; the people who look like they do are just running a better time-slicing policy and not telling you about the swap. You have one core. You always did. The skill was never doing all of it at once — it was choosing, slice by slice, which process gets the core right now, and refusing to let the loudest one or the kernel's lazy default decide for you.
@@ -165,4 +159,4 @@ $ fg %4
 
 ---
 
-*At [BASH Consultants](/) we spend our days untangling systems that are technically running but quietly thrashing — for businesses, usually, but the diagnosis rhymes. If your org's scheduler keeps reaping the wrong process, [let's talk](/contact/).*
+*At BASH Consulting we spend our days untangling systems that are technically running but quietly thrashing — the strategic project that's been Stopped for two years because the loud daemons eat every slice. If your team's scheduler keeps reaping the wrong process, see [[Software development]].*

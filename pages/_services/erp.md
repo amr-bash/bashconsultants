@@ -1,7 +1,7 @@
 ---
-title: ERP Consulting
+title: ERP consulting
 sub-title: ERP that fits how your shop floor and your books actually work
-description: Technical and functional ERP consulting for Denver-area manufacturers — QAD, Infor, and Oracle implementation, integration, and support.
+description: Technical and functional ERP consulting for Denver-area manufacturers — QAD, Infor, and Oracle implementation, integration, and support
 preview: /assets/images/erd-p-500.png
 snippet: Plan, configure, and support manufacturing ERP — QAD, Infor, and Oracle — with finance and operations that finally talk to each other.
 author: Amr Abdel-Motaleb
@@ -23,7 +23,7 @@ categories:
   - ERP Systems
   - IT Consulting
   - Manufacturing
-lastmod: 2026-06-15T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 slug: erp-consulting
 permalink: /services/erp/
 draft: false
@@ -85,8 +85,8 @@ We work in honest ranges, not guarantees. Discovery and assessment typically tak
 
 ## Related
 
-- [Cloud architecture](/services/cloud/) — for moving an on-prem ERP or its database to AWS, Azure, or GCP.
-- [Data and analytics](/services/data/) — for reporting and dashboards built on top of your ERP data.
+- [[Cloud architecture]] — for moving an on-prem ERP or its database to AWS, Azure, or GCP.
+- [[Data and BI]] — for reporting and dashboards built on top of your ERP data.
 
 ---
 

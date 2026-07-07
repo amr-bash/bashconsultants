@@ -1,70 +1,138 @@
-- title: Cloud Architecture
-  description: The ubiquitous "Cloud" world that we're experiencing has set a new norm for computing but left many businesses unsure about how to transition their operations. While cloud computing is not new, it requires massive data centers that were previously only available to tech giants. These days,  using cloud technologies is the new standard, and resources are available to meet a business's needs without any large capital investments.
-  scope: We exclusively work with cloud technologies and have expertise in the 3 major providers (AWS, GCP, and Azure) to support your computing needs. In addition, we specialize in configurable eCommerce applications with integrations to accounting systems, such as QuickBooks.
-  offer: The sky is no limit for cloud services, and we are here to help start-ups and small business looking to extend or incorporate these technologies into their operating model.
+# Service catalog rendered on the landing page (_layouts/landing.html).
+# Canonical long-form copy lives in pages/_services/index.md — keep the two aligned.
+# Schema per entry: title, description, scope, offer, image, url, systems, service.
+
+- title: AI solutions and intelligent automation
+  description: Artificial intelligence (AI) works best as a layer on top of automation you can already trust. We integrate language models and document processing over your existing systems — with guardrails, audit trails, and a person in the loop for compliance-critical steps.
+  scope: AI readiness assessments, prompt-driven workflow automation, and intelligent document processing built over your current ERP, accounting, and data systems.
+  offer: Staff stop re-keying documents by hand, and exceptions surface automatically instead of at month-end.
+  image: /assets/images/architecture-video-rendering.png
+  url: /services/ai/
+  systems:
+    - OpenAI and Anthropic language models
+    - Azure AI services
+    - AWS AI and SageMaker
+    - Google Cloud AI
+  service:
+    - AI readiness and guardrail design
+    - Plain-English workflow automation
+    - Document and data processing — optical character recognition (OCR) and natural-language extraction
+    - Forecasting and decision support
+    - Model governance and audit trails
+
+- title: Cloud services and infrastructure
+  description: Move off aging on-premises hardware and pay for what you use. We plan, migrate, and manage cloud infrastructure so you get enterprise-grade reliability without the capital outlay of a server room.
+  scope: Architecture, phased migration (typically 1–3 months), ongoing management, and security configurations aligned to frameworks such as SOC 2, HIPAA, and PCI-DSS.
+  offer: You pay only for the capacity you use, with monitored uptime and no server-room refresh cycle to budget for.
   image: /assets/images/cld-arch-diagram.png
   url: /services/cloud/
   systems:
-    - AWS
-    - GCP
-    - Azure
+    - Amazon Web Services (AWS)
+    - Microsoft Azure
+    - Google Cloud Platform (GCP)
+    - Terraform and CloudFormation
+    - Kubernetes
   service:
-    - Infrastructure planning, design, and implementation
-    - Enterprise Software Suite configuration and implementation
-    - Software Development and API implementation
-    - System and database migrations
-    - Database and Data Warehouse design
-    - Business Intelligence and Reporting
-- title: AI Solutions & Intelligent Automation
-  description: "True to our name—Bourne Again Solutions Hero—we overlay artificial intelligence on the proven foundation of command-line automation and scripting. AI is not a replacement for the deterministic, auditable systems that run your business; it is a layer on top of them. We use that layer to make automation faster to build and easier to drive, while keeping the foundation reliable enough for compliance-critical work. Prompts are the new command line, and we make sure the machine underneath stays trustworthy enough to ship."
-  scope: We integrate large language models, machine learning, and intelligent agents on top of your existing systems, scripts, and pipelines—with guardrails, audit trails, and no vendor lock-in.
-  offer: From prompt-driven workflows and intelligent document processing to AI-assisted development and forecasting, we help small businesses capture the speed of AI without sacrificing control.
-  image: /assets/images/architecture-video-rendering.png
-  url: /services/dev/
-  systems:
-    - OpenAI / Anthropic LLMs
-    - Azure Cognitive Services
-    - AWS AI / SageMaker
-    - Google Cloud AI
-  service:
-    - AI overlay strategy and readiness assessment
-    - Prompt-driven workflow automation
-    - Intelligent document and data processing (OCR/NLP)
-    - AI-assisted software development and integration
-    - Machine-learning forecasting and decision support
-    - Guardrails, audit trails, and model governance
-- title: ERP Consulting
-  description: For larger organizations where those 3 letters "E-R-P" give you the chills, fear no more. We have extensive experience and understanding of these behemoth applications and can assist in the rigorous quest to harmonize the system. Our team has been through many of these journeys, implementing various systems (QAD, Infor, Oracle, etc.), in both technical and functional areas, primarily in the manufacturing industry.
-  scope: 
-  offer: 
+    - Architecture design and phased migration
+    - Cost optimization and right-sizing
+    - Security and compliance configuration
+    - API integration and eCommerce wired into accounting
+
+- title: ERP consulting
+  description: When spreadsheets and QuickBooks can no longer hold the business together, Enterprise Resource Planning (ERP) brings your operations onto one system. We have run these implementations in technical and functional roles, primarily in manufacturing and distribution.
+  scope: Selection, implementation, upgrades, and integration — a full implementation typically runs 5–7 months from discovery to go-live.
+  offer: One system of record replaces the spreadsheet workarounds, so inventory, orders, and the general ledger reconcile by themselves.
   image: /assets/images/erd.png
   url: /services/erp/
   systems:
-   - QAD Enterprise Edition versions 2014, 2016, 2018
-   - Mfg/Pro versions eB2, Eb2.1
-   - Infor ERP LN (formally known and Baan IV)
-   - Infor CloudSuite Industrial ( Formaly known as SyteLine) versions 8 & 9
-   - Hyperion Financial Management Version 11
-   - Oracle PeopleSoft Financials version 9.2
-- title: Accounting Information Systems
-  description: Every organization needs a strong financial backbone that supports both sustainability and feasibility. A well designed/robust accounting system is essential to this goal.  Thanks to Enron, the accounting/finance warriors among us need to build failsafe mechanisms or suffer the wrath of those nosey auditors. Achieving compliance  is not a "one size fits all" solution and depends on the industry and accounting methods. As we further progress toward a global standard, enterprise wide financial systems will be crucial to meet compliance and translate financial information effectively and accurately
-  scope: Accounting Information Systems (AIS) are a critical component of any business. We have extensive experience in the design, implementation, and support of these systems. Our team has worked with a variety of systems, including QuickBooks, Sage, and Microsoft Dynamics, and can help you select the right system for your business.
-  offer: Throughout my career, I have experienced the evolution of  accounting/finance from physical bookkeeping methods to complex Excel models that process datasets at a rate of trillions calculations per second to the modern multi-dimensional data warehouses that use  analytical reporting tools. I know how hard it has been to let go of the Excel models we so proudly built.  Luckily, the flexibility of Excel  to embed new database technologies directly in the spreadsheet is why is has remained the most common "ERP" system  in the business world. We understand the complexities of financial management and the available tools and functionalities now available in Excel. Thus, we aim to advance your organization's capabilities by leveraging and extending  your current Excel models' functionalities.
+    - QAD Enterprise Edition and Mfg/Pro
+    - Infor ERP LN (Baan IV) and CloudSuite Industrial (SyteLine)
+    - Oracle PeopleSoft Financials
+    - Oracle Hyperion Financial Management
+  service:
+    - System selection and implementation
+    - Version upgrades and data migrations
+    - Business process optimization
+    - Integration, training, and post-go-live support
+
+- title: Financial systems and accounting technology
+  description: A finance background is what sets us apart — we speak general ledger, accounts receivable and payable, and month-end close, not just plumbing. We design and automate the financial systems that keep you audit-ready.
+  scope: System selection and integration, accounts payable (AP) automation, banking interfaces, chart of accounts design, and close automation.
+  offer: Month-end close cycles often compress from around ten business days to the three-to-five-day range as manual reconciliation gets automated.
   image: /assets/images/spreadsheet.jpg
   url: /services/fintech/
   systems:
-    - QuickBooks
-    - QAD
-    - Infor
-    - Square
+    - OneStream and Oracle Hyperion (HFM)
+    - BlackLine, Trintech, and FloQast
+    - NetSuite and SAP Concur
+    - QuickBooks, Sage, and Microsoft Dynamics
   service:
-    - System selection and implementation
-    - System configuration and customization
-    - System integration
-    - Training and support
-    - System configurations
-    - AP automation solutions
-    - Chart of account design, conversion, or migration
-    - Financial modeling
-    - Standard costing management
-    - Banking interfaces
+    - Accounting system selection and integration
+    - AP automation and banking interfaces
+    - Chart of accounts design and conversion
+    - Financial modeling and standard costing
+    - Controls and audit preparation support
+
+- title: Data management and business intelligence
+  description: Turn the data trapped in your systems into reporting your leadership can act on. We design the data warehouse, build the pipelines, and stand up dashboards your team will actually open.
+  scope: Data-warehouse design, integration pipelines, and Power BI or Tableau dashboards over your ERP, accounting, and operational data.
+  offer: A report that took a day of copy-paste becomes a dashboard that refreshes on its own overnight.
+  image: /assets/images/network-4430786.jpg
+  url: /services/data/
+  systems:
+    - Microsoft Power BI and Tableau
+    - Snowflake, Redshift, Synapse, and BigQuery
+    - SQL Server and Oracle
+    - SQL Server Integration Services (SSIS) and Azure Data Factory
+  service:
+    - Data architecture and warehousing
+    - Data integration and ETL (extract, transform, load)
+    - Dashboard build-out and governance
+    - Key performance indicator (KPI) monitoring and analytics
+
+- title: Custom software development
+  description: When off-the-shelf software does not fit, we build software that does — and connect the systems you already run so they stop living in silos.
+  scope: Web and mobile applications, API development and integration, and legacy modernization — delivered with AI pair programming under the same review discipline as hand-written code.
+  offer: The manual export-and-reupload step disappears, and a process that lived in one person's spreadsheet becomes something the whole team can use.
+  image: /assets/images/header-image-dev-profile-4069-v1.png
+  url: /services/dev/
+  systems:
+    - Python, JavaScript/TypeScript, and C#/.NET
+    - React and Node.js
+    - Flutter and React Native
+  service:
+    - Custom application development
+    - API development and integration
+    - Legacy system modernization
+    - AI-assisted delivery with human code review
+
+- title: IT strategy and consulting
+  description: We plan to work ourselves out of a job. Our strategy work favors building your team's capability over creating a permanent dependency on an outside vendor.
+  scope: Technology roadmaps, risk assessment, vendor-neutral purchase advice, and project oversight from kickoff through delivery.
+  offer: A 12–18 month technology roadmap with a prioritized investment sequence and a one-page summary your ownership or board can act on.
+  image: /assets/images/office.jpg
+  url: /services/strat/
+  systems:
+    - AWS, Azure, and GCP (vendor-neutral)
+    - Microsoft, Google, and Oracle stacks
+  service:
+    - Technology roadmap and investment sequencing
+    - Risk management and vendor lock-in avoidance
+    - Staff skills development and self-service automation
+    - Project oversight and change management
+
+- title: Managed IT services
+  description: Keep the technology running so your team can focus on the business. Ongoing support that scales up only as much as you need — useful when you have no in-house IT, or one person who needs backup.
+  scope: Remote monitoring and management (RMM), patching, endpoint security, backup verification, and helpdesk, with response windows agreed up front.
+  offer: Problems get caught before they become downtime, with a target response of one business hour for priority issues.
+  image: /assets/images/cloud-computing-2001090.jpg
+  url: /services/managed-it/
+  systems:
+    - Microsoft 365 and Google Workspace
+    - Windows and macOS endpoints
+    - Cloud backup and recovery platforms
+  service:
+    - Helpdesk and troubleshooting
+    - Monitoring and proactive maintenance
+    - Security assessments and hardening
+    - Backup verification and recovery testing

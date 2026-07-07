@@ -26,7 +26,9 @@
 # Site Settings ###################################################################
 
 founder                  : "Amr"
-remote_theme             : "bamr87/zer0-mistakes"
+# Pinned to a release tag so a theme push can never change production without review.
+# Bump deliberately: test with both config stacks (dev + azure) before raising.
+remote_theme             : "bamr87/zer0-mistakes@v1.26.0"
 # theme                    : "jekyll-theme-zer0"  # Commented out - GitHub Pages uses remote_theme instead
 
 ## Github Information
@@ -64,7 +66,7 @@ name                     : &name "Amr"
 email                    : "amr@bashconsultants.com"
 contact-email            : "info@bashconsultants.com"
 description              : >- # this `->` means to ignore newlines until the next variable
-  "Modern day IT Solutions"
+  Enterprise-grade IT for small business — cloud, ERP, data, and AI-augmented automation from Denver, Colorado
 level                    : 'Jedi'
 
 ## Maintainer Information----------------------------------------------------------
@@ -193,58 +195,51 @@ youtube:
 
 ## Build Framework ##############################################################
 
+# What actually builds and runs this site. Keep accurate — the footer renders it
+# as a credibility signal. Versions track the real toolchain (see Gemfile.azure,
+# docker-compose.yml, _config.yml theme pin, scripts/, api/, .github/workflows/).
 powered_by:
   - name: "Ruby"
-    version: "2.7.4"
+    version: "3.3"
     url: "https://www.ruby-lang.org/"
     icon: "bi-gem"
   - name: "Jekyll"
-    version: "3.9.5"
+    version: "3.10"
     url: "https://jekyllrb.com/"
     icon: "bi-joystick"
+  - name: "zer0-mistakes"
+    version: "1.26.0"
+    url: "https://github.com/bamr87/zer0-mistakes"
+    icon: "bi-palette"
   - name: "Bootstrap"
     version: "5.3.3"
     url: "https://getbootstrap.com/"
     icon: "bi-bootstrap"
-  - name: "Algolia"
-    version: 
-    url: "https://algolia.com/"
-    icon: "bi-search"
-  - name: "MathJax"
-    version: "1.0"
-    url: "https://www.mathjax.org/"
-    icon: "bi-calculator"
-  - name: "GitHub Pages"
-    version: "231"
-    url: "https://pages.github.com/"
-    icon: "bi-github"
-  - name: "docker"
-    version: "20.10.8"
-    url: "https://www.docker.com/"
-    icon: "bi-box-seam"
-  - name: "Azure"
-    version: "latest"
-    url: "https://www.azure.com/"
-    icon: "bi-cloud"
+  - name: "Claude"
+    version: "Opus 4.8"
+    url: "https://www.anthropic.com/claude"
+    icon: "bi-robot"
+  - name: "OpenAI gpt-image"
+    version: "2"
+    url: "https://platform.openai.com/docs/guides/image-generation"
+    icon: "bi-stars"
   - name: "Python"
     version: "3.13"
-    url: "https://www.python.com/"
+    url: "https://www.python.org/"
     icon: "bi-filetype-py"
-  - name: "HTML"
-    version: "5"
-    url: "https://en.wikipedia.org/wiki/HTML5/"
-    icon: "bi-filetype-html"
-  - name: "CSS"
-    version: "4"
-    url: "https://en.wikipedia.org/wiki/CSS/"
-    icon: "bi-filetype-css"
-  - name: "JavaScript"
-    version: "ES14"
-    url: "https://en.wikipedia.org/wiki/JavaScript/"
-    icon: "bi-filetype-js"
-  - name: "JQuery"
-    url: "https://jquery.com/"
-    icon: "bi-filetype-js"
+  - name: "Docker"
+    version: "latest"
+    url: "https://www.docker.com/"
+    icon: "bi-box-seam"
+  - name: "GitHub Pages"
+    url: "https://pages.github.com/"
+    icon: "bi-github"
+  - name: "GitHub Actions"
+    url: "https://github.com/features/actions"
+    icon: "bi-git"
+  - name: "Azure Static Web Apps"
+    url: "https://azure.microsoft.com/products/app-service/static/"
+    icon: "bi-cloud"
 
 
 ### Plugins 
@@ -265,6 +260,54 @@ plugins:
   # Note: jekyll-mermaid is NOT in GitHub Pages whitelist - it only provides {% mermaid %} Liquid tag
   # Mermaid diagrams work without this plugin via client-side JavaScript (see _includes/components/mermaid.html)
   - jekyll-mermaid
+
+## AI Chat (theme component ZER0-060) ###########################################
+# Floating Claude-powered assistant on every page. Renders NOTHING until a usable
+# auth path exists: proxy mode requires proxy_ready: true. The proxy ships in this
+# repo as an Azure Static Web Apps function (api/chat) — flip proxy_ready to true
+# once ANTHROPIC_API_KEY is configured in the SWA app settings. Never use
+# auth_mode 'direct' in production: it exposes the API key in page source.
+
+ai_chat:
+  enabled                : true
+  provider               : 'anthropic'
+  auth_mode              : 'proxy'
+  proxy_ready            : false               # flip to true once /api/chat is live with a key
+  model                  : 'claude-opus-4-8'
+  endpoint               : '/api/chat'
+  anthropic_version      : '2023-06-01'
+  max_tokens             : 1024
+  strict_context         : true
+  out_of_scope_message   : "I can only answer from the content on this page — for anything else, email info@bashconsultants.com."
+  system_prompt          : >-
+    You are the assistant for BASH Consulting (bashconsultants.com), a
+    Denver-based IT consulting practice for small and medium businesses:
+    cloud architecture (AWS, Azure, GCP), ERP implementation (QAD, Infor,
+    Oracle), accounting information systems, data and BI, custom software,
+    and AI-overlay automation. Answer questions using the current page
+    content. Be concise, plain-English, and outcome-focused. If a visitor
+    describes a business problem, point them to the matching service page
+    and suggest booking a consultation at /contact/. Never quote prices;
+    engagements are scoped after a discovery conversation.
+  welcome_message        : "Hi — ask about this page, or tell me what's slowing your business down and I'll point you to the right service."
+  placeholder            : "Ask about this page..."
+  context_max_length     : 2000
+  icon                   : 'bi-robot'
+  github:
+    enabled              : true
+    mode                 : 'url'               # pre-filled github.com forms; no token anywhere
+    base_branch          : 'main'
+    default_labels       : ['from-chat']
+
+## Contact & newsletter form endpoints ###########################################
+# Form handlers are config-driven so the site works on any static host.
+# Leave an endpoint empty and the template falls back to a mailto: flow.
+# contact_endpoint: e.g. a Formspree form URL (https://formspree.io/f/<id>)
+#                   or the SWA function /api/contact once deployed.
+
+forms:
+  contact_endpoint       : ''
+  newsletter_endpoint    : ''
 
 ## Gisgus Plugin #################################################################
 
@@ -347,6 +390,14 @@ collections:
   services:
     output: true
     permalink: /:collection/:categories/:name/
+  toolkit:
+    output: true
+    # Docs live under /tools/<track>/<slug>/ — categories drive the track segment
+    # (business | partners). Track landing pages set an explicit permalink.
+    permalink: /tools/:categories/:name/
+  case-studies:
+    output: true
+    permalink: /case-studies/:name/
   about:
     output: true
     permalink: /:collection/:categories/:name/
@@ -405,7 +456,7 @@ defaults:
         nav: dynamic
 
   # pages/_services
-  # - 
+  # -
   #   scope:
   #     path: pages/_services
   #   values:
@@ -415,6 +466,35 @@ defaults:
   #     related: true
   #     sidebar:
   #       nav: services
+
+  # pages/_case-studies
+  -
+    scope:
+      path: pages/_case-studies
+    values:
+      layout: *pages
+      collection: case-studies
+      author_profile: false
+      share: true
+      related: true
+      sidebar:
+        nav: dynamic
+
+  # pages/_toolkit — the BASH toolkit docs/tutorials collection
+  -
+    scope:
+      path: pages/_toolkit
+    values:
+      layout: *pages
+      collection: toolkit
+      author: "Amr Abdel-Motaleb"
+      author_profile: false
+      read_time: true
+      share: true
+      related: true
+      toc_sticky: true
+      sidebar:
+        nav: toolkit
 
   # pages/_posts
   - 
@@ -469,10 +549,18 @@ exclude:
   - .sass-cache/
   - .jekyll-cache/
   - .obsidian
+  # Transient browser-automation output; excluded so `jekyll serve --watch`
+  # never rebuilds in a loop when these files appear or change.
+  - .playwright-mcp/
   - Gemfile.lock
   - gemfiles/
   - Gemfile
   - node_modules/
+  # Repo tooling and source that must never ship as site pages/static files:
+  - scripts/
+  - api/
+  - drafts/
+  - extension/
   # Exclude Bundler's vendor dir (Ruby gems). assets/vendor/ is a different path
   # and is intentionally committed for GitHub Pages (Bootstrap, jQuery, etc.).
   - vendor/bundle/
@@ -497,44 +585,43 @@ sass:
   # load_paths:
   #   - /usr/local/bundle/gems/bootstrap-5.3.3/assets/stylesheets
 
-algolia:
-  application_id: 'SP02Z3YYL4'
-  search_only_api_key: '3b9200e21085fbebc263950c157b2682'
-  index_name: dev_it-journey
+# (Stale Algolia block removed — it pointed at another project's index, dev_it-journey.
+#  Site search is served by the theme's search layout over search.json instead.)
 
 ## Style Settings -------------------------------------------------------------
 
 # theme                  : "zer0-mistakes-jekyll"
 # remote_theme           : "bamr87/zer0-mistakes"
-theme_skin               : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+theme_skin               : "aqua" # valid skins: "air", "aqua", "dirt", "neon", "mint", "plum", "sunrise"
 
 # style                  : "default" # "default", "dark", "light", "solarized-dark", "solarized-light"
 # remote_style           : "bamr87/zer0-mistakes"
 
+# NOTE: hex values must be quoted — unquoted '#' starts a YAML comment and parses to null.
 theme_color:
-  main: #007bff
-  secondary: #6c757d
-  red: #a11111
-  yellow: #ffe900
-  teal: #376986
-  blue: #007bff
-  green: #28a745
-  purple: #6f42c1
-  pink: #e83e8c
-  orange: #fd7e14
-  brown: #795548
-  cyan: #17a2b8
-  indigo: #6610f2
-  lime: #cddc39
-  amber: #ffc107
-  deep_orange: #ff5722
-  deep_purple: #673ab7
-  light_blue: #03a9f4
-  light_green: #8bc34a
-  light_purple: #9c27b0
-  light_red: #f44336
-  light_yellow: #ffeb3b
-  light_teal: #009688
+  main: "#007bff"
+  secondary: "#6c757d"
+  red: "#a11111"
+  yellow: "#ffe900"
+  teal: "#376986"
+  blue: "#007bff"
+  green: "#28a745"
+  purple: "#6f42c1"
+  pink: "#e83e8c"
+  orange: "#fd7e14"
+  brown: "#795548"
+  cyan: "#17a2b8"
+  indigo: "#6610f2"
+  lime: "#cddc39"
+  amber: "#ffc107"
+  deep_orange: "#ff5722"
+  deep_purple: "#673ab7"
+  light_blue: "#03a9f4"
+  light_green: "#8bc34a"
+  light_purple: "#9c27b0"
+  light_red: "#f44336"
+  light_yellow: "#ffeb3b"
+  light_teal: "#009688"
 
 ## Copyright Settings --------------------------------------------------------------
 

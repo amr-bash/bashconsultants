@@ -1,41 +1,59 @@
 ---
 mode: agent
-description: "Review article structure, frontmatter, and SEO; suggest content expansions for depth and engagement"
+description: "Review a post or page against the house style guide — frontmatter, SEO limits, banned phrases, voice, links, and CTA"
 date: 2026-05-18T12:00:00.000Z
-lastmod: 2026-05-18T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 ---
-Act as an Expert Content Editor and SEO Specialist.
+Act as the editorial reviewer for bashconsultants.com.
 
-Your task is to review the provided article(s), validate their structure/metadata, and suggest content expansions to improve depth and engagement.
+Review the provided article(s) against the repository's own standards, which override generic SEO or editorial best practice:
 
-**Input Context**:
-- Markdown file(s) with Jekyll Front Matter (YAML header)
-- Target audience: Technical professionals, developers, business owners
+- `.github/instructions/content-style.instructions.md` — voice, audience, banned phrases, formatting
+- `.github/instructions/posts.instructions.md` — post frontmatter, structure, categories
+- `_data/taxonomy.yml` — category slugs, section voice profiles, tag conventions
 
-**Review Checklist**:
+**Audience**: owners, operators, and decision-makers at Denver-metro small and medium businesses (5–200 employees), plus the in-house IT generalists who justify projects upward. Reader priorities in order: ROI, downtime risk, compliance exposure, staff impact. Industry examples come only from: professional services (law/accounting/design), construction/trades, light manufacturing/distribution, healthcare clinics/dental, multi-location retail, nonprofits.
 
-1. **Front Matter Validation**:
-   - Check for presence of required fields: `title`, `description`, `categories`, `tags`, `date`, `layout`.
-   - Verify `date` format (YYYY-MM-DD HH:MM:SS).
-   - Ensure `tags` and `categories` are appropriate and consistent.
-   - Check if `description` is compelling and SEO-friendly (150-160 chars).
+**Review checklist**:
 
-2. **Content Analysis & Expansion**:
-   - **Depth**: Identify sections that are too brief or superficial.
-   - **Clarity**: Flag jargon that needs explanation.
-   - **Structure**: Ensure logical flow with proper headings (H2, H3).
-   - **Expansion**: Write 1-2 new paragraphs for sections that need more detail. Focus on "how-to", examples, or real-world applications.
-   - **Tone**: Ensure the tone is professional, authoritative, yet accessible.
+1. **Frontmatter**
+   - Required fields present: `title`, `description`, `author`, `layout`, `date`, `lastmod`, `draft`, `categories`, `tags`, `preview`.
+   - `title` ≤ 60 characters, sentence case, double-quoted, no trailing period.
+   - `description` 120–155 characters, one sentence, no trailing period, primary keyword included naturally.
+   - `date` and `lastmod` in ISO-8601 with milliseconds (`YYYY-MM-DDTHH:MM:SS.000Z`); `lastmod` bumped on edit, `date` never bumped.
+   - `categories` and `tags` are lowercase flow-style lists. Primary category = subfolder (`corp`, `erp`, `muses`, `tech`); `ai` is the only sanctioned secondary.
+   - `preview: /images/previews/<slug>.png` where `<slug>` derives from the title (lowercase, non-alphanumeric runs → `-`, truncated to 50 chars). Short-form path, not `/assets/...`.
+   - Filename `YYYY-MM-DD-kebab-title.md` with date matching `date:`.
 
-3. **SEO Optimization**:
-   - Identify primary keywords.
-   - Check keyword placement in Title, H1, and first paragraph.
-   - Suggest internal linking opportunities if context allows.
+2. **Structure and formatting**
+   - Exactly one H1 (rendered from `title:`); body starts at H2; heading hierarchy sequential.
+   - Headings in sentence case, never title case.
+   - Every acronym expanded on first use ("Enterprise Resource Planning (ERP)").
+   - No exclamation marks outside enacted dialogue or lyrics; no slang.
 
-**Output Format**:
-- **Front Matter Report**: Pass/Fail with specific fixes.
-- **Content Suggestions**: Bullet points of issues found.
-- **Expanded Sections**: Provide the actual text for the suggested expansions.
-- **Refined Article**: (Optional) If requested, output the fully revised markdown file.
+3. **Voice and banned phrases**
+   - Matches its section's voice profile in `_data/taxonomy.yml`.
+   - Zero occurrences of: "cutting-edge", "next-generation", "disruptive", "revolutionary", "in today's fast-paced world / digital age / AI era", "leverage synergies", "unlock value", "best-of-breed", "world-class", "solutioning", "ideate", "circle back", "low-hanging fruit"; "empower" only with who + to do what; "robust"/"seamless"/"scalable" only when backed by a number or example.
+   - **Enact, don't announce**: no reader-facing text (title, description, excerpt, sub-title, snippet, body) names the piece's creative device — "satire", "parody", "musical number", "reality show", "imagine a…". The bit is performed, never labeled.
+   - Plain English first, active voice, confident not boastful; leads with business outcome, closes with the reader's next action.
 
-If the article is a draft or outline, flesh it out into a full post.
+4. **Claims and proof**
+   - No invented metrics, client names, logos, headcount, or certifications. Ranges ("typically 4–8 weeks") and category-of-work examples ("a Denver construction firm with ~40 field staff") only.
+   - HIPAA / PCI / SOC 2 described as what the framework requires — never a claim that BASH Consulting is certified.
+   - Numbers cited, ranged, or removed.
+
+5. **Links and CTA**
+   - At least one internal link (a service page or another post) and one external link to a primary source — vendor documentation or a regulator, never a blog.
+   - Descriptive anchor text; never "click here".
+   - Exactly one call to action, ending the piece with a working next-step link — usually a `/services/...` page or `/contact/`. AI-topic posts point to `/services/ai/`.
+   - All internal URLs resolve (posts live at `/posts/:year/:month/:day/:slug/` unless an explicit `permalink` overrides).
+
+**Output format**:
+
+1. **Verdict** — Ready / Needs minor edits / Needs significant work.
+2. **Frontmatter report** — field-by-field pass/fail with exact fixes.
+3. **Style findings** — each violation with location, the rule it breaks, and replacement text.
+4. **Link and CTA audit** — pass/fail per requirement above.
+5. **Corrected excerpts** — drop-in replacements for anything that failed.
+
+Do not rewrite wholesale; edit to make the piece compliant while preserving the author's intent. Never introduce facts, statistics, or sources — flag gaps for the author instead.

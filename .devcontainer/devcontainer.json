@@ -1,0 +1,42 @@
+// Dev container for the BASH Consultants Jekyll site.
+//
+// Mirrors docker-compose.yml: Ruby 3.3, theme checkout mounted read-only at
+// /zer0-mistakes (the path the Gemfile expects), Jekyll served on port 4042.
+//
+// The theme mount expects a sibling checkout of bamr87/zer0-mistakes
+// (../zer0-mistakes relative to this repo). If your checkout lives elsewhere —
+// for example when working from a git worktree — edit the mount source below,
+// or use docker-compose.yml instead, which reads ZER0_MISTAKES_PATH from the
+// environment. (Nesting an env-var default inside the mount string is not
+// supported by the devcontainer variable syntax.)
+//
+// Serve the site inside the container with:
+//   bundle exec jekyll serve --host 0.0.0.0 --port 4042 --livereload \
+//     --livereload-port 35730 --config '_config.yml,_config_dev.yml'
+{
+  "name": "bashconsultants-jekyll",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.3",
+
+  "mounts": [
+    "source=${localWorkspaceFolder}/../zer0-mistakes,target=/zer0-mistakes,type=bind,consistency=cached,readonly"
+  ],
+
+  "postCreateCommand": "bundle install",
+
+  "forwardPorts": [4042, 35730],
+  "portsAttributes": {
+    "4042": { "label": "Jekyll site", "onAutoForward": "notify" },
+    "35730": { "label": "LiveReload", "onAutoForward": "silent" }
+  },
+
+  "customizations": {
+    "vscode": {
+      // Keep in sync with .vscode/extensions.json
+      "extensions": [
+        "sissel.shopify-liquid",
+        "ginfuru.ginfuru-better-solarized-dark-theme",
+        "ritwickdey.liveserver"
+      ]
+    }
+  }
+}

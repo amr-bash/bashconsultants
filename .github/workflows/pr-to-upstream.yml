@@ -1,0 +1,75 @@
+# Opens (and keeps) a pull request from this fork up to the repository it was
+# forked from — amr-bash/bashconsultants — on every push to main.
+#
+# Why a PAT: GITHUB_TOKEN cannot create a pull request on a *different* repo, so
+# this needs a personal access token with permission to open PRs on the upstream
+# repo, stored as the repo secret UPSTREAM_PR_TOKEN. Without it, the job skips
+# cleanly (it never fails the build).
+#
+# Setup (one time):
+#   1. Create a token that can open PRs on amr-bash/bashconsultants:
+#      - Fine-grained PAT scoped to amr-bash/bashconsultants with
+#        "Pull requests: Read and write" + "Contents: Read", OR a classic PAT
+#        with the `repo` scope.
+#   2. Add it here as a secret named UPSTREAM_PR_TOKEN
+#      (Settings → Secrets and variables → Actions → New repository secret).
+#
+# The PR is from bamr87:main → amr-bash:main. Because bamr87/main carries
+# upstream/main in its history (see the reconcile merge), that PR is a clean,
+# conflict-free superset. Once open, it tracks main and updates on its own, so
+# this workflow only needs to open it when one isn't already there.
+
+name: PR to upstream (amr-bash)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pr-to-upstream
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  open-upstream-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open or confirm the PR to the upstream fork parent
+        env:
+          GH_TOKEN: ${{ secrets.UPSTREAM_PR_TOKEN }}
+          UPSTREAM: amr-bash/bashconsultants
+          FORK_OWNER: bamr87
+          BRANCH: main
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::notice title=Upstream PR skipped::UPSTREAM_PR_TOKEN is not set. Add a PAT that can open PRs on ${UPSTREAM} to enable syncing upstream."
+            exit 0
+          fi
+
+          # Is an open PR from ${FORK_OWNER}:${BRANCH} -> ${UPSTREAM}:${BRANCH} already there?
+          # (It tracks main and refreshes itself as new commits land.)
+          existing="$(gh pr list --repo "$UPSTREAM" --state open --base "$BRANCH" \
+            --json number,headRefName,headRepositoryOwner \
+            --jq "[.[] | select(.headRefName==\"$BRANCH\" and .headRepositoryOwner.login==\"$FORK_OWNER\")][0].number // empty")"
+
+          if [ -n "$existing" ]; then
+            echo "::notice title=Upstream PR already open::#${existing} (${FORK_OWNER}:${BRANCH} → ${UPSTREAM}:${BRANCH}) — it updates automatically."
+            exit 0
+          fi
+
+          # Is upstream actually behind us? If ahead_by is 0 there is nothing to propose.
+          ahead="$(gh api "repos/${UPSTREAM}/compare/${BRANCH}...${FORK_OWNER}:${BRANCH}" --jq '.ahead_by' 2>/dev/null || echo unknown)"
+          if [ "$ahead" = "0" ]; then
+            echo "::notice title=Upstream in sync::${UPSTREAM}:${BRANCH} already contains ${FORK_OWNER}:${BRANCH} — nothing to propose."
+            exit 0
+          fi
+
+          url="$(gh pr create --repo "$UPSTREAM" --base "$BRANCH" --head "${FORK_OWNER}:${BRANCH}" \
+            --title "Sync from ${FORK_OWNER}/bashconsultants" \
+            --body "Automated sync from \`${FORK_OWNER}:${BRANCH}\`, opened by the \`pr-to-upstream\` workflow on a push to \`main\`. It tracks \`main\` and updates as new commits land. Merge to bring ${UPSTREAM} up to date with the fork.")"
+          echo "::notice title=Upstream PR opened::${url}"

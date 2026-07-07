@@ -1,153 +1,148 @@
 ---
-title: "ERP Survivor: Office Edition - Episode 1: The Alliance of the Spreadsheet People"
+title: "ERP Survivor, episode 1: alliance of the spreadsheet people"
+description: "How a stalled ERP rollout teaches Denver controllers to retire spreadsheet sprawl and win staff adoption with a realistic phased plan"
+author: "Amr Abdel-Motaleb"
 layout: article
-author: BASH Consulting Team
-description: Reality show-style exploration of ERP implementation dynamics and the classic struggle between spreadsheet loyalists and system advocates.
-preview: /assets/images/previews/erp-survivor-office-edition-episode-1-the-alliance.png
 date: 2025-08-12T13:00:00.000Z
-lastmod: 2026-06-15T12:00:00.000Z
-categories:
-    - erp
-tags:
-    - erp-implementation
-    - change-management
-    - business-systems
-    - organizational-dynamics
+lastmod: 2026-06-21T12:00:00.000Z
+draft: false
+categories: [erp]
+tags: [erp-implementation, change-management, business-systems, organizational-dynamics]
+preview: /images/previews/erp-survivor-episode-1-alliance-of-the-spreadsheet.png
 featured: true
-excerpt: "Welcome to the ultimate reality show: Can a diverse group of office workers survive an ERP implementation without losing their minds or their jobs?"
+excerpt: "Can a Denver back office survive an Enterprise Resource Planning rollout without losing its spreadsheets or its sanity? Episode 1, where the survival lessons hide inside every commercial break."
 ---
 
-## Previously on ERP Survivor...
+## Previously on ERP Survivor
 
-*Dramatic music plays as we see a montage of conference rooms, whiteboards covered in process diagrams, and people staring intensely at computer screens*
+*Dramatic music. Montage of conference rooms, whiteboards buried in process diagrams, and people squinting at screens at 7 p.m.*
 
-**Narrator Voice**: "Twelve departments. One ERP system. Six months to implementation. Only the strongest business processes will survive."
+**Narrator**: "Twelve departments. One Enterprise Resource Planning (ERP) system. A six-month timeline that nobody believes. Only the strongest business processes will survive."
 
-## Meet Your Contestants
+The pain is real. If you are a controller or operations manager about to retire a wall of spreadsheets for a single system, you are the contestant. Here is the survival guide, with the actual lessons in plain English at each commercial break.
 
-### The Tribes
+## Why this season matters now
 
-**The Spreadsheet People (Finance Tribe)**
-- **Linda "The Excel Empress"** - Has a personal relationship with every VLOOKUP function ever written
-- **Dave "Macro Man"** - Believes every business problem can be solved with a 47-tab Excel workbook
-- **Sarah "Sum-If Savant"** - Speaks in formulas and dreams in pivot tables
+ERP projects fail at a rate that should scare any owner signing the check. Independent surveys such as the [Panorama Consulting ERP report](https://www.panorama-consulting.com/resource-center/erp-statistics/) put cost or schedule overruns on a large share of implementations, and the usual culprit is not the software. It is change management: people quietly keeping their old spreadsheets running in parallel until the new system starves.
 
-**The Legacy System Loyalists (Operations Tribe)**  
-- **Bob "The Database Whisperer"** - Has been using the same inventory system since 1987 and sees no reason to change
-- **Carol "Custom Code Queen"** - Has personally written 47 different workarounds for the current system
-- **Mike "Migration Mike"** - Convinced that data conversion will definitely work perfectly the first time
+For a Denver SMB (5-200 employees), that failure has a price tag you can feel. A stalled rollout means paying for software you do not use, a finance team doing the work twice, and a month-end close that gets slower instead of faster. The win is the opposite: a single source of truth, a close that drops from two weeks to a few days, and audit-ready numbers without a fire drill.
 
-**The ERP Evangelists (IT Tribe)**
-- **Jennifer "Integration Jenny"** - Believes ERP will solve world hunger and achieve world peace
-- **Tom "Best Practices Tom"** - Has memorized the vendor's implementation methodology and quotes it at parties
-- **Alex "API Alex"** - Thinks every problem can be solved with the right connector
+## Meet your contestants
 
-## Episode 1: The Alliance of the Spreadsheet People
+### The Spreadsheet People (Finance tribe)
 
-### The Challenge: Requirements Gathering
+- **Linda, the Excel Empress** — has a personal relationship with every VLOOKUP ever written
+- **Dave, Macro Man** — believes any problem yields to a 47-tab workbook
+- **Sarah, the Sum-If Savant** — speaks in formulas, dreams in pivot tables
 
-**Host**: "Today's challenge is Requirements Gathering. Each tribe must document their current business processes and identify what they need from the new ERP system. The tribe with the most comprehensive and realistic requirements wins immunity from the first round of scope creep."
+### The Legacy Loyalists (Operations tribe)
 
-### Finance Tribe Strategy Session
+- **Bob, the Database Whisperer** — has run the same inventory system since 1987 and sees no reason to stop
+- **Carol, the Custom Code Queen** — has written 47 workarounds for the current system
+- **Mike, Migration Mike** — certain the data conversion will work perfectly on the first try
 
-**Linda (Excel Empress)**: "Okay, people, we need to be strategic here. The new system needs to do everything our spreadsheets do, but faster."
+### The ERP Evangelists (IT — Information Technology — tribe)
 
-**Dave (Macro Man)**: "And it needs to automatically generate our month-end reports, quarterly forecasts, budget variance analysis, and that special report Linda created for the CEO that shows profit by phase of the moon."
+- **Jennifer, Integration Jenny** — believes ERP will solve world hunger
+- **Tom, Best Practices Tom** — has memorized the vendor methodology and quotes it at parties
+- **Alex, API (Application Programming Interface) Alex** — thinks every gap closes with the right connector
 
-**Sarah (Sum-If Savant)**: *typing frantically* "I'm documenting all 247 of our Excel templates. Should I include the backup copies and the backup copies of the backup copies?"
+## Episode 1: the alliance of the spreadsheet people
 
-**Linda**: "Of course! And make sure to mention that the system needs to support our color-coding system. Red means urgent, yellow means Linda needs to review it, and green means... well, we're not sure what green means, but we've been using it for twelve years."
+### The immunity challenge: requirements gathering
 
-### Operations Tribe Panic Mode
+**Host**: "Today's challenge is requirements gathering. Each tribe documents its current processes and what it needs from the new ERP. The tribe with the most realistic requirements wins immunity from the first round of scope creep."
 
-**Bob (Database Whisperer)**: "This is a disaster. The ERP people are saying we can't customize the inventory module to match our current system exactly."
+### Finance tribe strategy session
 
-**Carol (Custom Code Queen)**: "But what about our special process for handling back-ordered items that were originally pre-ordered but then got re-ordered during the seasonal adjustment period?"
+**Linda**: "The new system needs to do everything our spreadsheets do, but faster."
 
-**Mike (Migration Mike)**: "Don't worry, I'm sure the data conversion will handle all our special cases. I mean, how hard could it be to migrate 30 years of data from a system that was customized by seventeen different programmers who all left the company without documentation?"
+**Dave**: "And auto-generate month-end reports, quarterly forecasts, budget variance, and that special report Linda built for the CEO (Chief Executive Officer) that shows profit by phase of the moon."
 
-**Bob**: *staring into the distance* "We had a good system. A simple system. You could fix it with a screwdriver and a can of compressed air."
+**Sarah** *(typing frantically)*: "I'm documenting all 247 of our templates. Should I include the backup copies of the backup copies?"
 
-### IT Tribe's Overconfidence Hour
+**Linda**: "Of course. And it must support our color-coding. Red is urgent, yellow means I need to review it, and green means... we are not sure, but we have used it for twelve years."
 
-**Jennifer (Integration Jenny)**: "This is going to be amazing! Once we implement the ERP system, all our data will flow seamlessly between departments, eliminating manual processes and creating a single source of truth!"
+> **Commercial break — the lesson:** Spreadsheet sprawl is not a quirk. It is a control failure. Two-hundred-plus templates with no version control means nobody can prove which number is correct at close. The goal of ERP is not to rebuild every spreadsheet inside the software. It is to decide which numbers are official, who owns them, and where they live. "Make it work like Excel" is the request that sinks the project.
 
-**Tom (Best Practices Tom)**: *consulting his implementation binder* "According to the vendor's methodology, Phase 1.3.2.B clearly states that we'll achieve 47% efficiency gains in the first quarter."
+### Operations tribe panic mode
 
-**Alex (API Alex)**: "And if anything doesn't work perfectly, I'll just write a custom integration. How long could that take? A weekend, maybe two tops."
+**Bob**: "The ERP people say we cannot customize the inventory module to match our current system exactly."
 
-**Jennifer**: "I love how optimistic we are. It's going to be smooth sailing from here!"
+**Carol**: "But what about our process for back-ordered items that were pre-ordered, then re-ordered during the seasonal adjustment period?"
 
-### The Plot Twist: Reality Strikes
+**Mike**: "The data conversion will handle it. How hard can migrating 30 years of data be, from a system customized by seventeen programmers who all left without documentation?"
 
-**Host**: "Attention contestants! We have a special surprise. Today's guest judge is... *drumroll* ...an actual ERP consultant who has seen this all before!"
+**Bob** *(staring into the distance)*: "We had a good system. A simple system. You could fix it with a screwdriver and a can of compressed air."
 
-**Guest Judge (ERP Veteran)**: *chuckles knowingly* "Well, well, well. Let me guess - Finance wants the new system to work exactly like Excel, Operations wants to keep their current processes unchanged, and IT thinks this will be wrapped up in six months with no issues."
+> **Commercial break — the lesson:** Every undocumented workaround is a landmine for data migration. Before you move a single record, inventory the customizations and ask which ones reflect a real business rule versus a habit that grew around a system limitation. Most of Carol's 47 workarounds disappear when the underlying constraint does. The ones that survive become configuration, not custom code.
 
-*Uncomfortable silence*
+### IT tribe's overconfidence hour
 
-**Guest Judge**: "Here's your first reality check: Every one of you will need to change how you work. Your processes will need to be redesigned. Your Excel templates will become obsolete. Your custom workarounds will be replaced by standard functionality. And it's going to take twice as long and cost 40% more than you budgeted."
+**Jennifer**: "Once we go live, all our data will flow between departments and create a single source of truth."
 
-**Linda (Excel Empress)**: *hyperventilating* "But... but... my macros!"
+**Tom** *(consulting his binder)*: "Per the methodology, Phase 1.3.2.B clearly states 47% efficiency gains in the first quarter."
 
-**Bob (Database Whisperer)**: *muttering* "I knew this was a bad idea."
+**Alex**: "If anything breaks, I'll write a custom integration. A weekend, two tops."
 
-**Jennifer (Integration Jenny)**: *still optimistic* "But think of the efficiency gains!"
+> **Commercial break — the lesson:** Vendor methodologies are useful, but the published percentages are marketing, not a forecast for your shop. Treat every "tops, two weekends" integration estimate as the optimistic end of a range and double it. The teams that succeed plan for the connectors that will not work on the first try.
 
-### The Alliance Forms
+### The plot twist: reality strikes
 
-**Narrator**: "Faced with the harsh realities of ERP implementation, unlikely alliances begin to form..."
+**Host**: "Today's guest judge is an actual ERP consultant who has seen this before."
 
-*Camera shows Linda and Bob huddled in the break room*
+**Guest Judge** *(chuckling)*: "Let me guess. Finance wants the system to be Excel. Operations wants nothing to change. IT thinks this wraps in six months with no issues."
 
-**Linda**: "Listen, Bob, I know we've had our differences about month-end reconciliation, but we need to stick together on this."
+*Uncomfortable silence.*
 
-**Bob**: "You're right. They're trying to eliminate everything we've built over the years. My inventory system may be old, but at least it works!"
+**Guest Judge**: "First reality check. Every one of you will change how you work. Your templates will become obsolete. Your workarounds will become standard functionality. And it will take longer and cost more than you budgeted."
 
-**Linda**: "Exactly! And my Excel reports may be complex, but they give management exactly what they need to see."
+**Linda** *(hyperventilating)*: "But... my macros!"
 
-**Bob**: "So we're agreed? We'll push for minimal changes to our current processes?"
+**Bob** *(muttering)*: "I knew this was a bad idea."
 
-**Linda**: "Deal. The Alliance of the Spreadsheet People is born!"
+**Jennifer**: "But the efficiency gains!"
 
-*They shake hands as dramatic music plays*
+### The alliance forms
 
-### The Immunity Challenge Results
+**Narrator**: "Faced with reality, unlikely alliances form..."
 
-**Host**: "After reviewing all the requirements documents, I have to say... this is going to be interesting. Finance submitted a 47-page document that basically says 'make the ERP system work like Excel but with more colors.' Operations provided a flowchart so complex it requires a magnifying glass and a degree in engineering to understand. And IT submitted a one-page document that simply says 'implement best practices and achieve digital transformation.'"
+*Linda and Bob, huddled in the break room.*
 
-**Guest Judge**: "I've seen this before. You know what happens next?"
+**Linda**: "Bob, I know we have fought about month-end reconciliation, but we need to stick together."
 
-**Everyone**: "What?"
+**Bob**: "They want to eliminate everything we built. My inventory system is old, but it works."
 
-**Guest Judge**: "The real fun begins when you try to reconcile these requirements with what the software actually does."
+**Linda**: "And my reports are complex, but management sees exactly what it needs."
 
-### Next Episode Preview
+**Bob**: "So we push for minimal changes?"
 
-*Fast-paced montage of dramatic scenes*
+**Linda**: "Deal. The Alliance of the Spreadsheet People is born."
 
-**Narrator**: "Next week on ERP Survivor... The tribes face their first major challenge: System Configuration! Will the Alliance of the Spreadsheet People survive the dreaded 'Standard Chart of Accounts'? Can Operations adapt to 'Best Practice Workflows'? And will IT's confidence survive the first user acceptance testing session?"
+> **Commercial break — the lesson:** This alliance is the moment most rollouts die. When your most knowledgeable people quietly agree to resist, they keep the old systems alive in the shadows, and the new ERP never becomes the system of record. The fix is not to overrule Linda and Bob. It is to recruit them. Make them the ones who design the new process, and the alliance flips from blocker to backbone.
 
-*Cut to dramatic scene*
+## How a real rollout plays out
 
-**Linda (Excel Empress)**: *staring at ERP screen* "Where's the color coding?! WHERE'S THE COLOR CODING?!"
+You do not win this game with software. You win it with a phased plan that gives skeptics a job.
 
-**Bob (Database Whisperer)**: *to camera* "I'm not here to make friends. I'm here to keep my inventory system working exactly the way it's always worked."
+1. **Discovery and process mapping (2-4 weeks).** Document how work actually happens, not how the org chart says it should. This is where Linda's 247 templates get triaged into "keep as a report," "becomes a system function," and "should never have existed."
+2. **Design and configuration (4-8 weeks).** Adopt the vendor's standard chart of accounts and workflows wherever they fit; configure, do not customize, unless a real business rule demands it. Microsoft's own [Dynamics 365 implementation guidance](https://learn.microsoft.com/en-us/dynamics365/guidance/implementation-guide/overview) is a solid primary source for what a disciplined methodology looks like.
+3. **Data migration and validation (3-6 weeks, overlapping).** Migrate in waves, reconcile each wave against the old system, and have Bob sign off on inventory counts. Migration is the step that always runs long.
+4. **User acceptance testing and training (2-4 weeks).** Real users run real transactions before go-live. Make the spreadsheet loyalists your testers; if it survives Linda, it will survive anyone.
+5. **Go-live and stabilization (4-8 weeks).** Plan for a slower close the first cycle, then faster every cycle after. Retire the old spreadsheets on a date, in writing, so nobody runs both in parallel.
 
-**Tom (Best Practices Tom)**: *frantically flipping through vendor documentation* "This isn't in the implementation guide! This isn't in the implementation guide!"
+## Watch-outs that eliminate contestants
 
-**Narrator**: "Who will be eliminated first? Find out next week on... ERP Survivor!"
+- **Parallel systems.** If the old spreadsheets keep running "just in case," the ERP becomes a second job, not a replacement. Set a retirement date and enforce it.
+- **Customizing to preserve old habits.** Every customization is a cost you pay again at the next upgrade. Default to standard configuration.
+- **Skipping the people work.** The software installs in weeks. Adoption takes a quarter. Budget time for training, sponsorship from an owner or controller, and a few internal champions.
+
+## Next step
+
+Facing your own implementation reality check? See our [[ERP consulting]], including the change-management work that keeps the Alliance of the Spreadsheet People on your side instead of against you.
 
 ---
 
-## Producer's Notes
+*Based on patterns observed across dozens of ERP implementations. The characters are fictional. The struggles are not. No spreadsheets were harmed in the making of this episode — though several were, mercifully, retired.*
 
-*This satirical series is based on real ERP implementations and actual office dynamics observed across dozens of organizations. While the characters are fictional, their struggles are painfully real. No spreadsheets were harmed in the making of this episode.*
-
-**Disclaimer**: If you recognize your organization in this episode, remember that the first step to ERP recovery is admitting you have a process problem.
-
----
-
-*Stay tuned for Episode 2: "The Great Chart of Accounts Debate" where Linda discovers that the new system doesn't support her 47 different project codes, and Bob learns that "best practices" might not include his legendary "emergency override procedure."*
-
-*Facing your own implementation reality check? See how we [approach ERP work](/services/erp/) — or [start a conversation](/contact/).*
+*Next episode: "The great chart of accounts debate," where Linda discovers the new system does not support her 47 project codes, and Bob learns that best practices do not include his legendary emergency override procedure.*

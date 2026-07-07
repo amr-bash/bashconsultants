@@ -3,8 +3,10 @@ import { PromptManager } from './promptManager';
 import { PromptExplorerProvider } from './promptExplorer';
 import { ChatIntegration } from './chatIntegration';
 
-export function activate(context: vscode.ExtensionContext) {
-	console.log('Prompt Orchestrator is now active');
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
+	const output = vscode.window.createOutputChannel('Prompt Orchestrator');
+	context.subscriptions.push(output);
+	output.appendLine('Prompt Orchestrator is now active');
 
 	// Get workspace root
 	const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
@@ -18,8 +20,8 @@ export function activate(context: vscode.ExtensionContext) {
 	const promptsDirectory = config.get<string>('promptsDirectory', '.github/prompts');
 
 	// Initialize managers
-	const promptManager = new PromptManager(workspaceFolder.uri.fsPath, promptsDirectory);
-	const chatIntegration = new ChatIntegration();
+	const promptManager = new PromptManager(workspaceFolder.uri.fsPath, promptsDirectory, output);
+	const chatIntegration = new ChatIntegration(output);
 	const promptExplorer = new PromptExplorerProvider(promptManager);
 
 	// Register tree view
@@ -38,16 +40,17 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('prompt-orchestrator.executePrompt', async (promptName?: string) => {
+			// Make sure the prompt library is loaded before any lookup —
+			// shortcut commands can fire before the activation load finishes.
+			if (promptManager.getAllPrompts().length === 0) {
+				await promptManager.loadPrompts();
+			}
+
 			// If no prompt name provided, show quick pick
 			if (!promptName) {
-				const prompts = promptManager.getAllPrompts();
-				if (prompts.length === 0) {
-					await promptManager.loadPrompts();
-				}
-				
 				const items = promptManager.getAllPrompts().map(p => ({
 					label: p.name,
-					description: p.frontmatter?.agent || ''
+					description: p.frontmatter?.description ?? ''
 				}));
 
 				const selected = await vscode.window.showQuickPick(items, {
@@ -117,7 +120,8 @@ export function activate(context: vscode.ExtensionContext) {
 		})
 	);
 
-	// Register specific prompt commands
+	// Register shortcut commands. Short names are resolved to canonical
+	// prompt filenames by PromptManager (review -> article-review, etc.).
 	const promptCommands = ['review', 'refactor', 'test', 'docs', 'debug'];
 	for (const cmd of promptCommands) {
 		context.subscriptions.push(
@@ -127,12 +131,11 @@ export function activate(context: vscode.ExtensionContext) {
 		);
 	}
 
-	// Auto-load prompts on activation
-	promptManager.loadPrompts().then(() => {
-		promptExplorer.refresh();
-	});
-
 	context.subscriptions.push(treeView);
+
+	// Auto-load prompts on activation
+	await promptManager.loadPrompts();
+	promptExplorer.refresh();
 }
 
 export function deactivate() {}

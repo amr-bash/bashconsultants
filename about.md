@@ -75,7 +75,7 @@ BASH Consulting was founded by **Amr Abdel-Motaleb**, our Solutions Architect. A
   <img src="/assets/images/Amr-Headshot_v2.jpg" class="img-fluid rounded-3 shadow-sm" alt="Headshot of Amr Abdel-Motaleb, founder of BASH Consulting" loading="lazy" style="max-width: 320px;">
 </div>
 
-**Background.** Over more than a decade, Amr has implemented and supported enterprise financial and ERP systems for multinational manufacturers — including Valmont Industries, AsteelFlash, QAD, Infor, and Navistar — in both technical and functional roles. That work, viewed through a finance lens, is what BASH brings to smaller businesses. Read the full [professional background and project history](/about/amr/).
+**Background.** Over more than a decade, Amr has implemented and supported enterprise financial and ERP systems for multinational manufacturers — including Valmont Industries, AsteelFlash, QAD, Infor, and Navistar — in both technical and functional roles. That work, viewed through a finance lens, is what BASH brings to smaller businesses. Read the full [[Amr Abdel-Motaleb]].
 
 **Education.** Amr holds a **Bachelor of Science in Finance** from Northern Illinois University and a **Master of Science in Information Systems** from the University of Colorado Denver. The combination of finance and information systems shapes how we design technology: not just to work, but to improve financial performance.
 
@@ -106,7 +106,7 @@ Cloud work includes:
 - Database and data-warehouse design
 - Business intelligence and reporting
 
-[Explore cloud architecture →](/services/cloud/)
+[[Cloud architecture]]
 
 ### ERP consulting (technical and functional)
 
@@ -124,7 +124,7 @@ Systems we work with:
 
 ERP work includes implementation and configuration, process optimization, training and support, and integration with the rest of your systems.
 
-[Explore ERP consulting →](/services/erp/)
+[[ERP consulting]]
 
 ### Accounting information systems
 
@@ -141,7 +141,7 @@ Accounting work includes:
 - Standard costing management
 - Secure banking interfaces
 
-[Explore finance technology →](/services/fintech/)
+[[Finance tech]]
 
 ---
 

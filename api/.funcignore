@@ -1,0 +1,5 @@
+.gitignore
+.funcignore
+README.md
+local.settings.json
+local.settings.json.sample

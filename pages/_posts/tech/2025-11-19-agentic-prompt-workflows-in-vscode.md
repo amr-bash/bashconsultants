@@ -1,247 +1,88 @@
 ---
-title: "From Prompts to Pipelines: Agentic Workflows in VS Code"
-description: How a VS Code extension with AI agents turns prompt engineering into an automated command surface for your entire codebase.
-author: Amr Abdel-Motaleb
-date: 2025-11-19T09:00:00.000Z
-categories:
-    - tech
-    - AI
+title: "From prompts to pipelines: agentic AI in VS Code"
+description: "Turn one-off AI prompts into repeatable, reviewable workflows inside VS Code so your small team ships features faster without losing control"
+author: "Amr Abdel-Motaleb"
 layout: article
-preview: /assets/images/previews/from-prompts-to-pipelines-agentic-workflows-in-vs-.png
-tags:
-    - prompt-engineering
-    - ai
-    - vscode
-    - agents
-    - automation
-lastmod: 2026-06-15T12:00:00.000Z
+date: 2025-11-19T09:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
+draft: false
+categories: [tech, ai]
+tags: [prompt-engineering, ai, vscode, agents, automation]
+preview: /images/previews/from-prompts-to-pipelines-agentic-ai-in-vs-code.png
 ---
 
-**Prompt engineering was just the beginning. The real power comes when prompts stop being one-off conversations and become reusable, automated workflows that live inside your tools.**
+If your team already uses an Artificial Intelligence (AI) assistant to explain code or draft a function, you have seen the ceiling: every task starts from a blank chat box, and the quality depends on whoever happens to be typing that day. The next step is turning those one-off prompts into saved, repeatable workflows that run inside the editor your developers already live in.
 
-For years, the command line was where serious work happened. You chained commands into scripts, piped data through filters, and automated everything you could. Today, we’re entering a new phase: **prompts are the new command lines, and agent workflows are the new shell scripts.**
+A quick vocabulary check before we go further, because two terms get thrown around loosely. **Prompt engineering** is the practice of writing the instructions you give an AI model carefully enough that the output is consistent and trustworthy. **Agentic** means the AI doesn't just answer — it takes actions: reading files, editing them, running tests, opening a pull request. We covered the first idea in [[Prompts are the new command line]]. This post is about the second: what happens when you wire those prompts together into a pipeline.
 
-Imagine a VS Code extension that doesn’t just send your current file to an AI model, but **orchestrates an entire pipeline of prompts and agents**—reading files, transforming content, generating tests, updating documentation, and opening pull requests—based on a **defined prompt design** you control.
+## Why this matters now
 
-That’s the next level of prompt engineering.
+For a small or medium business, the expensive part of software work has never been writing the code. It is the surrounding effort: turning a vague client request into requirements, sketching a design, writing tests, updating documentation, and keeping it all consistent across a team of two or three people. That overhead is exactly what drives a 40-person Denver firm to either over-pay a contractor or skip the project entirely.
 
----
+A single AI chat shaves a little off each of those steps. An **agentic workflow** — a saved sequence of prompts that act on your real files — shaves off the handoffs between them, which is where most of the time and most of the errors actually hide. The payoff is not "the AI writes the code." It is that the same request produces the same quality of output whether your senior developer or your newest hire kicks it off.
 
-## From Single Prompts to Agentic Workflows
+## From single prompts to designed pipelines
 
-Most “AI inside the editor” experiences today are still pretty primitive:
+Most AI-in-the-editor features today are still manual, one command at a time:
 
-- Highlight code → "Explain this"
-- Type a comment → "Generate function"
-- Ask a chat panel → "Refactor for me"
+- Highlight code, ask "explain this"
+- Type a comment, ask "generate this function"
+- Open a chat panel, ask "refactor this for me"
 
-Useful? Absolutely. But it’s the equivalent of running individual shell commands manually.
+Useful, but it is the equivalent of typing shell commands by hand instead of saving a script. An agentic workflow lets you define a sequence of prompts that each play a specific role, call specialized tools (git, linters, test runners), and run the same way every time. Prompt engineering stops being about finding the one perfect sentence and becomes about designing a small system of prompts that behaves like a programmable pipeline.
 
-**Agentic workflows** change the game. Instead of manually prompting each step, you define a **workflow of prompts and tools** that can:
+## A VS Code extension as the control surface
 
-- Take **files, articles, notes, or any other content** as input
-- Apply a **sequence of well-designed prompts**, each with a specific role
-- Call **specialized AI agents** (requirements, design, coding, testing, docs, refactoring, debugging)
-- Integrate with **real tools** (git, linters, test runners, CI, issue trackers)
-- Run **repeatably and predictably**, like a script—not a one-off chat
+This is the idea behind our own internal extension, a prompt orchestrator built for VS Code. It treats prompts as real, versioned files — stored in a `.github/prompts/` folder alongside the code — instead of disposable chat messages. Practically, that means three things:
 
-Prompt engineering becomes less about “the perfect sentence” and more about **designing a system of prompts** that behaves like a programmable pipeline.
+1. **Prompts become reusable commands.** The extension reads your prompt files and lists them in a sidebar, so "run the requirements analysis" is a click, not a paste.
+2. **Each prompt is bound to a role and a tool set.** A requirements prompt reads notes and issue descriptions; a code prompt edits files in the workspace; a test prompt writes and runs tests; a docs prompt updates Markdown.
+3. **Workflows chain those prompts together.** A short configuration file (written in YAML, a plain-text format) describes the order: analyze the request, design the approach, implement, test, document — each step feeding the next.
 
----
+Because the prompts are codified and stored in git, your team's standards travel with the project. Every engagement follows the same path, and you can review and improve the prompts the way you would review any other piece of architecture.
 
-## The VS Code Extension as a Prompt Orchestrator
+## Worked example: a client note becomes a feature
 
-Now picture a VS Code extension purpose-built for BASH Consultants:
+Here is a concrete run. A client emails a rough note:
 
-- It treats **prompts as first-class artifacts**: versioned, shared, and stored in `.github/prompts/`.
-- It ships with **core prompt roles**: requirements-analysis, system-design, code-implementation, test-generation, documentation, code-refactoring, debugging, and prompt-engineering itself.
-- It lets you define **workflows** that chain these prompts and tools together.
+> "We need users to export their transaction history as a CSV file so finance can reconcile faster. It has to be secure and handle large datasets."
 
-At a high level, such an extension would:
+That CSV (comma-separated values) export is a small but real feature. The manual version means copying the note into your notes, deriving requirements by hand, sketching an interface, writing the endpoint, writing tests, and updating docs — five separate context switches. The workflow version looks like this:
 
-1. **Discover Prompt Files**  
-   Read prompt definitions (like the ones in `.github/prompts/`) and expose them in a VS Code sidebar as reusable commands.
+1. Save the note as `notes/client-export-feature.md`.
+2. Right-click the file and choose **Run Workflow: idea to production**.
+3. The pipeline runs in order:
+   - A requirements step turns the note into a structured spec
+   - A design step proposes the interface, data flow, and security approach
+   - An implementation step drafts or edits the code
+   - A test step adds unit and integration tests and runs them
+   - A documentation step updates the user and technical docs
+4. You review each diff, run the tests, and adjust before anything is committed.
 
-2. **Bind Prompts to Agents and Tools**  
-   Each prompt is connected to a specific **agent persona** and **tool set**—for example:
-   - Requirements agent → reads `README`, notes, issue descriptions
-   - Design agent → produces architecture docs and diagrams
-   - Code agent → modifies files in the workspace
-   - Test agent → writes tests and runs them
-   - Docs agent → updates Markdown in `pages/` and `README`s
+You stay in control at every step — nothing merges itself. The repetitive plumbing between steps is what gets automated.
 
-3. **Define Workflows as Prompt Pipelines**  
-   A workflow could be described in a simple YAML or JSON file:
-   - Step 1: Run `requirements-analysis` on selected notes
-   - Step 2: Feed that output into `system-design`
-   - Step 3: Feed design into `code-implementation` which edits specific files
-   - Step 4: Run `test-generation` and execute tests
-   - Step 5: Run `documentation` to generate or update docs
+## What this looks like for your team
 
-4. **Run Against Real Content**  
-   The user selects:
-   - A folder (`pages/_posts/`)
-   - A file (`README.md`)
-   - A note or scratchpad
-   - Or an entire project
+A few realistic ways an in-house IT lead at an SMB would put this to work:
 
-   The extension packages that context, invokes the workflow, and **streams back changes**: new files, diffs, suggested commits.
+- **Onboarding.** A new hire runs the same workflows your senior developer wrote, so their first pull requests already match house style.
+- **Consistency across clients.** A construction client and a dental clinic both get the same requirements-to-docs discipline, even on small jobs that never used to justify it.
+- **Maintenance, not just new builds.** Scheduled workflows can flag refactoring candidates, check documentation against the current code, and draft release notes from recent commits — the housekeeping that gets skipped when everyone is busy.
 
-5. **Enforce Design and Governance**  
-   Because prompts are **designed and codified**, you can:
-   - Enforce standards across a team or consulting practice
-   - Ensure every engagement follows the same high-quality path
-   - Review and evolve the prompt designs like any other piece of architecture
+The prompt library you build up over time becomes a genuine asset: a written-down playbook for how your team solves problems, which is exactly the kind of institutional knowledge small teams usually lose when someone leaves.
 
----
+## Watch-outs
 
-## Example: Turning a Note into a Production Feature
+Three things go wrong in practice, and they are worth naming before you invest.
 
-Let’s walk through a concrete scenario.
+- **Review is not optional.** Agentic does not mean unattended. AI-generated code can be confidently wrong, and a pipeline that commits without a human reading the diff will ship bugs faster, not slower. Keep the review gate.
+- **Data leaves your building.** Sending source files and client notes to a hosted model is a data-handling decision, not just a productivity one. For a healthcare or finance client, confirm where the model runs and what it retains. Microsoft documents the data and privacy boundaries for [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/copilot-privacy-and-data) — read the equivalent for whatever model you choose before any regulated data touches it.
+- **Prompts need maintenance.** A prompt that worked six months ago can drift as models change. Version them, test them on known inputs, and treat a bad prompt like a bug, not a mystery.
 
-A client sends you a rough note:
+## The takeaway
 
-> “We need a way for users to export their transaction history as CSV so finance can reconcile faster. Needs to be secure and work for large datasets.”
+The shift here is the same one the command line went through decades ago: from typing commands by hand, to saving them as scripts, to running those scripts on a schedule. Prompts are following that arc. The win for a small business is not flashy AI — it is repeatability. The same request produces the same quality of result, every developer follows the same path, and the knowledge lives in files you own rather than in one person's head.
 
-In the old world, you’d:
+## Next step
 
-- Copy that into your notes
-- Manually derive requirements
-- Sketch an API
-- Write the endpoint
-- Write tests
-- Update docs
-
-In the new world, you:
-
-1. **Save the note** into `notes/client-export-feature.md`.
-2. **Right-click** the file in VS Code → `Run Workflow → "New Feature: Idea → Production"`.
-3. The extension runs a pipeline:
-   - `requirements-analysis.prompt.md` → Produces a structured spec
-   - `system-design.prompt.md` → Suggests architecture, endpoints, data flows
-   - `code-implementation.prompt.md` → Generates or edits code in `src/`
-   - `test-generation.prompt.md` → Adds unit + integration tests
-   - `documentation.prompt.md` → Updates user + API docs
-4. You review diffs, run tests, and adjust as needed.
-
-You’re still in control—but the **heavy lifting is automated by a designed prompt system**, not ad-hoc chat.
-
----
-
-## Prompt Design as the New API Design
-
-Traditional APIs define *how* systems talk to each other.
-
-Prompt designs define *how humans, agents, and tools collaborate*.
-
-With a VS Code extension orchestrating this, you can treat prompt design like:
-
-- **Interfaces**: Each prompt defines a contract—inputs, outputs, and expectations.
-- **Modules**: Prompts are composable building blocks in a workflow.
-- **Policies**: Prompts encode governance—security rules, coding standards, documentation requirements.
-
-For BASH Consultants, this becomes a **repeatable consulting operating system**:
-
-- Every engagement starts from the same **prompt toolkit**.
-- Workflows ensure that **requirements → design → code → tests → docs → refactor → debug** form a closed loop.
-- The VS Code extension becomes the **control plane** where these flows are orchestrated.
-
----
-
-## Why VS Code Is the Right Home
-
-VS Code sits at the intersection of:
-
-- **Your code** (full workspace access)
-- **Your tools** (git, linters, build systems)
-- **Your context** (open files, selections, terminals)
-
-Embedding agentic prompt workflows here means:
-
-- Agents can **read and write real files** instead of hallucinating structure.
-- Workflows can **run tests, formatters, and linters** automatically.
-- Consultants can **codify their craft** as prompts and workflows, share them via git, and evolve them over time.
-
-Instead of a separate “AI website” you occasionally visit, you get **AI-native development flows** built directly into your daily environment.
-
----
-
-## Beyond One Agent: A Team of Specialists
-
-The real leap forward is moving from **one big model that does everything** to a **team of specialist agents**, each driven by a focused prompt design.
-
-For example:
-
-- `RequirementsAgent` → uses `requirements-analysis.prompt.md`
-- `DesignAgent` → uses `system-design.prompt.md`
-- `ImplementationAgent` → uses `code-implementation.prompt.md`
-- `TestAgent` → uses `test-generation.prompt.md`
-- `DocsAgent` → uses `documentation.prompt.md`
-- `RefactorAgent` → uses `code-refactoring.prompt.md`
-- `DebugAgent` → uses `debugging.prompt.md`
-
-The extension coordinates them:
-
-1. Passes outputs from one agent into the next
-2. Manages shared context (files, specs, decisions)
-3. Surfaces results in editor tabs, diffs, and panels
-4. Lets you pause, edit, or override at any step
-
-This is **software development as orchestration**, with prompt designs as the interfaces between specialists.
-
----
-
-## Designing Your Own Workflows
-
-The most powerful part: you aren’t locked into predefined flows.
-
-As a BASH Consultant, you can:
-
-- Author new `.prompt.md` files that encode your patterns
-- Define YAML/JSON workflows that string them together
-- Version them in git and share them across clients or teams
-- Evolve them based on retrospectives and outcomes
-
-Over time, your **prompt library** becomes an asset as valuable as any framework or internal tool:
-
-- A reusable **playbook** for how you solve problems
-- A way to **onboard juniors** into your way of working
-- A differentiator in how fast and reliably you deliver
-
----
-
-## The Future: From Projects to Continuous Intelligence
-
-Once this extension and workflow system is in place, it doesn’t stop at greenfield features.
-
-You can run workflows that:
-
-- Periodically scan the codebase for **refactoring opportunities**
-- Audit for **security issues** based on new threat intel
-- Keep **documentation in sync** with reality
-- Propose **architecture improvements** as the system grows
-- Summarize **changelogs and release notes** from commits and PRs
-
-Instead of treating AI as a one-off copilot, you turn it into a **continuous intelligence layer** that lives alongside your code, powered by prompt designs you control.
-
----
-
-## Conclusion: Prompt Engineering Becomes System Design
-
-A VS Code extension that orchestrates agentic prompt workflows is more than a productivity hack. It’s a **new abstraction layer** for software development:
-
-- Prompts are no longer just clever questions—they are **designed contracts**.
-- Agents are no longer just chatbots—they are **specialized services**.
-- Workflows are no longer just scripts—they are **intelligent pipelines**.
-
-For BASH Consultants, this is the natural evolution:
-
-- From typing commands in a shell
-- To crafting prompts in a chat
-- To designing **prompt-driven systems** that run inside the tools where real work happens.
-
-The future of development isn’t just *AI that writes code*.
-
-It’s **AI that respects your design, follows your workflows, and turns your prompts into a programmable, repeatable, and auditable command surface for your entire software lifecycle**—right inside VS Code.
-
-*Want to build workflows like these into your own stack? See how we [approach development work](/services/dev/) — or [start a conversation](/contact/).*
+If you want to build workflows like these into your own stack — or just want a second opinion on where AI actually saves your team time versus where it adds risk — see our [[AI solutions and intelligent automation]] work.

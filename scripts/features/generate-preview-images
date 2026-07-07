@@ -651,20 +651,36 @@ generate_image_stability() {
     local output_file="$2"
     
     debug "Generating image with Stability AI..."
-    
+
+    # Pass the API key via a curl config file (mode 600), never on the command
+    # line — command-line arguments are visible to every process on the host.
+    local auth_config payload_file
+    auth_config=$(mktemp)
+    payload_file=$(mktemp)
+    TEMP_FILES+=("$auth_config" "$payload_file")
+    chmod 600 "$auth_config" "$payload_file"
+    printf 'header = "Authorization: Bearer %s"\n' "$STABILITY_API_KEY" > "$auth_config"
+    jq -n --arg prompt "$prompt" '{
+        text_prompts: [{text: $prompt}],
+        cfg_scale: 7,
+        height: 1024,
+        width: 1024,
+        samples: 1,
+        steps: 30
+    }' > "$payload_file"
+
     local response
     response=$(curl -s -X POST "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image" \
-        -H "Authorization: Bearer $STABILITY_API_KEY" \
+        --config "$auth_config" \
         -H "Content-Type: application/json" \
-        -d "{
-            \"text_prompts\": [{\"text\": $(echo "$prompt" | jq -Rs .)}],
-            \"cfg_scale\": 7,
-            \"height\": 1024,
-            \"width\": 1024,
-            \"samples\": 1,
-            \"steps\": 30
-        }")
-    
+        --data-binary "@$payload_file")
+    local curl_status=$?
+    rm -f "$auth_config" "$payload_file"
+    if [[ $curl_status -ne 0 ]]; then
+        warn "Stability API request failed (curl exit $curl_status)"
+        return 1
+    fi
+
     # Check for errors
     local error_msg
     error_msg=$(echo "$response" | jq -r '.message // empty')

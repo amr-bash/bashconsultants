@@ -4,7 +4,9 @@ source "https://rubygems.org"
 
 gem 'github-pages'
 
-gem 'jekyll-theme-zer0', '~> 0.22.10'
+# Pinned to match remote_theme bamr87/zer0-mistakes@v1.26.0 in _config.yml —
+# keep the two pins in lockstep and test the Azure stack before bumping either.
+gem 'jekyll-theme-zer0', '~> 1.26.0'
 
 group :jekyll_plugins do
   # Keep other plugins, but omit jekyll-remote-theme for Azure
@@ -12,6 +14,8 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap' , "~> 1.4.0"
   gem 'jekyll-seo-tag', "~> 2.8.0"
   gem 'jekyll-paginate', '~> 1.1'
+  # Theme layouts (v1.x) use {% include_cached %} — required, not optional
+  gem 'jekyll-include-cache', '~> 0.2'
 end
 
 # Docker support

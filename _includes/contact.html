@@ -1,56 +1,36 @@
-<div class="container ">
-    <h2>Contact Form</h2>
-    <p class="lead">We'd love to hear from you! Please fill out the form below and we'll get back to you shortly.</p>
-  
-    <div class="row">
-      <div >
-  
-        <!-- Alert placeholders (hidden by default) -->
-        <div id="successAlert" class="alert alert-success d-none" role="alert">
-          Your message has been sent successfully!
-        </div>
-        <div id="errorAlert" class="alert alert-danger d-none" role="alert">
-          Something went wrong. Please try again or contact us directly.
-        </div>
-  
-        <!-- Contact Form -->
-        <form id="contact-form" novalidate>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input 
-              type="text" 
-              class="form-control" 
-              id="name" 
-              name="name"
-              required
-            >
-          </div>
-  
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input 
-              type="email" 
-              class="form-control" 
-              id="email" 
-              name="email"
-              required
-            >
-          </div>
-  
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea 
-              class="form-control"
-              id="message"
-              name="message"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-  
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
+{%- comment -%}
+  Contact form include — used on /contact/ (contact.md).
+  Posts to site.forms.contact_endpoint (_config.yml) when configured, e.g. a
+  Formspree form URL or the SWA /api/contact function. When the endpoint is
+  empty, falls back to a pre-addressed mailto: button so the CTA always works.
+{%- endcomment -%}
+{%- assign info = site.data.entity.info -%}
+{%- assign contact_endpoint = site.forms.contact_endpoint | default: '' -%}
+<div class="container my-4">
+  <h2>Send us a message</h2>
+  {% if contact_endpoint != '' %}
+  <p class="lead">Tell us a little about your systems and what's slowing you down. We reply within one business day.</p>
+  <form id="contact-form" method="post" action="{{ contact_endpoint }}" accept-charset="UTF-8">
+    <div class="mb-3">
+      <label for="contact-name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="contact-name" name="name" autocomplete="name" required>
     </div>
+    <div class="mb-3">
+      <label for="contact-email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="contact-email" name="email" autocomplete="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="contact-message" class="form-label">Message</label>
+      <textarea class="form-control" id="contact-message" name="message" rows="5" required></textarea>
+    </div>
+    <input type="hidden" name="_subject" value="Consultation request from bashconsultants.com">
+    <button type="submit" class="btn btn-primary btn-lg">Send message</button>
+  </form>
+  {% else %}
+  <p class="lead">The quickest way to reach us is email — the button below opens a message already addressed to us. Tell us a little about your systems and what's slowing you down, and we'll reply within one business day.</p>
+  <div class="d-grid gap-2 d-sm-flex">
+    <a class="btn btn-primary btn-lg" href="mailto:{{ info.contact-email }}?subject=Consultation%20request">Email {{ info.contact-email }}</a>
   </div>
-  
+  <p class="mt-3 text-body-secondary">Prefer to talk? Call <a href="tel:+1{{ info.contact-phone | remove: '-' }}">{{ info.contact-phone }}</a>.</p>
+  {% endif %}
+</div>
