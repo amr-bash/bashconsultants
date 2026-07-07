@@ -33,6 +33,7 @@ Platform transformation: activated the site's dormant AI capabilities, wired the
 - **`content_statistics_generator.rb`** made Jekyll-3/4 compatible (Azure stack was crashing on `Theme#root_dir`).
 
 ### Removed
+- **Azure Static Web Apps deploy workflow** — retired `.github/workflows/azure-static-web-apps-proud-pond-06dc10c1e.yml`. It was failing the CI gate independently of any change (its deployment token is unset, and its Oryx build can't run `bundle`), while GitHub Pages is the primary and working deploy target. The Azure *build* is still validated by `build-validate.yml` (`Gemfile.azure` + `_config.azure.yml`), and `staticwebapp.config.json` / `api/` remain for a future reconfiguration if Azure hosting is revived.
 - **Stale artifacts** — the drifted `scripts/lib/preview_generator.py`, clipboard-era `scripts/{vscode-integration.sh,demo-docs-generation.js,test-docs-prompt.js}`, the broken `Rakefile`, and the stale Algolia config block; rewrote the root `README.md` from stale marketing copy (wrong `bash-365.com` contact, 3-of-8 services) into a repo-facing developer doc.
 
 ## [1.5.0] - 2026-06-21
