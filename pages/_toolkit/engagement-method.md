@@ -1,7 +1,7 @@
 ---
 title: "The BASH engagement method"
-sub-title: "How a BASH consultant runs an engagement — discovery to knowledge transfer — without becoming the dependency"
-description: The BASH IT consulting engagement method end to end — discovery, target-state architecture, phased thin-slice delivery, and knowledge transfer
+sub-title: "The mission, the principles we adapt, and the full delivery lifecycle — run so the client ends up self-sufficient"
+description: The BASH engagement method and the people-first principles behind it — discovery, target-state architecture, phased delivery, and knowledge transfer
 excerpt: The full BASH delivery lifecycle — discovery, architecture, phased thin-slice delivery, and knowledge transfer — shaped by a deterministic-first, AI-overlay doctrine.
 author: "Amr Abdel-Motaleb"
 layout: default
@@ -21,6 +21,8 @@ keywords:
   - knowledge transfer consulting
   - build vs buy decision
   - project estimation in ranges
+  - people over profits IT consulting
+  - IT principles adapted for small business
 lastmod: 2026-07-07T12:00:00.000Z
 mermaid: true
 sidebar:
@@ -33,6 +35,34 @@ A methodology is not a document you hand a client. It is the set of default move
 The method exists to serve one hard constraint that most consulting frameworks ignore: our client is a small or medium business, not an enterprise with a program-management office and a bench of internal engineers. There is no one on the other side to absorb a 200-page requirements binder or to maintain a bespoke platform after we leave. So every phase is built to produce something the client can operate, audit, and own — and to work the firm out of a job. The goal of the engagement is a system that outlives the engagement.
 
 Two doctrines shape every phase and are worth reading alongside this guide. [[The deterministic-first doctrine]] explains why we build auditable, scriptable foundations before we reach for a model — the discovery, architecture, and cutover choices below all fall out of it. [[Running an AI-native consulting practice]] explains how we use AI internally to move faster without letting it become the thing that breaks at 2 a.m. This method is where both meet the client.
+
+## Mission: people over profits
+
+The method exists to correct a specific unfairness. The systems that decide whether a business thrives — real accounting, integrated operations, resilient infrastructure, defensible security — were built for enterprises and priced, staffed, and gatekept accordingly. The small and medium businesses that employ most people and hold up most communities are left to make do with spreadsheets and hope, or to sign a lock-in contract they cannot read and cannot leave. Everything below is what it looks like to refuse that trade.
+
+People over profits is not a slogan here; it is a set of decisions that cost us money on purpose.
+
+- **We measure success by the client's independence, not by how long they need us.** The engagement ends with a client who can run and evolve the system without us — the opposite of a business model that depends on customers never learning.
+- **We refuse manufactured dependency.** Accounts, domains, data, and code are registered to and owned by the client. There is no proprietary corner engineered to force a call back to us. If the honest answer to "what happens if BASH disappears" is "the client is fine," we did it right.
+- **We build what the client can inspect and own.** This is the same conviction behind the founder's open-education work at [it-journey.dev](https://it-journey.dev/about/): technology should be learnable and ownable by anyone curious enough to try, and a tool you cannot inspect is a tool you cannot truly own. It is why every deliverable is auditable, documented, and handed over rather than hidden.
+- **We meet the business where it is.** A three-person firm and a 150-person distributor get the same respect and the same honesty, sized to their reality — not an enterprise pattern imposed because it is what the last engagement happened to use.
+
+None of this is charity. A partner who increases a client's self-sufficiency earns trust, referrals, and the kind of long relationship a client chooses rather than one they are trapped in. Doing right by the people is the durable business, not a tax on it. That is the mission the rest of this method serves.
+
+## The principles we adapt
+
+BASH does not invent methodology from scratch. It adapts a small set of well-worn engineering and learning principles — many of them articulated in the open at [it-journey.dev](https://it-journey.dev/about/) — and bends each one to the reality of a small business that has no program-management office and no bench of engineers to absorb complexity. The adaptation is the whole point: the same principle looks different when the client has to own the result.
+
+- **Design for failure (DFF).** Assume the migration will surface data nobody admitted was dirty, the integration will break, and the go-live will find a workflow the operators quietly reject. So the riskiest slice goes first, where failure is cheap, and rollback plans and reconciliation checks are defaults, not afterthoughts. The small-business adaptation is that failure has to be recoverable by the client, not only by us.
+- **Keep it simple (KIS).** Clarity over cleverness, every time. The boring, inspectable solution a client can operate beats the elegant one only we understand — which is why buy-or-integrate is the default and custom code is a liability chosen deliberately. Simplicity is measured by what the client can maintain after we leave, not by what impresses another engineer.
+- **Don't repeat yourself (DRY), applied where it belongs.** One system of record per entity, scripted and versioned pipelines instead of copy-paste, configuration over duplication. The deliberate exception is people: we repeat training on purpose, because repetition is how competence is built. DRY governs the architecture, never the teaching.
+- **Release early and often (REnO).** Thin vertical slices put working software in front of the people who will use it early and continuously, so trust is built on results and mistakes are caught while they are cheap. For an SMB, "release" means into the hands of the operators, not into a demo environment they never touch.
+- **Minimum viable product (MVP).** Build the smallest slice that delivers real value, then iterate. Here the discipline cuts the opposite way from enterprise habit: the risk is rarely shipping too little — it is gold-plating a system the client cannot afford to maintain.
+- **Collaboration and open source (COLAB).** Prefer open, portable, standards-based tools; keep the client's data and code in a repository they own; favor shared review over lone-genius work. Open where possible is both an engineering choice and an ownership choice, and it is what makes the handoff real.
+- **AI-powered development (AIPD).** Artificial intelligence (AI) is a collaborator, not an oracle — confidently wrong often enough that blind trust is a liability. We use it to move faster internally and in delivery, always behind human review and a deterministic gate. The full treatment lives in [[The deterministic-first doctrine]] and [[Running an AI-native consulting practice]].
+- **Start where you are; progress over perfection.** Discovery meets a client at their actual maturity — the surviving, stable, and scaling ladder in [[The small-business IT foundation]] — and the goal is to move them one solid rung, not to impose a target sized for an enterprise. Improvement is the permanent state, not a finish line, which is the same posture behind a phased [[Building a 12-month IT roadmap]].
+
+Read together, these are not wall posters; they are the reasons the phases below take the shape they do. A method that produces systems a small business can own has to rest on principles that put the person living with the result first.
 
 ## The shape of an engagement
 
