@@ -13,7 +13,15 @@ services:
 
     volumes:
       - ./:/app
-      - ../zer0-mistakes:/zer0-mistakes:ro
+      # Theme mount: the Gemfile points jekyll-theme-zer0 at /zer0-mistakes inside
+      # the container, so the host checkout must be mounted there. The host path is
+      # configurable via ZER0_MISTAKES_PATH because git worktrees change the relative
+      # location — from a worktree under .claude/worktrees/<name>/, "../zer0-mistakes"
+      # resolves to the wrong place. Point it at the real checkout instead:
+      #   ZER0_MISTAKES_PATH=/Users/you/github/zer0-mistakes docker-compose up
+      # or put ZER0_MISTAKES_PATH=... in a .env file next to this compose file.
+      # Default (../zer0-mistakes) matches a sibling checkout of the theme repo.
+      - "${ZER0_MISTAKES_PATH:-../zer0-mistakes}:/zer0-mistakes:ro"
       - bundle_cache:/usr/local/bundle
     ports:
       - "4042:4042"

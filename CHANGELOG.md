@@ -6,6 +6,30 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+Platform transformation: activated the site's dormant AI capabilities, wired the dead conversion paths, added CI quality gates, and expanded the content and services catalog.
+
+### Added
+- **Two new service pages** — `pages/_services/ai.md` (`/services/ai/`) and `pages/_services/managed-it.md` (`/services/managed-it/`), completing the eight-service catalog; the flagship AI offering previously existed only as a hub section with the landing card mis-linked to `/services/dev/`.
+- **Case studies collection** — `pages/_case_studies/` (six anonymized engagement snapshots + index), registered in `_config.yml`, surfaced in the landing proof band.
+- **`/tools/` and `/ai-operations/`** — root pages presenting the firm's own AI toolchain (prompt playbook, VS Code orchestrator, image pipeline, governance stack) as client-relevant proof, with `_data/playbook.yml` auto-generated from the prompt/instruction files by `scripts/generate_playbook_data.py`.
+- **Four pillar posts** (2026-07-06) — an SMB AI acceptable-use policy, cyber-insurance renewal questions, MCP for the back office, and the AI audit trail for finance; plus the promoted `bashos` post from `drafts/`.
+- **AI chat proxy** — `api/` Azure Functions app implementing the theme's chat-proxy contract (server-held Anthropic key, model pinned server-side, per-IP rate limiting keyed on the trusted proxy hop, body-size and token caps); `staticwebapp.config.json` pins the managed-functions runtime to Node 20.
+- **CI and automation** — `.github/workflows/build-validate.yml` (builds both production stacks + content lint on every push/PR), `site-health.yml` (nightly), and `content-gardener.yml` (weekly draft PRs); `scripts/content_lint.py` mechanically enforces the editorial contract.
+- **AI-search layer** — `/llms.txt`, site-wide + per-type JSON-LD (Article/Service) in `_includes/structured-data.html`, and a wired `/search/` page over `search.json`.
+- **`_data/taxonomy.yml`**, `docs/preview-images.md`, `docs/automation.md`, and `.devcontainer/` — codified the section voice profiles, preview-image and automation runbooks, and a container dev environment.
+
+### Changed
+- **Landing page** rebuilt as data-driven sections (`_layouts/landing.html` + `index.md` frontmatter + `_data/entity/*.yml`): hero, eight service cards, six industry pain-point cards, process, an "AI-augmented practice" section, proof band, and FAQ; removed the Thrasymachus epigraph.
+- **Conversion forms wired** — the contact and newsletter forms now POST to config-driven endpoints (`site.forms.*`) with graceful `mailto:` fallbacks; previously both had no handler.
+- **Theme pinned** — `remote_theme` pinned to `bamr87/zer0-mistakes@v1.26.0` and `Gemfile.azure` raised to the matching `~> 1.26.0` (with `jekyll-include-cache`); a registered `aqua` skin replaces the invalid `dark` value; `theme_color` hex values quoted so they stop parsing as null.
+- **Editorial debt burn-down** — sentence-cased service-page titles, removed unbacked "robust/seamless/scalable", stripped trailing periods from service descriptions, retitled the ERP section off its self-labeling name, and realigned `article-review.prompt.md` and the reviewer agent to the house rules they enforce.
+- **`content_statistics_generator.rb`** made Jekyll-3/4 compatible (Azure stack was crashing on `Theme#root_dir`).
+
+### Removed
+- **Stale artifacts** — the drifted `scripts/lib/preview_generator.py`, clipboard-era `scripts/{vscode-integration.sh,demo-docs-generation.js,test-docs-prompt.js}`, the broken `Rakefile`, and the stale Algolia config block; rewrote the root `README.md` from stale marketing copy (wrong `bash-365.com` contact, 3-of-8 services) into a repo-facing developer doc.
+
+## [1.5.0] - 2026-06-21
+
 ### Added
 - **`pages/_posts/muses/2025-01-24-bash-consulting-breaking.md`** — New satirical press-release post ("If a press release about ethical capitalism wrote itself") covering ESG accounting for Denver SMBs; includes a straight practical section on what's buildable on QuickBooks today.
 - **`.github/prompts/article-write.prompt.md`** — New `/article-write` agent prompt for drafting new bashconsultants.com posts end-to-end.

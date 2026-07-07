@@ -4,7 +4,7 @@ description: "Turn one-off AI prompts into repeatable, reviewable workflows insi
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2025-11-19T09:00:00.000Z
-lastmod: 2026-06-21T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 draft: false
 categories: [tech, ai]
 tags: [prompt-engineering, ai, vscode, agents, automation]
@@ -85,4 +85,4 @@ The shift here is the same one the command line went through decades ago: from t
 
 ## Next step
 
-If you want to build workflows like these into your own stack — or just want a second opinion on where AI actually saves your team time versus where it adds risk — see how we [approach development and automation work](/services/dev/).
+If you want to build workflows like these into your own stack — or just want a second opinion on where AI actually saves your team time versus where it adds risk — see how we [approach AI consulting for small business](/services/ai/).

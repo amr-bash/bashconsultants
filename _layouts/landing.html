@@ -1,230 +1,155 @@
 ---
 layout: root
 ---
+{%- comment -%}
+  Landing page layout — data-driven marketing page.
+  Copy lives in index.md frontmatter (hero_tagline, industries, process,
+  ai_practice, stats, faq_items) and _data/entity/{info,services}.yml.
+  This layout only loops and renders. Form endpoints come from site.forms.*
+  in _config.yml; when empty, forms fall back to mailto: flows.
+{%- endcomment -%}
 
-  <!-- Left Sidebar for Outline - Offcanvas -->
-  <!-- _includes/navigation/sidebar-left.html  -->
-  <div class="offcanvas">
-    {% include navigation/sidebar-left.html %}
-  </div>
-  
-  <div class="container pt-5">
+<!-- Left sidebar for outline — offcanvas (_includes/navigation/sidebar-left.html) -->
+<div class="offcanvas">
+  {% include navigation/sidebar-left.html %}
+</div>
 
-    <!-- particles.js -->
-    <div id="particles-js" class="container z-n1 position-absolute"></div>
+<!-- particles.js background (theme ships /assets/js/particles*.js + /assets/particles.json) -->
+<div id="particles-js" class="container z-n1 position-absolute"></div>
 
-    <!-- Schema.org structured data (Organization + FAQ) for AI engines & search -->
-    {% include structured-data.html %}
+<!-- Schema.org structured data (Organization) for AI engines & search -->
+{% include structured-data.html %}
 
-    <!-- Centered Intro - Logo and Site Description -->
-    <div class="container px-4 py-5">
-      <div class="text-center">
-        <img class="d-block mx-auto mb-4" src="{{site.logo}}" alt="" width="72" height="57">
-        <h1 class="display-5 fw-bold text-body-emphasis">{{ site.title }}</h1>
-        <div class="col-lg-8 mx-auto">
-          <p class="lead mb-2">{{ site.description }}</p>
-          <p class="text-body-secondary mb-4">Denver-based IT consulting that brings enterprise-grade cloud, ERP, and accounting systems within reach of small and medium-sized businesses.</p>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="/contact" class="btn btn-primary btn-lg px-4">Book a free consultation</a>
-            <a href="/about" class="btn btn-outline-secondary btn-lg px-4">Learn More</a>
-          </div>
-        </div>
+{% assign info = site.data.entity.info %}
+
+<!-- Hero -->
+<header class="container px-4 py-5">
+  <div class="text-center">
+    <img class="d-block mx-auto mb-4" src="{{ site.logo }}" alt="BASH Consulting logo" width="72" height="57">
+    <p class="text-uppercase fw-semibold text-primary mb-2">{{ info.name }} &mdash; {{ info.subtitle }}</p>
+    <h1 class="display-5 fw-bold text-body-emphasis">{{ page.title }}</h1>
+    <div class="col-lg-8 mx-auto">
+      <p class="lead mb-2">{{ page.sub-title }}</p>
+      <p class="text-body-secondary mb-4">{{ page.hero_tagline }}</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="/contact/" class="btn btn-primary btn-lg px-4">Book a free consultation</a>
+        <a href="/services/" class="btn btn-outline-secondary btn-lg px-4">Explore our services</a>
       </div>
     </div>
   </div>
-<!-- Page Title, Entity Info, and mission -->
-
-    <div class=" border-bottom">
-      <h2 class="text-center fs-6 text-uppercase">{{ page.title }}</h2>
-      <div class="col-lg-10 mx-auto">
-        <p class="lead fs-1 mb-4 text-center text-monospace text-body-emphasis">{{site.data.entity.info.goal}}</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-          <a href="/contact" class="btn btn-outline-primary btn-lg px-4">Contact Us</a>
-        </div>
-      </div>
-      <div class="overflow-hidden" style="max-height: 60vh;">
-        <div class="container px-5 text-center">
-          <img src="/assets/images/cloud-computing-2001090.jpg" class="img-fluid just border rounded-3 shadow-lg mb-4" alt="Logo" width="700" height="500" loading="lazy">
-        </div>
-      </div>
-    </div>
-
-<!-- About Intro -->
-
-    <div class="container col-xxl-12 px-4 py-5 border-bottom">
-      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-              <img src="/assets/brand/business-logo2x.png" class="d-block mx-auto img-fluid text-center" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-            </div>
-        <div class="col-lg-6">
-          <p class="label">About</p>
-          <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">What does BASH Consulting do?</h2>
-          <p class="lead">{{ site.data.entity.info.about-company }}</p>
-          <p class="lead">{{ site.data.entity.info.about-company-2 }}</p>
-          <p class="lead">{{ site.data.entity.info.about-company-3 }}</p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a href="/contact" class="btn btn-outline-secondary btn-lg px-4">Connect with us</a>
-         </div>
-        </div>
-      </div>
-    </div>
-
-<!-- Founder Intro -->
-
-    <div class="container col-xxl-12 px-4 py-5">
-      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-
-        <div class="col-lg-6">
-          <p class="label">"Team"</p>
-          <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Amr</h2>
-          <p class="label">Solution Architect</p>
-          <p class="lead">{{ site.data.entity.info.about-founder-purpose }}</p>
-          <p class="lead">{{ site.data.entity.info.about-founder-location }}</p>
-          <p class="lead">{{ site.data.entity.info.about-founder-personal }}</p>
-        </div>
-        <div class="col-10 col-sm-8 col-lg-6 mx-auto">
-          <img src="/assets/images/Amr-Headshot_v3.jpg" class="d-block mx-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-        </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          {% assign linkedin_link = site.links | where: "label", "LinkedIn" | first %}
-          <a href="{{ linkedin_link.url }}" class="btn btn-outline-secondary btn-lg px-4">LinkedIn</a>
-          {% assign github_link = site.links | where: "label", "Github" | first %}
-          <a href="{{ github_link.url }}" class="btn btn-outline-secondary btn-lg px-4">Github</a>
-        </div>
-      </div>
-    </div>
+</header>
 
 <!-- Services -->
-
-{% for service in site.data.entity.services %}
-<div class="container-xl my-5">
-  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-    <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
-      <h2 class="display-4 fw-bold lh-1 text-body-emphasis">{{ service.title }}</h2>
-      <p class="lead">{{ service.description }}</p>
-      <ul>
-        {% for sys in service.systems %}
-        <li>{{ sys }}</li>
-        {% endfor %}
-      </ul>
-      <ul>
-        {% for item in service.service %}
-        <li>{{ item }}</li>
-        {% endfor %}
-      </ul>
+<section class="container px-4 py-5 border-top" id="services">
+  <h2 class="display-6 fw-bold text-body-emphasis mb-2">What we do</h2>
+  <p class="lead col-lg-8 mb-4">Eight service areas that cover the technology a growing business runs on. Most engagements combine two or three.</p>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+    {% for service in site.data.entity.services %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ service.image }}" class="card-img-top object-fit-cover" style="height: 140px;" alt="{{ service.title }}" loading="lazy">
+        <div class="card-body d-flex flex-column">
+          <h3 class="fs-5 fw-bold card-title">
+            <a href="{{ service.url }}" class="stretched-link text-decoration-none text-body-emphasis">{{ service.title }}</a>
+          </h3>
+          <p class="card-text small">{{ service.description }}</p>
+          <p class="card-text small text-body-secondary mt-auto mb-0">{{ service.systems | join: " &middot; " }}</p>
+        </div>
+      </div>
     </div>
-    <div class="container col-lg-6 p-0 overflow-hidden shadow-lg">
-      <img class="rounded-lg-3" src="{{ service.image }}" alt="" width="720">
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Industry pain points -->
+<section class="container px-4 py-5 border-top" id="industries">
+  <h2 class="display-6 fw-bold text-body-emphasis mb-2">Problems we solve, by industry</h2>
+  <p class="lead col-lg-8 mb-4">If one of these sounds like your week, that's usually where an engagement starts.</p>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for industry in page.industries %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h3 class="fs-5 fw-bold card-title">{{ industry.name }}</h3>
+          <p class="card-text">{{ industry.pain }}</p>
+          <a href="{{ industry.url }}" class="mt-auto icon-link">{{ industry.link_label }}</a>
+        </div>
+      </div>
     </div>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-center py-3">
-      <a href="{{ service.url }}" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">More Info</a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Process -->
+<section class="container px-4 py-5 border-top" id="process">
+  <h2 class="display-6 fw-bold text-body-emphasis mb-2">How we work</h2>
+  <p class="lead col-lg-8 mb-4">Every engagement follows the same four-step arc, scaled to the size of the project.</p>
+  <div class="row g-4">
+    {% for step in page.process %}
+    <div class="col-md-6 col-lg-3">
+      <p class="display-6 fw-bold text-primary mb-1">{{ forloop.index }}</p>
+      <h3 class="fs-5 fw-bold">{{ step.title }}</h3>
+      <p class="text-body-secondary">{{ step.text }}</p>
     </div>
+    {% endfor %}
   </div>
-</div>
-{% endfor %}
+</section>
 
-<!-- Definitions / What is BASH -->
-<div class="container col-xxl-10 px-4 py-5 border-bottom">
-  <h2 class="display-6 fw-bold text-body-emphasis mb-2">What is BASH Consulting?</h2>
-  <p class="lead mb-4">Plain-language definitions of the terms and services we work with. Getting these foundations right is <strong>essential</strong>, because the wrong architecture can <strong>significantly</strong> raise cost and slow a small business down.</p>
-  <dl class="row">
-    <dt class="col-sm-3">BASH</dt>
-    <dd class="col-sm-9">BASH refers to <strong>Bourne Again Solutions</strong> — a Denver-based IT consulting practice that helps small and medium-sized businesses adopt enterprise-grade technology cost-effectively.</dd>
-
-    <dt class="col-sm-3">Cloud Architecture</dt>
-    <dd class="col-sm-9">Cloud architecture refers to the design and implementation of computing infrastructure on shared, on-demand data centers (AWS, GCP, Azure) instead of buying and maintaining your own hardware — giving small businesses enterprise capacity with no large up-front capital investment.</dd>
-
-    <dt class="col-sm-3">IaaS &amp; SaaS</dt>
-    <dd class="col-sm-9">Infrastructure as a Service (IaaS) refers to renting the underlying servers, storage, and networking on demand. Software as a Service (SaaS) means that ready-to-use applications are delivered over the internet. We help businesses move from owned hardware to both models.</dd>
-
-    <dt class="col-sm-3">ERP</dt>
-    <dd class="col-sm-9">An Enterprise Resource Planning (ERP) system is defined as the central software that runs a company's core operations — finance, inventory, manufacturing, and supply chain — in one integrated platform. We implement and support systems such as QAD, Infor, and Oracle.</dd>
-
-    <dt class="col-sm-3">AIS</dt>
-    <dd class="col-sm-9">An Accounting Information System (AIS) refers to the financial backbone that records, processes, and reports a business's transactions. We design, integrate, and support these systems — from QuickBooks to enterprise data warehouses and Excel financial models.</dd>
-  </dl>
-</div>
-
-<!-- How it works / process -->
-<div class="container col-xxl-10 px-4 py-5 border-bottom">
-  <h2 class="display-6 fw-bold text-body-emphasis mb-2">How does it work?</h2>
-  <p class="lead mb-4">A straightforward, four-step engagement designed to fit how small businesses operate.</p>
-  <ol class="fs-5">
-    <li class="mb-3"><strong>Step 1 — Discovery consultation.</strong> We start with a free conversation to understand your business, current systems, and goals — no jargon, no obligation.</li>
-    <li class="mb-3"><strong>Step 2 — Assessment &amp; architecture.</strong> We map your existing tools and design a cost-effective solution, whether that's a cloud migration, an ERP rollout, or an upgraded accounting system.</li>
-    <li class="mb-3"><strong>Step 3 — Implementation &amp; integration.</strong> We build, configure, and integrate the solution — connecting cloud infrastructure, applications, and accounting systems so your data flows in one place.</li>
-    <li class="mb-3"><strong>Step 4 — Training &amp; support.</strong> We train your team and provide ongoing support, transferring the knowledge so your people can run and grow the system themselves.</li>
-  </ol>
-
-  <p class="lead mt-4 mb-2">Before your first call, it helps to have a few things ready:</p>
-  <ol class="fs-6">
-    <li>A short description of your current systems — cloud, ERP, accounting, or spreadsheets.</li>
-    <li>The one or two problems that matter most to you right now.</li>
-    <li>Any compliance or reporting requirements you must meet.</li>
-    <li>A rough sense of timeline and who on your team will be involved.</li>
-  </ol>
-
-  <p class="lead mt-4 mb-2">Every engagement follows the same three principles — preparing well up front <strong>significantly</strong> improves the outcome:</p>
-  <ol class="fs-6">
-    <li><strong>Empower</strong> — we give your team the right tools for the job.</li>
-    <li><strong>Educate</strong> — we transfer the knowledge and skills to use them.</li>
-    <li><strong>Engage</strong> — we stay involved so the solution actually sticks.</li>
-  </ol>
-</div>
-
-<!-- Comparison table -->
-<div class="container col-xxl-10 px-4 py-5 border-bottom">
-  <h2 class="display-6 fw-bold text-body-emphasis mb-2">Why choose BASH Consulting?</h2>
-  <p class="lead mb-4">How an independent, enterprise-experienced consultant compares to the alternatives.</p>
-  <div class="table-responsive">
-    <table class="table table-striped align-middle">
-      <thead>
-        <tr>
-          <th scope="col">What matters</th>
-          <th scope="col">Large IT firm</th>
-          <th scope="col">In-house hire</th>
-          <th scope="col" class="text-body-emphasis">BASH Consulting</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><th scope="row">Cost</th><td>High retainers &amp; overhead</td><td>Full-time salary + benefits</td><td>Cost-effective, project-based</td></tr>
-        <tr><th scope="row">Enterprise expertise</th><td>Yes</td><td>Varies by hire</td><td>10+ years across QAD, Infor, Oracle, AWS, GCP, Azure</td></tr>
-        <tr><th scope="row">Small-business focus</th><td>Rarely the priority</td><td>Yes</td><td>Our entire focus</td></tr>
-        <tr><th scope="row">Breadth</th><td>Siloed teams</td><td>Single skill set</td><td>Cloud, ERP &amp; accounting under one roof</td></tr>
-        <tr><th scope="row">Flexibility</th><td>Fixed contracts</td><td>Fixed headcount</td><td>Scale engagement up or down as needed</td></tr>
-      </tbody>
-    </table>
+<!-- An AI-augmented practice -->
+{% if page.ai_practice %}
+<section class="container px-4 py-5 border-top" id="ai-practice">
+  <div class="col-lg-8">
+    <h2 class="display-6 fw-bold text-body-emphasis mb-2">{{ page.ai_practice.title }}</h2>
+    <p class="lead">{{ page.ai_practice.lead }}</p>
+    <p>{{ page.ai_practice.body }}</p>
+    <ul class="list-unstyled d-flex flex-column flex-sm-row gap-3 mb-0">
+      {% for link in page.ai_practice.links %}
+      <li><a href="{{ link.url }}" class="icon-link">{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
   </div>
+</section>
+{% endif %}
 
-  <h3 class="fs-4 fw-bold text-body-emphasis mt-5 mb-2">Which cloud platform is right for you?</h3>
-  <p class="mb-3">Choosing the right foundation <strong>significantly</strong> affects cost, speed, and how easily your systems grow. Here is how the three providers we support compare at a glance.</p>
-  <div class="table-responsive">
-    <table class="table table-striped align-middle">
-      <thead><tr><th scope="col">Platform</th><th scope="col">Best known for</th><th scope="col">A good fit when…</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">AWS</th><td>The broadest, most mature set of managed services</td><td>You want maximum breadth and proven scale</td></tr>
-        <tr><th scope="row">GCP</th><td>Data, analytics, and Kubernetes</td><td>Data warehousing and analytics matter most</td></tr>
-        <tr><th scope="row">Azure</th><td>Deep Microsoft and Office 365 integration</td><td>You already run Windows, Office 365, or Dynamics</td></tr>
-      </tbody>
-    </table>
+<!-- Proof / trust band -->
+<section class="container px-4 py-5 border-top text-center" id="proof">
+  <h2 class="display-6 fw-bold text-body-emphasis mb-4">Why businesses trust BASH</h2>
+  <div class="row g-4">
+    {% for stat in page.stats %}
+    <div class="col-6 col-md-3">
+      <p class="display-6 fw-bold text-primary mb-0">{{ stat.value }}</p>
+      <p class="text-body-secondary">{{ stat.label }}</p>
+    </div>
+    {% endfor %}
   </div>
-
-  <h3 class="fs-4 fw-bold text-body-emphasis mt-5 mb-2">What each engagement includes</h3>
-  <p class="mb-3">A clearly defined scope is <strong>essential</strong> to a successful project. Each of our three service areas covers the work below.</p>
-  <div class="table-responsive">
-    <table class="table table-striped align-middle">
-      <thead><tr><th scope="col">Service area</th><th scope="col">What we deliver</th><th scope="col">Typical systems</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Cloud Architecture</th><td>Infrastructure design, migration, and business intelligence</td><td>AWS, GCP, Azure</td></tr>
-        <tr><th scope="row">ERP Consulting</th><td>Implementation, configuration, and ongoing support</td><td>QAD, Infor, Oracle</td></tr>
-        <tr><th scope="row">Accounting Systems</th><td>System selection, integration, and financial modeling</td><td>QuickBooks, Sage, Dynamics</td></tr>
-      </tbody>
-    </table>
+  {% assign proof_items = site['case-studies'] | where_exp: "item", "item.outcome" %}
+  {% if proof_items.size > 0 %}
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-2 text-start">
+    {% for case in proof_items limit: 3 %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <p class="small text-uppercase text-body-secondary mb-1">{{ case.industry }}</p>
+          <h3 class="fs-5 fw-bold card-title">
+            <a href="{{ case.url }}" class="stretched-link text-decoration-none text-body-emphasis">{{ case.title }}</a>
+          </h3>
+          <p class="card-text mt-auto">{{ case.outcome }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
   </div>
-</div>
+  <p class="mt-4 mb-0"><a href="/case-studies/">Browse all case studies</a></p>
+  {% endif %}
+  {% comment %}
+  TODO (Amr): add real client testimonials below to further strengthen trust signals.
+  Each entry needs a genuine quote, client name, and (ideally) company — do not use placeholders publicly.
+  <blockquote class="blockquote mt-5"><p>"Quote here."</p><footer class="blockquote-footer">Client Name, Company</footer></blockquote>
+  {% endcomment %}
+</section>
 
 <!-- FAQ -->
-<div class="container col-xxl-10 px-4 py-5 border-bottom">
+<section class="container px-4 py-5 border-top" id="faq">
   <h2 class="display-6 fw-bold text-body-emphasis mb-4">Frequently asked questions</h2>
   <div class="row">
     {% for faq in page.faq_items %}
@@ -234,94 +159,75 @@ layout: root
     </div>
     {% endfor %}
   </div>
-</div>
+</section>
 
-<!-- Why work with us (trust) -->
-<div class="container col-xxl-10 px-4 py-5 border-bottom text-center">
-  <h2 class="display-6 fw-bold text-body-emphasis mb-4">Why businesses trust BASH</h2>
-  <div class="row g-4">
-    <div class="col-md-3"><p class="display-6 fw-bold text-primary mb-0">10+ yrs</p><p class="text-body-secondary">Enterprise IT &amp; finance systems experience</p></div>
-    <div class="col-md-3"><p class="display-6 fw-bold text-primary mb-0">3</p><p class="text-body-secondary">Major cloud platforms — AWS, GCP &amp; Azure</p></div>
-    <div class="col-md-3"><p class="display-6 fw-bold text-primary mb-0">Denver</p><p class="text-body-secondary">Colorado-based, serving the US remotely</p></div>
-    <div class="col-md-3"><p class="display-6 fw-bold text-primary mb-0">BS &amp; MS</p><p class="text-body-secondary">Finance and Information Systems degrees</p></div>
+<!-- Mission -->
+<section class="container-fluid bg-dark text-secondary px-4 py-5" id="mission">
+  <div class="container-lg">
+    <h2 class="display-5 text-white">Mission</h2>
+    <blockquote class="blockquote">
+      <p class="fs-5">{{ info.mission }}</p>
+    </blockquote>
+    <p>{{ info.mission-approach | newline_to_br }}</p>
+    <a href="/about/" class="link-light">More about the practice and its founder</a>
   </div>
-  {% comment %}
-  TODO (Amr): add real client testimonials below to further strengthen trust signals.
-  Each entry needs a genuine quote, client name, and (ideally) company — do not use placeholders publicly.
-  <blockquote class="blockquote mt-5"><p>"Quote here."</p><footer class="blockquote-footer">Client Name, Company</footer></blockquote>
-  {% endcomment %}
-</div>
+</section>
 
+<!-- Page body content from index.md (currently empty) -->
+{% assign page_body = content | strip %}
+{% if page_body != '' %}
+<div class="container px-4 py-5">
   {{ content }}
-
-<!-- Mission Quote -->
-
-  <div class="container-fluid bg-dark text-secondary px-4 py-5 text-left">
-    <div class="container-lg ">
-
-      <h2 class="display-5 text-white">Mission</h2>
-        <blockquote class="blockquote">
-            <p class="fs-5 ">{{ site.data.entity.info.mission }}</p>
-        </blockquote>
-
-        <p>
-          {{ site.data.entity.info.mission-approach | newline_to_br }}
-        </p>
-
-        <blockquote class="blockquote">
-          <p class="fs-5">{{ site.data.entity.info.mission-inspiration }}</p>
-      </blockquote>
-
-        
-      </div>
-    </div>
-
 </div>
+{% endif %}
 
-<!-- Email Now -->
-
-  <div class=" px-4 py-5 text-center border-bottom">
-    <div class="py-5">
-      <p class="display-6 fw-bold">{{ site.data.entity.info.contact-tagline }}</p>
-      <div class="col-lg-6 mx-auto">
-        <p class="fs-5 mb-4">{{ site.data.entity.info.contact-instructions }}</p>
-        <p class="fs-5 mb-4 fw-bold">{{ site.data.entity.info.contact-email }}</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <a href="mailto:{{ site.contact-email }}?subject=Consulting%20Inquiry" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Email Now</a>
-        </div>
-      </div>
+<!-- Contact CTA -->
+<section class="container px-4 py-5 text-center border-top" id="contact-cta">
+  <h2 class="display-6 fw-bold text-body-emphasis">{{ info.contact-tagline }}</h2>
+  <div class="col-lg-6 mx-auto">
+    <p class="fs-5 mb-2">{{ info.contact-instructions }}</p>
+    <p class="fs-5 mb-4">
+      <a href="mailto:{{ info.contact-email }}" class="fw-bold text-decoration-none">{{ info.contact-email }}</a>
+      &nbsp;&middot;&nbsp;
+      <a href="tel:+1{{ info.contact-phone | remove: '-' }}" class="fw-bold text-decoration-none">{{ info.contact-phone }}</a>
+    </p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="/contact/" class="btn btn-primary btn-lg px-4 fw-bold">Schedule a free consultation</a>
     </div>
   </div>
+</section>
 
-</div>
-    
-<div class="container col-xl-10 col-xxl-12 px-4 py-5">
+<!-- Newsletter -->
+<section class="container col-xl-10 col-xxl-12 px-4 py-5 border-top" id="newsletter">
   <div class="row align-items-center g-lg-5 py-5">
     <div class="col-lg-7 text-center text-lg-start">
-      <h2 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Want to stay posted with our latest news?</h2>
-      <p class="col-lg-10 fs-4">Sign up to our newsletter to receive our latest news and updates.</p>
+      <h2 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Occasional notes on small-business IT</h2>
+      <p class="col-lg-10 fs-4">Practical writing on cloud, ERP, and AI for owners and operators — no sales sequences.</p>
     </div>
     <div class="col-md-10 mx-auto col-lg-5">
-      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+      {% assign newsletter_endpoint = site.forms.newsletter_endpoint | default: '' %}
+      {% if newsletter_endpoint != '' %}
+      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" method="post" action="{{ newsletter_endpoint }}" accept-charset="UTF-8">
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
-        </div>
-
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="subscribe"> Send me news and updates
-          </label>
+          <input type="email" class="form-control" id="newsletter-email" name="email" placeholder="name@example.com" autocomplete="email" required>
+          <label for="newsletter-email">Email address</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Subscribe</button>
         <hr class="my-4">
-        <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+        <small class="text-body-secondary">We only use your address to send the updates you asked for. Unsubscribe anytime.</small>
       </form>
+      {% else %}
+      <div class="p-4 p-md-5 border rounded-3 bg-body-tertiary text-center">
+        <p class="mb-3">Subscribe by email and we'll add you to the list.</p>
+        <a class="btn btn-lg btn-primary" href="mailto:{{ info.contact-email }}?subject=Subscribe">Email {{ info.contact-email }}</a>
+        <hr class="my-4">
+        <small class="text-body-secondary">We only use your address to send the updates you asked for. Unsubscribe anytime.</small>
+      </div>
+      {% endif %}
     </div>
   </div>
-</div>
+</section>
 
-<!-- Features -->
-    <!-- particles.js -->
-    <script src="/assets/js/particles-source.js"></script>
-    <script src="/assets/js/particles.js"></script>
+<!-- particles.js (theme-provided) -->
+<script src="/assets/js/particles-source.js"></script>
+<script src="/assets/js/particles.js"></script>

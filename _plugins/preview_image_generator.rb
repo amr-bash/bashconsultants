@@ -23,13 +23,14 @@
 
 module Jekyll
   module PreviewImageGenerator
-    # Configuration defaults
+    # Configuration defaults — keep in sync with the preview_images section of
+    # _config.yml and with scripts/features/generate-preview-images.
     DEFAULTS = {
       'enabled' => true,
       'provider' => 'openai',
-      'model' => 'dall-e-3',
-      'size' => '1792x1024',
-      'quality' => 'standard',
+      'model' => 'gpt-image-2',
+      'size' => '1536x1024',
+      'quality' => 'high',
       'style' => 'retro pixel art, 8-bit video game aesthetic, vibrant colors, nostalgic, clean pixel graphics',
       'style_modifiers' => 'pixelated, retro gaming style, CRT screen glow effect, limited color palette',
       'output_dir' => 'assets/images/previews',

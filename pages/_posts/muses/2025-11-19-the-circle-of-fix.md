@@ -4,7 +4,7 @@ description: "How Denver SMBs break the fix-outsource-rework software loop with 
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2025-11-19T10:00:00.000Z
-lastmod: 2026-06-21T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 draft: false
 categories: [muses]
 tags: [software-development, outsourcing, agile, devops-culture, project-management]
@@ -89,7 +89,7 @@ And the circle keeps spinning…
 
 ## Why the wheel keeps spinning
 
-The number is funny because it's true. A lot of small and medium businesses (SMBs) in the Denver metro find themselves humming some version of this song: a feature gets built, it breaks something else, the fix gets handed to whoever is cheapest and available, and three weeks later you're back where you started with a new bug and a thinner budget.
+It's funny because it's true. A lot of small and medium businesses (SMBs) in the Denver metro find themselves humming some version of this song: a feature gets built, it breaks something else, the fix gets handed to whoever is cheapest and available, and three weeks later you're back where you started with a new bug and a thinner budget.
 
 The wheel isn't a vendor problem, an offshore problem, or a "bad developers" problem. It's a process problem, and it gets very expensive very fast. The longer a defect survives before someone catches it, the more it costs to fix. A bug caught while you're still writing the requirement is a five-minute conversation. The same bug caught in production, after a customer hits it, can cost orders of magnitude more to unwind, a relationship Barry Boehm documented decades ago and the U.S. National Institute of Standards and Technology (NIST) put hard numbers behind in its [report on the economic impacts of inadequate software testing](https://www.nist.gov/system/files/documents/director/planning/report02-3.pdf). Every loop around the Circle of Fix is you paying the late-stage price over and over.
 
@@ -147,4 +147,4 @@ What your team has to do: name the owner, tell us which transactions actually ma
 
 If your software life feels like a chord that never resolves, the fix is process, not panic. Our [custom development and software modernization work](/services/dev/) helps Denver SMBs put requirements, ownership, and automated testing in place so the wheel finally stops turning.
 
-*Tired of singing this number on loop? Let's help you step off the wheel.*
+*Tired of singing the same chorus on loop? Let's help you step off the wheel.*

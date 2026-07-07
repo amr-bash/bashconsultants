@@ -1,7 +1,7 @@
 ---
-title: Finance Tech
+title: Finance tech
 sub-title: Accounting systems and financial modeling for growing businesses
-description: Accounting systems, AP automation, and financial modeling for Denver SMBs — from outgrowing QuickBooks to month-end close you can trust.
+description: Accounting systems, AP automation, and financial modeling for Denver SMBs — from outgrowing QuickBooks to month-end close you can trust
 preview: /assets/images/erd.png
 snippet: Build accounting systems, automate AP, and model finance on the tools you already use.
 author: Amr Abdel-Motaleb
@@ -24,7 +24,7 @@ categories:
   - Finance Technology
   - IT Consulting
   - Accounting Systems
-lastmod: 2026-06-15T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 slug: finance-tech
 permalink: /services/fintech/
 draft: false
@@ -66,7 +66,7 @@ Often the answer is yes. We extend your existing Excel models and connect them t
 We've configured and integrated finance across a range of platforms:
 
 - **QuickBooks** — for businesses still on it, and for migrations off it.
-- **ERP financial modules** — QAD and Infor, including GL, AP/AR, fixed assets, and cost accounting.
+- **Enterprise Resource Planning (ERP) financial modules** — QAD and Infor, including GL, AP/AR (accounts receivable), fixed assets, and cost accounting.
 - **Enterprise performance management (EPM) and consolidation** — OneStream, Hyperion Financial Management, and CCH Tagetik for planning, close, and multi-entity consolidation.
 - **BlackLine** — account reconciliation, cash application, and close management.
 - **SAP Concur** — travel and expense, including policy enforcement and ERP integration.

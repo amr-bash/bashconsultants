@@ -4,11 +4,11 @@ description: "How fragmented legacy ERP systems trap manufacturers in a six-UI n
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2026-01-31T05:58:24.740Z
-lastmod: 2026-06-21T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 draft: false
 breaking: true
 featured: true
-categories: [erp, tech]
+categories: [erp]
 tags: [erp, legacy-systems, qad, infor, manufacturing, cloud-migration, vendor-lock-in, progress-4gl]
 sub-title: "Because nothing says 'modern manufacturing' like alt-tabbing between six different UIs from the last four decades"
 excerpt: "Vendors promised the cloud would set you free, but many manufacturers are trapped supporting a Frankenstein ERP that makes IT teams long for the simple days of punch cards."

@@ -4,7 +4,7 @@ description: "How prompts let Denver small business teams use software without l
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2025-11-19T09:00:00.000Z
-lastmod: 2026-06-21T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 draft: false
 categories: [tech, ai]
 tags: [prompt-engineering, ai, automation, smb]
@@ -77,4 +77,4 @@ When these templates start chaining together — one prompt's output feeding the
 
 ## Next step
 
-If you are looking at a back-office process that "ought to be automatable" and isn't worth a full software project, that is usually a prompt engineering problem, not a coding problem — and the value is in the validation and guardrails, not the clever wording. See how we approach this on our [custom development and automation services](/services/dev/) page, and we'll scope it against your actual workflow.
+If you are looking at a back-office process that "ought to be automatable" and isn't worth a full software project, that is usually a prompt engineering problem, not a coding problem — and the value is in the validation and guardrails, not the clever wording. See how we approach this on our [AI consulting for small business](/services/ai/) page, and we'll scope it against your actual workflow.

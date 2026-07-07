@@ -22,7 +22,15 @@ module Jekyll
         File.join(site.source, '_data', 'generate_statistics.rb')
       ]
 
-      theme_root = site.theme&.root_dir
+      # Jekyll 4 exposes Theme#root_dir; Jekyll 3 (github-pages gem, Azure stack)
+      # only has Theme#root — probe so the plugin loads on both runtimes.
+      theme = site.theme
+      theme_root =
+        if theme.respond_to?(:root_dir)
+          theme.root_dir
+        elsif theme.respond_to?(:root)
+          theme.root
+        end
       candidates << File.join(theme_root, '_data', 'generate_statistics.rb') if theme_root
 
       candidates.find { |path| File.exist?(path) }

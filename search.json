@@ -1,5 +1,48 @@
 ---
-layout: search
+layout: null
 permalink: /search.json
 sitemap: false
 ---
+{%- comment -%}
+  Client-side search index consumed by the theme's search modal
+  (assets/js/search-modal.js) and the /search/ results page (pages/search.md).
+  Field contract per item: title, url, description, content, collection,
+  date, categories, tags. Emits root pages plus the posts, services,
+  case_studies, and about collections; skips drafts, sitemap:false pages,
+  the 404 page, and internal /about/settings|site/ configuration pages.
+{%- endcomment -%}
+{%- assign items = "" | split: "" -%}
+{%- for p in site.html_pages -%}
+  {%- if p.title and p.sitemap != false and p.url != "/404.html" -%}
+    {%- unless p.url contains "/assets/" -%}
+      {%- assign items = items | push: p -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign collection_docs = site.posts | concat: site.services | concat: site['case-studies'] | concat: site.about -%}
+{%- for doc in collection_docs -%}
+  {%- if doc.title and doc.sitemap != false -%}
+    {%- unless doc.url contains "/settings/" or doc.url contains "/about/site/" -%}
+      {%- assign items = items | push: doc -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+[
+{%- assign first = true -%}
+{%- for item in items -%}
+  {%- assign draft_flag = item.draft | append: "" | downcase -%}
+  {%- if draft_flag == "true" or draft_flag == "draft" -%}{%- continue -%}{%- endif -%}
+  {%- unless first -%},{%- endunless -%}
+  {
+    "title": {{ item.title | strip_newlines | jsonify }},
+    "url": {{ item.url | relative_url | jsonify }},
+    "description": {{ item.description | default: "" | strip_html | strip_newlines | jsonify }},
+    "content": {{ item.content | strip_html | strip_newlines | truncate: 1000 | jsonify }},
+    "collection": {{ item.collection | default: "pages" | jsonify }},
+    "date": {%- assign item_date = item.date | default: item.lastmod -%}{%- if item_date %} {{ item_date | date: "%Y-%m-%d" | jsonify }}{%- else %} ""{%- endif %},
+    "categories": {{ item.categories | default: empty | jsonify }},
+    "tags": {{ item.tags | default: empty | jsonify }}
+  }
+  {%- assign first = false -%}
+{%- endfor %}
+]

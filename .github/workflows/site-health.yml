@@ -1,0 +1,109 @@
+# Nightly site health check.
+#
+# Smoke-builds the site with the same stack GitHub Pages uses (github-pages gem
+# + remote_theme), runs the content linter when present, and link-checks the
+# built output (internal links only). On any failure it opens — or comments on —
+# a single deduplicated GitHub issue labeled `site-health`.
+#
+# Needs no repository secrets: everything runs with the workflow's built-in
+# GITHUB_TOKEN. Steps that depend on optional tooling (e.g. the content linter)
+# skip gracefully with a notice instead of failing.
+
+name: Site health
+
+on:
+  schedule:
+    - cron: '17 9 * * *' # nightly, 09:17 UTC (~2–3 AM Denver)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: site-health
+  cancel-in-progress: false
+
+jobs:
+  health:
+    name: Build, lint, and link-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/.ci-gemfile/Gemfile
+      JEKYLL_ENV: production
+      PAGES_REPO_NWO: ${{ github.repository }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Production GitHub Pages ignores the repo Gemfile (which carries a
+      # local-path theme gem for Docker dev) and builds with the github-pages
+      # gem + remote_theme. Recreate that stack here so the smoke test matches
+      # what production actually runs.
+      - name: Create CI Gemfile (github-pages stack)
+        run: |
+          mkdir -p .ci-gemfile
+          cat > .ci-gemfile/Gemfile <<'EOF'
+          source "https://rubygems.org"
+          gem "github-pages", group: :jekyll_plugins
+          gem "jekyll-mermaid"
+          gem "webrick"
+          gem "faraday-retry"
+          gem "html-proofer"
+          EOF
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Install gems
+        run: bundle install --jobs 4
+
+      - name: Build site (github-pages gem + remote_theme)
+        run: bundle exec jekyll build --trace
+
+      - name: Content lint (warn-only)
+        run: |
+          if [ -f scripts/content_lint.py ]; then
+            python3 scripts/content_lint.py --warn-only
+          else
+            echo "::notice::scripts/content_lint.py not present — skipping content lint."
+          fi
+
+      - name: Link check built site (internal only)
+        run: |
+          bundle exec htmlproofer _site \
+            --checks Links \
+            --disable-external \
+            --allow-hash-href \
+            --no-enforce-https \
+            --ignore-urls "/^\/api\//"
+
+      - name: Open or update site-health issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="Site health check failed"
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          stamp="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          body="Nightly site health run failed at ${stamp}.
+
+          Run: ${run_url}
+
+          Checks in this run: github-pages smoke build, content lint (if present), internal link check. See the run log for the failing step. This issue is reused by later failures — close it once the underlying problem is fixed."
+
+          gh label create site-health --color D93F0B \
+            --description "Automated nightly site health check" --force 2>/dev/null || true
+
+          existing="$(gh issue list --state open --label site-health \
+            --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "Still failing at ${stamp}: ${run_url}"
+          else
+            gh issue create --title "$title" --label site-health --body "$body"
+          fi

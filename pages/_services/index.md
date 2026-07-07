@@ -1,7 +1,7 @@
 ---
 title: Services
 sub-title: Enterprise-grade IT, sized and priced for small business
-description: Denver IT consulting for small and medium businesses — cloud, ERP, finance systems, data and BI, custom software, and IT strategy, all enterprise-grade.
+description: Denver IT consulting for small and medium businesses — cloud, ERP, finance systems, data and BI, custom software, and IT strategy, all enterprise-grade
 preview: /assets/images/cld-arch-diagram.png
 snippet: From cloud and ERP to data, custom software, and IT strategy — practical, enterprise-grade technology for Denver small and medium businesses.
 author: Amr Abdel-Motaleb
@@ -52,7 +52,7 @@ faq_items:
     answer: "ERP: QAD Enterprise Edition and Mfg/Pro, Infor ERP LN (Baan IV) and CloudSuite Industrial (SyteLine), and Oracle PeopleSoft Financials. Financial systems: OneStream, Oracle Hyperion (HFM), BlackLine, Trintech, FloQast, NetSuite, SAP Concur, QuickBooks, Sage, and Microsoft Dynamics — in both technical and functional roles."
   - question: "Are you local to Denver?"
     answer: "Yes. BASH Consulting is based in Denver, Colorado, and works with small and medium businesses along the Front Range and remotely across the cloud platforms we support."
-lastmod: 2026-06-21T00:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 slug: services
 permalink: /services/
 draft: false
@@ -62,7 +62,7 @@ BASH Consulting brings enterprise-grade technology — the cloud, ERP, financial
 
 True to our name — BASH, *Bourne Again Solutions Hero*, a nod to the `bash` shell — we build on automation that is deterministic and auditable first, then layer modern tooling (including AI) on top. The foundation stays something you can inspect and trust; the overlay makes it faster to build and easier for your team to run.
 
-**Where to start:** [AI &amp; automation](#ai-solutions-and-intelligent-automation) · [Cloud](/services/cloud/) · [ERP](/services/erp/) · [Finance Tech](/services/fintech/) · [Data &amp; BI](/services/data/) · [Software Development](/services/dev/) · [IT Strategy](/services/strat/) · [Managed IT](#managed-it-services). Not sure which fits? Tell us what's slowing you down and we'll point you to the right starting place.
+**Where to start:** [AI &amp; automation](/services/ai/) · [Cloud](/services/cloud/) · [ERP](/services/erp/) · [Finance Tech](/services/fintech/) · [Data &amp; BI](/services/data/) · [Software Development](/services/dev/) · [IT Strategy](/services/strat/) · [Managed IT](/services/managed-it/). Not sure which fits? Tell us what's slowing you down and we'll point you to the right starting place.
 
 ---
 
@@ -84,6 +84,8 @@ The intelligence layer that sits on top of everything else we do. We treat AI as
 **Typical outcome:** staff stop re-keying documents by hand, and exceptions surface automatically instead of being found at month-end.
 
 **Goes with:** [AI-assisted software development](/services/dev/) and [data and BI](/services/data/).
+
+**Full details:** [AI solutions and intelligent automation](/services/ai/)
 
 ---
 
@@ -229,6 +231,8 @@ Keep the technology running so your team can focus on the business. We provide o
 
 **Typical outcome:** problems get caught and resolved before they become downtime, with a target response of one business hour for priority issues.
 
+**Full details:** [Managed IT services](/services/managed-it/)
+
 ---
 
 ## How we work
@@ -249,17 +253,11 @@ Every engagement follows the same simple arc, scaled to the size of the project:
 
 ## Frequently asked questions
 
-**How do you price your services?**
-Engagements are scoped to the work, not sold as fixed packages. We start with a discovery conversation, then quote a project range or a monthly retainer for ongoing support. We don't publish fixed prices because the right number depends on your systems, data, and timeline.
+{% for faq in page.faq_items %}
+**{{ faq.question }}**
 
-**Do you only work with manufacturers?**
-No. Manufacturing and distribution are a deep specialty, but we also serve professional-services firms, construction and trades, healthcare clinics, multi-location retail, and nonprofits.
-
-**Can we adopt AI without replacing the systems we already run?**
-Yes — that's our whole approach. We layer AI on top of deterministic, auditable automation rather than ripping out what works.
-
-**Do you provide support after a project ends?**
-Yes. We offer training, knowledge transfer, and managed IT support so your team can run and grow the systems themselves.
+{{ faq.answer }}
+{% endfor %}
 
 ## Get started
 

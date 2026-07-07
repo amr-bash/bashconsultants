@@ -46,6 +46,10 @@ exclude:
   - .jekyll-cache/
   - .obsidian
   - docs/
+  - scripts/
+  - api/
+  - drafts/
+  - extension/
   - Gemfile.lock
   - gemfiles/
   - Gemfile

@@ -1,7 +1,7 @@
 ---
-title: IT Strategy
+title: IT strategy
 sub-title: A practical technology roadmap for your business
-description: Vendor-neutral IT strategy for Denver SMBs — a practical technology roadmap, honest build-vs-buy advice, and project oversight you can trust.
+description: Vendor-neutral IT strategy for Denver SMBs — a practical technology roadmap, honest build-vs-buy advice, and project oversight you can trust
 preview: /assets/images/cld-arch-diagram.png
 snippet: An independent, vendor-neutral roadmap, honest build-vs-buy advice, and oversight to keep your vendors accountable.
 author: Amr Abdel-Motaleb
@@ -18,7 +18,7 @@ tags:
 categories:
   - IT Strategy
   - Technology Planning
-lastmod: 2026-06-15T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 slug: it-strategy
 permalink: /services/strat/
 draft: false
@@ -36,9 +36,9 @@ Most small and medium businesses don't have a chief information officer, but the
 
 ## What we do
 
-- **IT roadmap** — a practical plan tied to your business goals: what to address first, what can wait, and a rough order-of-magnitude cost for each step. No 50-page deck, just a document you can act on and share with ownership.
+- **Information technology (IT) roadmap** — a practical plan tied to your business goals: what to address first, what can wait, and a rough order-of-magnitude cost for each step. No 50-page deck, just a document you can act on and share with ownership.
 
-- **Technology assessment and vendor selection** — an honest look at your current systems, then build-vs-buy guidance and vendor recommendations. We stay vendor-neutral across cloud providers (Amazon Web Services, Microsoft Azure, Google Cloud Platform) and enterprise software (Microsoft, Google, Oracle), so the advice follows your needs, not a partner commission.
+- **Technology assessment and vendor selection** — an honest look at your current systems, then build-vs-buy guidance and vendor recommendations. We stay vendor-neutral across cloud providers (Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP)) and enterprise software (Microsoft, Google, Oracle), so the advice follows your needs, not a partner commission.
 
 - **Project oversight** — scoping, risk review, and a second set of eyes during delivery. We help define what "done" looks like, spot where a project can go sideways, and keep an implementation vendor honest on scope, timeline, and cost.
 
@@ -48,7 +48,7 @@ Most small and medium businesses don't have a chief information officer, but the
 
 The value here is independence. We don't resell software, so there's no incentive to steer you toward a particular product. The recommendation is the one that fits your budget, your downtime tolerance, and your team — full stop.
 
-It's also grounded in having done the work. Our founder spent more than a decade inside large manufacturers leading information technology (IT) and finance priorities — evaluating vendors, negotiating contracts, and running enterprise projects from scoping through go-live. That's the difference between advice built on slides and advice built on having actually delivered.
+It's also grounded in having done the work. Our founder spent more than a decade inside large manufacturers leading IT and finance priorities — evaluating vendors, negotiating contracts, and running enterprise projects from scoping through go-live. That's the difference between advice built on slides and advice built on having actually delivered.
 
 Compared with a big consulting firm, you get a real person who understands small-business constraints — a tight budget, limited downtime, the impact a change has on a small staff — not a retainer and a ticket queue.
 

@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "",
+    "ANTHROPIC_API_KEY": "",
+    "CHAT_MODEL": "",
+    "MAX_TOKENS_CAP": "",
+    "ALLOWED_ORIGINS": "http://localhost:4000,http://localhost:4002"
+  }
+}

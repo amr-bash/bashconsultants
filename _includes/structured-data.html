@@ -1,31 +1,99 @@
 {%- comment -%}
-  Organization (ProfessionalService) JSON-LD for AI-engine citability and search,
-  generated from _data/entity/info.yml. The FAQPage JSON-LD is emitted separately
-  in <head> by the theme (content/jsonld-faq) from the page's `faq_items`.
+  Schema.org JSON-LD for AI-engine citability and search.
+
+  Identity fields come from _data/entity/info.yml (single source of truth).
+  Emits one @graph:
+    - ProfessionalService (always) — the organization node, @id-addressable
+      so page-level nodes can reference it without duplication.
+    - Article           — when page.layout == "article" (blog posts).
+    - Service           — when page.collection == "services".
+  On the landing page (layout: landing) only the organization node renders.
+
+  The FAQPage JSON-LD is emitted separately in <head> by the theme
+  (content/jsonld-faq) from the page's `faq_items`. jekyll-seo-tag emits its
+  own compact WebPage/BlogPosting node; this include carries the richer
+  organization, service, and authorship detail.
+
+  Currently included by _layouts/landing.html. For site-wide coverage the
+  theme's core/head.html needs a consumer-overridable hook — tracked in the
+  repo CHANGELOG/config notes, not reachable from this include.
 {%- endcomment -%}
 {%- assign info = site.data.entity.info -%}
+{%- assign org_id = info.url | append: "/#organization" -%}
+{%- assign area_served = '[
+    { "@type": "AdministrativeArea", "name": "Denver metropolitan area" },
+    { "@type": "State", "name": "Colorado" },
+    { "@type": "Country", "name": "United States" }
+  ]' -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": {{ info.name | jsonify }},
-  "alternateName": "Bourne Again Solutions",
-  "description": {{ info.description | jsonify }},
-  "url": {{ info.url | jsonify }},
-  "email": {{ info["contact-email"] | jsonify }},
-  "telephone": {{ info["contact-phone"] | jsonify }},
-  "founder": { "@type": "Person", "name": {{ info["contact-name"] | jsonify }} },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Denver",
-    "addressRegion": "CO",
-    "addressCountry": "US"
-  },
-  "areaServed": "United States",
-  "knowsAbout": [
-    "Cloud Architecture", "AWS", "GCP", "Azure",
-    "ERP Consulting", "QAD", "Infor", "Oracle PeopleSoft",
-    "Accounting Information Systems", "QuickBooks", "Financial Modeling"
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": {{ org_id | jsonify }},
+      "name": {{ info.name | jsonify }},
+      "alternateName": "Bourne Again Solutions",
+      "description": {{ info.description | jsonify }},
+      "url": {{ info.url | jsonify }},
+      "email": {{ info["contact-email"] | jsonify }},
+      "telephone": {{ info["contact-phone"] | jsonify }},
+      "founder": { "@type": "Person", "name": {{ info["contact-name"] | jsonify }} },
+      "sameAs": [
+        "https://linkedin.com/in/amrabdel",
+        "https://github.com/bamr87"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
+        "addressCountry": "US"
+      },
+      "areaServed": {{ area_served }},
+      "knowsAbout": [
+        "Cloud Architecture", "AWS", "GCP", "Azure",
+        "ERP Consulting", "QAD", "Infor", "Oracle PeopleSoft",
+        "Accounting Information Systems", "QuickBooks", "Financial Modeling"
+      ]
+    }
+    {%- if page.layout == "article" -%}
+    {%- assign article_image = page.preview | default: page.image -%}
+    {%- if article_image and article_image contains "://" -%}
+    {%- elsif article_image -%}
+      {%- unless article_image contains "/assets/" -%}
+        {%- assign article_image = "/assets" | append: article_image -%}
+      {%- endunless -%}
+      {%- assign article_image = article_image | absolute_url -%}
+    {%- endif -%},
+    {
+      "@type": "Article",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.description | default: "" | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "mainEntityOfPage": { "@type": "WebPage", "@id": {{ page.url | absolute_url | jsonify }} },
+      {%- if article_image %}
+      "image": {{ article_image | jsonify }},
+      {%- endif %}
+      {%- if page.date %}
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      {%- endif %}
+      {%- if page.lastmod or page.date %}
+      "dateModified": {{ page.lastmod | default: page.date | date_to_xmlschema | jsonify }},
+      {%- endif %}
+      "author": { "@type": "Person", "name": {{ page.author | default: info["contact-name"] | jsonify }} },
+      "publisher": { "@id": {{ org_id | jsonify }} }
+    }
+    {%- elsif page.collection == "services" -%},
+    {
+      "@type": "Service",
+      "name": {{ page.title | jsonify }},
+      "serviceType": {{ page.title | jsonify }},
+      "description": {{ page.description | default: "" | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "provider": { "@id": {{ org_id | jsonify }} },
+      "areaServed": {{ area_served }}
+    }
+    {%- endif %}
   ]
 }
 </script>
