@@ -9,7 +9,7 @@ One function ships today:
 
 | Route | File | Purpose |
 | --- | --- | --- |
-| `POST /api/chat` | `src/functions/chat.js` | Proxies the site's AI chat widget to the Anthropic Messages API. The key lives in an Azure application setting (`ANTHROPIC_API_KEY`), never in the repo or the browser. |
+| `POST /api/chat` | `src/functions/chat.js` | Proxies the site's AI chat widget to the Anthropic Messages API. Auth is a Claude Code OAuth token (`CLAUDE_CODE_OAUTH_TOKEN`, preferred) or an `ANTHROPIC_API_KEY` (fallback), held in an Azure application setting — never in the repo or the browser. |
 
 Full documentation — activation switches, environment variables, hardening,
 and how this relates to the GitHub Pages deployment — lives in
@@ -22,7 +22,7 @@ Requires Node 18+ and Azure Functions Core Tools v4:
 ```bash
 cd api
 npm install
-cp local.settings.json.sample local.settings.json   # then set ANTHROPIC_API_KEY
+cp local.settings.json.sample local.settings.json   # then set CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY
 func start
 ```
 

@@ -20,21 +20,30 @@
  *   Errors:   { error: { message } } with an HTTP status the widget maps
  *             to a friendly message.
  *
- * Auth: API key only (process.env.ANTHROPIC_API_KEY, set as an Azure
- * Static Web App application setting — never in the repo, never echoed).
- * The worker's personal OAuth modes are intentionally not ported; a
- * workspace-scoped API key with a spend cap is the right shape for a
- * public site.
+ * Auth (precedence, highest first — set exactly one credential as an Azure
+ * Static Web App application setting; never in the repo, never echoed):
+ *   1. CLAUDE_CODE_OAUTH_TOKEN — long-lived Claude Code OAuth token from
+ *        `claude setup-token` (Claude Pro/Max). Sent as
+ *        `Authorization: Bearer <token>` + `anthropic-beta: oauth-2025-04-20`.
+ *        This is the DEFAULT: if it is set, it is used. OAuth (subscription)
+ *        requests must identify as Claude Code, so the first system block is
+ *        forced to the Claude Code identity (see chatHandler).
+ *   2. ANTHROPIC_API_KEY — standard workspace `x-api-key`. The FALLBACK, used
+ *        only when no OAuth token is set. Best for a public site with a
+ *        spend-capped workspace key.
+ * The worker's rotating-refresh OAuth mode is not ported — it needs a
+ * key/value store (Cloudflare KV) that SWA managed functions don't provide;
+ * use the long-lived setup-token instead.
  *
  * Hardening:
  *   - POST only (OPTIONS answered for preflight)
  *   - Origin allowlist (production domains + this SWA's own hostnames)
  *   - Request body size cap
- *   - Server-side max_tokens cap and optional model pin
+ *   - Server-side max_tokens cap and model pin
  *   - Simple fixed-window in-memory rate limit per client IP
  *
  * Optional application settings (all have safe defaults):
- *   CHAT_MODEL            — pin the model server-side (overrides the client)
+ *   CHAT_MODEL            — pin the model server-side (default claude-opus-4-8)
  *   MAX_TOKENS_CAP        — cap on client-requested max_tokens (default 4096)
  *   MAX_BODY_BYTES        — request body cap in bytes (default 524288)
  *   ALLOWED_ORIGINS       — comma-separated extra allowed origins
@@ -56,6 +65,11 @@ app.setup({ enableHttpStream: true });
 
 const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_VERSION = '2023-06-01';
+const OAUTH_BETA = 'oauth-2025-04-20'; // required beta header for subscription OAuth
+// Claude subscription OAuth requires the FIRST system block to identify as
+// Claude Code, or the Messages API rejects the request with a misleading terse
+// rate_limit_error. Prepended to the system prompt in OAuth mode only.
+const CLAUDE_CODE_SYSTEM_PROMPT = "You are Claude Code, Anthropic's official CLI for Claude.";
 const DEFAULT_MODEL = 'claude-opus-4-8'; // mirrors ai_chat.model in _config.yml
 const DEFAULT_MAX_TOKENS = 1024;
 const DEFAULT_MAX_TOKENS_CAP = 4096;
@@ -111,6 +125,33 @@ function jsonError(message, status, cors) {
     status,
     headers: { 'content-type': 'application/json', 'cache-control': 'no-store', ...cors },
     body: JSON.stringify({ error: { message } }),
+  };
+}
+
+// --- Anthropic auth (Claude Code OAuth preferred, API key fallback) -------
+
+// Precedence: OAuth token wins when both are set. Returns 'oauth' | 'api_key' | null.
+function anthropicAuthMode() {
+  if (process.env.CLAUDE_CODE_OAUTH_TOKEN) return 'oauth';
+  if (process.env.ANTHROPIC_API_KEY) return 'api_key';
+  return null;
+}
+
+// Auth + content headers for the upstream call. OAuth uses a Bearer token plus
+// the oauth beta header; the API key uses x-api-key. Never logged or echoed.
+function anthropicAuthHeaders(mode) {
+  if (mode === 'oauth') {
+    return {
+      authorization: `Bearer ${process.env.CLAUDE_CODE_OAUTH_TOKEN}`,
+      'anthropic-version': ANTHROPIC_VERSION,
+      'anthropic-beta': OAUTH_BETA,
+      'content-type': 'application/json',
+    };
+  }
+  return {
+    'x-api-key': process.env.ANTHROPIC_API_KEY,
+    'anthropic-version': ANTHROPIC_VERSION,
+    'content-type': 'application/json',
   };
 }
 
@@ -174,9 +215,10 @@ async function chatHandler(request, context) {
     return jsonError('Origin not allowed', 403, cors);
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    // proxy_ready should stay false in _config.yml until this is set.
+  const authMode = anthropicAuthMode();
+  if (!authMode) {
+    // Neither credential is set. proxy_ready should stay false in _config.yml
+    // until CLAUDE_CODE_OAUTH_TOKEN (preferred) or ANTHROPIC_API_KEY is set.
     return jsonError('Chat is not configured on this deployment', 503, cors);
   }
 
@@ -211,13 +253,24 @@ async function chatHandler(request, context) {
   }
 
   const cap = Number(process.env.MAX_TOKENS_CAP) || DEFAULT_MAX_TOKENS_CAP;
+
+  // In OAuth mode the first system block must be the Claude Code identity, or
+  // Anthropic rejects the request. Keep the site assistant's own instructions
+  // as a following block. API-key mode (standard billing) doesn't need this.
+  const userSystem = typeof body.system === 'string' ? body.system : undefined;
+  let system = userSystem;
+  if (authMode === 'oauth') {
+    system = [{ type: 'text', text: CLAUDE_CODE_SYSTEM_PROMPT }];
+    if (userSystem) system.push({ type: 'text', text: userSystem });
+  }
+
   const payload = {
     // Model is pinned server-side (CHAT_MODEL app setting, else DEFAULT_MODEL) —
     // the client's body.model is ignored so a tampered request cannot select a
     // more expensive model and run up spend.
     model: process.env.CHAT_MODEL || DEFAULT_MODEL,
     max_tokens: Math.min(Number(body.max_tokens) || DEFAULT_MAX_TOKENS, cap),
-    system: typeof body.system === 'string' ? body.system : undefined,
+    system,
     messages: body.messages,
     tools: Array.isArray(body.tools) ? body.tools.slice(0, MAX_TOOLS) : undefined,
     stream: true,
@@ -227,11 +280,7 @@ async function chatHandler(request, context) {
   try {
     upstream = await fetch(ANTHROPIC_URL, {
       method: 'POST',
-      headers: {
-        'x-api-key': apiKey,
-        'anthropic-version': ANTHROPIC_VERSION,
-        'content-type': 'application/json',
-      },
+      headers: anthropicAuthHeaders(authMode),
       body: JSON.stringify(payload),
     });
   } catch (err) {

@@ -42,16 +42,32 @@ What it does, in order:
 5. Caps the request body size (default 512 KB) and validates the JSON shape
    (`messages` must be a non-empty array).
 6. Forwards `{model, max_tokens, system, messages, tools, stream: true}` to
-   the Anthropic Messages API with the server-held key, capping `max_tokens`
-   (default cap 4096) and pinning the model server-side (`CHAT_MODEL`, else the
-   default) — the client's `model` field is ignored so a tampered request can't
-   select a costlier model.
+   the Anthropic Messages API with the server-held credential, capping
+   `max_tokens` (default cap 4096) and pinning the model server-side
+   (`CHAT_MODEL`, else the default) — the client's `model` field is ignored so
+   a tampered request can't select a costlier model.
 7. Streams the Server-Sent Events response back unchanged. The widget also
    accepts a buffered or plain-JSON response, so `CHAT_BUFFER_RESPONSE=true`
    is available as a fallback.
 
-The API key is read from the environment at request time and is never sent to
-the browser, logged, or echoed in error messages. The rate limit keys on the
+**Auth: Claude Code OAuth preferred, API key fallback.** The proxy picks its
+credential by precedence:
+
+1. `CLAUDE_CODE_OAUTH_TOKEN` — a long-lived Claude Code OAuth token from
+   `claude setup-token` (Claude Pro/Max). Used by default when set. Sent as
+   `Authorization: Bearer <token>` with the `anthropic-beta: oauth-2025-04-20`
+   header. Because subscription OAuth must identify as Claude Code, the proxy
+   forces the first `system` block to the Claude Code identity and keeps the
+   site assistant's own prompt as the following block.
+2. `ANTHROPIC_API_KEY` — a standard workspace `x-api-key`. The fallback, used
+   only when no OAuth token is set.
+
+Set exactly one (OAuth wins if both are present). The rotating-refresh OAuth
+mode from the theme's Cloudflare worker is not ported — it needs a key/value
+store SWA functions don't provide, so use the long-lived setup-token instead.
+
+The credential is read from the environment at request time and is never sent
+to the browser, logged, or echoed in error messages. The rate limit keys on the
 last `X-Forwarded-For` hop (the value Azure's trusted front end appends), not
 the client-supplied first entry, so a caller can't spoof its way around the cap.
 
@@ -61,16 +77,17 @@ response limit. The default model is `claude-opus-4-8` with `MAX_TOKENS_CAP`
 timing out under load, lower `MAX_TOKENS_CAP` (2048 is a comfortable public
 default) or pin a faster model via `CHAT_MODEL`.
 
-Not ported from the worker: the personal OAuth auth modes (wrong shape for a
-public site) and the `/api/github/issue` and `/api/github/pull-request` routes
-(this site runs `ai_chat.github.mode: 'url'`, which opens pre-filled
-github.com forms and needs no token).
+Not ported from the worker: the rotating-refresh OAuth mode (needs Cloudflare
+KV) and the `/api/github/issue` and `/api/github/pull-request` routes (this site
+runs `ai_chat.github.mode: 'url'`, which opens pre-filled github.com forms and
+needs no token).
 
 ### Application settings (Azure portal → Static Web App → Environment variables)
 
 | Setting | Required | Default | Purpose |
 | --- | --- | --- | --- |
-| `ANTHROPIC_API_KEY` | Yes, to activate chat | — | Anthropic API key. Use a workspace-scoped key with a monthly spend cap. |
+| `CLAUDE_CODE_OAUTH_TOKEN` | One of these two to activate chat | — | Claude Code OAuth token (`claude setup-token`). **Preferred** — used when set. |
+| `ANTHROPIC_API_KEY` | One of these two to activate chat | — | Workspace API key with a spend cap. Fallback, used only when no OAuth token. |
 | `CHAT_MODEL` | No | `claude-opus-4-8` | Model, pinned server-side; the client's `model` field is always ignored. |
 | `MAX_TOKENS_CAP` | No | `4096` | Upper bound on client-requested `max_tokens`. Consider `2048` for the public widget (SWA's 45s response ceiling). |
 | `MAX_BODY_BYTES` | No | `524288` | Request body cap in bytes. |
@@ -81,11 +98,12 @@ github.com forms and needs no token).
 ### Activating the chat widget (two switches)
 
 1. **Azure application setting** — in the Azure portal, open the Static Web
-   App → Environment variables → add `ANTHROPIC_API_KEY` for the production
-   environment (and staging, if chat should work on PR previews).
+   App → Environment variables → add `CLAUDE_CODE_OAUTH_TOKEN` (preferred; run
+   `claude setup-token` to mint one) **or** `ANTHROPIC_API_KEY` for the
+   production environment (and staging, if chat should work on PR previews).
 2. **Site config** — in `_config.yml`, flip `ai_chat.proxy_ready` to `true`.
    The widget renders nothing until this is true, so the order is safe: set
-   the key first, then flip the flag.
+   the credential first, then flip the flag.
 
 To roll back, flip `proxy_ready` back to `false`; the function keeps running
 but nothing calls it.
@@ -176,11 +194,13 @@ it to:
 
 ### Activating the gardener
 
-Add the `ANTHROPIC_API_KEY` repository secret (repo → Settings → Secrets and
-variables → Actions). Without it the workflow logs a notice and skips —
-scheduled runs never fail red just because the key is absent. This is a
-separate credential from the Azure application setting above; the two can be
-different keys with different spend caps.
+Add a `CLAUDE_CODE_OAUTH_TOKEN` repository secret (preferred — `claude
+setup-token`) **or** an `ANTHROPIC_API_KEY` repository secret (repo → Settings
+→ Secrets and variables → Actions). When both are set, `claude-code-action`
+uses the OAuth token. Without either, the workflow logs a notice and skips —
+scheduled runs never fail red just because the credential is absent. These are
+separate from the Azure application settings above; they can be different
+credentials with different spend caps.
 
 Optional: add a `GARDENER_GITHUB_TOKEN` secret — a fine-grained personal
 access token with Contents and Pull requests read/write on this repo. Pull
