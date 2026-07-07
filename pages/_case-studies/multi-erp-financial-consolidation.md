@@ -39,4 +39,4 @@ You don't need to be a global manufacturer to have this problem. A Denver profes
 
 ## Next step
 
-If your consolidation lives in spreadsheets, our [finance technology services](/services/fintech/) cover exactly this work, sized to your entity count and budget.
+If your consolidation lives in spreadsheets, our [[Finance tech]] work covers exactly this, sized to your entity count and budget.

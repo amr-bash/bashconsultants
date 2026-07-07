@@ -35,4 +35,4 @@ If you're a Front Range distributor or light manufacturer feeling the QuickBooks
 
 ## Next step
 
-If your close depends on spreadsheets and memory, start with our [finance technology services](/services/fintech/) — we'll tell you plainly whether you need a cleanup or a migration.
+If your close depends on spreadsheets and memory, start with our [[Finance tech]] — we'll tell you plainly whether you need a cleanup or a migration.

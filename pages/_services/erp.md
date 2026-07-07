@@ -85,8 +85,8 @@ We work in honest ranges, not guarantees. Discovery and assessment typically tak
 
 ## Related
 
-- [Cloud architecture](/services/cloud/) — for moving an on-prem ERP or its database to AWS, Azure, or GCP.
-- [Data and analytics](/services/data/) — for reporting and dashboards built on top of your ERP data.
+- [[Cloud architecture]] — for moving an on-prem ERP or its database to AWS, Azure, or GCP.
+- [[Data and BI]] — for reporting and dashboards built on top of your ERP data.
 
 ---
 

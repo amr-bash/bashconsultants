@@ -76,9 +76,9 @@ We work in honest ranges, not guarantees. A focused integration — connecting y
 
 ## Related
 
-- [Cloud architecture](/services/cloud/) — for hosting and running the software we build.
-- [ERP consulting](/services/erp/) — for the systems that run finance and operations.
-- [Data and analytics](/services/data/) — for making sense of the data your applications collect.
+- [[Cloud architecture]] — for hosting and running the software we build.
+- [[ERP consulting]] — for the systems that run finance and operations.
+- [[Data and BI]] — for making sense of the data your applications collect.
 
 ---
 

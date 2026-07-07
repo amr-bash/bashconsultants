@@ -22,7 +22,7 @@ This is a field guide to that shift, written for people who already live in a te
 
 ## From prompts to an operating system
 
-A while back I argued that [prompts are the new command line](/posts/2025/11/19/prompts-are-the-new-command-line/) — that the interface for getting work out of a machine had moved from syntax you memorize to intent you describe. That was the first half of the story. The second half is what the terminal does *after* it understands you.
+A while back I argued that [[Prompts are the new command line]] — that the interface for getting work out of a machine had moved from syntax you memorize to intent you describe. That was the first half of the story. The second half is what the terminal does *after* it understands you.
 
 An operating system, stripped to its job description, does a handful of things: it schedules work, manages memory, keeps track of context, brokers access to tools and devices, and enforces who is allowed to do what. Look at what a modern terminal agent does and the list is eerily familiar. It schedules a sequence of steps. It manages a context window like a working set, paging facts in and out. It remembers project conventions across sessions. It decides which command-line tool to reach for. It (should) ask before it touches anything dangerous. The shell has quietly acquired the responsibilities of a kernel — except the thing it schedules isn't CPU time, it's *intent*.
 
@@ -120,4 +120,4 @@ $ # the prompt comes back. what you do with the freedom is the whole job.
 
 The competition really is your best friend-enemy. So make friends — and keep your hand on the leash.
 
-And if you're working out where terminal agents fit in your own shop — what to hand them, what to gate, and what to keep human — that's the conversation behind our [AI consulting for small business](/services/ai/).
+And if you're working out where terminal agents fit in your own shop — what to hand them, what to gate, and what to keep human — that's the conversation behind our [[AI solutions and intelligent automation]].

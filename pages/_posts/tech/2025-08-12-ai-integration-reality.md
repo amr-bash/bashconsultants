@@ -70,4 +70,4 @@ The pattern in both: the AI sits between two systems that previously required a 
 
 ## Next step
 
-Most AI conversations should start with the data underneath, not the model on top. If you are weighing an AI project and want to know whether the case study you saw last week applies to your actual business, our [AI consulting for small business](/services/ai/) is where to begin — including the data-readiness work that decides whether the project is worth starting. We scope realistically for Denver-area SMBs and tell you when the honest answer is "not yet."
+Most AI conversations should start with the data underneath, not the model on top. If you are weighing an AI project and want to know whether the case study you saw last week applies to your actual business, our [[AI solutions and intelligent automation]] is where to begin — including the data-readiness work that decides whether the project is worth starting. We scope realistically for Denver-area SMBs and tell you when the honest answer is "not yet."

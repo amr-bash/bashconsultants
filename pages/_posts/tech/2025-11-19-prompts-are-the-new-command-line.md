@@ -66,7 +66,7 @@ Across the work we see most, the same handful of prompt categories carry the loa
 5. **Refactoring** — rewriting a legacy module against explicit constraints (style, performance, security).
 6. **Debugging** — narrowing a stack trace and surrounding context down to the two or three likely causes.
 
-When these templates start chaining together — one prompt's output feeding the next, with checks between — you have crossed from typing prompts to running a pipeline. We walk through that next stage in [from prompts to pipelines: agentic workflows in VS Code](/posts/2025/11/19/agentic-prompt-workflows-in-vscode/).
+When these templates start chaining together — one prompt's output feeding the next, with checks between — you have crossed from typing prompts to running a pipeline. We walk through that next stage in [[From prompts to pipelines: agentic AI in VS Code]].
 
 ## Watch-outs before a prompt goes near production
 
@@ -77,4 +77,4 @@ When these templates start chaining together — one prompt's output feeding the
 
 ## Next step
 
-If you are looking at a back-office process that "ought to be automatable" and isn't worth a full software project, that is usually a prompt engineering problem, not a coding problem — and the value is in the validation and guardrails, not the clever wording. See how we approach this on our [AI consulting for small business](/services/ai/) page, and we'll scope it against your actual workflow.
+If you are looking at a back-office process that "ought to be automatable" and isn't worth a full software project, that is usually a prompt engineering problem, not a coding problem — and the value is in the validation and guardrails, not the clever wording. See how we approach this on our [[AI solutions and intelligent automation]] page, and we'll scope it against your actual workflow.

@@ -90,7 +90,7 @@ This is the work where a finance-literate, vendor-neutral outside team earns its
 
 ## Next step
 
-You do not have to keep stocking Red Bull for 3 AM calls or perfecting your "it's a feature, not a bug" smile. The first move is a clear-eyed map of what you own and what it is costing you. See how we [approach ERP modernization and migration](/services/erp/) for SMB and mid-market manufacturers, and we will help you decide which parts of the monster are worth saving.
+You do not have to keep stocking Red Bull for 3 AM calls or perfecting your "it's a feature, not a bug" smile. The first move is a clear-eyed map of what you own and what it is costing you. See our [[ERP consulting]] for SMB and mid-market manufacturers, and we will help you decide which parts of the monster are worth saving.
 
 For the morbidly curious who want to understand what they are actually maintaining, the [Progress OpenEdge ABL reference documentation](https://docs.progress.com/bundle/openedge-abl-reference/) is the primary source on the language keeping your warehouse alive.
 

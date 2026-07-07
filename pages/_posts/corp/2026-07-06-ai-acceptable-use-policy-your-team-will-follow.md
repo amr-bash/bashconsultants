@@ -90,4 +90,4 @@ For most firms this size, the whole cycle is 2–4 weeks of part-time effort, an
 
 ## Next step
 
-The policy is the paper half; the working half is the tool inventory, the business-account setup, and the guardrails that make the rules stick. That's the first working session in [our AI services for Denver SMBs](/services/ai/) — and it usually surfaces the riskiest paste before the policy is even final.
+The policy is the paper half; the working half is the tool inventory, the business-account setup, and the guardrails that make the rules stick. That's the first working session in [[AI solutions and intelligent automation]] — and it usually surfaces the riskiest paste before the policy is even final.

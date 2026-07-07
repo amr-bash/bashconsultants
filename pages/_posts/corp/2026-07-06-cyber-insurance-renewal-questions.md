@@ -64,8 +64,8 @@ Do this before the broker's deadline, not the night of.
 - **Never guess yes.** An inaccurate attestation is grounds for a denied claim. If you're not sure, the application is telling you what to go verify.
 - **"Mostly deployed" is a no.** Finish the rollout before you sign, not after.
 - **Start 60–90 days out.** Remediation takes weeks, and a quote requested the day before renewal locks in whatever your answers are that day.
-- **Treat the application as a free assessment.** It's a carrier-funded list of the controls that most often decide whether an incident is an inconvenience or a catastrophe. The remote-access half of the list overlaps heavily with [the security baseline we recommend for hybrid teams](/posts/2025/08/12/remote-work-experiment/).
+- **Treat the application as a free assessment.** It's a carrier-funded list of the controls that most often decide whether an incident is an inconvenience or a catastrophe. The remote-access half of the list overlaps heavily with [[Remote work three years later: what actually worked]].
 
 ## Next step
 
-If the self-audit produced more "partially" than you'd like, closing exactly these four gaps — and producing the documentation that lets you answer the application honestly — is standard scope for [our managed IT services](/services/managed-it/). Bring the application; it makes a very good project plan.
+If the self-audit produced more "partially" than you'd like, closing exactly these four gaps — and producing the documentation that lets you answer the application honestly — is standard scope for [[Managed IT services]]. Bring the application; it makes a very good project plan.

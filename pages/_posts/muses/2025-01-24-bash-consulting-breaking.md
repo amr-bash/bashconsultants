@@ -76,4 +76,4 @@ The honest version of that press release is unglamorous: tag the ledger, pull th
 
 The test is simple. In the last twelve months, has a lender, insurer, large customer, or RFP asked anything about emissions, diversity, or governance? If yes, building the basics quietly over a quarter costs a fraction of scrambling when the next one asks — and graduating to a real system later is far easier from a tagged, documented baseline than from scratch.
 
-If that conversation is overdue, see how we approach [financial systems and reporting for SMBs](/services/fintech/).
+If that conversation is overdue, see how we approach [[Finance tech]].

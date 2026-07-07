@@ -85,7 +85,7 @@ We measure these projects in hours returned to staff, exception rates caught ear
 
 ## How we run our own practice on this
 
-We use this playbook on ourselves before we recommend it to anyone. The proposals, content, code, and internal reporting behind this practice run on the same pattern we sell: deterministic scripts underneath, AI drafting and reviewing on top, a person approving what ships. [The tools that run our own practice](/tools/) are documented publicly, so you can see the working model rather than take our word for it.
+We use this playbook on ourselves before we recommend it to anyone. The proposals, content, code, and internal reporting behind this practice run on the same pattern we sell: deterministic scripts underneath, AI drafting and reviewing on top, a person approving what ships. The [tools we build and work with](/tools/) are documented publicly, so you can see the working model rather than take our word for it.
 
 ## Tools and platforms
 
@@ -93,8 +93,8 @@ Anthropic Claude, Azure OpenAI Service, and OpenAI models under business terms; 
 
 ## Related
 
-- [Custom software development](/services/dev/) — when the automation needs an application around it.
-- [Data and business intelligence](/services/data/) — the warehouse that forecasting and anomaly detection sit on.
+- [[Software development]] — when the automation needs an application around it.
+- [[Data and BI]] — the warehouse that forecasting and anomaly detection sit on.
 
 ---
 

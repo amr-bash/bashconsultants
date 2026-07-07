@@ -59,6 +59,6 @@ That split is the part most AI pitches skip, and it's the part that protects you
 
 You don't need our tools to benefit from this model. You need the shape of it: written rules for what good output looks like, versioned playbooks for recurring tasks, automation that checks work before it ships, and a named person who approves anything that reaches a customer. Whether the process is proposals at a design firm, order confirmations at a distributor, or donor letters at a nonprofit, the structure is the same — and it's the difference between AI as a capability and AI as a liability.
 
-If you're weighing whether AI belongs in your operation, start with a conversation about one process you'd like to run this way. We'll tell you honestly whether it's a fit — and see [our AI services](/services/ai/) for how we scope that work.
+If you're weighing whether AI belongs in your operation, start with a conversation about one process you'd like to run this way. We'll tell you honestly whether it's a fit — and see [[AI solutions and intelligent automation]] for how we scope that work.
 
 <a href="/contact/" class="btn btn-primary btn-lg px-4">Book a free consultation</a>

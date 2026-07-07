@@ -39,4 +39,4 @@ Any Front Range job shop or light manufacturer with 20–100 people on the floor
 
 ## Next step
 
-See our [ERP consulting services](/services/erp/) — if your ERP is fed by paper and re-keying, that's the first thing worth fixing.
+See our [[ERP consulting]] — if your ERP is fed by paper and re-keying, that's the first thing worth fixing.

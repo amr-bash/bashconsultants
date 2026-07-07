@@ -159,4 +159,4 @@ $ fg %4
 
 ---
 
-*At BASH Consulting we spend our days untangling systems that are technically running but quietly thrashing — the strategic project that's been Stopped for two years because the loud daemons eat every slice. If your team's scheduler keeps reaping the wrong process, see [how we help teams ship the work that keeps getting starved](/services/dev/).*
+*At BASH Consulting we spend our days untangling systems that are technically running but quietly thrashing — the strategic project that's been Stopped for two years because the loud daemons eat every slice. If your team's scheduler keeps reaping the wrong process, see [[Software development]].*

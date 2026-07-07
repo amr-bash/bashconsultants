@@ -39,7 +39,7 @@ The value isn't in exotic new systems. It's in the ones you already run.
 
 Here's the framing that keeps these projects safe. A language model is probabilistic: the same question can produce two different answers. Your general ledger, your job-costing system, and your ticket queue are deterministic: the same query returns the same record every time. Good architecture keeps the facts in the deterministic systems and the judgment in the model.
 
-MCP enforces that split at the connector. Each tool the server exposes is a defined operation against a system of record — the assistant decides which tool to call and how to phrase the answer, but the number comes from the export and the ticket status comes from the queue. The model can't invent an operation you didn't expose. When a wrong answer would cost money, the thing that prevents it is a permission, not a clever prompt. This is the same trust discipline we laid out in [prompts are the new command line](/posts/2025/11/19/prompts-are-the-new-command-line/), pushed down into the plumbing.
+MCP enforces that split at the connector. Each tool the server exposes is a defined operation against a system of record — the assistant decides which tool to call and how to phrase the answer, but the number comes from the export and the ticket status comes from the queue. The model can't invent an operation you didn't expose. When a wrong answer would cost money, the thing that prevents it is a permission, not a clever prompt. This is the same trust discipline we laid out in [[Prompts are the new command line]], pushed down into the plumbing.
 
 ## Guardrails that make it safe to plug in
 
@@ -64,4 +64,4 @@ MCP enforces that split at the connector. Each tool the server exposes is a defi
 
 ## Next step
 
-If there's a copy-paste ritual in your back office that an assistant with two or three tightly scoped connections would end, that's a well-bounded first project. See how we scope this kind of work in [our AI services for Denver SMBs](/services/ai/).
+If there's a copy-paste ritual in your back office that an assistant with two or three tightly scoped connections would end, that's a well-bounded first project. See how we scope this kind of work in [[AI solutions and intelligent automation]].

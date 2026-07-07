@@ -14,17 +14,18 @@ layout: root
   {% include navigation/sidebar-left.html %}
 </div>
 
-<!-- particles.js background (theme ships /assets/js/particles*.js + /assets/particles.json) -->
-<div id="particles-js" class="container z-n1 position-absolute"></div>
-
 <!-- Schema.org structured data (Organization) for AI engines & search -->
 {% include structured-data.html %}
 
 {% assign info = site.data.entity.info %}
 
 <!-- Hero -->
-<header class="container px-4 py-5">
-  <div class="text-center">
+<header class="position-relative overflow-hidden px-4 py-5">
+  <!-- particles.js background — fills the hero (theme ships /assets/js/particles*.js
+       + /assets/particles.json). Absolute-fill behind the content, which sits at a
+       higher z-index; the library sizes its canvas to this element's box. -->
+  <div id="particles-js" class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 0;" aria-hidden="true"></div>
+  <div class="container text-center position-relative" style="z-index: 1;">
     <img class="d-block mx-auto mb-4" src="{{ site.logo }}" alt="BASH Consulting logo" width="72" height="57">
     <p class="text-uppercase fw-semibold text-primary mb-2">{{ info.name }} &mdash; {{ info.subtitle }}</p>
     <h1 class="display-5 fw-bold text-body-emphasis">{{ page.title }}</h1>

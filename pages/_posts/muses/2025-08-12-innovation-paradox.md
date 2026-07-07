@@ -81,4 +81,4 @@ Three places this framework breaks in practice:
 
 ## Next step
 
-If there's an idea sitting in a notebook that you can't tell is brilliant or terrible, that's the conversation we like to have. See how we approach [IT strategy for Denver SMBs](/services/strat/), and we'll help you scope a 4-week test that costs less than a software trial — and tells you the answer before the budget does.
+If there's an idea sitting in a notebook that you can't tell is brilliant or terrible, that's the conversation we like to have. See how we approach [[IT strategy]], and we'll help you scope a 4-week test that costs less than a software trial — and tells you the answer before the budget does.

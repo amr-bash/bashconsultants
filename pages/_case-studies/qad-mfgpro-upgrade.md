@@ -38,4 +38,4 @@ If you're a Colorado manufacturer sitting on an old ERP version — Mfg/Pro, an 
 
 ## Next step
 
-Read about our [ERP consulting services](/services/erp/) — assessment of your current version and a realistic upgrade plan is where every one of these projects starts.
+Read about our [[ERP consulting]] — assessment of your current version and a realistic upgrade plan is where every one of these projects starts.

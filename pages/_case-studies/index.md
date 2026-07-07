@@ -20,7 +20,7 @@ A few ground rules on how we present them:
 
 - **Anonymized.** No client names. Where a company is described ("a multi-entity manufacturer"), that is the category of business, not a pseudonym you're meant to decode.
 - **No invented numbers.** Where we cite a figure, it comes from the underlying work record; otherwise we use ranges or plain qualitative outcomes.
-- **Verifiable background.** The employers, roles, and systems behind these projects are listed on the [founder's full CV](/about/amr/).
+- **Verifiable background.** The employers, roles, and systems behind these projects are listed on the [[Amr Abdel-Motaleb]].
 
 Most of this work was done for manufacturers and distributors, because that's where the founder's enterprise career happened. The same patterns — outgrown accounting systems, disconnected data, manual re-keying — show up in construction firms, clinics, professional services, and nonprofits, and the write-ups point out where they carry over.
 

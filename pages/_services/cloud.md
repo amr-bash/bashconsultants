@@ -84,8 +84,8 @@ AWS, Microsoft Azure, Google Cloud Platform; Terraform, CloudFormation, and Azur
 
 ## Related
 
-- [Enterprise Resource Planning (ERP) consulting](/services/erp/) — for the systems that run finance and operations.
-- [Data and business intelligence](/services/data/) — once your data is in the cloud, make it reportable.
+- [[ERP consulting]] — for the systems that run finance and operations.
+- [[Data and BI]] — once your data is in the cloud, make it reportable.
 
 ---
 

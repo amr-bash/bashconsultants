@@ -95,8 +95,8 @@ We work in honest ranges, not guarantees. A focused project — AP automation, a
 
 ## Related
 
-- [ERP consulting](/services/erp/) — for the systems that run finance and operations together.
-- [Data and analytics](/services/data/) — for the reporting and integration that connects finance to the rest of the business.
+- [[ERP consulting]] — for the systems that run finance and operations together.
+- [[Data and BI]] — for the reporting and integration that connects finance to the rest of the business.
 
 ---
 

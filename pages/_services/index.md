@@ -62,7 +62,7 @@ BASH Consulting brings enterprise-grade technology — the cloud, ERP, financial
 
 True to our name — BASH, *Bourne Again Solutions Hero*, a nod to the `bash` shell — we build on automation that is deterministic and auditable first, then layer modern tooling (including AI) on top. The foundation stays something you can inspect and trust; the overlay makes it faster to build and easier for your team to run.
 
-**Where to start:** [AI &amp; automation](/services/ai/) · [Cloud](/services/cloud/) · [ERP](/services/erp/) · [Finance Tech](/services/fintech/) · [Data &amp; BI](/services/data/) · [Software Development](/services/dev/) · [IT Strategy](/services/strat/) · [Managed IT](/services/managed-it/). Not sure which fits? Tell us what's slowing you down and we'll point you to the right starting place.
+**Where to start:** [[AI solutions and intelligent automation]] · [[Cloud architecture]] · [[ERP consulting]] · [[Finance tech]] · [[Data and BI]] · [[Software development]] · [[IT strategy]] · [[Managed IT services]]. Not sure which fits? Tell us what's slowing you down and we'll point you to the right starting place.
 
 ---
 
@@ -83,9 +83,9 @@ The intelligence layer that sits on top of everything else we do. We treat AI as
 
 **Typical outcome:** staff stop re-keying documents by hand, and exceptions surface automatically instead of being found at month-end.
 
-**Goes with:** [AI-assisted software development](/services/dev/) and [data and BI](/services/data/).
+**Goes with:** [[Software development]] and [[Data and BI]].
 
-**Full details:** [AI solutions and intelligent automation](/services/ai/)
+**Full details:** [[AI solutions and intelligent automation]]
 
 ---
 
@@ -106,7 +106,7 @@ Move off aging on-premises hardware and pay for what you use. We plan, migrate, 
 
 **Typical outcome:** you pay only for the capacity you use, with monitored uptime and no server-room refresh cycle to budget for.
 
-**Full details:** [Cloud architecture and migration](/services/cloud/)
+**Full details:** [[Cloud architecture]]
 
 ---
 
@@ -129,7 +129,7 @@ When spreadsheets and QuickBooks can no longer hold the business together, ERP b
 
 **Typical outcome:** one system of record replaces the spreadsheet workarounds, so inventory, orders, and the general ledger reconcile by themselves.
 
-**Full details:** [ERP consulting and implementation](/services/erp/)
+**Full details:** [[ERP consulting]]
 
 ---
 
@@ -150,7 +150,7 @@ A finance background is what sets us apart — we speak general ledger (GL), AR/
 
 **Typical outcome:** month-end close cycles often compress from around ten business days into the three-to-five-day range as manual reconciliation gets automated.
 
-**Full details:** [Finance technology and accounting systems](/services/fintech/)
+**Full details:** [[Finance tech]]
 
 ---
 
@@ -171,7 +171,7 @@ Turn the data trapped in your systems into reporting your leadership can act on.
 
 **Typical outcome:** a report that took a day of copy-paste becomes a dashboard that refreshes on its own overnight.
 
-**Full details:** [Data management and business intelligence](/services/data/)
+**Full details:** [[Data and BI]]
 
 ---
 
@@ -192,7 +192,7 @@ When off-the-shelf software doesn't fit, we build software that does — and con
 
 **Typical outcome:** the manual export-and-reupload step disappears, and a process that lived in one spreadsheet becomes something the whole team can use.
 
-**Full details:** [Custom software development](/services/dev/)
+**Full details:** [[Software development]]
 
 ---
 
@@ -211,7 +211,7 @@ We plan to work ourselves out of a job. Our strategy work favors building your t
 
 **Typical deliverable:** a 12–18 month technology roadmap with a prioritized investment sequence and a one-page summary your ownership or board can act on.
 
-**Full details:** [IT strategy and planning](/services/strat/)
+**Full details:** [[IT strategy]]
 
 ---
 
@@ -231,7 +231,7 @@ Keep the technology running so your team can focus on the business. We provide o
 
 **Typical outcome:** problems get caught and resolved before they become downtime, with a target response of one business hour for priority issues.
 
-**Full details:** [Managed IT services](/services/managed-it/)
+**Full details:** [[Managed IT services]]
 
 ---
 

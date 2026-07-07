@@ -78,8 +78,8 @@ You'll always know what something is likely to cost before you commit, and the r
 
 ## Related
 
-- [Cloud architecture](/services/cloud/) — when the roadmap points to a move to AWS, Azure, or GCP.
-- [ERP consulting](/services/erp/) — for the systems that run finance and operations.
+- [[Cloud architecture]] — when the roadmap points to a move to AWS, Azure, or GCP.
+- [[ERP consulting]] — for the systems that run finance and operations.
 
 ---
 

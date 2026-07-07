@@ -38,4 +38,4 @@ Scale down the ERP count and this is most SMBs: a Denver accounting firm with pr
 
 ## Next step
 
-Our [data and BI services](/services/data/) start with the question your reports can't currently answer — bring one and we'll show you what the pipeline to answer it looks like.
+Our [[Data and BI]] work starts with the question your reports can't currently answer — bring one and we'll show you what the pipeline to answer it looks like.

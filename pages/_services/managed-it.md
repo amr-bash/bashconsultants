@@ -71,7 +71,7 @@ If your last outage was diagnosed by a customer, or your backup status is "prett
 1. **Onboarding and baseline.** We inventory your hardware, software, licenses, and backup state — typically 2–4 weeks — so both sides know what's actually being supported.
 2. **Stabilize.** The first 30–60 days go to the patch backlog, backup verification, and MFA gaps: the issues most likely to cause the next incident.
 3. **Steady state.** Ongoing monitoring, helpdesk, and patching, with a monthly report covering what broke, what we fixed, and what's aging toward replacement.
-4. **Quarterly reviews.** We step back from tickets to look at the year ahead — hardware refresh, license renewals, and where the [technology roadmap](/services/strat/) should go next.
+4. **Quarterly reviews.** We step back from tickets to look at the year ahead — hardware refresh, license renewals, and where the [[IT strategy]] should go next.
 
 ## What to expect
 
@@ -83,8 +83,8 @@ Remote monitoring and management (RMM) tooling, endpoint protection platforms, M
 
 ## Related
 
-- [Cloud architecture](/services/cloud/) — when the aging server behind the tickets should become cloud infrastructure instead.
-- [IT strategy](/services/strat/) — when recurring issues point to a bigger investment decision.
+- [[Cloud architecture]] — when the aging server behind the tickets should become cloud infrastructure instead.
+- [[IT strategy]] — when recurring issues point to a bigger investment decision.
 
 ---
 

@@ -59,7 +59,7 @@ Walking into fieldwork with a register that answers all five is the difference b
 
 ## How it plays out
 
-For a typical SMB finance team, standing this up takes 2–4 weeks of part-time effort. Week one is scoping: list every place AI currently touches a financial workflow — the inventory is usually longer than the controller expects. Week two, define the register and the preparer/approver split for the highest-volume touchpoint, which is almost always bank-feed categorization. Weeks three and four, run it live, tune the exception process, and fold the rules into your broader AI use policy so the register's scope and [your acceptable-use rules](/posts/2026/07/06/ai-acceptable-use-policy-your-team-will-follow/) agree on what counts as touching the books.
+For a typical SMB finance team, standing this up takes 2–4 weeks of part-time effort. Week one is scoping: list every place AI currently touches a financial workflow — the inventory is usually longer than the controller expects. Week two, define the register and the preparer/approver split for the highest-volume touchpoint, which is almost always bank-feed categorization. Weeks three and four, run it live, tune the exception process, and fold the rules into your broader AI use policy so the register's scope and [[An AI acceptable-use policy your team will actually follow]] agree on what counts as touching the books.
 
 ## Watch-outs
 
@@ -70,4 +70,4 @@ For a typical SMB finance team, standing this up takes 2–4 weeks of part-time 
 
 ## Next step
 
-This is the finance-literate side of AI adoption, and it's where a dual accounting-and-systems background earns its keep. If AI is already drafting entries somewhere in your close, see how we build [accounting systems and controls that hold up under audit](/services/fintech/).
+This is the finance-literate side of AI adoption, and it's where a dual accounting-and-systems background earns its keep. If AI is already drafting entries somewhere in your close, see our [[Finance tech]] — accounting systems and controls that hold up under audit.

@@ -84,8 +84,8 @@ The founder brings more than a decade of data and financial-systems work in manu
 
 ## Related
 
-- [ERP consulting](/services/erp/) — for the systems that produce the finance and operations data behind your reports.
-- [Cloud architecture](/services/cloud/) — for hosting your data warehouse and dashboards reliably and at a sensible cost.
+- [[ERP consulting]] — for the systems that produce the finance and operations data behind your reports.
+- [[Cloud architecture]] — for hosting your data warehouse and dashboards reliably and at a sensible cost.
 
 ---
 

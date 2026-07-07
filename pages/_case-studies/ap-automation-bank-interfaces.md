@@ -38,4 +38,4 @@ AP automation is often pitched to enterprises, but the economics favor small bus
 
 ## Next step
 
-Our [finance technology services](/services/fintech/) include AP automation and banking integration — tell us what your team keys by hand and we'll tell you what can stop.
+Our [[Finance tech]] work includes AP automation and banking integration — tell us what your team keys by hand and we'll tell you what can stop.

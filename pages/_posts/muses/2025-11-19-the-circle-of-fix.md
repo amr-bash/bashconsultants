@@ -145,6 +145,6 @@ What your team has to do: name the owner, tell us which transactions actually ma
 
 ## Next step
 
-If your software life feels like a chord that never resolves, the fix is process, not panic. Our [custom development and software modernization work](/services/dev/) helps Denver SMBs put requirements, ownership, and automated testing in place so the wheel finally stops turning.
+If your software life feels like a chord that never resolves, the fix is process, not panic. Our [[Software development]] work helps Denver SMBs put requirements, ownership, and automated testing in place so the wheel finally stops turning.
 
 *Tired of singing the same chorus on loop? Let's help you step off the wheel.*
