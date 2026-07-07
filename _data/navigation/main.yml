@@ -42,9 +42,19 @@
     - title: ERP Stories
       url: /news/erp/
 
-- title: Tools
+- title: Toolkit
   url: /tools/
   icon: bi-tools
+  children:
+    - title: Overview
+      url: /tools/
+      icon: bi-grid
+    - title: For your business
+      url: /tools/business/
+      icon: bi-shop
+    - title: For BASH partners
+      url: /tools/partners/
+      icon: bi-mortarboard
 
 - title: About
   url: /about/

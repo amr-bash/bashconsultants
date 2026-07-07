@@ -1,81 +1,102 @@
 ---
 title: The BASH toolkit
-description: The working tools behind BASH Consulting — a governed prompt playbook, a VS Code orchestrator, and AI pipelines we use in client work
-excerpt: The tools that run this practice every day — a prompt playbook, an editorial governance stack, a VS Code extension, and automated build gates.
+sub-title: Deep-dive guides and training for small businesses and the consultants who serve them
+description: The BASH toolkit — DIY guides for small businesses and advanced technical training for IT consultants, across cloud, ERP, data, finance, AI, and security
+excerpt: A two-track library — plain-English DIY guides for small businesses, and deep technical training for the consultants who build these systems.
 layout: default
 preview: /assets/images/previews/from-prompts-to-pipelines-agentic-ai-in-vs-code.png
 sidebar:
-  nav: dynamic
+  nav: toolkit
 keywords:
-  - AI consulting tools Denver
-  - governed AI prompts
-  - prompt library for business
-  - VS Code prompt orchestrator
-  - AI content governance
-  - small business AI adoption
-  - AI workflow automation
+  - small business IT guides
+  - DIY IT for small business
+  - IT consultant training
+  - cloud ERP data security tutorials
+  - AI adoption for small business
+  - BASH consultant partner program
 categories:
   - tools
   - ai
 tags:
-  - tools
+  - toolkit
+  - training
   - ai
 draft: false
 date: 2026-07-06T12:00:00.000Z
-lastmod: 2026-07-06T12:00:00.000Z
+lastmod: 2026-07-07T12:00:00.000Z
 permalink: /tools/
 slug: tools
 ---
 
-## Why we publish our toolkit
+## What the toolkit is
 
-Before you pay anyone to bring artificial intelligence (AI) into your business, ask them to show you how they run it in their own. This page is our answer. Everything below is a working part of this practice — written down, version-controlled, and visible in [this site's public GitHub repository](https://github.com/bamr87/bashconsultants). We sell what we use: every tool here runs this practice daily, and the same patterns transfer to a law office's engagement letters, a distributor's order confirmations, or a clinic's patient communications.
+The BASH toolkit is our open library of how-to knowledge — the same material we use to guide clients and to train the consultants who deliver the work. It comes in two tracks, because two very different readers need it.
 
-The point isn't the specific software. It's the operating discipline: recurring AI work runs from written, reviewed playbooks — not from whatever someone happened to type into a chat window that morning. For the full story of how these pieces fit together day to day, see [how an AI-augmented practice runs](/ai-operations/).
+- **[For your business](/tools/business/)** — plain-English, do-it-yourself guides for owners, operators, and in-house generalists at small and medium businesses. No jargon, no sales pitch. Whether you run a law office, a construction firm, a clinic, a distributor, a retailer, or a nonprofit, the underlying technology needs are more alike than you'd think, and these guides meet you where you are.
+- **[For BASH partners](/tools/partners/)** — deep technical training for the consultants who build these systems. Wide and deep on the architectures, frameworks, and trade-offs behind every capability we offer. Written for senior practitioners who are expected to be among the most advanced IT professionals in the room.
 
-## Prompt Orchestrator: a VS Code extension
+Everything here is free to read. The business track helps you decide what to do and how much you can do yourself; the partner track is the reference we hold our own delivery standard to.
 
-Prompt Orchestrator is a small Visual Studio Code (VS Code) extension we built to run our playbook without leaving the editor. Today it does four things:
+## For your business
 
-- Discovers prompt templates automatically from the repository's `.github/prompts/` directory.
-- Shows them in a sidebar view in the VS Code Explorer, so anyone on a project sees the same task list.
-- Runs a chosen prompt against a chosen file from the Command Palette or the file's right-click menu, packaging the file's content as context.
-- Hands the assembled prompt to GitHub Copilot Chat, executes it directly through the VS Code Language Model API, or copies it to the clipboard for use anywhere else.
+DIY guides and foundations, applicable across every kind of small business. Start with the foundations, then go deep on whatever is slowing you down.
 
-It's an internal tool, MIT-licensed and early-stage — we run it from source rather than the extension marketplace — and the full TypeScript source is public in the [extension folder of this repository](https://github.com/bamr87/bashconsultants/tree/main/extension). If your team runs repeatable AI tasks — drafting, reviewing, summarizing — this is the shape we'd recommend: templates in one governed place, executed the same way by everyone.
-
-## The prompt playbook
-
-Each recurring task in this practice has a written prompt with a defined role, inputs, and quality criteria. Prompts are versioned like code and reviewed like code. The table below isn't hand-maintained — a script ([`scripts/generate_playbook_data.py`](https://github.com/bamr87/bashconsultants/blob/main/scripts/generate_playbook_data.py)) reads the actual prompt files and regenerates it, so this page can't quietly drift from what we really run.
-
-{:table .table .table-striped}
-Prompt | What it does
----------|----------
-{% for prompt in site.data.playbook.prompts -%}
-{{ prompt.name }} | {{ prompt.description }}
+<div class="row row-cols-1 row-cols-md-2 g-4 my-3">
+{% assign business_docs = site.toolkit | where_exp: "d", "d.categories contains 'business'" | where_exp: "d", "d.topic" | sort: "order" %}
+{% for doc in business_docs %}
+  <div class="col">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body d-flex flex-column">
+        <div class="mb-2">
+          <span class="badge text-bg-primary">{{ doc.topic_label }}</span>
+          {% if doc.level %}<span class="badge text-bg-secondary text-capitalize">{{ doc.level }}</span>{% endif %}
+        </div>
+        <h3 class="fs-5 fw-bold card-title">
+          <a href="{{ doc.url | relative_url }}" class="stretched-link text-decoration-none text-body-emphasis">{{ doc.title }}</a>
+        </h3>
+        <p class="card-text small">{{ doc.description }}</p>
+      </div>
+    </div>
+  </div>
 {% endfor %}
+</div>
 
-## The governance stack
+<a href="/tools/business/" class="btn btn-outline-primary">Browse the business track</a>
 
-Prompts say what to do; instruction files say what "good" means. These are scoped rule files that load automatically whenever an AI agent (or a person) works on matching files — editorial voice and banned phrases for customer-facing pages, frontmatter schemas for posts, coding conventions for the extension. They're the same mechanism VS Code documents for [customizing Copilot with instruction files](https://code.visualstudio.com/docs/copilot/copilot-customization), applied as the editorial authority for this whole site. This table is generated from the same script:
+## For BASH partners
 
-{:table .table .table-striped}
-Rule set | What it governs
----------|----------
-{% for instruction in site.data.playbook.instructions -%}
-{{ instruction.name }} | {{ instruction.description }}
+Advanced technical training on the technologies and frameworks behind every service we offer. If you are a consultant partnering with BASH, this is the depth we expect you to work at.
+
+<div class="row row-cols-1 row-cols-md-2 g-4 my-3">
+{% assign partner_docs = site.toolkit | where_exp: "d", "d.categories contains 'partners'" | where_exp: "d", "d.topic" | sort: "order" %}
+{% for doc in partner_docs %}
+  <div class="col">
+    <div class="card h-100 shadow-sm border-primary-subtle">
+      <div class="card-body d-flex flex-column">
+        <div class="mb-2">
+          <span class="badge text-bg-dark">{{ doc.topic_label }}</span>
+          {% if doc.level %}<span class="badge text-bg-secondary text-capitalize">{{ doc.level }}</span>{% endif %}
+        </div>
+        <h3 class="fs-5 fw-bold card-title">
+          <a href="{{ doc.url | relative_url }}" class="stretched-link text-decoration-none text-body-emphasis">{{ doc.title }}</a>
+        </h3>
+        <p class="card-text small">{{ doc.description }}</p>
+      </div>
+    </div>
+  </div>
 {% endfor %}
+</div>
 
-## The preview-image pipeline
+<a href="/tools/partners/" class="btn btn-outline-primary">Browse the partner track</a>
 
-Every article banner on this site is generated, not stock. A Bash script scans posts for missing preview images, builds an image prompt from the post's own title and description, calls OpenAI's gpt-image-2 model, saves the result, and updates the post's metadata — typically about $0.15–0.20 per image at current API rates ([OpenAI API pricing](https://platform.openai.com/docs/pricing), as of July 2026). That's the honest economics of this kind of automation: a task that once meant an hour of stock-photo hunting per article now costs cents and minutes, with a human glancing at the output before it ships.
+## How we practice what we teach
 
-## Build gates and scheduled runs
+We don't just publish this material — we run our own operation on it. This site is written, reviewed, illustrated, validated, and shipped through a governed AI pipeline, and the partner track documents that pipeline in full. See [[Running an AI-native consulting practice]] for the tools, prompts, and guardrails behind it, and [how an AI-augmented practice runs](/ai-operations/) for the operating model in plain terms.
 
-None of the above publishes anything on its own. Every push and pull request to this site triggers a full build in continuous integration (CI) before deployment — if the build breaks, nothing ships. Recurring upkeep (article reviews, refactoring, test generation, documentation) runs through the same playbook prompts on a routine cadence, and a person reads every change before it merges. Agents draft; humans approve. That's the rule here, and it's the rule we set up for clients.
+## Where to start
 
-## Put the same discipline to work
+- Not sure what your business needs? Begin with [[The small-business IT foundation]].
+- Weighing a specific move — cloud, ERP, AI, better reporting? Jump straight to the matching guide in the [business track](/tools/business/).
+- A consultant looking to partner or level up? Start with [[The BASH engagement method]], then go deep on your specialty.
 
-If you want AI in your business with this kind of structure behind it — governed prompts, written rules, and human sign-off — that's exactly what we build for clients.
-
-<a href="/services/ai/" class="btn btn-primary btn-lg px-4">Explore our AI services</a>
+Have a question a guide doesn't answer? [Book a free consultation](/contact/) and we'll point you to the right starting place.

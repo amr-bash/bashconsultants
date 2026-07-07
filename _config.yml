@@ -390,6 +390,11 @@ collections:
   services:
     output: true
     permalink: /:collection/:categories/:name/
+  toolkit:
+    output: true
+    # Docs live under /tools/<track>/<slug>/ — categories drive the track segment
+    # (business | partners). Track landing pages set an explicit permalink.
+    permalink: /tools/:categories/:name/
   case-studies:
     output: true
     permalink: /case-studies/:name/
@@ -474,6 +479,22 @@ defaults:
       related: true
       sidebar:
         nav: dynamic
+
+  # pages/_toolkit — the BASH toolkit docs/tutorials collection
+  -
+    scope:
+      path: pages/_toolkit
+    values:
+      layout: *pages
+      collection: toolkit
+      author: "Amr Abdel-Motaleb"
+      author_profile: false
+      read_time: true
+      share: true
+      related: true
+      toc_sticky: true
+      sidebar:
+        nav: toolkit
 
   # pages/_posts
   - 

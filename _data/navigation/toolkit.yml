@@ -1,0 +1,57 @@
+# Sidebar navigation for the BASH toolkit collection (pages/_toolkit/**).
+# Used when a toolkit page sets `sidebar: nav: toolkit`.
+# Schema: zer0-mistakes nav — title, url, icon, children (<= 2 levels).
+
+- title: The BASH toolkit
+  url: /tools/
+  icon: bi-tools
+
+- title: For your business
+  url: /tools/business/
+  icon: bi-shop
+  children:
+    - title: The small-business IT foundation
+      url: /tools/business/it-foundations/
+    - title: Adopting AI without losing control
+      url: /tools/business/adopting-ai/
+    - title: Moving to the cloud
+      url: /tools/business/cloud-migration/
+    - title: Outgrowing QuickBooks
+      url: /tools/business/outgrowing-quickbooks/
+    - title: Closing your books faster
+      url: /tools/business/faster-close/
+    - title: From spreadsheets to dashboards
+      url: /tools/business/spreadsheets-to-dashboards/
+    - title: Making your software talk
+      url: /tools/business/system-integrations/
+    - title: Building a 12-month IT roadmap
+      url: /tools/business/it-roadmap/
+    - title: The security baseline
+      url: /tools/business/security-baseline/
+    - title: Backups and recovery
+      url: /tools/business/backup-and-recovery/
+
+- title: For BASH partners
+  url: /tools/partners/
+  icon: bi-mortarboard
+  children:
+    - title: The BASH engagement method
+      url: /tools/partners/engagement-method/
+    - title: The deterministic-first doctrine
+      url: /tools/partners/deterministic-first/
+    - title: Running an AI-native practice
+      url: /tools/partners/ai-native-practice/
+    - title: "Production AI: RAG, agents, evals"
+      url: /tools/partners/production-ai/
+    - title: Cloud landing zones and IaC
+      url: /tools/partners/cloud-landing-zones/
+    - title: ERP implementation architecture
+      url: /tools/partners/erp-architecture/
+    - title: Record-to-report automation
+      url: /tools/partners/record-to-report/
+    - title: The modern data stack
+      url: /tools/partners/modern-data-stack/
+    - title: Integration architecture
+      url: /tools/partners/integration-architecture/
+    - title: Security architecture
+      url: /tools/partners/security-architecture/
