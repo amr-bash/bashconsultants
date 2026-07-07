@@ -9,7 +9,13 @@ services:
     # --livereload-port 35730 is set explicitly: Jekyll ignores `livereload_port`
     # from _config_dev.yml and otherwise falls back to 35729 (which both mismatches
     # the published 35730 below and collides with the zer0-mistakes container).
-    command: bash -c "bundle install && bundle exec jekyll serve --watch --force_polling --host 0.0.0.0 --port 4042 --livereload --livereload-port 35730 --config '_config.yml,_config_dev.yml'"
+    #
+    # `mkdir -p .playwright-mcp` runs first because jekyll-watch only registers an
+    # `exclude:` entry as a watch-ignore when the path EXISTS at boot
+    # (listen_ignore_paths: `next unless absolute_path.exist?`). Browser-automation
+    # tools write logs/screenshots there; pre-creating the dir makes the exclude
+    # stick, so those writes never trigger an endless rebuild loop.
+    command: bash -c "mkdir -p .playwright-mcp && bundle install && bundle exec jekyll serve --watch --force_polling --host 0.0.0.0 --port 4042 --livereload --livereload-port 35730 --config '_config.yml,_config_dev.yml'"
 
     volumes:
       - ./:/app

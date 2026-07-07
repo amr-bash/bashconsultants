@@ -535,6 +535,9 @@ exclude:
   - .sass-cache/
   - .jekyll-cache/
   - .obsidian
+  # Transient browser-automation output; excluded so `jekyll serve --watch`
+  # never rebuilds in a loop when these files appear or change.
+  - .playwright-mcp/
   - Gemfile.lock
   - gemfiles/
   - Gemfile
