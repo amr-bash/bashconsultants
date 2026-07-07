@@ -1,7 +1,7 @@
 ---
-title: Cloud Architecture
-sub-title: Scalable infrastructure, sized for a small business
-description: Cloud architecture and migration for Denver SMBs across AWS, Azure, and GCP — built for reliability, lower cost, and clean accounting integration.
+title: Cloud architecture
+sub-title: Cloud infrastructure sized and priced for a small business
+description: Cloud architecture and migration for Denver SMBs across AWS, Azure, and GCP — built for reliability, lower cost, and clean accounting integration
 preview: /assets/images/cloud-4273197.svg
 snippet: Plan, migrate, and run your business on AWS, Azure, or GCP — with cloud infrastructure sized and priced for a small business.
 author: Amr Abdel-Motaleb
@@ -24,7 +24,7 @@ tags:
 categories:
   - Cloud Services
   - IT Infrastructure
-lastmod: 2026-06-15T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 slug: cloud-architecture
 permalink: /services/cloud/
 draft: false
@@ -34,7 +34,7 @@ Move your business to the cloud without overspending or taking on risk you can't
 
 ## The problem we solve
 
-Aging servers, surprise hardware bills, and a setup that "only one person understands" are common in growing businesses. The cloud promises a way out, but the pricing is hard to predict, the provider options are confusing, and a botched migration means downtime you can't afford. Most SMBs don't need a 24/7 platform team — they need a right-sized design and a careful move.
+Aging servers, surprise hardware bills, and a setup that "only one person understands" are common in growing businesses. The cloud promises a way out, but the pricing is hard to predict, the provider options are confusing, and a botched migration means downtime you can't afford. Most small and medium-sized businesses (SMBs) don't need a 24/7 platform team — they need a right-sized design and a careful move.
 
 <div class="text-center my-4">
   <img src="/assets/images/cloud-computing-2001090.jpg" class="img-fluid rounded-3 shadow-sm" alt="Cloud computing infrastructure connecting servers, storage, and applications" loading="lazy">
@@ -80,12 +80,12 @@ We work in honest ranges, not guarantees pulled from thin air. A typical small-b
 
 ## Tools and platforms
 
-AWS, Microsoft Azure, Google Cloud Platform; Terraform, CloudFormation, and ARM for infrastructure as code; QuickBooks, Xero, and other accounting integrations; SQL and cloud data warehouses for reporting.
+AWS, Microsoft Azure, Google Cloud Platform; Terraform, CloudFormation, and Azure Resource Manager (ARM) templates for infrastructure as code; QuickBooks, Xero, and other accounting integrations; SQL and cloud data warehouses for reporting.
 
 ## Related
 
-- [ERP consulting](/services/erp/) — for the systems that run finance and operations.
-- [Data and business intelligence](/services/data/) — once your data is in the cloud, make it reportable.
+- [[ERP consulting]] — for the systems that run finance and operations.
+- [[Data and BI]] — once your data is in the cloud, make it reportable.
 
 ---
 

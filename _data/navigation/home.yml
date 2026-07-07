@@ -8,20 +8,24 @@
   icon: bi-briefcase
   url: /services/
   children:
+    - title: "AI & Automation"
+      url: /services/ai/
     - title: Cloud Architecture
       url: /services/cloud/
     - title: ERP Consulting
       url: /services/erp/
     - title: Finance Tech
       url: /services/fintech/
+    - title: Managed IT
+      url: /services/managed-it/
 - title: Blog
   icon: bi-journal-text
   url: /news/
   children:
     - title: Posts
-      url: /news/posts/
+      url: /news/
     - title: Muses
-      url: /news/posts/muses/
+      url: /news/muses/
 - title: Contact
   icon: bi-envelope
   url: /contact/

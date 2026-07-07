@@ -4,9 +4,9 @@ description: "Most AI projects at small and mid-sized businesses fail on data, c
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2025-08-12T11:00:00.000Z
-lastmod: 2026-06-21T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 draft: false
-categories: [tech]
+categories: [tech, ai]
 tags: [artificial-intelligence, implementation, strategy, data-readiness]
 featured: true
 excerpt: "The AI model is the easy part — most small-business AI projects break on dirty data, unowned workflow change, and recurring cost nobody budgeted for."
@@ -70,4 +70,4 @@ The pattern in both: the AI sits between two systems that previously required a 
 
 ## Next step
 
-Most AI conversations should start with the data underneath, not the model on top. If you are weighing an AI project and want to know whether the case study you saw last week applies to your actual business, our [data architecture and readiness work](/services/data/) is where to begin. We scope realistically for Denver-area SMBs and tell you when the honest answer is "not yet."
+Most AI conversations should start with the data underneath, not the model on top. If you are weighing an AI project and want to know whether the case study you saw last week applies to your actual business, our [[AI solutions and intelligent automation]] is where to begin — including the data-readiness work that decides whether the project is worth starting. We scope realistically for Denver-area SMBs and tell you when the honest answer is "not yet."

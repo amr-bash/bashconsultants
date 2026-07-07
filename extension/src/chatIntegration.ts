@@ -1,26 +1,27 @@
 import * as vscode from 'vscode';
 
 export class ChatIntegration {
-    
+
+    constructor(private output?: vscode.OutputChannel) {}
+
     async sendToChat(promptText: string): Promise<void> {
         try {
             // Method 1: Use vscode.editorChat.start command
             await vscode.commands.executeCommand('vscode.editorChat.start');
-            
+
             // Copy to clipboard as fallback
             await vscode.env.clipboard.writeText(promptText);
-            
-            vscode.window.showInformationMessage(
+
+            const selection = await vscode.window.showInformationMessage(
                 'Prompt copied to clipboard. Paste into Chat panel.',
                 'Open Chat'
-            ).then(selection => {
-                if (selection === 'Open Chat') {
-                    vscode.commands.executeCommand('workbench.action.chat.open');
-                }
-            });
+            );
+            if (selection === 'Open Chat') {
+                await vscode.commands.executeCommand('workbench.action.chat.open');
+            }
         } catch (error) {
-            console.error('Error sending to chat:', error);
-            
+            this.log(`Error sending to chat: ${error}`);
+
             // Fallback: just copy to clipboard
             await vscode.env.clipboard.writeText(promptText);
             vscode.window.showInformationMessage('Prompt copied to clipboard. Paste into your Chat panel.');
@@ -42,7 +43,7 @@ export class ChatIntegration {
             }
 
             const model = models[0];
-            
+
             // Create chat messages
             const messages = [
                 vscode.LanguageModelChatMessage.User(promptText)
@@ -60,7 +61,7 @@ export class ChatIntegration {
 
             return fullResponse;
         } catch (error) {
-            console.error('Error with language model:', error);
+            this.log(`Error with language model: ${error}`);
             // Fallback to clipboard method
             await this.sendToChat(promptText);
             return undefined;
@@ -72,9 +73,9 @@ export class ChatIntegration {
             location: vscode.ProgressLocation.Notification,
             title: 'Processing prompt...',
             cancellable: true
-        }, async (progress, token) => {
+        }, async () => {
             const response = await this.sendToLanguageModel(promptText);
-            
+
             if (response && showInEditor) {
                 // Create a new document with the response
                 const doc = await vscode.workspace.openTextDocument({
@@ -84,5 +85,9 @@ export class ChatIntegration {
                 await vscode.window.showTextDocument(doc);
             }
         });
+    }
+
+    private log(message: string): void {
+        this.output?.appendLine(`[ChatIntegration] ${message}`);
     }
 }

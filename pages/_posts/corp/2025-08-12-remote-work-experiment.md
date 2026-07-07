@@ -77,4 +77,4 @@ Skipping this is the most expensive shortcut in the whole transition, because it
 
 ## Next step
 
-Remote work did not end. It matured into a set of choices about roles, cost, and risk that reward firms who decide on purpose. If you are sorting out a hybrid policy, the tooling behind it, and whether your remote access would survive an audit, see how we [approach technology and operations strategy](/services/strat/) for Denver-area SMBs.
+Remote work did not end. It matured into a set of choices about roles, cost, and risk that reward firms who decide on purpose. If you are sorting out a hybrid policy, the tooling behind it, and whether your remote access would survive an audit, explore our [[IT strategy]] for Denver-area SMBs.

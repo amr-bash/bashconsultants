@@ -45,7 +45,15 @@ exclude:
   - .sass-cache/
   - .jekyll-cache/
   - .obsidian
+  # Transient tool output written into the repo (browser-automation logs,
+  # screenshots). Excluded so `jekyll serve --watch` doesn't rebuild in a
+  # loop when these files appear or change.
+  - .playwright-mcp/
   - docs/
+  - scripts/
+  - api/
+  - drafts/
+  - extension/
   - Gemfile.lock
   - gemfiles/
   - Gemfile

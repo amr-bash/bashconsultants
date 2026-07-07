@@ -4,11 +4,11 @@ description: "How fragmented legacy ERP systems trap manufacturers in a six-UI n
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2026-01-31T05:58:24.740Z
-lastmod: 2026-06-21T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 draft: false
 breaking: true
 featured: true
-categories: [erp, tech]
+categories: [erp]
 tags: [erp, legacy-systems, qad, infor, manufacturing, cloud-migration, vendor-lock-in, progress-4gl]
 sub-title: "Because nothing says 'modern manufacturing' like alt-tabbing between six different UIs from the last four decades"
 excerpt: "Vendors promised the cloud would set you free, but many manufacturers are trapped supporting a Frankenstein ERP that makes IT teams long for the simple days of punch cards."
@@ -90,7 +90,7 @@ This is the work where a finance-literate, vendor-neutral outside team earns its
 
 ## Next step
 
-You do not have to keep stocking Red Bull for 3 AM calls or perfecting your "it's a feature, not a bug" smile. The first move is a clear-eyed map of what you own and what it is costing you. See how we [approach ERP modernization and migration](/services/erp/) for SMB and mid-market manufacturers, and we will help you decide which parts of the monster are worth saving.
+You do not have to keep stocking Red Bull for 3 AM calls or perfecting your "it's a feature, not a bug" smile. The first move is a clear-eyed map of what you own and what it is costing you. See our [[ERP consulting]] for SMB and mid-market manufacturers, and we will help you decide which parts of the monster are worth saving.
 
 For the morbidly curious who want to understand what they are actually maintaining, the [Progress OpenEdge ABL reference documentation](https://docs.progress.com/bundle/openedge-abl-reference/) is the primary source on the language keeping your warehouse alive.
 

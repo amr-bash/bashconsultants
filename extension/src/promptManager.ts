@@ -1,63 +1,98 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs/promises';
+import * as yaml from 'js-yaml';
+
+/**
+ * Shortcut aliases -> canonical prompt filenames (without `.prompt.md`).
+ * Mirrors the canonical mapping in `scripts/routine-maintenance.sh`.
+ */
+const PROMPT_ALIASES: Record<string, string> = {
+    review: 'article-review',
+    refactor: 'code-refactoring',
+    test: 'test-generation',
+    docs: 'documentation',
+    debug: 'debugging'
+};
+
+/**
+ * Canonical `.prompt.md` frontmatter per `.github/FRONTMATTER.md`:
+ * `mode`, `description`, optional `tools`, `date`, `lastmod`.
+ */
+export interface PromptFrontmatter {
+    mode?: string;
+    description?: string;
+    tools?: string[];
+    date?: string | Date;
+    lastmod?: string | Date;
+    [key: string]: unknown;
+}
 
 export interface PromptTemplate {
     name: string;
     filePath: string;
     content: string;
-    frontmatter?: {
-        agent?: string;
-        [key: string]: any;
-    };
+    frontmatter?: PromptFrontmatter;
 }
 
 export class PromptManager {
     private prompts: Map<string, PromptTemplate> = new Map();
     private promptsDir: string;
 
-    constructor(private workspaceRoot: string, promptsDirectory: string) {
+    constructor(
+        private workspaceRoot: string,
+        promptsDirectory: string,
+        private output?: vscode.OutputChannel
+    ) {
         this.promptsDir = path.join(workspaceRoot, promptsDirectory);
     }
 
     async loadPrompts(): Promise<PromptTemplate[]> {
         this.prompts.clear();
 
+        let files: string[];
         try {
-            const files = await fs.readdir(this.promptsDir);
-            const promptFiles = files.filter(f => f.endsWith('.prompt.md'));
-
-            for (const file of promptFiles) {
-                const filePath = path.join(this.promptsDir, file);
-                const content = await fs.readFile(filePath, 'utf-8');
-                
-                const prompt = this.parsePrompt(file, filePath, content);
-                this.prompts.set(prompt.name, prompt);
-            }
-
-            return Array.from(this.prompts.values());
+            files = await fs.readdir(this.promptsDir);
         } catch (error) {
-            console.error('Error loading prompts:', error);
+            this.log(`Could not read prompts directory "${this.promptsDir}": ${error}`);
             return [];
         }
+
+        const promptFiles = files.filter(f => f.endsWith('.prompt.md'));
+
+        for (const file of promptFiles) {
+            const filePath = path.join(this.promptsDir, file);
+            try {
+                const content = await fs.readFile(filePath, 'utf-8');
+                const prompt = this.parsePrompt(file, filePath, content);
+                this.prompts.set(prompt.name, prompt);
+            } catch (error) {
+                // Skip unreadable files; never throw during activation.
+                this.log(`Skipping unreadable prompt file "${file}": ${error}`);
+            }
+        }
+
+        return Array.from(this.prompts.values());
     }
 
     private parsePrompt(filename: string, filePath: string, content: string): PromptTemplate {
         const name = filename.replace('.prompt.md', '');
-        
-        // Extract frontmatter
-        const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-        let frontmatter = {};
+
+        // Extract frontmatter delimited by `---` lines.
+        const frontmatterMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+        let frontmatter: PromptFrontmatter = {};
         let promptContent = content;
 
         if (frontmatterMatch) {
+            promptContent = frontmatterMatch[2];
             try {
-                // Simple YAML parsing for frontmatter
-                const yamlContent = frontmatterMatch[1];
-                frontmatter = this.parseSimpleYaml(yamlContent);
-                promptContent = frontmatterMatch[2];
+                const parsed = yaml.load(frontmatterMatch[1]);
+                if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+                    frontmatter = parsed as PromptFrontmatter;
+                }
             } catch (error) {
-                console.error('Error parsing frontmatter:', error);
+                // Malformed frontmatter: keep the body, log, and continue.
+                this.log(`Malformed frontmatter in "${filename}": ${error}`);
             }
         }
 
@@ -69,22 +104,13 @@ export class PromptManager {
         };
     }
 
-    private parseSimpleYaml(yaml: string): any {
-        const result: any = {};
-        const lines = yaml.split('\n');
-        
-        for (const line of lines) {
-            const match = line.match(/^(\w+):\s*(.+)$/);
-            if (match) {
-                result[match[1]] = match[2];
-            }
-        }
-        
-        return result;
-    }
-
     getPrompt(name: string): PromptTemplate | undefined {
-        return this.prompts.get(name);
+        const direct = this.prompts.get(name);
+        if (direct) {
+            return direct;
+        }
+        const alias = PROMPT_ALIASES[name];
+        return alias ? this.prompts.get(alias) : undefined;
     }
 
     getAllPrompts(): PromptTemplate[] {
@@ -102,5 +128,9 @@ export class PromptManager {
             vscode.window.showErrorMessage(`Error reading file: ${error}`);
             return prompt.content;
         }
+    }
+
+    private log(message: string): void {
+        this.output?.appendLine(`[PromptManager] ${message}`);
     }
 }

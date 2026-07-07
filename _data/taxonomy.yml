@@ -1,0 +1,87 @@
+# Content taxonomy for bashconsultants.com
+#
+# Canonical source for post categories, section voice profiles, and tag
+# conventions. Referenced by .github/instructions/posts.instructions.md.
+# Editorial agents and human authors should treat this file as authoritative:
+# if a post's frontmatter disagrees with the rules here, the post is wrong.
+#
+# lastmod: 2026-07-06T12:00:00.000Z
+
+categories:
+  # Primary categories. Exactly one per post, and it must match the post's
+  # subfolder under pages/_posts/ (corp/, erp/, muses/, tech/).
+  primary:
+    - slug: corp
+      section_url: /news/corp/
+      audience: "SMB owner / CFO"
+      voice: >-
+        Sharp and strategic. Written for owners and CFOs making spend
+        decisions: lead with the number or the risk, argue from evidence,
+        close with a decision the reader can make this quarter. Minimal
+        humor; zero whimsy.
+    - slug: erp
+      section_url: /news/erp/
+      audience: "Controller, operations manager"
+      voice: >-
+        Performed comedy with a real business lesson underneath — scenes,
+        characters, and running bits that dramatize how ERP and financial
+        systems projects actually go. The device is enacted, never labeled:
+        no reader-facing text may call a piece a "parody", "satire",
+        "sketch", or "musical number"; in-fiction framing (a narrator, a
+        host, an episode title) is the enactment itself and is fine. Every
+        piece must land at least one concrete, usable lesson for the person
+        who signs the checks.
+    - slug: muses
+      section_url: /news/muses/
+      audience: "Mixed — owners, IT leads, practitioners"
+      voice: >-
+        Reflective and essayistic, lightly witty. Longer-form thinking about
+        technology, work, and judgment. Metaphor and structure play are
+        welcome, but every essay still ends pointed at something the reader
+        can do.
+    - slug: tech
+      section_url: /news/tech/
+      audience: "In-house IT lead"
+      voice: >-
+        Crisp, actionable how-to. Vendor walk-throughs, architecture notes,
+        and hands-on guidance with concrete steps, honest ranges, and named
+        watch-outs. Plain English before jargon; every acronym expanded on
+        first use.
+
+  # Secondary categories. 'ai' is the ONLY sanctioned secondary category —
+  # add it when a post's main subject is artificial intelligence, so the
+  # post also surfaces in AI-focused listings. Do not invent others, and do
+  # not use a second primary (e.g. categories: [erp, tech] is invalid).
+  secondary:
+    - slug: ai
+      purpose: "Cross-cutting flag for AI-topic posts in any section"
+
+  # Frontmatter format (see posts.instructions.md for the full schema):
+  #   categories: [tech]        # primary only
+  #   categories: [tech, ai]    # primary + sanctioned secondary
+  # Flow-style YAML lists, all lowercase, primary first.
+
+tags:
+  conventions:
+    - "Lowercase kebab-case only (remote-work, erp-implementation, agentic-ai)"
+    - "Flow-style YAML list: tags: [tag1, tag2, tag3]"
+    - "3 to 8 tags per post"
+    - "Reuse an existing tag before coining a near-duplicate (check other posts first)"
+    - "Tags describe topics, not audiences or sections — the category already does that"
+  common:
+    - ai
+    - agentic-ai
+    - automation
+    - bash
+    - change-management
+    - cloud-migration
+    - denver-smb
+    - erp-implementation
+    - legacy-systems
+    - manufacturing
+    - productivity
+    - prompt-engineering
+    - security
+    - smb
+    - software-development
+    - strategy

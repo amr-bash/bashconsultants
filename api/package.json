@@ -1,0 +1,16 @@
+{
+  "name": "bashconsultants-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Azure Static Web Apps managed functions for bashconsultants.com — AI chat proxy (/api/chat)",
+  "main": "src/functions/*.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.0"
+  }
+}

@@ -139,7 +139,7 @@ You do not win this game with software. You win it with a phased plan that gives
 
 ## Next step
 
-Facing your own implementation reality check? See how we [approach ERP and QuickBooks-to-ERP migrations for Denver SMBs](/services/erp/), including the change-management work that keeps the Alliance of the Spreadsheet People on your side instead of against you.
+Facing your own implementation reality check? See our [[ERP consulting]], including the change-management work that keeps the Alliance of the Spreadsheet People on your side instead of against you.
 
 ---
 

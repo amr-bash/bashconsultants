@@ -1,18 +1,28 @@
-# Use an official Ruby runtime as a parent image
-# docker build -t ${GIT_REPO} .
-# docker run -d -p 4000:4000 -v ${ZREPO}:/app --name ${GIT_REPO}-container ${GIT_REPO}
-# docker exec -it ${GIT_REPO}-container /bin/bash
+# Optional standalone image for the BASH Consultants Jekyll site.
+#
+# Day-to-day development uses docker-compose.yml (plain ruby:3.3 image with the
+# repo bind-mounted; no build step needed). This Dockerfile exists for the rare
+# case where you want a self-contained image — CI smoke tests, hosting the dev
+# server without a checkout, etc.
+#
+# NOTE: the Gemfile expects the jekyll-theme-zer0 checkout at /zer0-mistakes
+# (override with ZER0_MISTAKES_PATH). Mount it at runtime, same as compose does:
+#
+#   docker build -t bashconsultants .
+#   docker run -p 4042:4042 \
+#     -v /path/to/zer0-mistakes:/zer0-mistakes:ro \
+#     bashconsultants
 
-FROM ruby:2.7.4
-# escape=\
-ENV GITHUB_GEM_VERSION 231
-ENV JSON_GEM_VERSION 1.8.6
-ENV GIT_REPO zer0-mistakes
+FROM ruby:3.3
+
 WORKDIR /app
-ADD . /app
-RUN gem update --system 3.3.22
-RUN bundle update
-RUN bundle install
-RUN bundle clean --force
+
+COPY . /app
+
+# bundle install runs at container start (CMD below), not at build time: the
+# Gemfile's jekyll-theme-zer0 path gem resolves against the runtime mount, which
+# does not exist while the image is building.
+
 EXPOSE 4042
-CMD ["bundle", "exec", "jekyll", "serve", "--config", "_config.yml,_config_dev.yml", "--host", "0.0.0.0", "--port", "4042"]
+
+CMD ["bash", "-c", "bundle install && bundle exec jekyll serve --host 0.0.0.0 --port 4042 --config '_config.yml,_config_dev.yml'"]

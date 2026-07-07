@@ -4,7 +4,7 @@ description: "Turn one-off AI prompts into repeatable, reviewable workflows insi
 author: "Amr Abdel-Motaleb"
 layout: article
 date: 2025-11-19T09:00:00.000Z
-lastmod: 2026-06-21T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 draft: false
 categories: [tech, ai]
 tags: [prompt-engineering, ai, vscode, agents, automation]
@@ -13,7 +13,7 @@ preview: /images/previews/from-prompts-to-pipelines-agentic-ai-in-vs-code.png
 
 If your team already uses an Artificial Intelligence (AI) assistant to explain code or draft a function, you have seen the ceiling: every task starts from a blank chat box, and the quality depends on whoever happens to be typing that day. The next step is turning those one-off prompts into saved, repeatable workflows that run inside the editor your developers already live in.
 
-A quick vocabulary check before we go further, because two terms get thrown around loosely. **Prompt engineering** is the practice of writing the instructions you give an AI model carefully enough that the output is consistent and trustworthy. **Agentic** means the AI doesn't just answer — it takes actions: reading files, editing them, running tests, opening a pull request. We covered the first idea in [prompts are the new command line](/posts/2025/11/19/prompts-are-the-new-command-line/). This post is about the second: what happens when you wire those prompts together into a pipeline.
+A quick vocabulary check before we go further, because two terms get thrown around loosely. **Prompt engineering** is the practice of writing the instructions you give an AI model carefully enough that the output is consistent and trustworthy. **Agentic** means the AI doesn't just answer — it takes actions: reading files, editing them, running tests, opening a pull request. We covered the first idea in [[Prompts are the new command line]]. This post is about the second: what happens when you wire those prompts together into a pipeline.
 
 ## Why this matters now
 
@@ -85,4 +85,4 @@ The shift here is the same one the command line went through decades ago: from t
 
 ## Next step
 
-If you want to build workflows like these into your own stack — or just want a second opinion on where AI actually saves your team time versus where it adds risk — see how we [approach development and automation work](/services/dev/).
+If you want to build workflows like these into your own stack — or just want a second opinion on where AI actually saves your team time versus where it adds risk — see our [[AI solutions and intelligent automation]] work.

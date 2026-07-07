@@ -11,9 +11,11 @@ title: All posts
     <div class="col">
       <div class="card h-100">
         {%- if post.preview -%}
-        <img src="{{ site.public_folder }}/{{ post.preview}}" class="card-img-top" alt="page preview image">
+        {%- comment -%}Preview paths may be stored as /images/... (short form) or /assets/images/... (full). Normalize to one leading /assets prefix.{%- endcomment -%}
+        {%- if post.preview contains "/assets/" -%}{%- assign preview_src = post.preview -%}{%- else -%}{%- assign preview_src = post.preview | prepend: site.public_folder -%}{%- endif -%}
+        <img src="{{ preview_src }}" class="card-img-top" alt="Preview image for {{ post.title | escape }}">
         {% else %}
-        <img src="{{ site.teaser }}" class="card-img-top" alt="page preview image">
+        <img src="{{ site.teaser }}" class="card-img-top" alt="Preview image for {{ post.title | escape }}">
         {%- endif -%}
         <div class="card-body">
           <h5 class="card-title " itemprop="headline">

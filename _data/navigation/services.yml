@@ -1,6 +1,6 @@
 - title: Home
   icon: bi-house
-  url: /home/
+  url: /
 - title: Services
   url: /services/
   icon: bi-briefcase
@@ -9,6 +9,9 @@
     - title: Services Overview
       url: /services/
       icon: bi-grid
+    - title: "AI & Automation"
+      url: /services/ai/
+      icon: bi-robot
     - title: Cloud Architecture
       url: /services/cloud/
       icon: bi-cloud
@@ -27,3 +30,6 @@
     - title: IT Strategy
       url: /services/strat/
       icon: bi-lightbulb
+    - title: Managed IT
+      url: /services/managed-it/
+      icon: bi-headset

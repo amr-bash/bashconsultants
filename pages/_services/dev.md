@@ -1,7 +1,7 @@
 ---
-title: Software Development
+title: Software development
 sub-title: Custom software and integrations for small business
-description: Custom software, API integrations, and legacy modernization for Denver SMBs — connect the systems you run and automate the manual work.
+description: Custom software, API integrations, and legacy modernization for Denver SMBs — connect the systems you run and automate the manual work
 preview: /assets/images/architecture-video-rendering.png
 snippet: Custom apps, API integrations, and legacy modernization to connect your systems and cut manual work.
 author: Amr Abdel-Motaleb
@@ -23,7 +23,7 @@ categories:
   - Development
   - IT Consulting
   - Software Engineering
-lastmod: 2026-06-15T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
 slug: software-development
 permalink: /services/dev/
 draft: false
@@ -76,9 +76,9 @@ We work in honest ranges, not guarantees. A focused integration — connecting y
 
 ## Related
 
-- [Cloud architecture](/services/cloud/) — for hosting and running the software we build.
-- [ERP consulting](/services/erp/) — for the systems that run finance and operations.
-- [Data and analytics](/services/data/) — for making sense of the data your applications collect.
+- [[Cloud architecture]] — for hosting and running the software we build.
+- [[ERP consulting]] — for the systems that run finance and operations.
+- [[Data and BI]] — for making sense of the data your applications collect.
 
 ---
 

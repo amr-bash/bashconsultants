@@ -2,9 +2,12 @@
 remote_theme: ""  # clear remote_theme so Jekyll doesn't try to fetch it
 theme: "jekyll-theme-zer0"
 
-# Remove the remote-theme plugin for Azure builds (it expects a remote_theme value)
+# Remove the remote-theme plugin for Azure builds (it expects a remote_theme value).
+# NOTE: this array REPLACES the base config's plugins list — keep it a superset of
+# what the theme needs (include_cached in theme layouts requires jekyll-include-cache).
 plugins:
   - github-pages
+  - jekyll-include-cache
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag

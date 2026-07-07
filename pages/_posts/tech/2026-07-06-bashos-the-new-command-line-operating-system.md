@@ -3,49 +3,32 @@ title: "bashos: the new command-line operating system"
 description: "The command line is growing an operating system of its own, and the new IT trade turns on riding the beast instead of being automated out of a job by it"
 author: "Amr Abdel-Motaleb"
 layout: article
-date: 2026-06-20T12:00:00.000Z
-lastmod: 2026-06-20T12:00:00.000Z
-draft: true
-categories:
-    - muses
-    - AI
-tags:
-    - ai
-    - agentic-ai
-    - cli
-    - terminal
-    - sysadmin
-    - devops
-    - automation
-    - bash
-    - future-of-work
-keywords:
-    - ai in the terminal
-    - agentic cli coding agents 2026
-    - claude code gemini cli codex cli
-    - future of sysadmin work ai
-    - how to use ai in the command line
-    - ai native operating system
-preview: /assets/images/previews/bashos-the-new-command-line-operating-system.png
+date: 2026-07-06T12:00:00.000Z
+lastmod: 2026-07-06T12:00:00.000Z
+draft: false
+categories: [tech, ai]
+tags: [ai, agentic-ai, cli, terminal, sysadmin, devops, automation, bash, future-of-work]
+keywords: [ai in the terminal, agentic cli coding agents 2026, claude code gemini cli codex cli, future of sysadmin work ai, how to use ai in the command line, ai native operating system]
+preview: /images/previews/bashos-the-new-command-line-operating-system.png
 featured: false
 excerpt: "Prompts became the command line. Now the command line is becoming an operating system — one that schedules, remembers, and acts. Here's how to ride the beast instead of being replaced by it."
 ---
 
 The terminal was supposed to be a museum piece. For two decades the industry tried to bury it under graphical user interfaces (GUIs), web consoles, and one-click dashboards, and for two decades the people who refused to leave it kept quietly out-shipping everyone else. Then, sometime in the last couple of years, the oldest interface in computing did something genuinely new: it grew a brain.
 
-You can feel it the first time an agent reads your repo, forms a plan, runs your test suite, and hands you a diff — all from a request you typed where `ls` used to go. The shell stopped being a dumb pipe to the kernel and started behaving like an operating system in its own right: scheduling work, holding context, remembering what you told it last week, deciding which tools to call. I've started calling that composite **bashos** — not a product you install, but the posture the command line is taking on as AI moves into it.
+You can feel it the first time an agent reads your repo, forms a plan, runs your test suite, and hands you a diff — all from a request you typed where `ls` used to go. The shell stopped being a dumb pipe to the kernel and started behaving like an operating system in its own right: scheduling work, holding context, remembering what you told it last week, deciding which tools to call. I've started calling that composite **bashos** — not a product you install, but the posture the command line is taking on as artificial intelligence (AI) moves into it.
 
 This is a field guide to that shift, written for people who already live in a terminal. The good news and the bad news are the same sentence: the thing coming for your job is also the best tool you've ever been handed. Learning to tell those two apart — and then to ride the one that's left — is the whole new trade.
 
 ## From prompts to an operating system
 
-A while back I argued that [prompts are the new command line](/prompts-are-the-new-command-line/) — that the interface for getting work out of a machine had moved from syntax you memorize to intent you describe. That was the first half of the story. The second half is what the terminal does *after* it understands you.
+A while back I argued that [[Prompts are the new command line]] — that the interface for getting work out of a machine had moved from syntax you memorize to intent you describe. That was the first half of the story. The second half is what the terminal does *after* it understands you.
 
 An operating system, stripped to its job description, does a handful of things: it schedules work, manages memory, keeps track of context, brokers access to tools and devices, and enforces who is allowed to do what. Look at what a modern terminal agent does and the list is eerily familiar. It schedules a sequence of steps. It manages a context window like a working set, paging facts in and out. It remembers project conventions across sessions. It decides which command-line tool to reach for. It (should) ask before it touches anything dangerous. The shell has quietly acquired the responsibilities of a kernel — except the thing it schedules isn't CPU time, it's *intent*.
 
-Make it concrete. Last year, "rotate the logging config across the fleet and confirm nothing broke" was a morning: SSH around, edit files, grep for errors, eyeball the dashboards. The bashos version is one sentence of intent, after which an agent drafts the change, runs it against a staging box, diffs the before-and-after, and reports what moved — and you spend your morning deciding whether it was right, not typing it. The work didn't vanish. It changed shape, from *doing* to *directing*.
+Make it concrete. Last year, "rotate the logging config across the fleet and confirm nothing broke" was a morning: Secure Shell (SSH) into box after box, edit files, grep for errors, eyeball the dashboards. The bashos version is one sentence of intent, after which an agent drafts the change, runs it against a staging box, diffs the before-and-after, and reports what moved — and you spend your morning deciding whether it was right, not typing it. The work didn't vanish. It changed shape, from *doing* to *directing*.
 
-This isn't a metaphor I'm straining to make fit. As of mid-2026 the terminal-agent category is the fastest-moving corner of the developer-tools market, and the field is crowded: Claude Code, Gemini CLI, OpenAI's Codex CLI, OpenCode, Aider, Warp, Goose, and Amazon Q Developer CLI all run the same core loop — read your project, plan, execute in your shell, show you the result. Microsoft shipped an *Intelligent Terminal* at Build 2026: a separate, opt-in build of Windows Terminal that pipes your shell context to whichever agent you bolt on — Copilot, Claude Code, Codex, Gemini — over a local Agent Client Protocol. And in the research world, projects like AIOS have gone the literal distance and put a large language model where the kernel scheduler used to sit, complete with agent scheduling, memory management, and tool-access control.
+This isn't a metaphor I'm straining to make fit. As of mid-2026 the terminal-agent category is the fastest-moving corner of the developer-tools market, and the field is crowded: [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview), [Gemini CLI](https://github.com/google-gemini/gemini-cli), OpenAI's [Codex CLI](https://developers.openai.com/codex/cli), OpenCode, Aider, Warp, Goose, and Amazon Q Developer CLI all run the same core loop — read your project, plan, execute in your shell, show you the result. Microsoft [announced an *Intelligent Terminal*](https://devblogs.microsoft.com/commandline/announcing-intelligent-terminal-version-0-1/) at Build 2026: a separate, opt-in build of Windows Terminal that pipes your shell context to whichever agent you bolt on — Copilot, Claude Code, Codex, Gemini — over a local Agent Client Protocol. And in the research world, projects like [AIOS](https://arxiv.org/abs/2403.16971) have gone the literal distance and put a large language model where the kernel scheduler used to sit, complete with agent scheduling, memory management, and tool-access control.
 
 Put those together and the trend line is clear. The command line is no longer just a way to *issue* instructions to an operating system. It's becoming one.
 
@@ -53,9 +36,9 @@ Put those together and the trend line is clear. The command line is no longer ju
 
 Here's the part nobody on a vendor stage will say plainly: the same capability is both the threat and the tool, and there is no version of the future where you get one without the other.
 
-Start with the threat, because pretending it isn't there ages badly. A large share of traditional systems-administration work — by 2026 estimates, on the order of two-fifths of the task list — is exactly the kind of bounded, well-documented toil that an agent eats for breakfast. Provisioning, log triage, writing the same firewall rule for the hundredth time, turning a ticket into a three-line script: that used to be the moat. The moat is now a one-liner you hand to a process that doesn't sleep, doesn't get bored, and costs less per hour than your coffee. Industry surveys now peg the half-life of a technical skill at roughly two and a half years; the specific keystrokes you're proud of have a shorter shelf life than your laptop.
+Start with the threat, because pretending it isn't there ages badly. A large share of traditional systems-administration work is exactly the kind of bounded, well-documented toil that an agent eats for breakfast. Provisioning, log triage, writing the same firewall rule for the hundredth time, turning a ticket into a three-line script: that used to be the moat. The moat is now a one-liner you hand to a process that doesn't sleep, doesn't get bored, and costs less per hour than your coffee. Technical skills date faster than they used to, and the specific keystrokes you're proud of have a shorter shelf life than your laptop.
 
-Now the other face of the same beast. Those same surveys find that practitioners who actually fold AI into their workflow report getting back something like a third of their week — the hours that used to vanish into rote work — and that people with demonstrable AI fluency command a meaningful wage premium over peers doing the identical job without it. Large engineering organizations running terminal agents at scale report shipping materially faster while clawing back hundreds of thousands of person-hours. The threat and the tool are not two things. They are one thing, viewed from two sides of your own willingness to use it.
+Now the other face of the same beast. The practitioners who actually fold AI into their workflow get real hours back — the ones that used to vanish into rote work — and demonstrable AI fluency is starting to separate otherwise-identical résumés. Engineering organizations running terminal agents at scale report shipping faster and reclaiming meaningful capacity. The threat and the tool are not two things. They are one thing, viewed from two sides of your own willingness to use it.
 
 That's what makes the competition your best friend-enemy. You cannot out-type the agent; it's faster. You cannot out-remember it; it holds the whole repo in context. What you *can* do — the only durable move — is out-*judge* it: decide what's worth doing, catch it when it's confidently wrong, and own the outcome when it ships. Beating the beast and harnessing the beast turn out to be the same maneuver. You befriend it, you point it, and you stay the one holding the leash.
 
@@ -70,7 +53,7 @@ Which is to say you've been promoted into the kernel. Every responsibility an ag
 - **Scheduling** — which task goes to which agent, in what order, and what runs unattended overnight versus what waits for your eyes.
 - **Context management** — what the agent is allowed to know: the repo map, the runbook, the last incident, and pointedly *not* the customer's personally identifiable information (PII).
 - **Memory** — the conventions, the architecture decisions, the "we tried that in 2024 and it broke" that you encode so it doesn't relearn from scratch every session.
-- **Tool brokering** — which command-line tools, APIs, and integrations it may call, and which it may not.
+- **Tool brokering** — which command-line tools, application programming interfaces (APIs), and integrations it may call, and which it may not.
 - **Access control** — least privilege, credentials, and the blast radius if it's wrong.
 
 That is the literal job spec of an operating-system kernel, now running on you. The phrase that keeps rattling around my head is *operating systems built into them* — and it cuts both ways. The AI has an operating system built into it. And the professionals who thrive build an operating system into *themselves*: a disciplined internal model for how to dispatch, constrain, and verify a fleet of tireless, fallible workers. The trade isn't disappearing. It's moving up the stack, from the keyboard to the control room.
@@ -117,7 +100,7 @@ You don't master this by reading about it. Pick one agent. Point it at a real re
 
 ## Field notes: how this post was made
 
-In the spirit of practicing what it preaches, this piece was built the way it describes working. The research — the current state of terminal agents, the Microsoft Intelligent Terminal, the workforce numbers — was gathered by an AI agent fanning out across sources, then checked against more than one of them before any figure made it in. The structure was drafted, argued with, and rewritten. The judgment about what's true, what's overstated, and what's worth saying stayed human. That's the loop in miniature: let the beast do the fetching and the first draft; keep the deciding for yourself. A few things that made it work, and that generalize:
+In the spirit of practicing what it preaches, this piece was built the way it describes working. The research — the current state of terminal agents, the Microsoft Intelligent Terminal, the shape of the workforce shift — was gathered by an AI agent fanning out across sources, then checked against more than one of them before any claim made it in. The structure was drafted, argued with, and rewritten. The judgment about what's true, what's overstated, and what's worth saying stayed human. That's the loop in miniature: let the beast do the fetching and the first draft; keep the deciding for yourself. A few things that made it work, and that generalize:
 
 - **Make it research before it writes.** An agent that searches first and drafts second is dramatically more accurate than one riffing from memory. Force the order.
 - **Give it the constraints up front.** Audience, length, tone, the words to avoid — specified before the first draft, not patched in after.
@@ -136,3 +119,5 @@ $ # the prompt comes back. what you do with the freedom is the whole job.
 ```
 
 The competition really is your best friend-enemy. So make friends — and keep your hand on the leash.
+
+And if you're working out where terminal agents fit in your own shop — what to hand them, what to gate, and what to keep human — that's the conversation behind our [[AI solutions and intelligent automation]].

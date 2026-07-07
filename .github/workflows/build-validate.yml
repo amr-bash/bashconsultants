@@ -1,0 +1,158 @@
+# Build & validate — quality gate for bashconsultants.com
+#
+# The Azure Static Web Apps workflow deploys on push to main with zero
+# validation. This workflow is the gate in front of it: it builds the site
+# with BOTH production-relevant config stacks and lints reader-facing
+# content against the house editorial rules.
+#
+#   1. build-pages  — the GitHub Pages stack: github-pages gem +
+#                     remote_theme bamr87/zer0-mistakes@v1.26.0 (_config.yml).
+#                     The repo's root Gemfile points the theme gem at a local
+#                     path (/zer0-mistakes) that only exists in Docker dev, so
+#                     this job writes a CI-only Gemfile with the same plugin
+#                     set instead of using the root Gemfile.
+#   2. build-azure  — the Azure stack: BUNDLE_GEMFILE=Gemfile.azure
+#                     (gem theme from RubyGems) + _config.yml,_config.azure.yml.
+#   3. content-lint — scripts/content_lint.py (frontmatter contract, banned
+#                     phrases, description lengths, draft blocker).
+#
+# No deploy steps here — Azure deploy stays in its own workflow.
+
+name: Build & validate
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'extension/**'
+  pull_request:
+    paths-ignore:
+      - 'extension/**'
+
+concurrency:
+  group: build-validate-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  content-lint:
+    name: Content lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint self-test (fixtures)
+        run: python3 scripts/content_lint.py --self-test
+
+      - name: Lint site content
+        run: python3 scripts/content_lint.py
+
+  build-pages:
+    name: Build (GitHub Pages stack, remote theme)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container: ruby:3.3
+    env:
+      # Root Gemfile needs the theme gem from a local path CI lacks; use a
+      # CI-only Gemfile that mirrors the production GitHub Pages plugin set.
+      BUNDLE_GEMFILE: Gemfile.ci
+      BUNDLE_PATH: vendor/bundle
+      JEKYLL_ENV: production
+      PAGES_REPO_NWO: ${{ github.repository }}
+      JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write CI Gemfile
+        run: |
+          cat > Gemfile.ci <<'EOF'
+          source "https://rubygems.org"
+          gem "github-pages", ">= 228", group: :jekyll_plugins
+          # In _config.yml plugins but not bundled with github-pages:
+          gem "jekyll-mermaid"
+          gem "webrick"
+          gem "faraday-retry"
+          EOF
+
+      - name: Cache gems
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          # The CI Gemfile is defined in this workflow file, so key on it.
+          key: gems-pages-${{ runner.os }}-${{ hashFiles('.github/workflows/build-validate.yml') }}
+          restore-keys: gems-pages-${{ runner.os }}-
+
+      - name: Install gems
+        run: |
+          bundle config set --local jobs 4
+          bundle install
+
+      - name: Build (remote theme, _config.yml)
+        run: bundle exec jekyll build --trace --config _config.yml --destination _site-pages
+
+      - name: Sanity-check output
+        run: |
+          set -eux
+          test -s _site-pages/index.html
+          test -s _site-pages/404.html
+          test -s _site-pages/llms.txt
+          test -s _site-pages/search/index.html
+          test -s _site-pages/services/index.html
+          test -s _site-pages/contact/index.html
+          # search.json must be valid JSON with the field contract intact
+          ruby -rjson -e '
+            items = JSON.parse(File.read("_site-pages/search.json"))
+            raise "search.json is empty" if items.empty?
+            %w[title url description content collection date categories tags].each do |k|
+              raise "search.json items missing #{k}" unless items.first.key?(k)
+            end
+            puts "search.json OK: #{items.size} items"
+          '
+          # Organization JSON-LD must render on the landing page
+          grep -q '"ProfessionalService"' _site-pages/index.html
+
+  build-azure:
+    name: Build (Azure stack, gem theme)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container: ruby:3.3
+    env:
+      BUNDLE_GEMFILE: Gemfile.azure
+      BUNDLE_PATH: vendor/bundle
+      JEKYLL_ENV: production
+      PAGES_REPO_NWO: ${{ github.repository }}
+      JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache gems
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: gems-azure-${{ runner.os }}-${{ hashFiles('Gemfile.azure') }}
+          restore-keys: gems-azure-${{ runner.os }}-
+
+      - name: Install gems
+        run: |
+          bundle config set --local jobs 4
+          bundle install
+
+      - name: Build (gem theme, _config.yml + _config.azure.yml)
+        run: bundle exec jekyll build --trace --config _config.yml,_config.azure.yml --destination _site-azure
+
+      - name: Sanity-check output
+        run: |
+          set -eux
+          test -s _site-azure/index.html
+          test -s _site-azure/404.html
+          test -s _site-azure/llms.txt
+          test -s _site-azure/search/index.html
+          ruby -rjson -e '
+            items = JSON.parse(File.read("_site-azure/search.json"))
+            raise "search.json is empty" if items.empty?
+            puts "search.json OK: #{items.size} items"
+          '
+          grep -q '"ProfessionalService"' _site-azure/index.html
