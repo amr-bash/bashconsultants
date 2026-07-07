@@ -18,16 +18,30 @@ For the full overview see [`.github/copilot-instructions.md`](./.github/copilot-
 | Layer | Location | When to read |
 |---|---|---|
 | Cross-tool entry | `AGENTS.md` (this file) | Always first |
+| Claude Code entry | `CLAUDE.md` | Claude Code reads this automatically; it adds the `.claude/` layer |
 | Project Copilot instructions | `.github/copilot-instructions.md` | Always second |
+| Brand — single source of truth | `.github/instructions/brand.instructions.md` | Before any brand / voice / identity work |
 | Canonical frontmatter schema | `.github/FRONTMATTER.md` | When editing any `.prompt.md` or `.instructions.md` |
 | File-scoped instructions | `.github/instructions/*.instructions.md` | Auto-loaded when files match `applyTo` |
 | Reusable prompts | `.github/prompts/*.prompt.md` | When asked to run a multi-step task that matches a prompt |
+| Claude-native primitives | `.claude/` (skills, agents, commands, memory, hooks) | In Claude Code — see `.claude/README.md` |
 | Workflows | `.github/workflows/` | When changing CI |
+
+### Claude Code layer (`.claude/`)
+
+Claude Code has native primitives that specialize this cross-tool guidance. Map in `.claude/README.md`.
+
+| Primitive | Location | Use for |
+|---|---|---|
+| Skills | `.claude/skills/*/SKILL.md` | Governed procedures (editorial gate, toolkit-doc authoring, wikilinks, brand) |
+| Subagents | `.claude/agents/*.md` | Delegated jobs (article review, build validation, brand audit) |
+| Commands | `.claude/commands/*.md` | `/`-triggers: `/lint-content`, `/new-toolkit-doc`, `/brand-check` |
 
 ### File-scoped instruction map
 
 | Editing files in… | Read |
 |---|---|
+| Anything that carries the brand outward (content, `_layouts/**`, `_includes/**`, `assets/brand/**`) | `.github/instructions/brand.instructions.md` |
 | Any customer-facing page (`pages/**`, `index.md`, `about.md`, `contact.md`) | `.github/instructions/content-style.instructions.md` |
 | `pages/_posts/**` | `.github/instructions/posts.instructions.md` (+ content-style) |
 | `pages/_services/**` | `.github/instructions/services.instructions.md` (+ content-style) |

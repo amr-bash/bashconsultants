@@ -45,6 +45,8 @@
       url: /tools/partners/ai-native-practice/
     - title: "Production AI: RAG, agents, evals"
       url: /tools/partners/production-ai/
+    - title: Building a native Claude context framework
+      url: /tools/partners/claude-context-framework/
     - title: Cloud landing zones and IaC
       url: /tools/partners/cloud-landing-zones/
     - title: ERP implementation architecture

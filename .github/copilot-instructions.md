@@ -77,6 +77,7 @@ Jekyll content under `pages/` follows standard Jekyll frontmatter: `title`, `des
 - Audience: SMB owners and operators evaluating IT consulting.
 - Tone: Professional, plain-language, ROI-focused; avoid jargon without definition.
 - Always tie technical content back to business outcomes.
+- **Identity is governed by a single source of truth:** `.github/instructions/brand.instructions.md` (name, mission, voice, doctrine, colors, logo). Read it before brand or positioning work.
 
 ## Hard Rules
 
@@ -87,4 +88,4 @@ Jekyll content under `pages/` follows standard Jekyll frontmatter: `title`, `des
 
 ---
 
-**Related:** `AGENTS.md` (cross-tool entry point) · `.github/FRONTMATTER.md` · `.github/prompts/commit-publish.prompt.md` · `.github/instructions/` (file-scoped rules)
+**Related:** `AGENTS.md` (cross-tool entry point) · `CLAUDE.md` (Claude Code entry point) · `.github/instructions/brand.instructions.md` (brand SSOT) · `.github/FRONTMATTER.md` · `.github/prompts/commit-publish.prompt.md` · `.github/instructions/` (file-scoped rules) · `.claude/README.md` (Claude-native layer)
