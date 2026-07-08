@@ -5,8 +5,9 @@ the Azure Functions app in `api/` that powers the site's AI chat widget. It is
 an internal operations doc — `docs/` is excluded from the Jekyll build.
 
 The workflows: **build & validate** (the PR gate), **site health** (nightly),
-**content gardener** (weekly draft), **PR to upstream** (fork sync), and **the
-preacher** (weekly doctrine enforcement — see [`the-preacher.md`](./the-preacher.md)).
+**content gardener** (weekly new-post draft), **content review** (weekly
+expand-or-add), **PR to upstream** (fork sync), and **the preacher** (weekly
+doctrine enforcement — see [`the-preacher.md`](./the-preacher.md)).
 
 ## What runs where
 
@@ -209,6 +210,25 @@ requests opened with the default `GITHUB_TOKEN` can't trigger other
 workflows, so the SWA staging build only runs on gardener PRs when this
 token is set (or after any human push to the PR branch). Review still works
 fine without it; you just review the markdown instead of a staged preview.
+
+## Workflow: Content review (weekly)
+
+File: `.github/workflows/content-review.yml`
+Schedule: `37 14 * * 4` UTC (Thursdays, morning in Denver), plus manual dispatch with
+optional `mode` (expand / new / auto) and `focus` inputs.
+
+The content counterpart to the preacher. It adopts the content-curator charter
+(`.claude/agents/content-curator.md`) and moves the site's content forward by ONE
+unit each week: it reviews the corpus — starting from the deterministic
+`scripts/content_inventory.py --focus` shortlist of thin/stale pages — and opens a PR
+that either **expands** an existing article with more relevant, current information or
+**writes** a new article filling a real gap. It follows the same editorial authorities
+as the gardener, gates on `content_lint.py`, and never pushes to `main`.
+
+This complements the **content gardener** (which only drafts brand-new posts): the
+gardener grows breadth, the curator reviews everything and chooses between depth and
+breadth. Activate it the same way (a `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY`
+secret; optional `CONTENT_REVIEW_GITHUB_TOKEN`).
 
 ## Workflow: PR to upstream (on push to main)
 

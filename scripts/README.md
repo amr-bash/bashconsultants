@@ -35,6 +35,20 @@ python3 scripts/doctrine_check.py --list      # list the registered checks
 python3 scripts/doctrine_check.py --self-test # run inline fixtures
 ```
 
+### `content_inventory.py`
+
+The deterministic seed for the weekly content review — lists every reader-facing
+content page with its word count, last-modified date, and age, and flags the thin
+and the stale. The [content curator](../.claude/agents/content-curator.md) starts
+from this instead of re-reading the whole corpus every week (structural pages —
+index stubs, landing loops — are skipped).
+
+```bash
+python3 scripts/content_inventory.py          # full table, most-neglected first
+python3 scripts/content_inventory.py --focus  # the thin/stale shortlist for a weekly run
+python3 scripts/content_inventory.py --json   # machine-readable (for the curator)
+```
+
 ### `generate_playbook_data.py`
 
 Generates `_data/playbook.yml` from `.github/prompts/*.prompt.md` and

@@ -1,7 +1,7 @@
 ---
 title: Services
 sub-title: Enterprise-grade IT, sized and priced for small business
-description: Denver IT consulting for small and medium businesses — cloud, ERP, finance systems, data and BI, custom software, and IT strategy, all enterprise-grade
+description: Denver IT consulting for small and medium businesses — AI automation, cloud, ERP, finance systems, data and BI, custom software, IT strategy, managed IT
 preview: /assets/images/cld-arch-diagram.png
 snippet: From cloud and ERP to data, custom software, and IT strategy — practical, enterprise-grade technology for Denver small and medium businesses.
 author: Amr Abdel-Motaleb
@@ -49,7 +49,7 @@ faq_items:
   - question: "Do you provide ongoing support after a project ends?"
     answer: "Yes. Beyond implementation we offer training, knowledge transfer, and managed IT support — monitoring, maintenance, and a helpdesk — so your team can run and grow the systems rather than depending on us indefinitely."
   - question: "What ERP and financial systems do you have hands-on experience with?"
-    answer: "ERP: QAD Enterprise Edition and Mfg/Pro, Infor ERP LN (Baan IV) and CloudSuite Industrial (SyteLine), and Oracle PeopleSoft Financials. Financial systems: OneStream, Oracle Hyperion (HFM), BlackLine, Trintech, FloQast, NetSuite, SAP Concur, QuickBooks, Sage, and Microsoft Dynamics — in both technical and functional roles."
+    answer: "ERP: QAD Enterprise Edition and Mfg/Pro, Infor ERP LN (formerly Baan IV) and CloudSuite Industrial (formerly SyteLine), and Oracle PeopleSoft Financials — the versions we've worked on directly, several of them legacy releases rather than each vendor's current line (QAD's current flagship, for example, is QAD Adaptive ERP). Financial systems: OneStream, Oracle Hyperion (HFM), BlackLine, Trintech, FloQast, NetSuite, SAP Concur, QuickBooks, Sage, and Microsoft Dynamics — in both technical and functional roles."
   - question: "Are you local to Denver?"
     answer: "Yes. BASH Consulting is based in Denver, Colorado, and works with small and medium businesses along the Front Range and remotely across the cloud platforms we support."
 lastmod: 2026-07-06T12:00:00.000Z
@@ -125,7 +125,7 @@ When spreadsheets and QuickBooks can no longer hold the business together, ERP b
 
 **How long:** a full implementation typically runs 5–7 months across discovery (4–6 weeks), design and configuration (8–12 weeks), testing (4–6 weeks), and go-live (2–4 weeks), followed by ongoing support.
 
-**Systems:** QAD Enterprise Edition (2014, 2016, 2018) and Mfg/Pro (eB2, eB2.1); Infor ERP LN (Baan IV) and CloudSuite Industrial (SyteLine) 8 &amp; 9; Oracle PeopleSoft Financials 9.2; Oracle Hyperion Financial Management 11.
+**Versions we've worked on:** QAD Enterprise Edition (2014, 2016, 2018) and Mfg/Pro (eB2, eB2.1); Infor ERP LN (formerly Baan IV) and CloudSuite Industrial (formerly SyteLine) 8 &amp; 9; Oracle PeopleSoft Financials 9.2; Oracle Hyperion Financial Management 11. Several are legacy releases — [QAD's current flagship is QAD Adaptive ERP](https://www.qad.com/solutions/adaptive-erp) — so if you run a newer line, tell us your version and we'll say plainly what we've touched.
 
 **Typical outcome:** one system of record replaces the spreadsheet workarounds, so inventory, orders, and the general ledger reconcile by themselves.
 
@@ -146,7 +146,7 @@ A finance background is what sets us apart — we speak general ledger (GL), AR/
 
 **Best fit when:** your month-end close drags on for two weeks, an auditor flagged your access controls, or you are stitching consolidation together by hand across multiple entities.
 
-**Platforms:** OneStream, Oracle Hyperion (HFM), and Anaplan for enterprise performance management; BlackLine, Trintech, and FloQast for financial close; QAD, NetSuite, and SAP Concur for ERP financials and expense; QuickBooks, Sage, and Microsoft Dynamics for accounting.
+**Platforms:** OneStream and Oracle Hyperion (HFM) for enterprise performance management; BlackLine, Trintech, and FloQast for financial close; QAD, NetSuite, and SAP Concur for ERP financials and expense; QuickBooks, Sage, and Microsoft Dynamics for accounting.
 
 **Typical outcome:** month-end close cycles often compress from around ten business days into the three-to-five-day range as manual reconciliation gets automated.
 
@@ -209,7 +209,7 @@ We plan to work ourselves out of a job. Our strategy work favors building your t
 
 **Best fit when:** you are about to make a significant technology investment and want a second opinion that isn't tied to a product — a construction firm weighing a field-to-office software purchase, say — or your in-house generalist needs help justifying a project to ownership.
 
-**Typical deliverable:** a 12–18 month technology roadmap with a prioritized investment sequence and a one-page summary your ownership or board can act on.
+**Typical deliverable:** a prioritized technology roadmap — a 12–18 month horizon is typical, set to your planning cycle — with an investment sequence and a one-page summary your ownership or board can act on.
 
 **Full details:** [[IT strategy]]
 
