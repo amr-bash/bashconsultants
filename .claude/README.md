@@ -18,7 +18,8 @@ Start at the root [`CLAUDE.md`](../CLAUDE.md). This file maps what lives here an
 ├── agents/              # Subagents — delegate a bounded job to a fresh context
 │   ├── article-reviewer-editor.md   Editorial + SEO + frontmatter review (has project memory)
 │   ├── jekyll-build-validator.md    Validate the build across dev / Pages / Azure stacks
-│   └── brand-guardian.md            Audit copy + assets against the brand SSOT
+│   ├── brand-guardian.md            Audit copy + assets against the brand SSOT
+│   └── preacher.md                  Weekly doctrine enforcement — or mechanize a check (docs/the-preacher.md)
 ├── commands/            # Slash commands — discoverable entry points to common workflows
 │   ├── lint-content.md      /lint-content   → run the editorial gate on changed content
 │   ├── new-toolkit-doc.md   /new-toolkit-doc → scaffold a new toolkit doc
