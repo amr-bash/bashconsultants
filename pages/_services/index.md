@@ -261,6 +261,6 @@ Every engagement follows the same simple arc, scaled to the size of the project:
 
 ## Get started
 
-Tell us what's slowing your business down and we'll recommend where to start — no obligation. Reach us at [info@bashconsultants.com](mailto:info@bashconsultants.com) or [720-352-4641](tel:+17203524641).
+Tell us what's slowing your business down and we'll recommend where to start — no obligation. Reach us at [{{ site.data.entity.info["contact-email"] }}](mailto:{{ site.data.entity.info["contact-email"] }}) or [{{ site.data.entity.info["contact-phone"] }}](tel:+1{{ site.data.entity.info["contact-phone"] | remove: '-' }}).
 
 [Schedule a consultation](/contact/)
