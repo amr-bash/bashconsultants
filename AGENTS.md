@@ -34,7 +34,7 @@ Claude Code has native primitives that specialize this cross-tool guidance. Map 
 | Primitive | Location | Use for |
 |---|---|---|
 | Skills | `.claude/skills/*/SKILL.md` | Governed procedures (editorial gate, toolkit-doc authoring, wikilinks, brand) |
-| Subagents | `.claude/agents/*.md` | Delegated jobs (article review, build validation, brand audit) |
+| Subagents | `.claude/agents/*.md` | Delegated jobs (article review, build validation, brand audit, the weekly `preacher` doctrine enforcer — see `docs/the-preacher.md`) |
 | Commands | `.claude/commands/*.md` | `/`-triggers: `/lint-content`, `/new-toolkit-doc`, `/brand-check` |
 
 ### File-scoped instruction map

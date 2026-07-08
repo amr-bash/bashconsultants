@@ -20,6 +20,21 @@ python3 scripts/content_lint.py --warn-only # report but always exit 0
 python3 scripts/content_lint.py --self-test # run inline fixtures
 ```
 
+### `doctrine_check.py`
+
+The deterministic half of "practice what we preach" — structural doctrine checks
+(DRY, single-source-of-truth) that complement `content_lint.py`'s editorial focus.
+An extensible registry of `@check` functions; the [preacher](../docs/the-preacher.md)
+grows it by mechanizing recurring AI-review burdens. The seed check, `DRY-CONTACT`,
+flags hardcoded contact values in content that should read from `_data/entity/info.yml`.
+
+```bash
+python3 scripts/doctrine_check.py             # run all checks, exit 1 on any violation
+python3 scripts/doctrine_check.py --warn-only # report but always exit 0
+python3 scripts/doctrine_check.py --list      # list the registered checks
+python3 scripts/doctrine_check.py --self-test # run inline fixtures
+```
+
 ### `generate_playbook_data.py`
 
 Generates `_data/playbook.yml` from `.github/prompts/*.prompt.md` and
