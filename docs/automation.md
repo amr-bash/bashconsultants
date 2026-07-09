@@ -21,6 +21,12 @@ at the absolute SWA URL (for example
 cross-origin requests from the production domains are already on the
 function's origin allowlist.
 
+> **Current state:** the Azure SWA deploy workflow has been retired (see the
+> CHANGELOG). Production is **GitHub Pages only**, so `/api/chat` is not deployed
+> today; the `api/` app and `staticwebapp.config.json` remain for a future Azure
+> reconfiguration. The LinkedIn automation below runs entirely in GitHub Actions
+> and needs no server-side host.
+
 ## The chat proxy (`api/`)
 
 `api/src/functions/chat.js` is an Azure Functions app (Node.js v4 programming
@@ -208,6 +214,61 @@ requests opened with the default `GITHUB_TOKEN` can't trigger other
 workflows, so the SWA staging build only runs on gardener PRs when this
 token is set (or after any human push to the PR branch). Review still works
 fine without it; you just review the markdown instead of a staged preview.
+
+## Workflow: LinkedIn publishing
+
+Publishes to the BASH LinkedIn **company page** (`urn:li:organization:64517157`)
+the same way the gardener drafts posts: **agents draft, a human approves, a
+script posts.** It handles article link-shares of blog posts and standalone text
+updates. Native long-form LinkedIn Articles are not API-publishable — "article"
+here means a link-share card.
+
+**The engine** — `scripts/features/linkedin/` (stdlib-only Python, run as
+`python3 scripts/features/linkedin <command>`). It maps a post's frontmatter to
+the Posts API payload, uploads the post's `preview` image as the card thumbnail
+via the Images API, posts to `/rest/posts`, and records the returned URN in
+`.github/linkedin-log.json` so a source is never posted twice. `--dry-run`
+renders the exact payload with zero API calls. Full usage:
+`scripts/features/linkedin/README.md`.
+
+**The governed flow.** `/linkedin-draft <post|text>` (the
+`.claude/commands/linkedin-draft.md` command + the `linkedin-share` skill) drafts
+on-brand commentary into `drafts/linkedin/<date>-<slug>.md` at `status: pending`
+and opens a PR. A human edits and **merges** it — the merge is the approval.
+
+Files:
+
+- `.github/workflows/linkedin-publish.yml` — runs on `workflow_dispatch` (post
+  one article or text update, dry-run by default) and on push to `main` under
+  `drafts/linkedin/**` (a merged draft runs `from-drafts` live). It commits the
+  ledger and the flipped draft status back with `[skip ci]` so the write never
+  retriggers the workflow.
+- `.github/workflows/linkedin-token-health.yml` — weekly; validates the token
+  with a cheap authenticated call and opens a `linkedin`-labeled issue when it is
+  rejected or within 7 days of its 60-day expiry.
+
+### Activating LinkedIn publishing
+
+The app must already have Community Management API access (scopes
+`w_organization_social` + `r_organization_social`). Then:
+
+1. Generate a 60-day token at
+   <https://www.linkedin.com/developers/tools/oauth/token-generator>, authorized
+   by a page admin, and add repo **secrets** (Settings → Secrets and variables →
+   Actions): `LINKEDIN_ACCESS_TOKEN` (required), and — only if the app has
+   programmatic refresh — `LINKEDIN_REFRESH_TOKEN`, `LINKEDIN_CLIENT_ID`,
+   `LINKEDIN_CLIENT_SECRET`.
+2. Optionally set repo **variables** (non-secret) `LINKEDIN_ORG_URN`,
+   `LINKEDIN_BASE_URL`, `LINKEDIN_API_VERSION` to override the built-in defaults
+   (`urn:li:organization:64517157`, `https://bashconsultants.com`, `202606`).
+3. Without `LINKEDIN_ACCESS_TOKEN`, both workflows skip with a notice — scheduled
+   runs never fail red just because the credential is absent.
+
+**Token lifecycle.** Access tokens last 60 days; programmatic refresh is gated to
+approved partners. If refresh is enabled, `python3 scripts/features/linkedin
+refresh-token` renews it; otherwise regenerate manually when the token-health
+workflow warns. The `LinkedIn-Version` string also expires ~yearly — bump
+`LINKEDIN_API_VERSION`.
 
 ## Cost and safety notes
 

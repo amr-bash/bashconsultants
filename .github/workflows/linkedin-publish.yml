@@ -1,0 +1,147 @@
+# Publish to the BASH LinkedIn company page.
+#
+# Two ways in:
+#   * workflow_dispatch — post one article (by post ref) or a text update on
+#     demand. Defaults to dry-run so the first runs are safe.
+#   * push to main under drafts/linkedin/** — a merged, human-approved draft.
+#     The merge IS the approval gate; this runs `from-drafts` live.
+#
+# Credentials (Settings → Secrets and variables → Actions):
+#   Secrets: LINKEDIN_ACCESS_TOKEN (required), and optionally
+#            LINKEDIN_REFRESH_TOKEN + LINKEDIN_CLIENT_ID + LINKEDIN_CLIENT_SECRET.
+#   Variables (non-secret): LINKEDIN_ORG_URN, LINKEDIN_BASE_URL, LINKEDIN_API_VERSION.
+# When no token is set the workflow skips gracefully with a notice.
+
+name: LinkedIn publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'What to post'
+        type: choice
+        options: [article, text]
+        default: article
+      ref:
+        description: 'Article mode: post reference (section/YYYY-MM-DD-slug, path, or slug)'
+        required: false
+        default: ''
+      message:
+        description: 'Text mode: the update text'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Render the payload without posting'
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths: ['drafts/linkedin/**']
+
+permissions:
+  contents: write   # commit the ledger + flipped draft status back
+  issues: write     # open a failure issue
+
+concurrency:
+  group: linkedin-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish approved LinkedIn content
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check for a LinkedIn token
+        id: gate
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        run: |
+          if [ -n "$LINKEDIN_ACCESS_TOKEN" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No LINKEDIN_ACCESS_TOKEN set — skipping. Add it under Settings → Secrets and variables → Actions to activate LinkedIn publishing."
+          fi
+          # Live unless this is a dispatch explicitly asking for a dry run.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "live=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "live=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.gate.outputs.ready == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        if: steps.gate.outputs.ready == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Publish
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_REFRESH_TOKEN: ${{ secrets.LINKEDIN_REFRESH_TOKEN }}
+          LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
+          LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
+          LINKEDIN_ORG_URN: ${{ vars.LINKEDIN_ORG_URN }}
+          LINKEDIN_BASE_URL: ${{ vars.LINKEDIN_BASE_URL }}
+          LINKEDIN_API_VERSION: ${{ vars.LINKEDIN_API_VERSION }}
+          # Pass user input via env, never inline into the shell.
+          INPUT_MODE: ${{ inputs.mode }}
+          INPUT_REF: ${{ inputs.ref }}
+          INPUT_MESSAGE: ${{ inputs.message }}
+        run: |
+          set -euo pipefail
+          DRY=""
+          [ "${{ steps.gate.outputs.live }}" = "false" ] && DRY="--dry-run"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python3 scripts/features/linkedin from-drafts --verbose
+          elif [ "$INPUT_MODE" = "text" ]; then
+            python3 scripts/features/linkedin post-text --message "$INPUT_MESSAGE" $DRY --verbose
+          else
+            python3 scripts/features/linkedin post-article "$INPUT_REF" $DRY --verbose
+          fi
+
+      - name: Commit ledger and draft status
+        if: steps.gate.outputs.ready == 'true' && steps.gate.outputs.live == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- .github/linkedin-log.json drafts/linkedin 2>/dev/null; then
+            echo "No ledger or draft changes to commit."
+          else
+            git add .github/linkedin-log.json drafts/linkedin 2>/dev/null || true
+            # [skip ci] prevents this commit from retriggering this workflow.
+            git commit -m "chore(linkedin): record published share(s) [skip ci]"
+            git push
+          fi
+
+      - name: Open or update failure issue
+        if: failure() && steps.gate.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="LinkedIn publish failed"
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          stamp="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          gh label create linkedin --color 0A66C2 --description "LinkedIn automation" --force 2>/dev/null || true
+          existing="$(gh issue list --state open --label linkedin \
+            --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "Still failing at ${stamp}: ${run_url}"
+          else
+            gh issue create --title "$title" --label linkedin \
+              --body "LinkedIn publish run failed at ${stamp}.
+
+          Run: ${run_url}
+
+          Common causes: an expired 60-day access token (regenerate it, or run the LinkedIn token health workflow), a banned phrase in the commentary, or a LinkedIn API error. See the run log."
+          fi
