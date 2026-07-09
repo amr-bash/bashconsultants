@@ -1,5 +1,5 @@
 # Opens (and keeps) a pull request from this fork up to the repository it was
-# forked from — amr-bash/bashconsultants — on every push to main.
+# forked from — amr-bash/bash-365.com — on every push to main.
 #
 # Why a PAT: GITHUB_TOKEN cannot create a pull request on a *different* repo, so
 # this needs a personal access token with permission to open PRs on the upstream
@@ -7,8 +7,8 @@
 # cleanly (it never fails the build).
 #
 # Setup (one time):
-#   1. Create a token that can open PRs on amr-bash/bashconsultants:
-#      - Fine-grained PAT scoped to amr-bash/bashconsultants with
+#   1. Create a token that can open PRs on amr-bash/bash-365.com:
+#      - Fine-grained PAT scoped to amr-bash/bash-365.com with
 #        "Pull requests: Read and write" + "Contents: Read", OR a classic PAT
 #        with the `repo` scope.
 #   2. Add it here as a secret named UPSTREAM_PR_TOKEN
@@ -40,7 +40,7 @@ jobs:
       - name: Open or confirm the PR to the upstream fork parent
         env:
           GH_TOKEN: ${{ secrets.UPSTREAM_PR_TOKEN }}
-          UPSTREAM: amr-bash/bashconsultants
+          UPSTREAM: amr-bash/bash-365.com
           FORK_OWNER: bamr87
           BRANCH: main
         run: |
