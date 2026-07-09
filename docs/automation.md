@@ -1,8 +1,13 @@
 # Automation: scheduled workflows and the AI chat proxy
 
-This page documents the repo's automation: four GitHub Actions workflows and
+This page documents the repo's automation: the GitHub Actions workflows and
 the Azure Functions app in `api/` that powers the site's AI chat widget. It is
 an internal operations doc — `docs/` is excluded from the Jekyll build.
+
+The workflows: **build & validate** (the PR gate), **site health** (nightly),
+**content gardener** (weekly new-post draft), **content review** (weekly
+expand-or-add), **PR to upstream** (fork sync), and **the preacher** (weekly
+doctrine enforcement — see [`the-preacher.md`](./the-preacher.md)).
 
 ## What runs where
 
@@ -20,6 +25,12 @@ at the absolute SWA URL (for example
 `https://proud-pond-06dc10c1e.<region>.azurestaticapps.net/api/chat`) —
 cross-origin requests from the production domains are already on the
 function's origin allowlist.
+
+> **Current state:** the Azure SWA deploy workflow has been retired (see the
+> CHANGELOG). Production is **GitHub Pages only**, so `/api/chat` is not deployed
+> today; the `api/` app and `staticwebapp.config.json` remain for a future Azure
+> reconfiguration. The LinkedIn automation below runs entirely in GitHub Actions
+> and needs no server-side host.
 
 ## The chat proxy (`api/`)
 
@@ -136,17 +147,14 @@ before it ships. Three jobs:
 Gems are cached between runs; no deploy steps. If any job fails, the PR is
 blocked (once these checks are made required in branch protection).
 
-## Workflow: Azure Static Web Apps CI/CD
+## Workflow: Azure Static Web Apps CI/CD — retired
 
-File: `.github/workflows/azure-static-web-apps-proud-pond-06dc10c1e.yml`
-(created by Azure; one field changed).
-
-Runs on every push to `main` and on pull requests. Builds the site and the
-`api/` folder (the `api_location: "api"` field is what makes SWA build and
-host the functions) and deploys. Pull requests get a temporary staging
-environment; closing the PR tears it down. Uses the
-`AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_POND_06DC10C1E` secret that Azure
-provisioned.
+The Azure SWA deploy workflow was **retired** (its deployment token was unset and
+its Oryx build could not run `bundle`); GitHub Pages is the primary deploy target.
+The Azure *build* is still validated by the `build-azure` job in build-validate.yml,
+and the `api/` chat proxy plus `staticwebapp.config.json` remain for a future
+reconfiguration if Azure hosting is revived. The hosting notes above describe that
+dormant path; reconciling them fully is a good first task for the preacher.
 
 ## Workflow: Site health (nightly)
 
@@ -209,14 +217,114 @@ workflows, so the SWA staging build only runs on gardener PRs when this
 token is set (or after any human push to the PR branch). Review still works
 fine without it; you just review the markdown instead of a staged preview.
 
+## Workflow: LinkedIn publishing
+
+Publishes to the BASH LinkedIn **company page** (`urn:li:organization:64517157`)
+the same way the gardener drafts posts: **agents draft, a human approves, a
+script posts.** It handles article link-shares of blog posts and standalone text
+updates. Native long-form LinkedIn Articles are not API-publishable — "article"
+here means a link-share card.
+
+**The engine** — `scripts/features/linkedin/` (stdlib-only Python, run as
+`python3 scripts/features/linkedin <command>`). It maps a post's frontmatter to
+the Posts API payload, uploads the post's `preview` image as the card thumbnail
+via the Images API, posts to `/rest/posts`, and records the returned URN in
+`.github/linkedin-log.json` so a source is never posted twice. `--dry-run`
+renders the exact payload with zero API calls. Full usage:
+`scripts/features/linkedin/README.md`.
+
+**The governed flow.** `/linkedin-draft <post|text>` (the
+`.claude/commands/linkedin-draft.md` command + the `linkedin-share` skill) drafts
+on-brand commentary into `drafts/linkedin/<date>-<slug>.md` at `status: pending`
+and opens a PR. A human edits and **merges** it — the merge is the approval.
+
+Files:
+
+- `.github/workflows/linkedin-publish.yml` — runs on `workflow_dispatch` (post
+  one article or text update, dry-run by default) and on push to `main` under
+  `drafts/linkedin/**` (a merged draft runs `from-drafts` live). It commits the
+  ledger and the flipped draft status back with `[skip ci]` so the write never
+  retriggers the workflow.
+- `.github/workflows/linkedin-token-health.yml` — weekly; validates the token
+  with a cheap authenticated call and opens a `linkedin`-labeled issue when it is
+  rejected or within 7 days of its 60-day expiry.
+
+### Activating LinkedIn publishing
+
+The app must already have Community Management API access (scopes
+`w_organization_social` + `r_organization_social`). Then:
+
+1. Generate a 60-day token at
+   <https://www.linkedin.com/developers/tools/oauth/token-generator>, authorized
+   by a page admin, and add repo **secrets** (Settings → Secrets and variables →
+   Actions): `LINKEDIN_ACCESS_TOKEN` (required), and — only if the app has
+   programmatic refresh — `LINKEDIN_REFRESH_TOKEN`, `LINKEDIN_CLIENT_ID`,
+   `LINKEDIN_CLIENT_SECRET`.
+2. Optionally set repo **variables** (non-secret) `LINKEDIN_ORG_URN`,
+   `LINKEDIN_BASE_URL`, `LINKEDIN_API_VERSION` to override the built-in defaults
+   (`urn:li:organization:64517157`, `https://bashconsultants.com`, `202606`).
+3. Without `LINKEDIN_ACCESS_TOKEN`, both workflows skip with a notice — scheduled
+   runs never fail red just because the credential is absent.
+
+**Token lifecycle.** Access tokens last 60 days; programmatic refresh is gated to
+approved partners. If refresh is enabled, `python3 scripts/features/linkedin
+refresh-token` renews it; otherwise regenerate manually when the token-health
+workflow warns. The `LinkedIn-Version` string also expires ~yearly — bump
+`LINKEDIN_API_VERSION`.
+## Workflow: Content review (weekly)
+
+File: `.github/workflows/content-review.yml`
+Schedule: `37 14 * * 4` UTC (Thursdays, morning in Denver), plus manual dispatch with
+optional `mode` (expand / new / auto) and `focus` inputs.
+
+The content counterpart to the preacher. It adopts the content-curator charter
+(`.claude/agents/content-curator.md`) and moves the site's content forward by ONE
+unit each week: it reviews the corpus — starting from the deterministic
+`scripts/content_inventory.py --focus` shortlist of thin/stale pages — and opens a PR
+that either **expands** an existing article with more relevant, current information or
+**writes** a new article filling a real gap. It follows the same editorial authorities
+as the gardener, gates on `content_lint.py`, and never pushes to `main`.
+
+This complements the **content gardener** (which only drafts brand-new posts): the
+gardener grows breadth, the curator reviews everything and chooses between depth and
+breadth. Activate it the same way (a `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY`
+secret; optional `CONTENT_REVIEW_GITHUB_TOKEN`).
+
+## Workflow: PR to upstream (on push to main)
+
+File: `.github/workflows/pr-to-upstream.yml`
+Trigger: every push to `main`, plus manual dispatch.
+
+Opens (and keeps) a pull request from this fork up to the repository it was forked
+from, `amr-bash/bashconsultants`. Idempotent — it won't duplicate an already-open PR
+and skips when upstream is already in sync — and safe: it skips cleanly when the
+`UPSTREAM_PR_TOKEN` secret is absent (the default `GITHUB_TOKEN` can't open cross-repo
+PRs). Add a fine-grained PAT with Pull requests + Contents on the upstream repo as
+`UPSTREAM_PR_TOKEN` to activate.
+
+## Workflow: The preacher (weekly)
+
+File: `.github/workflows/preacher.yml`
+Schedule: `42 14 * * 6` UTC (Saturdays, morning in Denver), plus manual dispatch with
+an optional `focus` lens.
+
+The reflexive "practice what we preach" enforcer. It runs the deterministic gates
+(`scripts/doctrine_check.py`, `scripts/content_lint.py`) first, then does an AI
+judgment pass against the canon, and either opens ONE issue listing doctrine
+violations (Mode A) or — when the repo is clean — mechanizes one recurring AI-review
+burden into a new check in `doctrine_check.py` and opens a PR (Mode B). It never pushes
+to `main`. Full canon and design: [`the-preacher.md`](./the-preacher.md). Activate it
+the same way as the gardener (a `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY` secret;
+optional `PREACHER_GITHUB_TOKEN`).
+
 ## Cost and safety notes
 
 - Both Anthropic credentials should be workspace-scoped keys with spend caps
   set in the Anthropic console.
 - The chat function enforces model, token, origin, body-size, and rate
   limits server-side; a modified client can't raise them.
-- The gardener writes only to `drafts/` on a new branch; a human merges (or
-  closes) every PR. The site-health workflow has read-only repo access plus
-  issue write.
+- The gardener writes only to `drafts/` on a new branch, and the preacher only
+  opens issues or PRs — neither ever pushes to `main`; a human merges or closes
+  every PR. The site-health workflow has read-only repo access plus issue write.
 - Scheduled workflows run only from the default branch, so changes to them
   take effect after merge to `main`.

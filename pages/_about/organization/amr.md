@@ -89,7 +89,7 @@ a.amr-contact-item:hover{border-color:rgba(0,123,255,.45);box-shadow:0 6px 18px 
         <a href="https://github.com/bamr87" aria-label="GitHub profile"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>
         <a href="https://linkedin.com/in/amrabdel" aria-label="LinkedIn profile"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn</a>
         <a href="https://bamr87.github.io/" aria-label="Portfolio site"><i class="bi bi-window-stack" aria-hidden="true"></i> Portfolio</a>
-        <a href="mailto:amr@bashconsultants.com" aria-label="Email Amr"><i class="bi bi-envelope-fill" aria-hidden="true"></i> Email</a>
+        <a href="mailto:{{ site.email }}" aria-label="Email Amr"><i class="bi bi-envelope-fill" aria-hidden="true"></i> Email</a>
       </div>
       <a class="btn btn-primary px-4" href="/contact/">Book a free consultation</a>
     </div>
@@ -156,13 +156,13 @@ I build in the open — the same standard I hold BASH partners to. A few project
 Based in Denver, working with businesses across the United States. The quickest ways to reach me:
 
 <div class="amr-contact-grid">
-  <a class="amr-contact-item" href="tel:+17203524641">
+  <a class="amr-contact-item" href="tel:+1{{ site.data.entity.info["contact-phone"] | remove: '-' }}">
     <span class="ci-icon"><i class="bi bi-telephone-fill" aria-hidden="true"></i></span>
-    <span class="ci-body"><span class="ci-label">Phone</span><span class="ci-value">+1 (720) 352-4641</span></span>
+    <span class="ci-body"><span class="ci-label">Phone</span><span class="ci-value">{{ site.data.entity.info["contact-phone"] }}</span></span>
   </a>
-  <a class="amr-contact-item" href="mailto:amr@bashconsultants.com">
+  <a class="amr-contact-item" href="mailto:{{ site.email }}">
     <span class="ci-icon"><i class="bi bi-envelope-fill" aria-hidden="true"></i></span>
-    <span class="ci-body"><span class="ci-label">Email</span><span class="ci-value">amr@bashconsultants.com</span></span>
+    <span class="ci-body"><span class="ci-label">Email</span><span class="ci-value">{{ site.email }}</span></span>
   </a>
   <div class="amr-contact-item">
     <span class="ci-icon"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></span>

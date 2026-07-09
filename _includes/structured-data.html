@@ -40,6 +40,7 @@
       "telephone": {{ info["contact-phone"] | jsonify }},
       "founder": { "@type": "Person", "name": {{ info["contact-name"] | jsonify }} },
       "sameAs": [
+        {{ info["linkedin-company-url"] | jsonify }},
         "https://linkedin.com/in/amrabdel",
         "https://github.com/bamr87"
       ],

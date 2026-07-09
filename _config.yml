@@ -123,16 +123,35 @@ author:
   twitter_username       : "bamr87"
   github_username        : *github_user
 
+## LinkedIn (company page) ####################################################
+
+# Public company-page identity for the org publisher (scripts/features/linkedin)
+# and structured data. The org id/URN are public — not secrets. Access tokens
+# live only in .env (local) and Actions secrets (CI), never here.
+linkedin:
+  org_id                   : 64517157
+  org_urn                  : "urn:li:organization:64517157"
+  company_url              : "https://www.linkedin.com/company/64517157/"
+  api_version              : 202606              # LinkedIn-Version (YYYYMM); bump ~yearly
+
 ## Site Analytics #############################################################
 
-google_analytics         : 'G-ZBDKNMC168'
+# Google Analytics and Tag Manager are disabled for privacy — PostHog is the
+# sole analytics tool (opt-in, consent-gated). GTM is neutralized by the
+# local override in _includes/analytics/google-tag-manager-head.html.
+# google_analytics         : 'G-ZBDKNMC168'
 
 # PostHog Analytics Configuration
 # https://posthog.com/docs/libraries/js
 posthog:
   enabled                : true
-  api_key                : 'phc_RRFmtqxRUI4XFDoI4KXUYMbTzPvhiu4A07qdSsAaXgg'
-  api_host               : 'https://us.i.posthog.com'
+  # Public project (write) key for THIS site's PostHog project (504877) — safe to
+  # expose in the browser. Was the zer0-mistakes theme's demo key; corrected so
+  # analytics reach our own project.
+  api_key                : 'phc_mDdKv58vnxxkDJwQBZCrVRiSrnwRmHnwYmadU29tSZKB'
+  api_host               : 'https://us.i.posthog.com'   # event ingestion host (US region)
+  project_id             : 504877                       # PostHog project id, for scripts/features/posthog
+  api_region             : 'us'                         # REST API host = https://us.posthog.com; server-side POSTHOG_API_KEY lives in .env
   person_profiles        : 'identified_only'  # Options: 'always', 'identified_only', 'never'
   autocapture            : true   # Automatically capture clicks, form submissions, etc.
   capture_pageview       : true   # Track page views
@@ -151,7 +170,7 @@ posthog:
   privacy:
     mask_all_text        : false  # Mask all text in session recordings
     mask_all_inputs      : true   # Mask form inputs in session recordings
-    ip_anonymization     : false  # Anonymize IP addresses
+    ip_anonymization     : true   # Anonymize IP: client sends ip:false; project anonymize_ips=true
 
 ## Site verification #############################################################
 
@@ -176,6 +195,9 @@ links:
   - label: "LinkedIn"
     icon: "bi-linkedin"
     url: "https://linkedin.com/in/amrabdel"
+  - label: "LinkedIn Page"
+    icon: "bi-linkedin"
+    url: "https://www.linkedin.com/company/64517157/"
 
 socials:
   - label: "Portfolio"
@@ -187,6 +209,9 @@ socials:
   - label: "LinkedIn"
     icon: "bi-linkedin"
     url: "https://linkedin.com/in/amrabdel"
+  - label: "LinkedIn Page"
+    icon: "bi-linkedin"
+    url: "https://www.linkedin.com/company/64517157/"
 
 youtube:
   - label: "YouTube"

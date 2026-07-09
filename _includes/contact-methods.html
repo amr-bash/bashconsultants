@@ -1,0 +1,18 @@
+{%- comment -%}
+  Standard "reach us" contact block, rendered from the single source of truth:
+    - email + phone: _data/entity/info.yml  (contact-email, contact-phone)
+    - website domain: _config.yml            (url)
+    - LinkedIn:       _config.yml socials     (label "LinkedIn")
+  Emitted as HTML so it renders identically whether the including page is
+  Markdown or HTML. Include it with: {% include contact-methods.html %}
+{%- endcomment -%}
+{%- assign info = site.data.entity.info -%}
+{%- assign linkedin = site.socials | where: "label", "LinkedIn" | first -%}
+<p class="contact-methods">
+  📧 <strong>Email:</strong> <a href="mailto:{{ info.contact-email }}">{{ info.contact-email }}</a><br>
+  📞 <strong>Phone:</strong> <a href="tel:+1{{ info.contact-phone | remove: '-' }}">{{ info.contact-phone }}</a><br>
+  {%- if linkedin %}
+  🔗 <strong>LinkedIn:</strong> <a href="{{ linkedin.url }}">Connect with Amr</a><br>
+  {%- endif %}
+  🌐 <strong>Website:</strong> <a href="{{ info.url }}">{{ info.url | remove: 'https://' }}</a>
+</p>

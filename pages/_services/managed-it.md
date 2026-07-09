@@ -94,7 +94,4 @@ Tell us what your current IT coverage looks like — even if the answer is "ther
 
 <a href="/contact/" class="btn btn-primary btn-lg px-4">Book a free consultation</a>
 
-📧 **Email:** [info@bashconsultants.com](mailto:info@bashconsultants.com)  
-📞 **Phone:** [(720) 352-4641](tel:+17203524641)  
-🔗 **LinkedIn:** [Connect with Amr](https://linkedin.com/in/amrabdel)  
-🌐 **Website:** [bashconsultants.com](https://bashconsultants.com)
+{% include contact-methods.html %}

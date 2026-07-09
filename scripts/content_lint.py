@@ -394,7 +394,7 @@ def check_file(root: Path, path: Path) -> list:
 
 def collect_files(root: Path) -> list:
     files = sorted(root.glob("pages/**/*.md"))
-    for extra in ("index.md", "about.md", "contact.md"):
+    for extra in ("index.md", "about.md", "contact.md", "privacy.md"):
         candidate = root / extra
         if candidate.exists():
             files.append(candidate)
