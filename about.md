@@ -180,9 +180,9 @@ If you are a small or medium-sized business looking to adopt enterprise-grade te
 **BASH Consulting LLC**  
 Denver, Colorado
 
-**Email:** [info@bashconsultants.com](mailto:info@bashconsultants.com)  
-**Phone:** [(720) 352-4641](tel:+17203524641)  
-**Website:** [bashconsultants.com](https://bashconsultants.com)
+**Email:** [{{ site.data.entity.info["contact-email"] }}](mailto:{{ site.data.entity.info["contact-email"] }})  
+**Phone:** [{{ site.data.entity.info["contact-phone"] }}](tel:+1{{ site.data.entity.info["contact-phone"] | remove: '-' }})  
+**Website:** [{{ site.data.entity.info["url"] | remove: 'https://' }}]({{ site.data.entity.info["url"] }})
 
 ---
 

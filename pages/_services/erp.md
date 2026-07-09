@@ -48,20 +48,26 @@ A growing shop usually starts on QuickBooks and a pile of spreadsheets. It works
 - **Integrations** — connecting your ERP to bank interfaces, Electronic Data Interchange (EDI) trading partners, supplier portals, and the cloud or third-party systems you already use.
 - **Ongoing support** — help after go-live, from fixing a stuck interface to training a new controller on the close.
 
+## Moving off QuickBooks to a mid-market ERP
+
+The clearest sign it's time to move is a familiar one: QuickBooks has run out of road. Inventory lives in spreadsheets nobody fully trusts, job costs are back-of-the-envelope, and consolidating two entities means copying numbers by hand. That's the moment a real ERP earns its keep — and for a growing manufacturer or distributor, the usual next step isn't a heavyweight, seven-figure platform.
+
+We help you select and migrate onto a mid-market system sized for a small and medium business (SMB) budget — Oracle NetSuite and Microsoft Dynamics 365 Business Central are the common destinations — and we stay neutral on which one until your numbers point somewhere. The discipline is the same either way: design the chart of accounts and item master, map and validate your history, wire inventory and costing to how you actually build and ship, and run a phased cutover so month-end close keeps working from day one. And if the honest answer is "fix the QuickBooks setup and retire the spreadsheets," we'll tell you that too. For the finance-side version of this decision — the thresholds and the cost of staying — see [[When the numbers say it's time to leave QuickBooks]].
+
 ## Systems we work with
 
 These are platforms we have worked on directly, in both technical and functional roles — not a vendor list we copied from a brochure.
 
 | System | Versions / details |
 |---|---|
-| **QAD Enterprise Edition** | 2014, 2016, 2018 |
-| **QAD Mfg/Pro** | eB2, eB2.1 |
+| **QAD Enterprise Edition** *(legacy)* | 2014, 2016, 2018 |
+| **QAD Mfg/Pro** *(legacy)* | eB2, eB2.1 |
 | **Infor ERP LN** | formerly Baan IV |
 | **Infor CloudSuite Industrial** | formerly SyteLine, v8 and v9 |
 | **Oracle PeopleSoft Financials** | 9.2 |
 | **Hyperion Financial Management** | 11 |
 
-The focus throughout is manufacturing and distribution: how parts get built and shipped, and how that flows cleanly into the accounting books.
+Several of these are the versions we worked on directly rather than each vendor's current line — [QAD's current flagship is QAD Adaptive ERP](https://www.qad.com/solutions/adaptive-erp), for example. Tell us what you run and we'll say plainly what we've touched. The focus throughout is manufacturing and distribution: how parts get built and shipped, and how that flows cleanly into the accounting books.
 
 ## Who it's for
 
@@ -81,7 +87,17 @@ If you recognize your business here — "we're upgrading from Mfg/Pro and don't 
 
 ## What to expect
 
-We work in honest ranges, not guarantees. Discovery and assessment typically take **4–6 weeks** depending on how many systems are involved. A focused implementation or version upgrade often runs **a few months** end to end, again depending on scope — number of modules, integrations, and how clean your existing data is. We'll give you a scoped estimate before you commit, and we won't pad the project with work you don't need.
+We work in honest ranges, not guarantees. Discovery and assessment typically take **4–6 weeks** depending on how many systems are involved. A focused implementation or version upgrade often runs **a few months** end to end, again depending on scope — number of modules, integrations, and how clean your existing data is. A full QuickBooks-to-ERP migration for a growing manufacturer usually runs **five to seven months** from decision to go-live. We'll give you a scoped estimate before you commit, and we won't pad the project with work you don't need.
+
+## What it changes
+
+We scope the target with you before we commit to it — categories of improvement, not guaranteed numbers:
+
+- **A shorter month-end close.** Once operations and accounting share one system, the close stops being a multi-day reconciliation scramble; shops that were closing in a week or more usually get it down to a few days once the general ledger, sub-ledgers, and inventory reconcile automatically.
+- **Inventory you can act on.** Counts move off spreadsheets and onto perpetual inventory driven by real transactions, so your planner schedules against a live number instead of a monthly estimate.
+- **One set of numbers.** No re-keying between the shop floor and the books, and no two systems that never agree — which is where the drift, the manual work, and the audit risk came from in the first place.
+
+Where you land depends on your data quality, process discipline, and how many modules and integrations are in scope. We'll tell you what's realistic for your shop before you sign anything.
 
 ## Related
 
@@ -96,7 +112,4 @@ Tell us what you're running today and the problems that matter most. We'll start
 
 <a href="/contact/" class="btn btn-primary btn-lg px-4">Book a free consultation</a>
 
-📧 **Email:** [info@bashconsultants.com](mailto:info@bashconsultants.com)  
-📞 **Phone:** [(720) 352-4641](tel:+17203524641)  
-🔗 **LinkedIn:** [Connect with Amr](https://linkedin.com/in/amrabdel)  
-🌐 **Website:** [bashconsultants.com](https://bashconsultants.com)
+{% include contact-methods.html %}

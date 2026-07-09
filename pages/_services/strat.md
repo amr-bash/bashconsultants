@@ -89,7 +89,4 @@ Tell us what you're running today and the problems that matter most. We'll start
 
 <a href="/contact/" class="btn btn-primary btn-lg px-4">Book a free consultation</a>
 
-📧 **Email:** [info@bashconsultants.com](mailto:info@bashconsultants.com)  
-📞 **Phone:** [(720) 352-4641](tel:+17203524641)  
-🔗 **LinkedIn:** [Connect with Amr](https://linkedin.com/in/amrabdel)  
-🌐 **Website:** [bashconsultants.com](https://bashconsultants.com)
+{% include contact-methods.html %}
