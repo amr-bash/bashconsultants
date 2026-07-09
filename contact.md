@@ -51,7 +51,8 @@ None of this is required — bring what you have, and we'll take it from there.
 **Location:** Denver, Colorado  
 **Email:** [{{ site.data.entity.info["contact-email"] }}](mailto:{{ site.data.entity.info["contact-email"] }})  
 **Phone:** [{{ site.data.entity.info["contact-phone"] }}](tel:+1{{ site.data.entity.info["contact-phone"] | remove: '-' }})  
-**Website:** [{{ site.data.entity.info["url"] | remove: 'https://' }}]({{ site.data.entity.info["url"] }})
+**Website:** [{{ site.data.entity.info["url"] | remove: 'https://' }}]({{ site.data.entity.info["url"] }})  
+**Privacy:** [How we handle your data](/privacy/)
 
 ---
 
