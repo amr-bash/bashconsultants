@@ -25,7 +25,7 @@ RESTLI_VERSION = "2.0.0"
 
 # --- Non-secret defaults (also mirrored in _config.yml `linkedin:`) ---------
 DEFAULT_ORG_URN = "urn:li:organization:64517157"
-DEFAULT_BASE_URL = "https://bashconsultants.com"
+DEFAULT_BASE_URL = "https://bash-365.com"
 DEFAULT_API_VERSION = "202606"  # LinkedIn-Version, YYYYMM; bump ~yearly
 
 # --- Repo paths -------------------------------------------------------------

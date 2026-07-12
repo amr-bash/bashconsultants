@@ -7,7 +7,7 @@
 
 Dual-purpose repository:
 
-1. **Jekyll site** (root) — Marketing & content site for bashconsultants.com (Denver IT consulting). Uses the `jekyll-theme-zer0` remote theme. Deployed to GitHub Pages on push to `main`. CNAME: `bashconsultants.com`.
+1. **Jekyll site** (root) — Marketing & content site for bashconsultants.com (Denver IT consulting). Uses the `jekyll-theme-zer0` remote theme. Deployed to GitHub Pages on push to `main`. CNAME: `bash-365.com`.
 2. **VS Code extension** (`extension/`) — "Prompt Orchestrator" — runs AI workflows from `.github/prompts/`. TypeScript, bundled with esbuild.
 
 Treat each sub-project independently; do not mix Jekyll and extension concerns in a single commit.
