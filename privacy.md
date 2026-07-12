@@ -1,6 +1,6 @@
 ---
 title: Privacy policy
-description: How BASH Consulting collects, uses, and protects information from visitors and clients across bashconsultants.com and our consulting engagements
+description: How BASH Consulting collects, uses, and protects information from visitors and clients across bash-365.com and our consulting engagements
 excerpt: What information BASH Consulting collects, how we use and protect it, and the choices you have — for visitors and clients alike.
 author: Amr Abdel-Motaleb
 layout: default
@@ -25,7 +25,7 @@ slug: privacy
 
 ## Who we are and what this policy covers
 
-BASH Consulting LLC ("BASH Consulting", and "BASH" after this) is an independent information technology (IT) consultancy in Denver, Colorado. This policy explains what we collect when you visit our website at [https://bashconsultants.com](https://bashconsultants.com), when you get in touch through our [contact page](/contact/), and when you work with us on a consulting engagement — and the choices you have over that information. It is written for both site visitors and clients.
+BASH Consulting LLC ("BASH Consulting", and "BASH" after this) is an independent information technology (IT) consultancy in Denver, Colorado. This policy explains what we collect when you visit our website at [https://bash-365.com](https://bash-365.com), when you get in touch through our [contact page](/contact/), and when you work with us on a consulting engagement — and the choices you have over that information. It is written for both site visitors and clients.
 
 This is the policy for our own website and practice. It is not legal advice, and it does not describe how any third-party site we link to handles your data.
 
@@ -35,7 +35,7 @@ We keep collection to what the site actually needs. Here is everything the site 
 
 ### Website analytics
 
-We use one analytics tool, PostHog, and only on the production site (bashconsultants.com) — never on our local development builds. We have removed Google Analytics and Google Tag Manager, so the site no longer loads any Google tracking.
+We use one analytics tool, PostHog, and only on the production site (bash-365.com) — never on our local development builds. We have removed Google Analytics and Google Tag Manager, so the site no longer loads any Google tracking.
 
 PostHog is a product-analytics tool hosted on PostHog US Cloud (us.i.posthog.com). It is off by default: it collects nothing until you opt in through the cookie banner (see "Cookies and similar technologies"), and it does not load at all if your browser sends a Global Privacy Control (GPC) or Do Not Track signal. Once you opt in, PostHog records pageviews, page-leave events, and automatically captured interactions such as clicks and form submissions. It also records specific events we have turned on: file downloads (file name and page), clicks on links that lead off our site (link text and destination), site-search terms you type, how far down a page you scroll, and clicks on the table of contents, the sidebar navigation, and code blocks. Each event also carries technical context such as your browser's user-agent string, your screen and viewport size, and details about the page you were on. PostHog stores an anonymous identifier in a first-party cookie and in your browser's local storage. Session recording (screen replay) is turned off. Internet Protocol (IP) anonymization is turned on and IP-based geolocation is disabled, so PostHog does not store your IP address or use it to determine your location. PostHog only builds a person profile for identified users, and we do not identify visitors, so you stay anonymous to us unless you tell us who you are — for example, by emailing us.
 
@@ -53,7 +53,7 @@ If we enable the assistant in the future, here is what would happen, so there ar
 
 ### Hosting
 
-The site is served by GitHub Pages, a service of GitHub, Inc. Like any web host, GitHub receives the requests your browser makes — including your IP address — as a normal part of delivering the pages, and it may keep server access logs. Both bashconsultants.com and bash-365.com point to the same hosted site.
+The site is served by GitHub Pages, a service of GitHub, Inc. Like any web host, GitHub receives the requests your browser makes — including your IP address — as a normal part of delivering the pages, and it may keep server access logs. The site is served at bash-365.com, with bashconsultants.com kept as a mirror.
 
 ## Cookies and similar technologies
 

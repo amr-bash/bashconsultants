@@ -53,7 +53,7 @@ line. See `.env.example`.
 | `LINKEDIN_REFRESH_TOKEN` | secret | optional; only issued to approved partners. Enables `refresh-token`. |
 | `LINKEDIN_CLIENT_ID` / `LINKEDIN_CLIENT_SECRET` | secret | needed for refresh. |
 | `LINKEDIN_ORG_URN` | var | defaults to `urn:li:organization:64517157`. Public, not a secret. |
-| `LINKEDIN_BASE_URL` | var | defaults to `https://bashconsultants.com` (the canonical host, not the `bash-365.com` CNAME). |
+| `LINKEDIN_BASE_URL` | var | defaults to `https://bash-365.com` (the canonical host and CNAME). |
 | `LINKEDIN_API_VERSION` | var | `LinkedIn-Version`, `YYYYMM`; defaults to a recent value and expires ~yearly. |
 
 ## Idempotency

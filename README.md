@@ -1,15 +1,15 @@
 # bashconsultants
 
-The source for **[bashconsultants.com](https://bashconsultants.com)** — the site of BASH Consulting (Bourne Again Solutions Hero), a Denver-based IT consulting practice for small and medium businesses. This is a dual-purpose repository:
+The source for **[bash-365.com](https://bash-365.com)** — the site of BASH Consulting (Bourne Again Solutions Hero), a Denver-based IT consulting practice for small and medium businesses. This is a dual-purpose repository:
 
 1. **Jekyll site** (repo root) — the marketing and content site, built on the [`bamr87/zer0-mistakes`](https://github.com/bamr87/zer0-mistakes) remote theme and deployed on every push to `main`.
 2. **VS Code extension** (`extension/`) — *Prompt Orchestrator*, a self-contained TypeScript extension that runs the shared prompt library in `.github/prompts/` from inside the editor.
 
-The site is also a working demonstration of how the firm operates: it is written, reviewed, illustrated, validated, and shipped through a governed AI pipeline. See [`/tools/`](https://bashconsultants.com/tools/) and [`/ai-operations/`](https://bashconsultants.com/ai-operations/).
+The site is also a working demonstration of how the firm operates: it is written, reviewed, illustrated, validated, and shipped through a governed AI pipeline. See [`/tools/`](https://bash-365.com/tools/) and [`/ai-operations/`](https://bash-365.com/ai-operations/).
 
 ## Services
 
-The site presents eight service areas — AI and intelligent automation, cloud architecture, ERP consulting, financial systems, data and business intelligence, custom software development, IT strategy, and managed IT — under [`/services/`](https://bashconsultants.com/services/). Service pages live in `pages/_services/`.
+The site presents eight service areas — AI and intelligent automation, cloud architecture, ERP consulting, financial systems, data and business intelligence, custom software development, IT strategy, and managed IT — under [`/services/`](https://bash-365.com/services/). Service pages live in `pages/_services/`.
 
 ## Quick start (Jekyll site)
 
@@ -85,7 +85,7 @@ docs/                  Internal operations docs (excluded from the build)
 ## Contact
 
 **BASH Consulting** — Denver, Colorado
-Email: [info@bashconsultants.com](mailto:info@bashconsultants.com) · Phone: [720-352-4641](tel:+17203524641) · Web: [bashconsultants.com](https://bashconsultants.com)
+Email: [info@bashconsultants.com](mailto:info@bashconsultants.com) · Phone: [720-352-4641](tel:+17203524641) · Web: [bash-365.com](https://bash-365.com)
 
 ## License
 
