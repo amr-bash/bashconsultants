@@ -1,9 +1,13 @@
 {% comment %}
   LOCAL OVERRIDE of the zer0-mistakes theme include (analytics/posthog.html).
-  Two privacy changes vs. the theme version:
+  Four privacy changes vs. the theme version:
     1. Global Privacy Control (GPC) is honored alongside Do Not Track.
     2. PostHog initializes opted-out (opt_out_capturing_by_default: true), so it
        captures nothing until the cookie banner records analytics consent.
+    3. Persistence is in-memory until analytics consent is stored, so no PostHog
+       cookie or localStorage is written before the visitor opts in.
+    4. IP geolocation is disabled ($geoip_disable), so no city/region/postal is
+       derived; with the project's anonymize_ips, no IP or location is stored.
   Keep in sync with the theme file on theme upgrades.
 {% endcomment %}
 {% comment %} Feature: ZER0-006 {% endcomment %}
@@ -89,6 +93,15 @@ Privacy: Respects Do Not Track and provides opt-out mechanisms
     {% comment %} PostHog Loading Script {% endcomment %}
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Rr Mr fi Or Ar ci Tr Cr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 
+    {% comment %} Prior consent: keep PostHog fully in memory (no cookie / no localStorage)
+       until the visitor opts in via the cookie banner, which stores its choice under the
+       separate zer0-cookie-consent key. {% endcomment %}
+    var __phAnalyticsConsent = false;
+    try {
+      var __phStored = JSON.parse(window.localStorage.getItem('zer0-cookie-consent') || 'null');
+      __phAnalyticsConsent = !!(__phStored && __phStored.analytics === true);
+    } catch (e) {}
+
     {% comment %} Initialize PostHog with configuration {% endcomment %}
     posthog.init(window.posthogConfig.apiKey, {
       api_host: window.posthogConfig.apiHost,
@@ -100,7 +113,7 @@ Privacy: Respects Do Not Track and provides opt-out mechanisms
       disable_cookie: window.posthogConfig.disableCookie,
       cross_subdomain_cookie: window.posthogConfig.crossSubdomainCookie,
       secure_cookie: window.posthogConfig.secureCookie,
-      persistence: window.posthogConfig.persistence,
+      persistence: __phAnalyticsConsent ? window.posthogConfig.persistence : 'memory',
       session_recording: window.posthogConfig.sessionRecording,
       {% if site.posthog.privacy.ip_anonymization %}
       ip: false,
@@ -108,6 +121,10 @@ Privacy: Respects Do Not Track and provides opt-out mechanisms
       loaded: function(posthog) {
         {% comment %} PostHog loaded successfully {% endcomment %}
         console.log('PostHog analytics loaded successfully');
+
+        {% comment %} Disable IP geolocation entirely — no city/region/postal derived.
+           With the project's anonymize_ips, neither the IP nor any location is stored. {% endcomment %}
+        posthog.register({ '$geoip_disable': true });
 
         {% comment %} Track Jekyll-specific page properties {% endcomment %}
         posthog.register({

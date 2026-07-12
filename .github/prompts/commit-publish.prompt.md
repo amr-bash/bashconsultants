@@ -74,7 +74,7 @@ GitHub Pages auto-deploys on push.
 
 ```bash
 sleep 60
-curl -sI https://bashconsultants.com/ | head -1   # expect HTTP/2 200
+curl -sI https://bash-365.com/ | head -1   # expect HTTP/2 200
 ```
 
 ## Output to User

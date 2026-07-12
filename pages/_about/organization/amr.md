@@ -176,7 +176,7 @@ Based in Denver, working with businesses across the United States. The quickest 
     <span class="ci-icon"><i class="bi bi-github" aria-hidden="true"></i></span>
     <span class="ci-body"><span class="ci-label">GitHub</span><span class="ci-value">@bamr87</span></span>
   </a>
-  <a class="amr-contact-item" href="https://bashconsultants.com">
+  <a class="amr-contact-item" href="https://bash-365.com">
     <span class="ci-icon"><i class="bi bi-globe" aria-hidden="true"></i></span>
     <span class="ci-body"><span class="ci-label">Website</span><span class="ci-value">bashconsultants.com</span></span>
   </a>

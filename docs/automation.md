@@ -262,7 +262,7 @@ The app must already have Community Management API access (scopes
    `LINKEDIN_CLIENT_SECRET`.
 2. Optionally set repo **variables** (non-secret) `LINKEDIN_ORG_URN`,
    `LINKEDIN_BASE_URL`, `LINKEDIN_API_VERSION` to override the built-in defaults
-   (`urn:li:organization:64517157`, `https://bashconsultants.com`, `202606`).
+   (`urn:li:organization:64517157`, `https://bash-365.com`, `202606`).
 3. Without `LINKEDIN_ACCESS_TOKEN`, both workflows skip with a notice — scheduled
    runs never fail red just because the credential is absent.
 
